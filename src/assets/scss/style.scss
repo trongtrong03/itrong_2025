@@ -1,0 +1,18 @@
+// 基本設定
+@import "base/normalize";
+@import "base/reset";
+@import "base/variables";
+@import "base/mixins";
+
+// common
+@import "layouts/layout";
+@import "layouts/animations";
+
+// plugins
+@import "plugins/prism";
+
+// pages
+@import "pages/list";
+@import "pages/text";
+@import "pages/gallery";
+@import "pages/hiking";
