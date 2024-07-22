@@ -62,7 +62,7 @@ export const useInfoStore = defineStore('infoStore', {
             this.HK_LINKS = [
                 { id: 1, link: 'mountains', title: '山岳資料' },
                 { id: 2, link: 'routes', title: '路線彙整' },
-                { id: 3, link: 'logs', title: '登山心得' },
+                { id: 3, link: 'mtlogs', title: '登山心得' },
                 { id: 4, link: 'gallery', title: '影像故事' },
             ];
         }

@@ -44,14 +44,14 @@ const router = createRouter({
           component: () => import('../views/hikingbook/rts/view.vue'),
         },
         {
-          path: '/logs',
-          name: 'logs',
-          component: () => import('../views/hikingbook/logs/index.vue'),
+          path: '/mtlogs',
+          name: 'mtlogs',
+          component: () => import('../views/hikingbook/mtlogs/index.vue'),
         },
         {
-          path: '/logs/:id',
-          name: 'logs_view',
-          component: () => import('../views/hikingbook/logs/[id].vue'),
+          path: '/mtlogs/:id',
+          name: 'mtlogs_view',
+          component: () => import('../views/hikingbook/mtlogs/[id].vue'),
           props: true
         },
         {

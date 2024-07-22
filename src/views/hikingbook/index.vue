@@ -202,7 +202,7 @@ const isIndexRoute = computed(() => route.path === '/hikingbook');
 
 /* 判斷特定路由以觸發subPagesHide */
 // 動態產生排除的路徑模式的正規表示式
-// const excludePatterns = /^\/(logs|mountains|routes)\//;
+// const excludePatterns = /^\/(mtlogs|mountains|routes)\//;
 const excludePatterns = /^\/[^\/]+\/[^\/]+/;
 // 計算屬性，檢查是否在排除的路徑模式下
 const subPagesHide = computed(() => !excludePatterns.test(route.path));
@@ -275,7 +275,7 @@ const subPagesHide = computed(() => !excludePatterns.test(route.path));
                                 <div class="hikingbook-lastest-article">
                                     <ul>
                                         <li v-for="item in filteredLogsData" :key="item.id">
-                                            <RouterLink :to="'/logs/' + item.id">
+                                            <RouterLink :to="'/mtlogs/' + item.id">
                                                 <figure>
                                                     <span :style="{ 'background-image': 'url(/images/logs/cover' + item.id + '.jpg)' }"></span>
                                                 </figure>

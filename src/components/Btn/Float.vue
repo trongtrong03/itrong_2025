@@ -66,7 +66,7 @@
 
     /* 判斷特定路由以觸發floatBtnShow */
     // 動態產生排除的路徑模式的正規表示式
-    const excludePatterns = /^\/(logs|learn)\//;
+    const excludePatterns = /^\/(mtlogs|learn)\//;
     // 計算屬性，檢查是否在排除的路徑模式下
     const floatBtnShow = computed(() => excludePatterns.test(route.path));
 
