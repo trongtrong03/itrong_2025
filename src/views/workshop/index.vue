@@ -1060,6 +1060,19 @@ git commit -m "版本名稱"</code></pre>
                                     </div>
                                     <button class="accordin-close" @click="isActive = 0;"></button>
                                 </div>
+                                <div class="accordin-item" :class="isActive==3002 ? 'is-active' : ''">
+                                    <div class="accordin-title" @click="isActive = 3002;">
+                                        <p>如何修改最近一次 Commit 提交的訊息文字？</p>
+                                    </div>
+                                    <div class="accordin-content">
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-powershell">git commit --amend -m "新的提交訊息名稱"</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                    </div>
+                                    <button class="accordin-close" @click="isActive = 0;"></button>
+                                </div>
                             </div>
                         </div>
                     </template>
