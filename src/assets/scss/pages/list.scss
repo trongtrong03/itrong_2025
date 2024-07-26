@@ -383,11 +383,18 @@
     }
 }
 
-.list-btnicon {
-    position: relative;
+.list-overflow {
     flex: 1;
     min-width: 0;
-    max-width: 2.5rem;
+    white-space: nowrap;
+    overflow-x: auto;
+}
+
+.list-btnicon {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    width: 2.5rem;
     height: 2.5rem;
     background-color: #f9f9f9;
     border-radius: 0.5rem;

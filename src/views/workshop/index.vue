@@ -40,14 +40,17 @@ const catalog = reactive<CatalogItem[]>([
             </div>
             <div class="list-wrap">
                 <div class="list-tools">
-                    <button class="list-btnicon icon icon-javascript" :class="btnSelected == 'javascript' ? 'is-active' : ''" @click="changeTab('javascript')"></button>
-                    <button class="list-btnicon icon icon-jquery" :class="btnSelected == 'jquery' ? 'is-active' : ''" @click="changeTab('jquery')"></button>
-                    <button class="list-btnicon icon icon-vue" :class="btnSelected == 'vue' ? 'is-active' : ''" @click="changeTab('vue')"></button>
-                    <button class="list-btnicon icon icon-nuxt" :class="btnSelected == 'nuxt' ? 'is-active' : ''" @click="changeTab('nuxt')"></button>
-                    <button class="list-btnicon icon icon-nodejs" :class="btnSelected == 'nodejs' ? 'is-active' : ''" @click="changeTab('nodejs')"></button>
-                    <button class="list-btnicon icon icon-yarn" :class="btnSelected == 'yarn' ? 'is-active' : ''" @click="changeTab('yarn')"></button>
-                    <button class="list-btnicon icon icon-git" :class="btnSelected == 'git' ? 'is-active' : ''" @click="changeTab('git')"></button>
-                    <button class="list-btnicon icon icon-css3" :class="btnSelected == 'css' ? 'is-active' : ''" @click="changeTab('css')"></button>
+                    <div class="list-overflow">
+                        <button class="list-btnicon icon icon-javascript" :class="btnSelected == 'javascript' ? 'is-active' : ''" @click="changeTab('javascript')"></button>
+                        <button class="list-btnicon icon icon-jquery" :class="btnSelected == 'jquery' ? 'is-active' : ''" @click="changeTab('jquery')"></button>
+                        <button class="list-btnicon icon icon-vue" :class="btnSelected == 'vue' ? 'is-active' : ''" @click="changeTab('vue')"></button>
+                        <button class="list-btnicon icon icon-nuxt" :class="btnSelected == 'nuxt' ? 'is-active' : ''" @click="changeTab('nuxt')"></button>
+                        <button class="list-btnicon icon icon-nodejs" :class="btnSelected == 'nodejs' ? 'is-active' : ''" @click="changeTab('nodejs')"></button>
+                        <button class="list-btnicon icon icon-yarn" :class="btnSelected == 'yarn' ? 'is-active' : ''" @click="changeTab('yarn')"></button>
+                        <button class="list-btnicon icon icon-git" :class="btnSelected == 'git' ? 'is-active' : ''" @click="changeTab('git')"></button>
+                        <button class="list-btnicon icon icon-css3" :class="btnSelected == 'css' ? 'is-active' : ''" @click="changeTab('css')"></button>
+                        <button class="list-btnicon icon icon-html5" :class="btnSelected == 'html' ? 'is-active' : ''" @click="changeTab('html')"></button>
+                    </div>
                 </div>
                 <div class="pages-title">
                     <h2 style="text-transform: capitalize;">{{ btnSelected }}</h2>
@@ -694,6 +697,20 @@ app.use(pinia);</code></pre>
                                 </div>
                                 <div class="accordin-item" :class="isActive==1003 ? 'is-active' : ''">
                                     <div class="accordin-title" @click="isActive = 1003;">
+                                        <p>Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'query')</p>
+                                    </div>
+                                    <div class="accordin-content">
+                                        <p>這個錯誤通常是因為 <em>route</em> 物件沒有正確定義或傳遞。為了修復這個問題，可以嘗試以下方法：</p>
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-javascript">import { useRoute } from 'vue-router'</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                    </div>
+                                    <button class="accordin-close" @click="isActive = 0;"></button>
+                                </div>
+                                <div class="accordin-item" :class="isActive==1999 ? 'is-active' : ''">
+                                    <div class="accordin-title" @click="isActive = 1999;">
                                         <p>Vite TS npm run build 發生一堆錯誤警告</p>
                                     </div>
                                     <div class="accordin-content">
@@ -739,7 +756,7 @@ app.use(pinia);</code></pre>
                             <div class="text-accordin is-others">
                                 <div class="accordin-item" :class="isActive==3001 ? 'is-active' : ''">
                                     <div class="accordin-title" @click="isActive = 3001;">
-                                        <p>如何修改範圍（Scoped）外的 CSS 樣式？</p>
+                                        <p>[Vue3]如何修改範圍（Scoped）外的 CSS 樣式？</p>
                                     </div>
                                     <div class="accordin-content">
                                         <p>可以使用 <em>:deep(＜inner-selector＞)</em> 語法，括號裡面指定要修改的選擇器。例如：</p>
@@ -820,6 +837,81 @@ app.use(pinia);</code></pre>
                                             </div>
                                         </prism-highlight>
                                         <h6>3. 將該檔案上傳至伺服器端，於入口文件（例如 index.html）放在同一個階層。</h6>
+                                    </div>
+                                    <button class="accordin-close" @click="isActive = 0;"></button>
+                                </div>
+                                <div class="accordin-item" :class="isActive==3004 ? 'is-active' : ''">
+                                    <div class="accordin-title" @click="isActive = 3004;">
+                                        <p>[Vue3]返回上一個路由頁面的語法</p>
+                                    </div>
+                                    <div class="accordin-content">
+                                        <p>Vue 語法的部分（使用 TypeScript）：</p>
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-html">&lt;script setup lang="ts"&gt;
+    import { useRoute, useRouter } from 'vue-router';
+
+    const route = useRoute();
+    const router = useRouter();
+
+    const goBackClick = () => {
+        const pathSegments = route.path.split('/');
+        if (pathSegments.length > 2) {
+            // 移除最後一個路徑段
+            pathSegments.pop();
+            const parentPath = pathSegments.join('/');
+            router.push(parentPath);
+        } else {
+            router.push('/');
+        }
+    }
+&lt;/script&gt;</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                        <p>於模板指定元素中添加 <em>goBackClick</em> 觸發事件：</p>
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-html">&lt;button @click="goBackClick"&gt;BACK&lt;/button&gt;</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                        <p><br></p>
+                                        <p>補充：如果只是單純要返回上一個路由動作，可以使用 <em>router.go(-1);</em> 即可。</p>
+                                    </div>
+                                    <button class="accordin-close" @click="isActive = 0;"></button>
+                                </div>
+                                <div class="accordin-item" :class="isActive==3005 ? 'is-active' : ''">
+                                    <div class="accordin-title" @click="isActive = 3005;">
+                                        <p>[Vue3]單一路由組件動態載入外部 JS 檔案的方法</p>
+                                    </div>
+                                    <div class="accordin-content">
+                                        <p>Vue 語法的部分（使用 TypeScript）：</p>
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-javascript">import { onMounted } from "vue";
+
+const loadScripts = () => {
+    return new Promise((resolve, reject) => {
+        const jsName = document.createElement('script');
+        jsName.src = "/js/fileName.js";
+        jsName.onload = () => {
+            resolve(true);
+        };
+        jsName.onerror = () => {
+            reject(new Error("Failed to load fileName.js"));
+        };
+        document.head.appendChild(jsName);
+    });
+};
+
+onMounted(async () => {
+    try {
+        await loadScripts();
+    } catch (error) {
+        console.error(error);
+    }
+});</code></pre>
+                                            </div>
+                                        </prism-highlight>
                                     </div>
                                     <button class="accordin-close" @click="isActive = 0;"></button>
                                 </div>
@@ -1073,6 +1165,69 @@ git commit -m "版本名稱"</code></pre>
                                     </div>
                                     <button class="accordin-close" @click="isActive = 0;"></button>
                                 </div>
+                                <div class="accordin-item" :class="isActive==3003 ? 'is-active' : ''">
+                                    <div class="accordin-title" @click="isActive = 3003;">
+                                        <p>如何 merge 兩個不同的分支？</p>
+                                    </div>
+                                    <div class="accordin-content">
+                                        <p>假設目前有兩個分支，分別叫做 <em>cat</em> 與 <em>dog</em>，而現在我們希望將 <em>cat</em> 合併到 <em>dog</em> 分支裡，執行步驟如下：</p>
+                                        <h6>1. 切換到 <em>dog</em> 分支：</h6>
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-powershell">git branch dog</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                        <h6>2. 合併 <em>cat</em> 分支給 <em>dog</em>：</h6>
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-powershell">git merge cat</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                        <p>如果合併的過程發生衝突，Git 會提示哪些檔案存在衝突，我們必須手動編輯該檔案，將衝突解決後再重新將這些檔案 <em>add</em> 並執行 <em>commit</em>，然後就會完成合併。</p>
+                                        <p>最後再將分支推送到遠端儲存庫即可：</p>
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-powershell">git push origin dog</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                    </div>
+                                    <button class="accordin-close" @click="isActive = 0;"></button>
+                                </div>
+                                <div class="accordin-item" :class="isActive==3004 ? 'is-active' : ''">
+                                    <div class="accordin-title" @click="isActive = 3004;">
+                                        <p>如何下載遠端儲存庫指定的分支？</p>
+                                    </div>
+                                    <div class="accordin-content">
+                                        <p>在本機端還沒有該專案的前提下，我們可以透過 <em>git clone</em> 直接克隆特定的分支：</p>
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-powershell">git clone -b 分支名稱 遠端儲存庫url</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                        <p><br></p>
+                                        <p>如果本機端已存在該專案，只是缺少該分支，可以依循以下步驟：</p>
+                                        <h6>1. 檢查遠端儲存庫：</h6>
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-powershell">git fetch origin</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                        <h6>2. 檢出特定分支：</h6>
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-powershell">git checkout -b 分支名稱 origin/分支名稱</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                        <h6>3. 拉取最新的更改：</h6>
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-powershell">git pull origin 分支名稱</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                        <p>通常而言第二步驟理應已經下載遠端分支最新的內容，但如果不是很確定自己是否拉取的是最新版本的分支資料，就可以接著執行第三步驟的更新。</p>
+                                    </div>
+                                    <button class="accordin-close" @click="isActive = 0;"></button>
+                                </div>
                             </div>
                         </div>
                     </template>
@@ -1091,6 +1246,319 @@ git commit -m "版本名稱"</code></pre>
                         <div class="text-group">
                             <h2 v-text="catalog[2].title"></h2>
                             <div class="text-accordin is-others">
+                                <div class="accordin-item" :class="isActive==3001 ? 'is-active' : ''">
+                                    <div class="accordin-title" @click="isActive = 3001;">
+                                        <p>水平延伸式的滾軸選單</p>
+                                    </div>
+                                    <div class="accordin-content">
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-css">ul {
+    white-space: nowrap;
+    overflow-x: auto;
+}
+
+ul li {
+    display: inline-block;
+    vertical-align: top;
+}</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                    </div>
+                                    <button class="accordin-close" @click="isActive = 0;"></button>
+                                </div>
+                                <div class="accordin-item" :class="isActive==3002 ? 'is-active' : ''">
+                                    <div class="accordin-title" @click="isActive = 3002;">
+                                        <p>把英文文字轉換為小型大寫字母</p>
+                                    </div>
+                                    <div class="accordin-content">
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-css">p {
+    font-variant: small-caps;
+}</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                    </div>
+                                    <button class="accordin-close" @click="isActive = 0;"></button>
+                                </div>
+                                <div class="accordin-item" :class="isActive==3003 ? 'is-active' : ''">
+                                    <div class="accordin-title" @click="isActive = 3003;">
+                                        <p>iOS 行動裝置 iframe 無法向下滾動的解決方法</p>
+                                    </div>
+                                    <div class="accordin-content">
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-css">div {
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+div iframe {
+    width: 100%;
+    height: 100%;
+}</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                        <p>此外，HTML 中的 <em>iframe</em> 元素也要添加 <em>scrolling="yes"</em> 屬性。</p>
+                                    </div>
+                                    <button class="accordin-close" @click="isActive = 0;"></button>
+                                </div>
+                                <div class="accordin-item" :class="isActive==3004 ? 'is-active' : ''">
+                                    <div class="accordin-title" @click="isActive = 3004;">
+                                        <p>讓 iPad 或 iPhone 的捲軸更順暢</p>
+                                    </div>
+                                    <div class="accordin-content">
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-css">body {
+    -webkit-overflow-scrolling: touch;
+}</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                        <p>手指移開觸碰螢幕，滾動仍會持續一小段回彈效果。</p>
+                                    </div>
+                                    <button class="accordin-close" @click="isActive = 0;"></button>
+                                </div>
+                                <div class="accordin-item" :class="isActive==3005 ? 'is-active' : ''">
+                                    <div class="accordin-title" @click="isActive = 3005;">
+                                        <p>文字色彩漸層</p>
+                                    </div>
+                                    <div class="accordin-content">
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-css">h1 {
+    background-image: gradient(參數);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                    </div>
+                                    <button class="accordin-close" @click="isActive = 0;"></button>
+                                </div>
+                                <div class="accordin-item" :class="isActive==3006 ? 'is-active' : ''">
+                                    <div class="accordin-title" @click="isActive = 3006;">
+                                        <p>垂直文字</p>
+                                    </div>
+                                    <div class="accordin-content">
+                                        <h4>由左至右：</h4>
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-css">p {
+    -webkit-writing-mode: vertical-lr;
+    writing-mode: vertical-lr;
+}</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                        <h4>由右至左：</h4>
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-css">p {
+    -webkit-writing-mode: vertical-rl;
+    writing-mode: vertical-rl;
+}</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                    </div>
+                                    <button class="accordin-close" @click="isActive = 0;"></button>
+                                </div>
+                                <div class="accordin-item" :class="isActive==3007 ? 'is-active' : ''">
+                                    <div class="accordin-title" @click="isActive = 3007;">
+                                        <p>控制網頁內容是否可以被選取</p>
+                                    </div>
+                                    <div class="accordin-content">
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-css">body {
+    user-select: none;
+}</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                        <p>此外還有 <em>text</em> 屬性值表示僅能選擇元素內的文字，以及 <em>element</em> 屬性值表示僅能選擇元素範圍內的內容。</p>
+                                    </div>
+                                    <button class="accordin-close" @click="isActive = 0;"></button>
+                                </div>
+                                <div class="accordin-item" :class="isActive==3008 ? 'is-active' : ''">
+                                    <div class="accordin-title" @click="isActive = 3008;">
+                                        <p>input 的提示訊息（placeholder）</p>
+                                    </div>
+                                    <div class="accordin-content">
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-css">input::-webkit-input-placeholder {
+    /* css */
+}
+input::-moz-placeholder {
+    /* css */
+}
+input:-ms-input-placeholder {
+    /* css */
+}
+input:-moz-placeholder {
+    /* css */
+}</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                    </div>
+                                    <button class="accordin-close" @click="isActive = 0;"></button>
+                                </div>
+                                <div class="accordin-item" :class="isActive==3009 ? 'is-active' : ''">
+                                    <div class="accordin-title" @click="isActive = 3009;">
+                                        <p>設定反白的樣式（selection）</p>
+                                    </div>
+                                    <div class="accordin-content">
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-css">body::selection { 
+    background: 顏色;
+    color: 顏色;
+    text-shadow: 格式;
+}</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                    </div>
+                                    <button class="accordin-close" @click="isActive = 0;"></button>
+                                </div>
+                                <div class="accordin-item" :class="isActive==3010 ? 'is-active' : ''">
+                                    <div class="accordin-title" @click="isActive = 3010;">
+                                        <p>行內單字滿行時強制斷句並換行</p>
+                                    </div>
+                                    <div class="accordin-content">
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-css">p {
+    word-wrap: break-word;
+    word-break: break-all;
+}</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                    </div>
+                                    <button class="accordin-close" @click="isActive = 0;"></button>
+                                </div>
+                                <div class="accordin-item" :class="isActive==3011 ? 'is-active' : ''">
+                                    <div class="accordin-title" @click="isActive = 3011;">
+                                        <p>段落字首的樣式</p>
+                                    </div>
+                                    <div class="accordin-content">
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-css">p::first-letter {
+    /* CSS */
+}</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                    </div>
+                                    <button class="accordin-close" @click="isActive = 0;"></button>
+                                </div>
+                                <div class="accordin-item" :class="isActive==3012 ? 'is-active' : ''">
+                                    <div class="accordin-title" @click="isActive = 3012;">
+                                        <p>英文字母的大小寫轉換</p>
+                                    </div>
+                                    <div class="accordin-content">
+                                        <h4>均為大寫：</h4>
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-css">p {
+    text-transform: uppercase;
+}</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                        <h4>均為小寫：</h4>
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-css">p {
+    text-transform: lowercase;
+}</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                        <h4>首字大寫：</h4>
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-css">p {
+    text-transform: capitalize;
+}</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                    </div>
+                                    <button class="accordin-close" @click="isActive = 0;"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                    <!-- html -->
+                    <template v-else-if="btnSelected == 'html'">
+                        <div class="text-group">
+                            <h2 v-text="catalog[0].title"></h2>
+                            <div class="text-accordin is-error">
+                            </div>
+                        </div>
+                        <div class="text-group">
+                            <h2 v-text="catalog[1].title"></h2>
+                            <div class="text-accordin is-warning">
+                            </div>
+                        </div>
+                        <div class="text-group">
+                            <h2 v-text="catalog[2].title"></h2>
+                            <div class="text-accordin is-others">
+                                <div class="accordin-item" :class="isActive==3001 ? 'is-active' : ''">
+                                    <div class="accordin-title" @click="isActive = 3001;">
+                                        <p>設定 img 元素的預設圖</p>
+                                    </div>
+                                    <div class="accordin-content">
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-html">&lt;img src="影像路徑" onerror="this.src='images/default.jpg'"&gt;</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                    </div>
+                                    <button class="accordin-close" @click="isActive = 0;"></button>
+                                </div>
+                                <div class="accordin-item" :class="isActive==3002 ? 'is-active' : ''">
+                                    <div class="accordin-title" @click="isActive = 3002;">
+                                        <p>設定 input 元素的預設選項</p>
+                                    </div>
+                                    <div class="accordin-content">
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-html">&lt;input list="listName" /&gt;
+&lt;datalist id="listName"&gt;
+    &lt;option value="項目1"&gt;
+    &lt;option value="項目2"&gt;
+    &lt;option value="項目3"&gt;
+&lt;/datalist&gt;</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                    </div>
+                                    <button class="accordin-close" @click="isActive = 0;"></button>
+                                </div>
+                                <div class="accordin-item" :class="isActive==3003 ? 'is-active' : ''">
+                                    <div class="accordin-title" @click="isActive = 3003;">
+                                        <p>將連結文字轉為下載型態，並將檔名更改為自行命名的檔案名稱</p>
+                                    </div>
+                                    <div class="accordin-content">
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-html">&lt;a href="/filePath" download="fileName"&gt;超連結訊息&lt;/a&gt;</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                    </div>
+                                    <button class="accordin-close" @click="isActive = 0;"></button>
+                                </div>
+                                <div class="accordin-item" :class="isActive==3004 ? 'is-active' : ''">
+                                    <div class="accordin-title" @click="isActive = 3004;">
+                                        <p>元素點擊開啟指定路徑連結的方法</p>
+                                    </div>
+                                    <div class="accordin-content">
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-html">&lt;button onClick="window.location.href='https://www.google.com.tw/'"&gt;Click&lt;/button&gt;</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                    </div>
+                                    <button class="accordin-close" @click="isActive = 0;"></button>
+                                </div>
                             </div>
                         </div>
                     </template>
