@@ -91,6 +91,7 @@
 }
 
 .gallery-popup-img {
+    position: relative;
     display: flex;
     flex: 0 0 50%;
     height: 100%;
@@ -110,16 +111,56 @@
         display: block;
         width: 100%;
     }
+    button {
+        position: absolute;
+        top: .5rem;
+        left: .5rem;
+        z-index: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 2rem;
+        height: 2rem;
+        background-color: var(--black);
+        border-radius: 100%;
+        svg {
+            width: .875rem;
+            fill: #FFF;
+            transition: all .3s;
+        }
+        &:hover {
+            svg {
+                fill: var(--c1)
+            }
+        }
+    }
+    @media only screen and (min-width: 481px) {
+        .is-full & {
+            flex: 1 1 100%;
+            transition: all .3s;
+        }
+    }
     @media only screen and (max-width: 480px) {
         height: 50%;
         figure {
             height: 100%;
+        }
+        button {
+            display: none;
         }
     }
 }
 
 .gallery-popup-content {
     flex: 0 0 50%;
+    @media only screen and (min-width: 481px) {
+        .is-full & {
+            flex: 0;
+            width: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+    }
     @media only screen and (max-width: 480px) {
         height: 50%;
         overflow-y: auto;
@@ -134,21 +175,33 @@
         font-size: 0.875rem;
         &:last-of-type {
             color: #999;
-            margin-bottom: 0.5rem;
             &:before {
                 content: '#';
             }
         }
+        &:last-of-type {
+            color: #999;
+        }
     }
-    time {
+    > div {
         position: absolute;
         bottom: 0;
         left: 0;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
         width: 100%;
-        text-align: right;
-        font-size: 0.875rem;
-        color: #AAA;
+        font-size: 0.75rem;
+        color: #DDD;
         padding: 1rem 2rem;
+    }
+    label {
+        flex: 0 0 auto;
+        min-width: 0;
+    }
+    time {
+        flex: 0 0 auto;
+        min-width: 0;
     }
     @media only screen and (max-width: 480px) {
         padding-top: 2rem;
@@ -175,6 +228,8 @@
     position: absolute;
     top: 0;
     right: -4rem;
+    display: flex;
+    flex-direction: column;
     button {
         display: flex;
         align-items: center;
@@ -193,9 +248,13 @@
             width: 1.5rem;
             fill: #FFF;
             margin: 0 auto;
+            transition: all .3s;
         }
         &:hover {
             color: var(--c1);
+            svg {
+                fill: var(--c1);
+            }
         }
         &.btn-prev {
             &::before {
@@ -218,13 +277,17 @@
         top: auto;
         bottom: -4rem;
         right: 0;
+        flex-direction: row;
         button {
-            display: inline-block;
             margin-bottom: 0;
+            margin-left: 2px;
+            &.btn-close {
+                order: 2;
+            }
         }
     }
     @media only screen and (max-width: 480px) {
-        bottom: 0;
+        top: -3rem;
         button {
             width: 3rem;
             height: 3rem;

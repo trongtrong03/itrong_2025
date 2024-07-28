@@ -44,6 +44,7 @@ const catalog = reactive<CatalogItem[]>([
                         <button class="list-btnicon icon icon-javascript" :class="btnSelected == 'javascript' ? 'is-active' : ''" @click="changeTab('javascript')"></button>
                         <button class="list-btnicon icon icon-jquery" :class="btnSelected == 'jquery' ? 'is-active' : ''" @click="changeTab('jquery')"></button>
                         <button class="list-btnicon icon icon-vue" :class="btnSelected == 'vue' ? 'is-active' : ''" @click="changeTab('vue')"></button>
+                        <button class="list-btnicon icon icon-vite" :class="btnSelected == 'vite' ? 'is-active' : ''" @click="changeTab('vite')"></button>
                         <button class="list-btnicon icon icon-nuxt" :class="btnSelected == 'nuxt' ? 'is-active' : ''" @click="changeTab('nuxt')"></button>
                         <button class="list-btnicon icon icon-nodejs" :class="btnSelected == 'nodejs' ? 'is-active' : ''" @click="changeTab('nodejs')"></button>
                         <button class="list-btnicon icon icon-yarn" :class="btnSelected == 'yarn' ? 'is-active' : ''" @click="changeTab('yarn')"></button>
@@ -288,6 +289,71 @@ const catalog = reactive<CatalogItem[]>([
                                     </div>
                                     <div class="accordin-content">
                                         <p>如果不是直接使用 JavaScript 內建的時間格式，而是自行建立的時間物件，格式最好遵循 ISO 8601 格式，也就是 YYYY-MM-DD，盡量不要是其他寫法例如 YYYY.MM.DD 或 YYYY/MM/DD 之類的，因為這可能導致不同瀏覽器或裝置設備無法正確地作出解析，唯有 ISO 8601 是跨平台公認的標準格式。</p>
+                                    </div>
+                                    <button class="accordin-close" @click="isActive = 0;"></button>
+                                </div>
+                                <div class="accordin-item" :class="isActive==3003 ? 'is-active' : ''">
+                                    <div class="accordin-title" @click="isActive = 3003;">
+                                        <p>動態計算可視畫面高度使其在行動裝置瀏覽器中滿版（扣除工具列）</p>
+                                    </div>
+                                    <div class="accordin-content">
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-javascript">function setFullHeight() {
+    const fullHeightElements = document.querySelectorAll('.full-height');
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+    fullHeightElements.forEach(el => {
+        el.style.height = `calc(var(--vh, 1vh) * 100)`;
+    });
+}
+
+window.addEventListener('resize', setFullHeight);
+window.addEventListener('orientationchange', setFullHeight);
+setFullHeight();</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                    </div>
+                                    <button class="accordin-close" @click="isActive = 0;"></button>
+                                </div>
+                                <div class="accordin-item" :class="isActive==3004 ? 'is-active' : ''">
+                                    <div class="accordin-title" @click="isActive = 3004;">
+                                        <p>用 Math.max 返回零或多個數值中的最大值</p>
+                                    </div>
+                                    <div class="accordin-content">
+                                        <p><em>Math.max</em> 是 JavaScript 中的函數，用於傳回零個或多個數值中的最大值。當你傳遞兩個或更多數值給 <em>Math.max</em> 時，它會計算並傳回其中最大的那個數值。</p>
+                                        <p>例如：</p>
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-javascript">var result = Math.max(0, 5000 - 9000);
+console.log(result);    // 0</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                        <ul>
+                                            <li>5000 - 9000 首先被计算，结果是 -4000</li>
+                                            <li>Math.max(0, -4000) 接着被计算。由于 0 大于 -4000，所以 Math.max 返回 0</li>
+                                            <li>console.log(result) 输出 0</li>
+                                        </ul>
+                                        <p>除此之外，還有以下幾種應用方式：</p>
+                                        <h4>1. 單一參數：</h4>
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-javascript">console.log(Math.max(5));    // 5</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                        <h4>2. 多個參數：</h4>
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-javascript">console.log(Math.max(1, 10, 100, 1000));    // 1000</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                        <h4>3. 使用擴充運算子傳遞數組：</h4>
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-javascript">const numbers = [1, 2, 3, 4, 5];
+console.log(Math.max(...numbers));    // 5</code></pre>
+                                            </div>
+                                        </prism-highlight>
                                     </div>
                                     <button class="accordin-close" @click="isActive = 0;"></button>
                                 </div>
@@ -709,8 +775,117 @@ app.use(pinia);</code></pre>
                                     </div>
                                     <button class="accordin-close" @click="isActive = 0;"></button>
                                 </div>
-                                <div class="accordin-item" :class="isActive==1999 ? 'is-active' : ''">
-                                    <div class="accordin-title" @click="isActive = 1999;">
+                            </div>
+                        </div>
+                        <div class="text-group">
+                            <h2 v-text="catalog[1].title"></h2>
+                            <div class="text-accordin is-warning">
+                            </div>
+                        </div>
+                        <div class="text-group">
+                            <h2 v-text="catalog[2].title"></h2>
+                            <div class="text-accordin is-others">
+                                <div class="accordin-item" :class="isActive==3001 ? 'is-active' : ''">
+                                    <div class="accordin-title" @click="isActive = 3001;">
+                                        <p>[Vue3]如何修改範圍（Scoped）外的 CSS 樣式？</p>
+                                    </div>
+                                    <div class="accordin-content">
+                                        <p>可以使用 <em>:deep(＜inner-selector＞)</em> 語法，括號裡面指定要修改的選擇器。例如：</p>
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-css">:deep(.demo-wrap){
+    /* CSS 樣式 */
+}</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                    </div>
+                                    <button class="accordin-close" @click="isActive = 0;"></button>
+                                </div>
+                                <div class="accordin-item" :class="isActive==3002 ? 'is-active' : ''">
+                                    <div class="accordin-title" @click="isActive = 3002;">
+                                        <p>[Vue3]返回上一個路由頁面的語法</p>
+                                    </div>
+                                    <div class="accordin-content">
+                                        <p>Vue 語法的部分（使用 TypeScript）：</p>
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-html">&lt;script setup lang="ts"&gt;
+    import { useRoute, useRouter } from 'vue-router';
+
+    const route = useRoute();
+    const router = useRouter();
+
+    const goBackClick = () => {
+        const pathSegments = route.path.split('/');
+        if (pathSegments.length > 2) {
+            // 移除最後一個路徑段
+            pathSegments.pop();
+            const parentPath = pathSegments.join('/');
+            router.push(parentPath);
+        } else {
+            router.push('/');
+        }
+    }
+&lt;/script&gt;</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                        <p>於模板指定元素中添加 <em>goBackClick</em> 觸發事件：</p>
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-html">&lt;button @click="goBackClick"&gt;BACK&lt;/button&gt;</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                        <p><br></p>
+                                        <p>補充：如果只是單純要返回上一個路由動作，可以使用 <em>router.go(-1);</em> 即可。</p>
+                                    </div>
+                                    <button class="accordin-close" @click="isActive = 0;"></button>
+                                </div>
+                                <div class="accordin-item" :class="isActive==3003 ? 'is-active' : ''">
+                                    <div class="accordin-title" @click="isActive = 3003;">
+                                        <p>[Vue3]單一路由組件動態載入外部 JS 檔案的方法</p>
+                                    </div>
+                                    <div class="accordin-content">
+                                        <p>Vue 語法的部分（使用 TypeScript）：</p>
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-javascript">import { onMounted } from "vue";
+
+const loadScripts = () => {
+    return new Promise((resolve, reject) => {
+        const jsName = document.createElement('script');
+        jsName.src = "/js/fileName.js";
+        jsName.onload = () => {
+            resolve(true);
+        };
+        jsName.onerror = () => {
+            reject(new Error("Failed to load fileName.js"));
+        };
+        document.head.appendChild(jsName);
+    });
+};
+
+onMounted(async () => {
+    try {
+        await loadScripts();
+    } catch (error) {
+        console.error(error);
+    }
+});</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                    </div>
+                                    <button class="accordin-close" @click="isActive = 0;"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                    <!-- vite -->
+                    <template v-else-if="btnSelected == 'vite'">
+                        <div class="text-group">
+                            <h2 v-text="catalog[0].title"></h2>
+                            <div class="text-accordin is-error">
+                                <div class="accordin-item" :class="isActive==1001 ? 'is-active' : ''">
+                                    <div class="accordin-title" @click="isActive = 1001;">
                                         <p>Vite TS npm run build 發生一堆錯誤警告</p>
                                     </div>
                                     <div class="accordin-content">
@@ -756,22 +931,6 @@ app.use(pinia);</code></pre>
                             <div class="text-accordin is-others">
                                 <div class="accordin-item" :class="isActive==3001 ? 'is-active' : ''">
                                     <div class="accordin-title" @click="isActive = 3001;">
-                                        <p>[Vue3]如何修改範圍（Scoped）外的 CSS 樣式？</p>
-                                    </div>
-                                    <div class="accordin-content">
-                                        <p>可以使用 <em>:deep(＜inner-selector＞)</em> 語法，括號裡面指定要修改的選擇器。例如：</p>
-                                        <prism-highlight>
-                                            <div class="text-code" v-pre>
-                                                <pre><code class="language-css">:deep(.demo-wrap){
-    /* CSS 樣式 */
-}</code></pre>
-                                            </div>
-                                        </prism-highlight>
-                                    </div>
-                                    <button class="accordin-close" @click="isActive = 0;"></button>
-                                </div>
-                                <div class="accordin-item" :class="isActive==3002 ? 'is-active' : ''">
-                                    <div class="accordin-title" @click="isActive = 3002;">
                                         <p>如何改變 Vite 的 port？</p>
                                     </div>
                                     <div class="accordin-content">
@@ -791,8 +950,8 @@ app.use(pinia);</code></pre>
                                     </div>
                                     <button class="accordin-close" @click="isActive = 0;"></button>
                                 </div>
-                                <div class="accordin-item" :class="isActive==3003 ? 'is-active' : ''">
-                                    <div class="accordin-title" @click="isActive = 3003;">
+                                <div class="accordin-item" :class="isActive==3002 ? 'is-active' : ''">
+                                    <div class="accordin-title" @click="isActive = 3002;">
                                         <p>為什麼將打包好的檔案上傳到伺服器端後，頁面重整就會顯示 404 Not Found？</p>
                                     </div>
                                     <div class="accordin-content">
@@ -825,14 +984,14 @@ app.use(pinia);</code></pre>
                                         <h6>2. 於文件中添加以下程式碼：</h6>
                                         <prism-highlight>
                                             <div class="text-code" v-pre>
-                                                <pre><code class="language-bash"><IfModule mod_rewrite.c>
+                                                <pre><code class="language-bash">&lt;IfModule mod_rewrite.c&gt;
   RewriteEngine On
   RewriteBase /
   RewriteRule ^index\.html$ - [L]
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule . /index.html [L]
-</IfModule>
+&lt;/IfModule&gt;
 </code></pre>
                                             </div>
                                         </prism-highlight>
@@ -840,75 +999,18 @@ app.use(pinia);</code></pre>
                                     </div>
                                     <button class="accordin-close" @click="isActive = 0;"></button>
                                 </div>
-                                <div class="accordin-item" :class="isActive==3004 ? 'is-active' : ''">
-                                    <div class="accordin-title" @click="isActive = 3004;">
-                                        <p>[Vue3]返回上一個路由頁面的語法</p>
+                                <div class="accordin-item" :class="isActive==3003 ? 'is-active' : ''">
+                                    <div class="accordin-title" @click="isActive = 3003;">
+                                        <p>組件路由切換時畫面自動移動到最頂部</p>
                                     </div>
                                     <div class="accordin-content">
-                                        <p>Vue 語法的部分（使用 TypeScript）：</p>
+                                        <p>在路由設定檔（例如 <b>router/index.ts</b>）中添加：</p>
                                         <prism-highlight>
                                             <div class="text-code" v-pre>
-                                                <pre><code class="language-html">&lt;script setup lang="ts"&gt;
-    import { useRoute, useRouter } from 'vue-router';
-
-    const route = useRoute();
-    const router = useRouter();
-
-    const goBackClick = () => {
-        const pathSegments = route.path.split('/');
-        if (pathSegments.length > 2) {
-            // 移除最後一個路徑段
-            pathSegments.pop();
-            const parentPath = pathSegments.join('/');
-            router.push(parentPath);
-        } else {
-            router.push('/');
-        }
-    }
-&lt;/script&gt;</code></pre>
-                                            </div>
-                                        </prism-highlight>
-                                        <p>於模板指定元素中添加 <em>goBackClick</em> 觸發事件：</p>
-                                        <prism-highlight>
-                                            <div class="text-code" v-pre>
-                                                <pre><code class="language-html">&lt;button @click="goBackClick"&gt;BACK&lt;/button&gt;</code></pre>
-                                            </div>
-                                        </prism-highlight>
-                                        <p><br></p>
-                                        <p>補充：如果只是單純要返回上一個路由動作，可以使用 <em>router.go(-1);</em> 即可。</p>
-                                    </div>
-                                    <button class="accordin-close" @click="isActive = 0;"></button>
-                                </div>
-                                <div class="accordin-item" :class="isActive==3005 ? 'is-active' : ''">
-                                    <div class="accordin-title" @click="isActive = 3005;">
-                                        <p>[Vue3]單一路由組件動態載入外部 JS 檔案的方法</p>
-                                    </div>
-                                    <div class="accordin-content">
-                                        <p>Vue 語法的部分（使用 TypeScript）：</p>
-                                        <prism-highlight>
-                                            <div class="text-code" v-pre>
-                                                <pre><code class="language-javascript">import { onMounted } from "vue";
-
-const loadScripts = () => {
-    return new Promise((resolve, reject) => {
-        const jsName = document.createElement('script');
-        jsName.src = "/js/fileName.js";
-        jsName.onload = () => {
-            resolve(true);
-        };
-        jsName.onerror = () => {
-            reject(new Error("Failed to load fileName.js"));
-        };
-        document.head.appendChild(jsName);
-    });
-};
-
-onMounted(async () => {
-    try {
-        await loadScripts();
-    } catch (error) {
-        console.error(error);
-    }
+                                                <pre><code class="language-javascript">const router = createRouter({
+    scrollBehavior(to, from, savedPosition){
+        return { top: 0 }
+    },
 });</code></pre>
                                             </div>
                                         </prism-highlight>
@@ -1228,6 +1330,59 @@ git commit -m "版本名稱"</code></pre>
                                     </div>
                                     <button class="accordin-close" @click="isActive = 0;"></button>
                                 </div>
+                                <div class="accordin-item" :class="isActive==3005 ? 'is-active' : ''">
+                                    <div class="accordin-title" @click="isActive = 3005;">
+                                        <p>忘記另開分支就在 master 分支上修改了檔案，還來的及將檔案提交給新的分支嗎？</p>
+                                    </div>
+                                    <div class="accordin-content">
+                                        <p>答案是可以的，在開始下 Git 指令之前，先確保編輯檔案都已經儲存。</p>
+                                        <h6>1. 新建並切換到新分支：</h6>
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-powershell">git checkout -b branchName</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                        <h6>2. 提交更改：</h6>
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-powershell">git add .
+git commit -m "提交訊息"</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                        <p>這樣修改後的檔案所提交的 Git Commit 會存在於新建立的分支上，而非 master。</p>
+                                        <h3>如果已經在 master 上提交了更改？</h3>
+                                        <p>假如是這個情況，就需要使用 <em>git cherry-pick</em> 指令，具體方法如下：</p>
+                                        <h6>1. 從 log 紀錄中查詢要移動到新分支的 commit HASH 值：</h6>
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-powershell">git log --oneline</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                        <p>假設要移動的 Commit HASH 值為 abc123。</p>
+                                        <h6>2. 新建並切換到新分支：</h6>
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-powershell">git checkout -b branchName</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                        <h6>3. 提交更改：</h6>
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-powershell">git cherry-pick abc123</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                        <p>假如有多個 Commit 要移動，則分別記錄下它們的 HASH 值，在建立好新分支後逐一 <em>cherry-pick</em> 即可。例如：</p>
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-powershell">git cherry-pick abc123
+git cherry-pick xyz456
+git cherry-pick mon789</code></pre>
+                                            </div>
+                                        </prism-highlight>
+
+                                    </div>
+                                    <button class="accordin-close" @click="isActive = 0;"></button>
+                                </div>
                             </div>
                         </div>
                     </template>
@@ -1492,6 +1647,43 @@ input:-moz-placeholder {
                         <div class="text-group">
                             <h2 v-text="catalog[0].title"></h2>
                             <div class="text-accordin is-error">
+                                <div class="accordin-item" :class="isActive==3001 ? 'is-active' : ''">
+                                    <div class="accordin-title" @click="isActive = 3001;">
+                                        <p>Third-party cookie will be blocked. Learn more in the Issues tab.</p>
+                                    </div>
+                                    <div class="accordin-content">
+                                        <p>這個錯誤通常是指你的瀏覽器正在阻止來自第三方域的 cookie。這種行為通常是出於隱私和安全考量，現代瀏覽器越來越多地限制或完全禁止第三方 cookie。這可能會影響某些網站或服務的正常運行，特別是那些依賴於第三方 cookie 來進行認證、跟蹤或廣告服務的網站。</p>
+                                        <p>如果你的應用或網站依賴於第三方 cookie，有幾種解決方案可以考慮：</p>
+                                        <h4>1. 使用同源策略：</h4>
+                                        <p>確保所有 cookie 都是由與當前網站相同的域設置的，即所謂的「第一方 cookie」。</p>
+                                        <h4>2. 更新後端設置：</h4>
+                                        <p>設置後端服務，使其通過第一方 cookie 或其他認證方式進行交互。</p>
+                                        <h4>3. 使用其他存儲方式：</h4>
+                                        <p>例如使用 localStorage 或 sessionStorage 來替代 cookie，儘管這些方法在跨域場景中有一定限制。</p>
+                                        <h4>4. Content Security Policy（CSP）：</h4>
+                                        <p>配置 CSP 標頭來明確允許哪些來源的資源可以被加載，以提高安全性。</p>
+                                        <h4>5. 前端設置：</h4>
+                                        <p>在前端程式碼中，確保設置 cookie 時使用適當的 <em>SameSite</em> 屬性，例如 <em>SameSite=Lax</em> 或 <em>SameSite=Strict</em>。</p>
+                                        <p>假設你在前端設置 cookie，可以使用如下程式碼來設置 <em>SameSite</em> 屬性：：</p>
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-javascript">document.cookie = "name=value; SameSite=Lax";</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                        <p>或者，如果你使用的是某個第三方服務，請確保這些服務配置了適當的 <em>SameSite</em> 屬性：</p>
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-python"># 假設你使用 Flask 框架在後端設置 cookie
+from flask import make_response
+
+response = make_response("Setting a cookie")
+response.set_cookie('name', 'value', samesite='Lax')
+return response</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                    </div>
+                                    <button class="accordin-close" @click="isActive = 0;"></button>
+                                </div>
                             </div>
                         </div>
                         <div class="text-group">
@@ -1614,7 +1806,10 @@ input:-moz-placeholder {
             vertical-align: middle;
             width: 1.25rem;
             height: 1.25rem;
-            line-height: 1.25rem;
+            line-height: 1.5rem;
+            font-family: "Dongle", sans-serif;
+            font-weight: 400;
+            font-size: 1.25rem;
             text-align: center;
             color: #FFF;
             border-radius: 100%;
@@ -1629,7 +1824,7 @@ input:-moz-placeholder {
         }
         p {
             &::before {
-                content: 'x';
+                content: 'X';
                 background-color: #ed6363;
             }
         }

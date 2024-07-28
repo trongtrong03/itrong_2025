@@ -45,7 +45,7 @@ const fetchJsonData = (item, index) => {
 
 /* 動態滾動載入資料 */
 // 預設載入的資料筆數
-const defaultItemCount = 30;
+const defaultItemCount = 20;
 
 // 追蹤目前已經載入的資料數量
 const loadedItemCount = ref(defaultItemCount);

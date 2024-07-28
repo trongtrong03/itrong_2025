@@ -89,6 +89,7 @@ const loadPrevItem = () => {
         currentIndex.value = galleryData.value.length - 1;
     }
     selectedItem.value = galleryData.value[currentIndex.value];
+    imgFull.value = false;
 };
 
 // 下一筆
@@ -98,13 +99,21 @@ const loadNextItem = () => {
         currentIndex.value = 0;
     }
     selectedItem.value = galleryData.value[currentIndex.value];
+    imgFull.value = false;
 };
 
 // 關閉彈窗
 const popupClose = () => {
     selectedItem.value = null;
     statusStore.POPUP_OVERLAY = false;
+    imgFull.value = false;
     useNoScroll(false);
+};
+
+// 展開圖片
+const imgFull =  ref<any>(false);
+const toggleImgFull = () => {
+    imgFull.value = !imgFull.value;
 };
 
 /* 偵測使用者是否按下瀏覽器上一頁按扭 */
@@ -326,16 +335,22 @@ const subPagesHide = computed(() => !excludePatterns.test(route.path));
     </section>
     <!-- popup -->
     <div class="gallery-popup-wrap" v-if="selectedItem">
-        <div class="gallery-popup-flex">
+        <div class="gallery-popup-flex" :class="imgFull == true ? 'is-full' : ''">
             <div class="gallery-popup-img">
                 <figure>
                     <span :style="{ 'background-image': 'url(/images/gallery/' + selectedItem.id + '.jpg)'}"></span>
                 </figure>
+                <button class="btn-full" @click="toggleImgFull">
+                    <SvgIcons name="fullscreenIcon" />
+                </button>
             </div>
             <div class="gallery-popup-content">
                 <p v-text="selectedItem.desc"></p>
                 <p v-text="selectedItem.site"></p>
-                <time v-text="selectedItem.time"></time>
+                <div>
+                    <label v-text="selectedItem.note"></label>
+                    <time v-text="selectedItem.time"></time>
+                </div>
             </div>
             <div class="gallery-popup-btn">
                 <button class="btn-close" @click="popupClose">
