@@ -46,6 +46,7 @@ const catalog = reactive<CatalogItem[]>([
                         <button class="list-btnicon icon icon-vue" :class="btnSelected == 'vue' ? 'is-active' : ''" @click="changeTab('vue')"></button>
                         <button class="list-btnicon icon icon-vite" :class="btnSelected == 'vite' ? 'is-active' : ''" @click="changeTab('vite')"></button>
                         <button class="list-btnicon icon icon-nuxt" :class="btnSelected == 'nuxt' ? 'is-active' : ''" @click="changeTab('nuxt')"></button>
+                        <button class="list-btnicon icon icon-typescript" :class="btnSelected == 'typescript' ? 'is-active' : ''" @click="changeTab('typescript')"></button>
                         <button class="list-btnicon icon icon-nodejs" :class="btnSelected == 'nodejs' ? 'is-active' : ''" @click="changeTab('nodejs')"></button>
                         <button class="list-btnicon icon icon-yarn" :class="btnSelected == 'yarn' ? 'is-active' : ''" @click="changeTab('yarn')"></button>
                         <button class="list-btnicon icon icon-git" :class="btnSelected == 'git' ? 'is-active' : ''" @click="changeTab('git')"></button>
@@ -1047,6 +1048,24 @@ onMounted(async () => {
                                     </div>
                                     <button class="accordin-close" @click="isActive = 0;"></button>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="text-group">
+                            <h2 v-text="catalog[1].title"></h2>
+                            <div class="text-accordin is-warning">
+                            </div>
+                        </div>
+                        <div class="text-group">
+                            <h2 v-text="catalog[2].title"></h2>
+                            <div class="text-accordin is-others">
+                            </div>
+                        </div>
+                    </template>
+                    <!-- typescript -->
+                    <template v-else-if="btnSelected == 'typescript'">
+                        <div class="text-group">
+                            <h2 v-text="catalog[0].title"></h2>
+                            <div class="text-accordin is-error">
                             </div>
                         </div>
                         <div class="text-group">
