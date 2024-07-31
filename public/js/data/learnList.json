@@ -630,5 +630,13 @@
         "time": "2024-05-17",
         "type": "javascript",
         "class": "vue"
+    },
+    {
+        "id": 80,
+        "href": "o_emoji",
+        "title": "讓網路溝通充滿溫度：Emoji 符號大全",
+        "time": "2024-07-31",
+        "type": "others",
+        "class": "others"
     }
 ]
