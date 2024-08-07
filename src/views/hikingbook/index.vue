@@ -286,7 +286,7 @@ const subPagesHide = computed(() => !excludePatterns.test(route.path));
                                         <li v-for="item in filteredLogsData" :key="item.id">
                                             <RouterLink :to="'/mtlogs/' + item.id">
                                                 <figure>
-                                                    <span :style="{ 'background-image': 'url(/images/logs/cover' + item.id + '.jpg)' }"></span>
+                                                    <span :style="{ 'background-image': 'url(/images/mtlogs/' + item.id + '/cover.jpg)' }"></span>
                                                 </figure>
                                                 <hgroup>
                                                     <time v-text="item.time"></time>

@@ -63,7 +63,7 @@ onMounted(async () => {
                 <li v-for="(item, index) in displayedItems" :key="index">
                     <RouterLink :to="'/mtlogs/' + item.id">
                         <figure>
-                            <span :style="{ backgroundImage: 'url(images/logs/cover' + item.id + '.jpg)'}"></span>
+                            <span :style="{ backgroundImage: 'url(images/mtlogs/' + item.id + '/cover.jpg)'}"></span>
                         </figure>
                         <h3 v-text="item.title"></h3>
                         <p v-text="item.desc"></p>
