@@ -25,7 +25,7 @@
         "gpx": "https://hiking.biji.co/index.php?q=trail&act=gpx_detail&id=1875511",
         "finish": true,
         "fDate": "2021-01-11",
-        "article": "十年後的我們，依舊是三個傻瓜。",
+        "article": "【玉山主峰】十年後的我們，依舊是三個傻瓜。",
         "aLink": "../mtlogs/001"
     },
     {
@@ -1997,7 +1997,7 @@
         "gpx": "https://hiking.biji.co/index.php?q=trail&act=gpx_detail&id=1061471",
         "finish": true,
         "fDate": "2022-08-10",
-        "article": "玉山前峰岩石瀑布流之登山鮭魚逆游路",
+        "article": "【玉山前峰】站在岩石瀑布流下，逆游的我們都是登山鮭魚",
         "aLink": "../mtlogs/005"
     },
     {
@@ -2983,7 +2983,7 @@
         "gpx": "https://hiking.biji.co/index.php?q=trail&act=gpx_detail&id=318215",
         "finish": false,
         "fDate": "",
-        "article": "三臺疊翠上的美麗稜線──加里山",
+        "article": "【加里山】三臺疊翠上的美麗稜線",
         "aLink": "../mtlogs/002"
     },
     {
@@ -3708,7 +3708,7 @@
         "gpx": "https://hiking.biji.co/index.php?q=trail&act=gpx_detail&id=497166",
         "finish": true,
         "fDate": "2021-04-20",
-        "article": "崠？棟？一幢深山裡的城堡──李崠山與李棟山莊",
+        "article": "【李崠山】崠？棟？深山裡的古堡與山莊",
         "aLink": "../mtlogs/003"
     },
     {
@@ -4027,8 +4027,8 @@
         "gpx": "https://hiking.biji.co/index.php?q=trail&act=gpx_detail&id=42003",
         "finish": true,
         "fDate": "2020-04-11",
-        "article": "",
-        "aLink": ""
+        "article": "【鳶嘴稍來】上山容易下山難，難過一關又一關",
+        "aLink": "../mtlogs/009"
     },
     {
         "id": "140",
@@ -4114,8 +4114,8 @@
         "gpx": "https://hiking.biji.co/index.php?q=trail&act=gpx_detail&id=1786979",
         "finish": true,
         "fDate": "2021-01-23",
-        "article": "",
-        "aLink": ""
+        "article": "【南觀音山】一步一階涔涔汗，層層疊疊，那便是信仰的高度",
+        "aLink": "../mtlogs/008"
     },
     {
         "id": "143",
@@ -4201,8 +4201,8 @@
         "gpx": "https://hiking.biji.co/index.php?q=trail&act=gpx_detail&id=1622667",
         "finish": true,
         "fDate": "2020-08-09",
-        "article": "",
-        "aLink": ""
+        "article": "【橫屏山】晴空萬里不見雲，走入武界訪雲鄉",
+        "aLink": "../mtlogs/006"
     },
     {
         "id": "146",
@@ -4346,8 +4346,8 @@
         "gpx": "https://hiking.biji.co/index.php?q=trail&act=gpx_detail&id=1707922",
         "finish": true,
         "fDate": "2021-02-15",
-        "article": "",
-        "aLink": ""
+        "article": "【集集大山】做伙來雧雧，地點係集集那邊大山",
+        "aLink": "../mtlogs/007"
     },
     {
         "id": "151",
@@ -12872,7 +12872,7 @@
         "gpx": "https://hiking.biji.co/index.php?q=trail&act=gpx_detail&id=353730",
         "finish": true,
         "fDate": "2020-12-13",
-        "article": "宣！聖旨到......水沙漣古道上的土地公鞍嶺",
+        "article": "【二坪山】宣！聖旨到......水沙漣古道上的土地公鞍嶺",
         "aLink": "../mtlogs/004"
     },
     {
@@ -14670,8 +14670,8 @@
         "gpx": "https://hiking.biji.co/index.php?q=trail&act=gpx_detail&id=1714896",
         "finish": true,
         "fDate": "2019-10-05",
-        "article": "",
-        "aLink": ""
+        "article": "【鳶嘴稍來】上山容易下山難，難過一關又一關",
+        "aLink": "../mtlogs/009"
     },
     {
         "id": "507",
