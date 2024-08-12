@@ -398,5 +398,13 @@
         "note": "iPhone 12 Pro",
         "desc": "",
         "hot": false
+    },
+    {
+        "id": "051",
+        "time": "2024-08-11",
+        "site": "大崗山",
+        "note": "iPhone 15 Pro",
+        "desc": "",
+        "hot": false
     }
 ]
