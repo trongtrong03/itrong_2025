@@ -216,6 +216,164 @@ const excludePatterns = /^\/[^\/]+\/[^\/]+/;
 // 計算屬性，檢查是否在排除的路徑模式下
 const subPagesHide = computed(() => !excludePatterns.test(route.path));
 
+
+/* 日曆 */
+// 定義數據類型
+interface MountainEvent {
+    id: string;
+    fDate: string;
+    name: string;
+}
+
+// 定義資料
+const mountainsList = ref<MountainEvent[]>([]);
+const isDataLoaded = ref<boolean>(false);
+
+// 非同步取得資料的函數
+const fetchData2 = async (dataRef: typeof mountainsList) => {
+    try {
+        const response = await fetch('/js/data/mountainsList.json');
+        const data: MountainEvent[] = await response.json();
+        // 直接將取得到的數組賦值給 dataRef
+        dataRef.value = data;
+        isDataLoaded.value = true;
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
+};
+
+// 取得 JSON 資料
+const loadData2 = async () => {
+    await fetchData2(mountainsList);
+};
+
+// 用於儲存最小和最大日期
+const minDate = ref<Date>(new Date());
+const maxDate = ref<Date>(new Date());
+
+const currentYear = ref<number>(minDate.value.getFullYear());
+const currentMonth = ref<number>(minDate.value.getMonth());
+
+const showLatest = ref<boolean>(true);
+
+// 在組件載入時呼叫 loadData2
+onMounted(async () => {
+    await loadData2();
+
+    if (mountainsList.value.length > 0) {
+        const dates = mountainsList.value.filter((event) => event.fDate).map((event) => new Date(event.fDate));
+
+        if (dates.length > 0) {
+            minDate.value = new Date(Math.min(...dates));
+            maxDate.value = new Date(Math.max(...dates));
+            
+            // 根據 showLatest 的值來設定 currentYear 和 currentMonth
+            if (showLatest.value) {
+                currentYear.value = maxDate.value.getFullYear();
+                currentMonth.value = maxDate.value.getMonth();
+            } else {
+                currentYear.value = minDate.value.getFullYear();
+                currentMonth.value = minDate.value.getMonth();
+            }
+        }
+    }
+});
+
+// 計算當月的所有天數
+const daysInMonth = computed(() => {
+    if (!isDataLoaded.value) return [];
+
+    const date = new Date(currentYear.value, currentMonth.value, 1);
+    const days: { date: Date; events: MountainEvent[] }[] = [];
+
+    while (date.getMonth() === currentMonth.value) {
+        // 找到所有與當前日期相符的事件
+        const dayEvents = mountainsList.value.filter((event) => {
+            if (!event.fDate) return false;    // 確保有 fDate 才進行比較
+            const eventDate = new Date(event.fDate);
+            return (
+                eventDate.getFullYear() === currentYear.value &&
+                eventDate.getMonth() === currentMonth.value &&
+                eventDate.getDate() === date.getDate()
+            );
+        });
+
+        days.push({ date: new Date(date), events: dayEvents });
+        date.setDate(date.getDate() + 1);
+    }
+
+    return days;
+});
+
+// 統計每月數量
+const eventsCountInMonth = computed(() => {
+    return daysInMonth.value.reduce((count, day) => {
+        return count + day.events.length;
+    }, 0);
+});
+
+// 切換到上一個月
+function prevMonth(): void {
+    if (currentMonth.value === 0) {
+        currentYear.value--;
+        currentMonth.value = 11;
+    } else {
+        currentMonth.value--;
+    }
+
+    if (
+        currentYear.value < minDate.value.getFullYear() || (currentYear.value === minDate.value.getFullYear() && currentMonth.value < minDate.value.getMonth())
+    ) {
+        currentYear.value = minDate.value.getFullYear();
+        currentMonth.value = minDate.value.getMonth();
+    }
+}
+
+// 切換到下一個月
+function nextMonth(): void {
+    if (currentMonth.value === 11) {
+        currentYear.value++;
+        currentMonth.value = 0;
+    } else {
+        currentMonth.value++;
+    }
+
+    if (
+        currentYear.value > maxDate.value.getFullYear() || (currentYear.value === maxDate.value.getFullYear() && currentMonth.value > maxDate.value.getMonth())
+    ) {
+        currentYear.value = maxDate.value.getFullYear();
+        currentMonth.value = maxDate.value.getMonth();
+    }
+}
+
+// 判斷 Prev & Next 按鈕是否禁用
+const isPrevDisabled = computed<boolean>(() => {
+    return (
+        currentYear.value === minDate.value.getFullYear() &&
+        currentMonth.value === minDate.value.getMonth()
+    );
+});
+
+const isNextDisabled = computed<boolean>(() => {
+    return (
+        currentYear.value === maxDate.value.getFullYear() &&
+        currentMonth.value === maxDate.value.getMonth()
+    );
+});
+
+// 新舊排序
+const toggleDateOrder = (): void => {
+    showLatest.value = !showLatest.value;
+
+    // 切換 currentYear 和 currentMonth 到對應的日期
+    if (showLatest.value) {
+        currentYear.value = maxDate.value.getFullYear();
+        currentMonth.value = maxDate.value.getMonth();
+    } else {
+        currentYear.value = minDate.value.getFullYear();
+        currentMonth.value = minDate.value.getMonth();
+    }
+};
 </script>
 
 <template>
@@ -327,6 +485,45 @@ const subPagesHide = computed(() => !excludePatterns.test(route.path));
                                 </hgroup>
                             </li>
                         </ul>
+                    </div>
+                    <div class="hikingbook-block hikingbook-calendar">
+                        <h2>登山日曆</h2>
+                        <div class="calendar-wrap">
+                            <div class="calendar-head">
+                                <div class="calendar-info">
+                                    <span>{{ currentYear }} 年 {{ currentMonth + 1 }} 月</span>
+                                    <!-- <span v-if="isDataLoaded">（{{ eventsCountInMonth }}）</span> -->
+                                </div>
+                                <div class="calendar-tool">
+                                    <button class="btn-sort" @click="toggleDateOrder">
+                                        <SvgIcons :name="showLatest ? 'sortDownIcon' : 'sortUpIcon'" />
+                                    </button>
+                                    <button class="btn-prev" @click="prevMonth" :disabled="isPrevDisabled">
+                                        <SvgIcons name="leftIcon" />
+                                    </button>
+                                    <button class="btn-next" @click="nextMonth" :disabled="isNextDisabled">
+                                        <SvgIcons name="rightIcon" />
+                                    </button>
+                                </div>
+                            </div>
+                            <div v-if="isDataLoaded" class="calendar-list">
+                                <div v-for="day in daysInMonth" :key="day.date" class="calendar-item">
+                                    <strong>{{ day.date.getDate() }}</strong>
+                                    <ul v-if="day.events.length > 0" class="calendar-box">
+                                        <li v-for="item in day.events" :key="item.id">
+                                            <RouterLink :to="'/mountains/' + item.id">
+                                                <figure>
+                                                    <!-- <img :src="'/images/mountains/thumb/' + item.id + '.jpg'" v-if="item.img">
+                                                    <img src="/images/mountains/thumb/default.jpg" v-else> -->
+                                                    <figcaption v-text="item.name"></figcaption>
+                                                </figure>
+                                            </RouterLink>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div v-else>Loading data...</div>
+                        </div>
                     </div>
                 </div>
                 <RouterView/>
@@ -933,6 +1130,104 @@ const subPagesHide = computed(() => !excludePatterns.test(route.path));
     @media only screen and (max-width: 480px) {
         li {
             width: 5rem;
+        }
+    }
+}
+
+.hikingbook-calendar {
+    @media only screen and (max-width: 960px) {
+        display: none;
+    }
+}
+
+.calendar-wrap {
+    position: relative;    
+}
+
+.calendar-head {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--c1);
+    border-radius: .5rem .5rem 0 0;
+    margin-bottom: 1rem;
+    padding: .5rem 1rem;
+}
+
+.calendar-info {
+    color: #FFF;
+    span {
+        font-weight: bold;
+    }
+}
+
+.calendar-tool {
+    flex: 0 0 auto;
+    min-width: 0;
+    button {
+        display: inline-block;
+        vertical-align: middle;
+        width: 2.5rem;
+        height: 2.5rem;
+        background-color: #FFF;
+        border-radius: 0.5rem;
+        margin-left: 0.25rem;
+        svg {
+            width: .8rem;
+            fill: var(--black);
+        }
+        &:disabled {
+            opacity: 0.2;
+        }
+    }
+}
+
+.calendar-list {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+}
+
+.calendar-item {
+    min-height: 8rem;
+    text-align: center;
+    border: 1px solid #DDD;
+    border-radius: 0.5rem;
+    padding: 10px;
+    strong {
+        display: block;
+        font-weight: bold;
+    }
+}
+
+.calendar-box {
+    margin-top: .5rem;
+    
+    li {
+        margin-bottom: 0.5rem;
+        &:last-child {
+            margin-bottom: 0;
+        }
+        figure {
+            display: flex;
+            align-items: center;
+            img {
+                width: 2.5rem;
+                border-radius: 0.5rem;
+            }
+        }
+        figcaption {
+            flex: 1;
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--black);
+            transition: all .3s;
+        }
+        &:hover {
+            figcaption {
+                color: var(--c1);
+            }
         }
     }
 }
