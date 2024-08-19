@@ -1190,7 +1190,7 @@ const toggleDateOrder = (): void => {
 }
 
 .calendar-item {
-    min-height: 8rem;
+    min-height: 4rem;
     text-align: center;
     border: 1px solid #DDD;
     border-radius: 0.5rem;
