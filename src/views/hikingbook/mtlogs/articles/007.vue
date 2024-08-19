@@ -1,7 +1,18 @@
 <script setup lang="ts">
+import { reactive } from "vue";
+import type { CatalogItem } from '@/stores/catalog';
+
 // 引用組件
 import BaseTextContent from '@/components/Common/BaseTextContent.vue';
 import Title from "@/components/Common/BaseTextTitle.vue";
+
+// 目錄
+const catalog = reactive<CatalogItem[]>([
+    { id: 0, title: '序、楔子' },
+    { id: 1, title: '壹、高山巷' },
+    { id: 2, title: '貳、電視轉播發射塔' },
+    { id: 3, title: '參、集集復唧唧' },
+]);
 </script>
 
 <template>
@@ -9,12 +20,19 @@ import Title from "@/components/Common/BaseTextTitle.vue";
         <Title :propValue="7" fileType="mountainsLogs" />
 <!-- start -->
 <div class="text-content">
-    <div class="text-block">
-        <h3>序、楔子</h3>
+    <div class="text-catalog">
+        <ul>
+            <li v-for="item in catalog" :key="item.id">
+                <a :href="'#act' + item.id" v-text="item.title"></a>
+            </li>
+        </ul>
+    </div>
+    <div class="text-block" :id="'act' + catalog[0].id">
+        <h2 v-text="catalog[0].title"></h2>
         <p>每每開車下國道三號名間交流道，接續台１６線往水里方向駛去，遠遠就能看見濁水溪河畔矗立著一座山容基盤寬闊，高聳挺拔，宛如相撲力士般屹立不搖的山岳，祂便是名聞遐邇的「集集大山」。儘管九二一地震嚴重覆蓋世人對集集此地的第一印象，但在過去集集鎮可是中台灣漢人與原住民交易往來的中心，素有「小台北」美譽。而外地商人總會稱小鎮東北面那座聳立的高山為「集集那邊大山」，久而久之，集集大山便成為這座大山的名字。</p>
     </div>
-    <div class="text-block">
-        <h3>一、高山巷</h3>
+    <div class="text-block" :id="'act' + catalog[1].id">
+        <h2 v-text="catalog[1].title"></h2>
         <p>２０２１年２月１５日早晨８點４２分，從又名車埕木馬道的車埕休閒農業區展開今天的登山行程，如果問我為什麼選擇此處前往集集大山，而且還是採用徒步的方式，明明有水泥鋪設好的馬路可以開車直達山頂啊？其實倒也沒有什麼意義非凡的理由，單純是不想在狹小曲折的山路駕車蜿蜿蜒蜒，尤其對我這個連自己當駕駛都能暈車的重度易暈體質來說，當看見Ｇｏｏｇｌｅ　Ｍａｐ上通往集集大山的道路每一條皆有如擰成一團的絲線，車都還沒開，腦子便先暈頭轉向，於是只好選擇用徒步的方式走上集集大山。</p>
         <figure>
             <img src="/images/mtlogs/007/01.jpg">
@@ -35,8 +53,8 @@ import Title from "@/components/Common/BaseTextTitle.vue";
         </figure>
         <p>當來到車埕步道，就表示距離集集大山的山頂也不遠了，車埕步道為傳統的泥土路徑，這對已經被道路開發的集集大山來而言簡直是稀有財。車埕步道的出口會與集集鎮開闢上來的大山巷接壤，而這也是車輛上山的主要道路。</p>
     </div>
-    <div class="text-block">
-        <h3>二、電視轉播發射塔</h3>
+    <div class="text-block" :id="'act' + catalog[2].id">
+        <h2 v-text="catalog[2].title"></h2>
         <p>集集大山的山頂有一座紅白相間，外觀非常突兀的巨大信號發射塔，在發射塔底下的建築則是號稱全台輸出功率最大的電視轉播站，這個電視轉播站的用途是為了能將電視訊號擴散到整個南投境內，乃至更遙遠的雲嘉偏僻山區，都能順利收看數位電視的節目內容。</p>
         <figure>
             <img src="/images/mtlogs/007/05.jpg">
@@ -71,8 +89,8 @@ import Title from "@/components/Common/BaseTextTitle.vue";
         </figure>
         <p>最後是南面，儘管南面因為有信號發射塔遮擋，展望稍微差了一些，但無論它們如何混淆人們的目光，卻依然藏不住背後遙遙矗立的巍峨高山，是的，那兩座異軍突起的山峰，便是名聞遐邇的「玉山主峰」以及「玉山北峰」。很意外竟然能從集集大山清楚地看見祂們的樣貌．．．．．．呃，好吧，客觀來講這距離「意外」兩字，恐怕還比實際距離更加遙遠，因為集集大山與玉山主峰之間的距離也不過百里之遙，在我家位於的大肚山上，若天氣條件良好，也每每可見上百公里以外的中央山脈。只是當下看見祂們兩兄弟，就像偶遇多年不見的老朋友，欣喜之情不免溢於言表。</p>
     </div>
-    <div class="text-block">
-        <h3>三、集集復唧唧</h3>
+    <div class="text-block" :id="'act' + catalog[3].id">
+        <h2 v-text="catalog[3].title"></h2>
         <p>透過歷史課本的介紹，我們可以得知集集鎮在過去層是一座市聲鼎沸的小鎮，即便受到九二一大地震的重創，但憑藉轉型觀光旅遊導向，每逢假日來訪的遊客依然絡繹不絕，古鎮依然活絡了一段時間。然而，或許是觀光力度維繫不夠，又止不住不斷外移的人口，如今集集鎮不僅總人口數已跌破一萬，在全台灣所有城鎮裡距離末座僅存一步之遙，僅略多於台東縣關山鎮而已。</p>
         <figure>
             <img src="/images/mtlogs/007/12.jpg">

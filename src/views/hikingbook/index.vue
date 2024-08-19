@@ -402,7 +402,7 @@ const toggleDateOrder = (): void => {
                     <div class="hikingbook-flex">
                         <div class="hikingbook-f1">
                             <div class="hikingbook-progress">
-                                <h2>里程碑</h2>
+                                <h2>進度</h2>
                                 <ul>
                                     <li>
                                         <div id="circleArea1" class="progress-circle"></div>
@@ -487,7 +487,7 @@ const toggleDateOrder = (): void => {
                         </ul>
                     </div>
                     <div class="hikingbook-block hikingbook-calendar">
-                        <h2>登山日曆</h2>
+                        <h2>里程碑</h2>
                         <div class="calendar-wrap">
                             <div class="calendar-head">
                                 <div class="calendar-info">

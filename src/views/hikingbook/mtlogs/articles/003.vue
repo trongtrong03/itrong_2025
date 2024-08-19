@@ -1,7 +1,18 @@
 <script setup lang="ts">
+import { reactive } from "vue";
+import type { CatalogItem } from '@/stores/catalog';
+
 // 引用組件
 import BaseTextContent from '@/components/Common/BaseTextContent.vue';
 import Title from "@/components/Common/BaseTextTitle.vue";
+
+// 目錄
+const catalog = reactive<CatalogItem[]>([
+    { id: 0, title: '序、楔子' },
+    { id: 1, title: '壹、再訪尖石鄉' },
+    { id: 2, title: '貳、李棟山莊' },
+    { id: 3, title: '參、古堡與山' },
+]);
 </script>
 
 <template>
@@ -9,12 +20,19 @@ import Title from "@/components/Common/BaseTextTitle.vue";
         <Title :propValue="3" fileType="mountainsLogs" />
 <!-- start -->
 <div class="text-content">
-    <div class="text-block">
-        <h3>序、楔子</h3>
+    <div class="text-catalog">
+        <ul>
+            <li v-for="item in catalog" :key="item.id">
+                <a :href="'#act' + item.id" v-text="item.title"></a>
+            </li>
+        </ul>
+    </div>
+    <div class="text-block" :id="'act' + catalog[0].id">
+        <h2 v-text="catalog[0].title"></h2>
         <p>「莊院無燈等月照，山門不鎖待雲封」，敞開的入口掛著這兩句用亮紅色彩揮亳寫下的對聯，與外觀褪色老舊的木造建築物儼然形成強烈對比。它遺世獨立在馬美道路的深處，任由風聲鳥語在林間擺盪，沒有太多吵雜的人聲，每一道斑駁的痕跡，皆象徵它所經歷的歲月滄桑。這裡是李棟山莊，在尚未因為電影爆紅之前，它曾是新竹人口耳相傳的秘境；而對登山客來說，它則是口袋造訪名單中，必要佔據其中一個欄位的存在。</p>
     </div>
-    <div class="text-block">
-        <h3>一、再訪尖石鄉</h3>
+    <div class="text-block" :id="'act' + catalog[1].id">
+        <h2 v-text="catalog[1].title"></h2>
         <p>縱使一出大馬路就能駛上國三高速公路，從台中龍井出發要前往新竹李棟山，仍需要耗費兩個多小時才能順利抵達目的地，原因無他，主要是進入新竹尖石鄉山區後的山路曲折蜿蜒，彼此距離一百三十公里的里程看似不長，卻因為山路迢迢而變得十分遙遠。上一次前往尖石鄉已經是多年前與大學好友騎車拜訪司馬庫斯的事情了，多年後再訪，不知道現況有什麼樣的改變？但想必應該很難有什麼巨大變化吧，山路維護不易，怎麼可能說變就變。</p>
         <p>開了很久的車終於到達宇老派出所──單車族、機車族、汽車族的休憩站，眼前所見基本上和記憶中的面貌相差無幾，唯一差別是今天是平日來訪，與當時過年期間人潮洶湧、門庭若市的盛況相比，此行顯得清幽許多。看著宇老派出所前方的岔口，意味接下來的路將會是嶄新的旅程，面向東方的右側道路，是通往秀巒、司馬庫斯的道路，若要前往李棟山，則要向左方道路駛進，也就是馬美道路。</p>
         <figure>
@@ -26,8 +44,8 @@ import Title from "@/components/Common/BaseTextTitle.vue";
         </figure>
         <p>駕車循著導航定位「李棟山莊」蜿蜒行轉，在體內的兔子快要不安分的時候，一棟外觀卻十分獨特的木造建築在過彎後探出頭來，這才終於鬆了一口氣，不過這棟工寮大小的建物並非李棟山莊，而是比較像景觀台或瞭望台這類的建築。出發前已經有先蒐集過有關李崠山與李棟山莊的一些資料，其相關資訊和歷史脈絡已有粗略的掌握，但由於大多是比較早年的資料與照片，所以當自己親身看到時的周邊道路與地面維護已充滿現代化的水泥與鐵製圍欄，與拓印在腦海裡的畫面一整個很不搭嘎。</p>
     </div>
-    <div class="text-block">
-        <h3>二、李棟山莊</h3>
+    <div class="text-block" :id="'act' + catalog[2].id">
+        <h2 v-text="catalog[2].title"></h2>
         <p>如果偶然經過此地，且沒有先蒐集過資料，也許會以為這棟搖搖欲墜的古老建築是一座廢棄的景觀民宿。事實上，李棟山莊一直到今天都還是有專人在維護。</p>
         <figure>
             <img src="/images/mtlogs/003/03.jpg">
@@ -50,8 +68,8 @@ import Title from "@/components/Common/BaseTextTitle.vue";
         </figure>
         <p>來到山莊後方，一條由水泥鋪成的道路從山莊正前方，穿過山莊逕自往森林裡延伸進去，並不時可以看見旁邊的駁坎石牆上掛著「往古堡」的牌子，此路便是登山客前往李棟山的其中一條路線。指示中的「古堡」字樣指的則是日治時期，日本統治當局為了征服當地原住民而於山頂構築的軍事要塞，今日已成斷壁殘垣的歷史遺跡。</p>
     </div>
-    <div class="text-block">
-        <h3>三、古堡與山</h3>
+    <div class="text-block" :id="'act' + catalog[3].id">
+        <h2 v-text="catalog[3].title"></h2>
         <p>進入森林後水泥路也轉變為傳統的泥土山徑，稍微爬升一段後，會接續一條頗有產業道路規模的平坦大路，沿途多處皆設立指標告知距離李崠山古堡還剩下多少距離。</p>
         <figure>
             <img src="/images/mtlogs/003/08.jpg">

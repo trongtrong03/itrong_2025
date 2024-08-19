@@ -49,7 +49,7 @@
     onMounted(async () => {
         onBtnTopClick();
         updateButtonVisibility();
-        if (route.path.includes('learn/')) {
+        if (route.path.includes('learn/') || route.path.includes('mtlogs/')) {
             setTimeout(copyCatelog, 1000);
         }
     });
@@ -98,7 +98,7 @@
     }
 
     watch(route, (newRoute) => {
-        if (newRoute.path.includes('learn/')) {
+        if (newRoute.path.includes('learn/') || newRoute.path.includes('mtlogs/')) {
             // 添加延遲以確保 DOM 完全加載
             setTimeout(copyCatelog, 1000);
         } else {
@@ -107,7 +107,7 @@
     });
 
     onUpdated(() => {
-        if (route.path.includes('learn/')) {
+        if (route.path.includes('learn/') || route.path.includes('mtlogs/')) {
             // 取得克隆後的元素
             const clonedLis = document.querySelectorAll(".float-catalog ul li");
 
@@ -134,7 +134,7 @@
         <RouterLink to="/" v-if="floatBtnShow">
             <SvgIcons name="homeIcon" />
         </RouterLink>
-        <template v-if="route.path.includes('learn/')">
+        <template v-if="route.path.includes('learn/') || route.path.includes('mtlogs/')">
             <button class="btn-list" :class="{ 'is-active': isActive }" @click="isActive = !isActive">
                 <SvgIcons name="listIcon" />
             </button>

@@ -1,7 +1,17 @@
 <script setup lang="ts">
+import { reactive } from "vue";
+import type { CatalogItem } from '@/stores/catalog';
+
 // 引用組件
 import BaseTextContent from '@/components/Common/BaseTextContent.vue';
 import Title from "@/components/Common/BaseTextTitle.vue";
+
+// 目錄
+const catalog = reactive<CatalogItem[]>([
+    { id: 0, title: '序、楔子' },
+    { id: 1, title: '壹、山不在高，有仙則靈' },
+    { id: 2, title: '貳、玉佛寺' },
+]);
 </script>
 
 <template>
@@ -9,12 +19,19 @@ import Title from "@/components/Common/BaseTextTitle.vue";
         <Title :propValue="8" fileType="mountainsLogs" />
 <!-- start -->
 <div class="text-content">
-    <div class="text-block">
-        <h3>序、楔子</h3>
+    <div class="text-catalog">
+        <ul>
+            <li v-for="item in catalog" :key="item.id">
+                <a :href="'#act' + item.id" v-text="item.title"></a>
+            </li>
+        </ul>
+    </div>
+    <div class="text-block" :id="'act' + catalog[0].id">
+        <h2 v-text="catalog[0].title"></h2>
         <p>西元１９４０年代是台灣社會動盪不安的年代，二次戰爭末期美軍開始轟炸台灣，島土盡是滿目瘡痍。然而，傳說有居民看見台中大坑一帶的山區，白煙瀰漫之中間浮現出一朵蓮花，接住了美軍飛機投擲下的黑色轟炸物。該朵蓮花所在的位置，正好就在觀音山上，當時僅山頂由日軍設置的觀景台安然無恙外，周遭區域無不受到重創。數十年之後，一名法師於此地興建寺廟，以供信徒祭拜禮佛，據說在那之後各種感應靈驗事蹟頻傳，很快地便成為台中著名的宗教信仰中心之一。</p>
     </div>
-    <div class="text-block">
-        <h3>一、山不在高，有仙則靈</h3>
+    <div class="text-block" :id="'act' + catalog[1].id">
+        <h2 v-text="catalog[1].title"></h2>
         <p>當山與步道越走越多，一直以來深潛在內心的某個疑惑也越加上浮水面──為什麼很多寺廟不是蓋在山裡，就是建造在山的旁邊？舉凡此次目標南觀音山在內，獅頭山、橫山、崁頭山、五指山、南勢角山．．．．．．等等族繁不及備載，祂們都不是很高海拔的山岳，卻都有著除了同為小百岳之外還擁有聞名全台的寺廟這一共通點，讓我想起了唐朝劉禹錫〈陋室銘〉一文曾寫到：「山不在高，有仙則名；水不在深，有龍則靈。」儘管這兩句話的用意是為了襯托自身的高風亮節與出類拔萃，但「山不在高，有仙則名」這一句話，似乎也恰好映照了華夏幾千年佛道文化的某部份精髓。</p>
         <figure>
             <img src="/images/mtlogs/008/01.jpg">
@@ -35,8 +52,8 @@ import Title from "@/components/Common/BaseTextTitle.vue";
         </figure>
         <p>步道通往山頂的終點處，同樣有一隻黃金佛手迎接，本來以為登山口的佛手是右手，那山頂這隻手應該會是左手，結果實際上兩隻手都是右手。出於好奇，整理登山照片的同時也順手上網查詢典故，原來在佛教觀世界觀裡，菩薩大多以右手持蓮花的形象呈現在凡世各類經典或創作，而右手在古印度文化也被視為尊貴與施捨之手，象徵慈悲與智慧的施予。這就解釋了為什麼南觀音山的佛手不是成對的左右手，皆以右手塑造於背後可是有著深遠意涵，膚淺如我！</p>
     </div>
-    <div class="text-block">
-        <h3>二、玉佛寺</h3>
+    <div class="text-block" :id="'act' + catalog[2].id">
+        <h2 v-text="catalog[2].title"></h2>
         <p>前面說在二戰結束的幾十年後，有位名號瑺瑛法師的法師，於觀音山山頂興建一座寺廟，該寺廟便是「玉佛寺」。玉佛寺砌有三尊立佛塑像，分別是玉佛、彌勒佛、觀世音菩薩，這三尊分別代表佛教不同理念的佛像。</p>
         <figure>
             <img src="/images/mtlogs/008/05.jpg">

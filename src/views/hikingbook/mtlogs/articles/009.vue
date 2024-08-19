@@ -1,7 +1,18 @@
 <script setup lang="ts">
+import { reactive } from "vue";
+import type { CatalogItem } from '@/stores/catalog';
+
 // 引用組件
 import BaseTextContent from '@/components/Common/BaseTextContent.vue';
 import Title from "@/components/Common/BaseTextTitle.vue";
+
+// 目錄
+const catalog = reactive<CatalogItem[]>([
+    { id: 0, title: '序、楔子' },
+    { id: 1, title: '壹、補班日' },
+    { id: 2, title: '貳、鳶嘴' },
+    { id: 3, title: '參、隨興捎來' },
+]);
 </script>
 
 <template>
@@ -9,13 +20,20 @@ import Title from "@/components/Common/BaseTextTitle.vue";
         <Title :propValue="9" fileType="mountainsLogs" />
 <!-- start -->
 <div class="text-content">
-    <div class="text-block">
-        <h3>序、楔子</h3>
+    <div class="text-catalog">
+        <ul>
+            <li v-for="item in catalog" :key="item.id">
+                <a :href="'#act' + item.id" v-text="item.title"></a>
+            </li>
+        </ul>
+    </div>
+    <div class="text-block" :id="'act' + catalog[0].id">
+        <h2 v-text="catalog[0].title"></h2>
         <p>當與攀岩愛好者開啟台灣有哪些著名天然岩場的話匣子時，北部人可能會回答你皇帝殿、五寮尖、孝子山，或是近年很夯的劍龍稜；南部人則可能給出關子嶺岩場、獵鷹尖等答案。那麼中部呢？「鳶嘴山」這個名字肯定當仁不讓。且不侷限於攀岩界，假如上登山社群發問中級山的推薦名單，鳶嘴山肯定也是榜上有名──不光要面對各種岩石地形的阻礙才能攀上顛峰，下山則還得必須具備足夠的膽識。早在多年前，鳶嘴山已是許多喜愛冒險的登山人倍加推崇的中級山，每逢例假日，前來攀爬鳶嘴山的挑戰者可說是絡繹不絕，總是將狹窄的石道擠得水洩不通，足見這座譽為中部最美中級山之魅力。</p>
         <p>除了鳶嘴山，其所途經的大雪山林道上還有許多適合闔家大小攀登健行的山岳，緊鄰鳶嘴山隔壁的稍來山便是其一。稍來山不僅是小百岳一員，同時也是名聞遐邇的賞楓勝地，因此大多數登山客會將鳶嘴與稍來二山安排在一起縱走，而這條路線如今已規劃為「鳶嘴稍來山國家步道」，儼然是中部地區極富盛名的中海拔熱門登山路線。</p>
     </div>
-    <div class="text-block">
-        <h3>一、補班日</h3>
+    <div class="text-block" :id="'act' + catalog[1].id">
+        <h2 v-text="catalog[1].title"></h2>
         <p>細數個人的登山生涯，鳶嘴山算是較早期挑戰的山岳，憶起剛踏入登山界的時候，就已耳聞鳶嘴山的名號，也為網路上各種驚險及美麗的影像記錄烙下非常深刻的印象。只是礙於自身膽小怕高，沒想過也不敢想會有挑戰祂的一天，想著安安份份走些簡單又安全的步道就好。</p>
         <p>但或許是經過前一週爬完加里山，在這座台版富士山之巔接受藍天、雲海、聖稜線共譜交織的動人樂章洗禮，回到平地後的登山魂仍熊熊燃燒著，幾天後向一起攀登加里山的友人詢問：這個週六是補班日，要不要去爬鳶嘴山？和我一樣都沒有補班困擾的友人當下豪爽地給出「走啊」答覆，爬鳶嘴山這件事便這樣很輕易地就定案下來。</p>
         <figure>
@@ -34,8 +52,8 @@ import Title from "@/components/Common/BaseTextTitle.vue";
         <p>根據登山口的導覽指引，從２７Ｋ處登山口到鳶嘴山山頂僅僅只有一公里的距離，因此我們的登山鞋都還沒沾滿落葉土徑的黃沙，便已進入樹根盤結交錯與亂石嶙峋的複雜地形。當然，這樣等級的拉繩對鳶嘴山這個大魔王而言只不過是施捨給挑戰者暖身的仁慈而已。</p>
         <p>經過一處名為「二葉松」的涼亭之後，真正的考驗才要開始。</p>
     </div>
-    <div class="text-block">
-        <h3>二、鳶嘴</h3>
+    <div class="text-block" :id="'act' + catalog[2].id">
+        <h2 v-text="catalog[2].title"></h2>
         <p>二葉松涼亭的存在，彷彿是在勸登山者量力而為所設立的，就在離開涼亭上切一小段石頭路後，輔助繩以肉眼可見的斜率急速向上竄升，視線沿著繩索延伸的方向抬頭仰望，一座僅近垂直的山壁聳立在身前。</p>
         <figure>
             <img src="/images/mtlogs/009/04.jpg">
@@ -72,8 +90,8 @@ import Title from "@/components/Common/BaseTextTitle.vue";
         <p>很快地我們便來到稍來山及２７．３Ｋ處登山口的岔路，本來我們此行是打算一口氣走完鳶嘴、稍來二山，但是在稜線下切那段花費超乎預期的時間，我們並沒有準備非常充分的糧食和補給，眼看時間已接近正午，彼此的胃袋也依稀開始發出咕嚕咕嚕的低吼，經過討論後決定放棄繼續稍來山的行程（天公也不太作美），提前下山覓食去犒賞本次鳶嘴山的成功攀登。</p>
         <p>所以下次要再來補考嗎？嗯．．．．．．再好好想想吧。</p>
     </div>
-    <div class="text-block">
-        <h3>三、隨興捎來</h3>
+    <div class="text-block" :id="'act' + catalog[3].id">
+        <h2 v-text="catalog[3].title"></h2>
         <p>「等等要不要去爬山？」「好啊！」某日上午，與友人一時興起，相約下午去爬座山健行一番，我們還在思考要去哪兒的時候，突然想起半年前被我們放生的稍來山，趕緊查了一下單純走稍來山路徑的步道有多長，嗯．．．．．．從大雪山林道３０．５Ｋ登山口到稍來山三角點距離不過兩公里，二話不說立刻整裝出發，去把當時的缺憾給彌補起來。</p>
         <figure>
             <img src="/images/mtlogs/009/11.jpg">

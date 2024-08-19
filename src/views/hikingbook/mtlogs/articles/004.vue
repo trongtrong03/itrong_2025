@@ -1,7 +1,18 @@
 <script setup lang="ts">
+import { reactive } from "vue";
+import type { CatalogItem } from '@/stores/catalog';
+
 // 引用組件
 import BaseTextContent from '@/components/Common/BaseTextContent.vue';
 import Title from "@/components/Common/BaseTextTitle.vue";
+
+// 目錄
+const catalog = reactive<CatalogItem[]>([
+    { id: 0, title: '序、楔子' },
+    { id: 1, title: '壹、水里市區上二坪' },
+    { id: 2, title: '貳、承接聖旨的土地公廟' },
+    { id: 3, title: '參、銃櫃' },
+]);
 </script>
 
 <template>
@@ -9,12 +20,19 @@ import Title from "@/components/Common/BaseTextTitle.vue";
         <Title :propValue="4" fileType="mountainsLogs" />
 <!-- start -->
 <div class="text-content">
-    <div class="text-block">
-        <h3>序、楔子</h3>
+    <div class="text-catalog">
+        <ul>
+            <li v-for="item in catalog" :key="item.id">
+                <a :href="'#act' + item.id" v-text="item.title"></a>
+            </li>
+        </ul>
+    </div>
+    <div class="text-block" :id="'act' + catalog[0].id">
+        <h2 v-text="catalog[0].title"></h2>
         <p>「銃櫃豬、頭社米、水社魚、貓出伙妓、魚池番薯、大林茶米、木屐土礱齒」此乃流傳在南投縣魚池鄉的一句台語諺語，這句諺語簡單明瞭地點出當地的出口特色。而過去清朝時期，南投曾有一條長度大約三十公里的道路，貫穿水里與埔里兩地，在當時是貿易往來的重要路線，它，就是水沙漣古道。</p>
     </div>
-    <div class="text-block">
-        <h3>一、水里市區上二坪</h3>
+    <div class="text-block" :id="'act' + catalog[1].id">
+        <h2 v-text="catalog[1].title"></h2>
         <p>接連爬完日月潭四兄妹中的貓囒山、後尖山這兩座小百岳後，與友人前往水里市區為各自飢腸轆轆的肚子尋求一頓溫飽。走在熟悉的水里街道上，心想，從日月潭四兄妹、集集大山......就連要去玉山群峰也曾經過這裡，也許水里鄉是我迄今登山行程裡停留過最多次的鄉鎮了吧？只不過每一次停留都只是為了吃飯或買杯飲料，沒怎麼好好認識它。其實，水里街道上有一個指示牌一直以來都擱在我的心底，它上面寫著「水沙漣古道」，就掛在民生路與二坪路交會十字路口的號誌桿上，對登山客、健行愛好者來說，舉凡看到路牌寫著山或古道字樣的，眼睛都會像是反射動作般立即雪亮起來，恰好這次吃完中飯也才下午一點鐘，便決定前往一探究竟。</p>
         <figure>
             <img src="/images/mtlogs/004/01.jpg">
@@ -27,8 +45,8 @@ import Title from "@/components/Common/BaseTextTitle.vue";
         <p>回顧２０１９年的新聞，日管處該次針對古道修繕的範圍從水里鄉二坪山，涵蓋至魚池鄉銃櫃村，全長約２．６Ｋ。其實，最早文獻記錄可追溯至一七八八年清朝乾隆時期，為漢人墾拓遷徙、或與當地原住民貿易往來的水沙漣古道，如今多數路段不是遭受破壞，不然就是加以修築成台２１線，現在這條連接二坪銃櫃兩地的古道，已是水沙漣古道僅存的少部分路線。</p>
         <p>如今整修完成的古道，汰換掉老舊的枕木，取而代之的則是塑木與卵石堆砌，比枕木更加耐用的台階，部分山徑也重鋪成水泥路，雖然看上去少了些古樸的味道，但因為每逢颱風或大雨來襲，古道間某些路段的山坡不時會有沙石滑落的情況，如今翻修完成，也為民眾登山健行的環境提供更安全保障。</p>
     </div>
-    <div class="text-block">
-        <h3>二、承接聖旨的土地公廟</h3>
+    <div class="text-block" :id="'act' + catalog[2].id">
+        <h2 v-text="catalog[2].title"></h2>
         <p>因為古道連接兩地，無論從二坪出發還是銃櫃進入，都可以走到另外一地的出入口，但假如沒有要原路折返，從銃櫃出發會比較輕鬆，因為地勢是緩坡向上到土地公鞍嶺後，在距離二坪古道口數百公尺前迅速下降。如果從二坪出發，一開始就要先面對扶搖直上的陡坡，然後一陡還有一陡陡，不用片刻，整個人便大汗淋漓。</p>
         <figure>
             <img src="/images/mtlogs/004/03.jpg">
@@ -56,8 +74,8 @@ import Title from "@/components/Common/BaseTextTitle.vue";
         </figure>
         <p>二坪山，又稱土地公鞍嶺，海拔７３１公尺，視線可及之處皆為雜亂的林木，無開闊展望。原本山頂有一顆土地調查局設置的圖根點，但今日已遺失，倒是現場遺留一塊紅色磚瓦，似是用來作為山頂標的物的替代象徵。</p>
     </div>
-    <div class="text-block">
-        <h3>三、銃櫃</h3>
+    <div class="text-block" :id="'act' + catalog[3].id">
+        <h2 v-text="catalog[3].title"></h2>
         <p>拍完照後回返傳統路徑，基本上銃櫃與土地公廟遺址之間的路段坡度平緩，路面也屬於由水泥鋪成的道路，我們走走聊聊，不知不覺已抵達銃櫃端的古道出入口。</p>
         <figure>
             <img src="/images/mtlogs/004/09.jpg">
