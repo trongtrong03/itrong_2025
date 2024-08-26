@@ -358,6 +358,57 @@ console.log(Math.max(...numbers));    // 5</code></pre>
                                     </div>
                                     <button class="accordin-close" @click="isActive = 0;"></button>
                                 </div>
+                                <div class="accordin-item" :class="isActive==3005 ? 'is-active' : ''">
+                                    <div class="accordin-title" @click="isActive = 3005;">
+                                        <p>setTimeout V.S setInterval</p>
+                                    </div>
+                                    <div class="accordin-content">
+                                        <p><em>setTimeout</em> 與 <em>setInterval</em> 都是 JavaScript 中用來控制定時任務的兩個非常常見的方法，兩者最主要的區別是前者只會到達指定時間後執行一次函式內容，而後者則是會反覆執行函式內容直到被清除或關閉頁面為止。</p>
+                                        <h4>setTimeout：</h4>
+                                        <p>用於設置一個定時器，當定時器到達指定時間後，執行一次指定的回調函數。</p>
+                                        <p>例如：</p>
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-javascript">setTimeout(() => {
+    console.log('Hello World!');
+}, 2000);</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                        <p>上面這個程式片段執行後會在兩秒後打印出「Hello World!」的 Console 訊息。</p>
+                                        <p><br></p>
+                                        <h4>setInterval：</h4>
+                                        <p>用於設置一個定時器，當定時器到達指定時間後，會反覆執行指定的回調函數，直到清除這個定時器或關閉頁面為止。</p>
+                                        <p>例如：</p>
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-javascript">setInterval(() => {
+    console.log('Hello World!');
+}, 1000);</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                        <p>上面這個程式片段執行後會每秒打印一次「Hello World!」的 Console 訊息，並且會一直持續下去，直到我們手動清除這個定時器或關閉頁面。</p>
+                                        <br>
+                                        <p>如果要清除定時器的狀態，可以分別使用 <em>clearTimeout</em> 以及 <em>clearInterval</em>。舉個例子：</p>
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-javascript">const timeoutId = setTimeout(() => {
+    console.log('這條消息本來會顯示出來，但它不會因為定時器被清除');
+}, 5000);
+
+clearTimeout(timeoutId); // 這會取消上面的 setTimeout
+
+const intervalId = setInterval(() => {
+    console.log('這個消息每秒鐘會打印一次，但只會打印三次');
+}, 1000);
+
+setTimeout(() => {
+    clearInterval(intervalId); // 三秒後清除這個定時器
+}, 3000);</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                    </div>
+                                    <button class="accordin-close" @click="isActive = 0;"></button>
+                                </div>
                             </div>
                         </div>
                     </template>
@@ -1666,8 +1717,8 @@ input:-moz-placeholder {
                         <div class="text-group">
                             <h2 v-text="catalog[0].title"></h2>
                             <div class="text-accordin is-error">
-                                <div class="accordin-item" :class="isActive==3001 ? 'is-active' : ''">
-                                    <div class="accordin-title" @click="isActive = 3001;">
+                                <div class="accordin-item" :class="isActive==1001 ? 'is-active' : ''">
+                                    <div class="accordin-title" @click="isActive = 1001;">
                                         <p>Third-party cookie will be blocked. Learn more in the Issues tab.</p>
                                     </div>
                                     <div class="accordin-content">

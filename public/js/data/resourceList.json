@@ -1980,5 +1980,93 @@
         "cover": true,
         "img": "diffchecker",
         "type": ["前端工具"]
+    },
+    {
+        "id": 182,
+        "title": "Perplexity",
+        "desc": "Perplexity AI 聲稱是世界上第一個對話式問答引擎，用戶可以透過與聊天機器人的互動搜尋各種資料，能夠很自然的深入各個主題，也能用來查看新聞或最新資訊。",
+        "href": "https://www.perplexity.ai/",
+        "article": false,
+        "path": "",
+        "cover": true,
+        "img": "perplexity",
+        "type": ["ＡＩ生成"]
+    },
+    {
+        "id": 183,
+        "title": "10Web",
+        "desc": "10Web AI 網站建構器是一個尖端的平台，通過利用人工智能的力量徹底改變了網站創建。它使所有技能水平的用戶都能快速輕鬆地建立令人驚艷、功能強大的網站。這個工具結合了 AI 驅動的內容生成、拖放編輯功能和 WordPress 功能，為創建和管理網站提供了一個全面的解決方案。無論您是建立一個在線商店、商業網站、博客還是作品集，10Web AI 網站建構器都簡化了流程，使網頁開發對每個人都可及。",
+        "href": "https://10web.io/",
+        "article": false,
+        "path": "",
+        "cover": true,
+        "img": "10web",
+        "type": ["ＡＩ生成"]
+    },
+    {
+        "id": 184,
+        "title": "Durable AI",
+        "desc": "Durable AI 網站建造平台，利用人工智能（AI）自動化網站建設過程，讓各種規模的企業都能更便利、更有效率地創建和維護具專業感的網站，無需擁有編碼技巧。",
+        "href": "https://durable.co/",
+        "article": false,
+        "path": "",
+        "cover": true,
+        "img": "durable",
+        "type": ["ＡＩ生成"]
+    },
+    {
+        "id": 185,
+        "title": "Framer",
+        "desc": "Framer 是一個可讓用戶在幾秒鐘內生成網站的超強生成工具，在 AI 大略生成設計及架構後可以再讓設計師對其進行管理以確保質量輸出。",
+        "href": "https://www.framer.com/?via=sale&gad_source=1&gclid=CjwKCAjwiaa2BhAiEiwAQBgyHvm70c5cZESJL4skHMvquKcnvA1-TbSlW4kA125bQA9cSZ0PFl42nBoCMSoQAvD_BwE",
+        "article": false,
+        "path": "",
+        "cover": true,
+        "img": "framer",
+        "type": ["ＡＩ生成"]
+    },
+    {
+        "id": 186,
+        "title": "Notion AI",
+        "desc": "Notion 是一個廣泛用於知識管理和團隊協作的多功能軟體工具，允許用戶創建、組織、分享和協作各種類型的內容，包括筆記、專案、資料庫、文件和日程等。Notion 的目的是幫助用戶更有效地組織和共享資訊，以提高工作和學習效率。",
+        "href": "https://www.notion.so/zh-tw/product/ai",
+        "article": false,
+        "path": "",
+        "cover": true,
+        "img": "notion",
+        "type": ["ＡＩ生成"]
+    },
+    {
+        "id": 187,
+        "title": "Taskade AI",
+        "desc": "Taskade 是一個由人和團隊使用的 AI 助力的生產力應用程序，可作為個人和團隊的第二大腦。它允許用戶生成工作流程，自動化任務，思維導圖，並在統一的工作區中與 AI 進行聊天。",
+        "href": "https://www.taskade.com/",
+        "article": false,
+        "path": "",
+        "cover": true,
+        "img": "taskade",
+        "type": ["ＡＩ生成"]
+    },
+    {
+        "id": 188,
+        "title": "Adobe Firefly",
+        "desc": "Adobe Firefly 是創意生成式 AI 模型系列。Firefly 技術支援的功能內嵌在 Adobe 旗艦應用程式和 Adobe Stock。Firefly 是 Adobe 過去 40 年以來所生產技術的自然延伸內容，價值核心是相信人們應該被賦予能力，能夠以與想像如出一轍的方式將自己的想法呈現給全世界。",
+        "href": "https://www.adobe.com/tw/products/firefly/features/ai-painting-generator.html",
+        "article": false,
+        "path": "",
+        "cover": true,
+        "img": "adobefirefly",
+        "type": ["ＡＩ生成"]
+    },
+    {
+        "id": 189,
+        "title": "Microsoft Designer",
+        "desc": "使用 Microsoft 的 AI 影像產生器建立任何您能做夢的影像。描述您的想法，然後觀看其從文字轉換成影像。無論您是要為下一份簡報或海報建立 AI 產生的藝術，或是產生完美的相片，Microsoft Designer 中的影像建立工具都可以輕鬆處理任何風格或格式。",
+        "href": "https://designer.microsoft.com/",
+        "article": false,
+        "path": "",
+        "cover": true,
+        "img": "microsoftdesigner",
+        "type": ["ＡＩ生成"]
     }
 ]
