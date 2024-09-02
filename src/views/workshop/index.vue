@@ -52,6 +52,7 @@ const catalog = reactive<CatalogItem[]>([
                         <button class="list-btnicon icon icon-git" :class="btnSelected == 'git' ? 'is-active' : ''" @click="changeTab('git')"></button>
                         <button class="list-btnicon icon icon-css3" :class="btnSelected == 'css' ? 'is-active' : ''" @click="changeTab('css')"></button>
                         <button class="list-btnicon icon icon-html5" :class="btnSelected == 'html' ? 'is-active' : ''" @click="changeTab('html')"></button>
+                        <button class="list-btnicon icon icon-figma" :class="btnSelected == 'figma' ? 'is-active' : ''" @click="changeTab('figma')"></button>
                     </div>
                 </div>
                 <div class="pages-title">
@@ -1821,6 +1822,80 @@ return response</code></pre>
                                     </div>
                                     <button class="accordin-close" @click="isActive = 0;"></button>
                                 </div>
+                            </div>
+                        </div>
+                    </template>
+                    <!-- figma -->
+                    <template v-else-if="btnSelected == 'figma'">
+                        <div class="text-group">
+                            <h2 v-text="catalog[0].title"></h2>
+                            <div class="text-accordin is-error">
+                            </div>
+                        </div>
+                        <div class="text-group">
+                            <h2 v-text="catalog[1].title"></h2>
+                            <div class="text-accordin is-warning">
+                            </div>
+                        </div>
+                        <div class="text-group">
+                            <h2 v-text="catalog[2].title"></h2>
+                            <div class="text-accordin is-others">
+                                <div class="accordin-item" :class="isActive==3001 ? 'is-active' : ''">
+                                    <div class="accordin-title" @click="isActive = 3001;">
+                                        <p>快速呼叫「快捷鍵組合」的方法</p>
+                                    </div>
+                                    <div class="accordin-content">
+                                        <p>同時按下 Ctrl + Shift + ?，即可呼叫 Figma 的快捷鍵列表。</p>
+                                        <figure>
+                                            <img src="/images/learn/design/figma-shortcuts.jpg">
+                                        </figure>
+                                        <p>順帶一提，如果要呼叫指令面板可同時按下 Ctrl + / 來觸發。</p>
+                                    </div>
+                                    <button class="accordin-close" @click="isActive = 0;"></button>
+                                </div>
+                                <div class="accordin-item" :class="isActive==3002 ? 'is-active' : ''">
+                                    <div class="accordin-title" @click="isActive = 3002;">
+                                        <p>按住「Shift」鍵移動物件的距離</p>
+                                    </div>
+                                    <div class="accordin-content">
+                                        <p>在 Figma 的預設中，按方向鍵可以移動物件 1px 單位（稱為 Small Nudge），若按住 Shift 一下就會移動 10px（Big Nudge）。但如果想改變這個設定，可以在 Figma 的「Preferences」→「Nudge amount」功能中，調整自己想要的預設值：</p>
+                                        <figure>
+                                            <img src="/images/learn/design/figma-nudgeamount-1.jpg">
+                                        </figure>
+                                        <p>假如要使用 8px grid 設計原則，可以將數值分別設置為 2px 與 16px，那麼所有物件移動的幅度也將會是 2 的倍數。</p>
+                                    </div>
+                                    <button class="accordin-close" @click="isActive = 0;"></button>
+                                </div>
+                                <div class="accordin-item" :class="isActive==3003 ? 'is-active' : ''">
+                                    <div class="accordin-title" @click="isActive = 3003;">
+                                        <p>如何等比縮放整個群組物件（包含文字）的大小</p>
+                                    </div>
+                                    <div class="accordin-content">
+                                        <p>一般情況下，我們如果按住 Shift 等比放大包含文字在內的群組物件，通常只有形狀圖層會等比放大，但是文字並不會跟著放大，反之縮小亦然。若希望物件群組內的文字也能跟隨形狀一同等比縮放，則可以按下 Cmd + K 組合鍵（Windows 系統則是 fn + K），這時 Figma 會切換成 Scale 模式，這時再拖曳群組物件就會整個物件裡的內容都一併放大縮小了。</p>
+                                    </div>
+                                    <button class="accordin-close" @click="isActive = 0;"></button>
+                                </div>
+                                <div class="accordin-item" :class="isActive==3004 ? 'is-active' : ''">
+                                    <div class="accordin-title" @click="isActive = 3004;">
+                                        <p>如何同時貼上物件到多個畫框（Frames）</p>
+                                    </div>
+                                    <div class="accordin-content">
+                                        <p>假設我們要將畫框 Frame1 裡的上下兩個物件複製貼上給 Frame2 與 Frame3：</p>
+                                        <figure>
+                                            <img src="/images/learn/design/figma-frame-1.jpg">
+                                        </figure>
+                                        <p>首先複製要於多個畫框貼上的物件，接著用左鍵圈選其他要貼上該物件的畫框，如下圖：</p>
+                                        <figure>
+                                            <img src="/images/learn/design/figma-frame-2.jpg">
+                                        </figure>
+                                        <p>接著利用快捷鍵組合 Ctrl + V 快速貼上已預先複製好的物件即可。</p>
+                                        <figure>
+                                            <img src="/images/learn/design/figma-frame-3.jpg">
+                                        </figure>
+                                    </div>
+                                    <button class="accordin-close" @click="isActive = 0;"></button>
+                                </div>
+
                             </div>
                         </div>
                     </template>
