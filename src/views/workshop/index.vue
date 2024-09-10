@@ -1288,6 +1288,27 @@ git commit -m "版本名稱"</code></pre>
                                     </div>
                                     <button class="accordin-close" @click="isActive = 0;"></button>
                                 </div>
+                                <div class="accordin-item" :class="isActive==1002 ? 'is-active' : ''">
+                                    <div class="accordin-title" @click="isActive = 1002;">
+                                        <p>warning: redirecting to https://xxx.git/ fatal: MyBranchName cannot be resolved to branch</p>
+                                    </div>
+                                    <div class="accordin-content">
+                                        <p>這個錯誤提示表示 Git 無法找到你指定的分支 MyBranchName，通常比較多的可能是自己輸入了錯誤的分支名稱，請檢察是否輸入正確。另外一種可能則是本地要推送的分支沒有被設置與遠端的 <em>origin</em> 同步，這時我們可以添加 <em>-u</em> 指令來讓本地分支與遠端分支關聯。例如：</p>
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-powershell">git push -u origin MyBranchName</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                        <p><br></p>
+                                        <p>除了上述兩種因素，還有一種可能原因是我們本地連結的遠端（Remote）已經換了網址，導致推送的過程無法匹配到遠端儲存庫，這時我們可以先透過 <em>remote -v</em> 查看目前遠端網址是否正確，倘若不正確的話，則使用下述指令來重新定義新的網址：</p>
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-powershell">git remote set-url origin 新的遠端網址</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                    </div>
+                                    <button class="accordin-close" @click="isActive = 0;"></button>
+                                </div>
                             </div>
                         </div>
                         <div class="text-group">
@@ -1450,7 +1471,108 @@ git cherry-pick xyz456
 git cherry-pick mon789</code></pre>
                                             </div>
                                         </prism-highlight>
-
+                                    </div>
+                                    <button class="accordin-close" @click="isActive = 0;"></button>
+                                </div>
+                                <div class="accordin-item" :class="isActive==3006 ? 'is-active' : ''">
+                                    <div class="accordin-title" @click="isActive = 3006;">
+                                        <p>git fetch 與 git pull 使用上有什麼差異？</p>
+                                    </div>
+                                    <div class="accordin-content">
+                                        <p>如果我們要取得遠端版本庫分支的最新資料（例如 <em>master</em>），比較穩妥的作法是先使用 <em>git fetch</em> 將遠端分支下載到本地端的「遠程追蹤分支」（例如 <em>origin/master</em>），它的作用是同步與反映遠端分支的最新狀態，並不影響目前本地端的 <em>master</em> 分支資料，換句話說，我們可以將遠程追蹤分支視為遠端分支的「鏡像」。</p>
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-powershell">git fetch</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                        <p>再來我們要透過 <em>git merge</em> 來將遠程追蹤分支合併到本機的分支，指令為：</p>
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-powershell">git merge origin/master</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                        <p>需要注意的是，因為我們要合併的是遠程追蹤分支，所以 merge 合併的對象就會是 <em>origin/master</em>，而非直接下 <em>master</em>，因為後者會被判斷成是本地的 <em>master</em> 分支。</p>
+                                        <p><br></p>
+                                        <p>至於 <em>git pull</em> 其實就是 <em>git fetch</em> 與 <em>git merge</em> 兩個操作的結合：</p>
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-powershell">git fetch
+git merge origin/master</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                        <p>相當於</p>
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-powershell">git pull</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                        <p><br></p>
+                                        <h3>什麼時候該用哪種方式？</h3>
+                                        <p>假如需要快速更新本地與遠端的分支資料，且也確認遠端上的分支不會影響到本地端分支的資料，那麼我們可以直接下 <em>git pull</em> 指令。</p>
+                                        <p>如果偏好謹慎操作，一步步檢查遠端分支更新的內容再決定是否合併，尤其是多人協作的專案，我們往往無法肯定遠端最新的分支狀態是否與我們本地的分支資料有所衝突，這時就會比較推薦先使用 <em>git fetch</em> 評估遠端分支的更新，爾後再決定是否要 <em>git merge</em> 到本地端分支。</p>
+                                    </div>
+                                    <button class="accordin-close" @click="isActive = 0;"></button>
+                                </div>
+                                <div class="accordin-item" :class="isActive==3007 ? 'is-active' : ''">
+                                    <div class="accordin-title" @click="isActive = 3007;">
+                                        <p>如何下載遠端某一個分支？</p>
+                                    </div>
+                                    <div class="accordin-content">
+                                        <p>假設我們要下載遠端儲存庫非 <em>master</em> 之外的分支，例如 <em>test</em>，以下是操作流程：</p>
+                                        <h6>1. 檢查遠端分支：</h6>
+                                        <p>首先檢查遠端目前有哪些分支，是否存在我們想要下載的 <em>test</em> 分支。指令：</p>
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-powershell">git fetch
+git branch -r</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                        <h6>2. 切換到指定分支：</h6>
+                                        <p>如果確認有 <em>test</em> 分支，接下來可以切換到該分支。如果本地還沒有 <em>test</em> 分支，可以用下面的指令創建並切換到 <em>test</em> 分支：</p>
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-powershell">git checkout -b test origin/test</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                        <p>這個指令會從遠端的 <em>test</em> 分支拉取最新的內容，並在本地建立一個名為 <em>test</em> 的分支。</p>
+                                        <h6>3. 拉取最新變更：</h6>
+                                        <p> 切換到 <em>test</em> 分支後，可以用 <em>git pull</em> 來更新本地的分支與遠端同步：</p>
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-powershell">git pull origin test</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                        <p>如此就能將遠端 <em>test</em> 分支上的檔案拉取下來並在本地查看和使用了。</p>
+                                    </div>
+                                    <button class="accordin-close" @click="isActive = 0;"></button>
+                                </div>
+                                <div class="accordin-item" :class="isActive==3008 ? 'is-active' : ''">
+                                    <div class="accordin-title" @click="isActive = 3008;">
+                                        <p>如何修改本地分支的名稱？</p>
+                                    </div>
+                                    <div class="accordin-content">
+                                        <p>大致上可分為以下三種情境：</p>
+                                        <h4>1. 重新命名目前所在的分支：</h4>
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-powershell">git branch -m 新分支名稱</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                        <p><br></p>
+                                        <h4>2. 重新命名其他分支：</h4>
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-powershell">git branch -m 舊分支名稱 新分支名稱</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                        <p><br></p>
+                                        <h4>3. 將重命名的分支推送到遠端後並刪除原先的遠端舊分支：</h4>
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-powershell">git push origin 新分支名稱
+git push origin --delete 舊分支名稱</code></pre>
+                                            </div>
+                                        </prism-highlight>
                                     </div>
                                     <button class="accordin-close" @click="isActive = 0;"></button>
                                 </div>

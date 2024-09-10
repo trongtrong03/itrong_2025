@@ -40,26 +40,27 @@ const loadedItemCount = ref(defaultItemCount);
 
 // 計算顯示在頁面上的資料
 const displayedItems = computed(() => {
-        // 先過濾資料
-        const filteredData = jsonData.value.filter((b) => {
-            return (
-                b.title.toLowerCase().includes(Filters.value.title.toLowerCase()) &&
-                b.type.includes(Filters.value.type)
-            );
-        });
-
-        // 排序按照時間
-        const sortedData = filteredData.sort((a, b) => {
-            // 將時間字符串轉換為日期對象
-            const dateA = new Date(a.time);
-            const dateB = new Date(b.time);
-            // 比較日期
-            return dateB - dateA;
-        });
-
-        // 再取出前 N 筆資料
-        return filteredData.slice(0, loadedItemCount.value);
+    // 先過濾資料
+    const filteredData = jsonData.value.filter((b) => {
+        return (
+            b.status === true &&
+            b.title.toLowerCase().includes(Filters.value.title.toLowerCase()) &&
+            b.type.includes(Filters.value.type)
+        );
     });
+
+    // 排序按照時間
+    const sortedData = filteredData.sort((a, b) => {
+        // 將時間字符串轉換為日期對象
+        const dateA = new Date(a.time);
+        const dateB = new Date(b.time);
+        // 比較日期
+        return dateB - dateA;
+    });
+
+    // 再取出前 N 筆資料
+    return filteredData.slice(0, loadedItemCount.value);
+});
 
 // 滾動加載更多資料的處理函式
 const handleScroll = () => {
