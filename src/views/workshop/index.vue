@@ -1832,6 +1832,41 @@ input:-moz-placeholder {
                                     </div>
                                     <button class="accordin-close" @click="isActive = 0;"></button>
                                 </div>
+                                <div class="accordin-item" :class="isActive==3013 ? 'is-active' : ''">
+                                    <div class="accordin-title" @click="isActive = 3013;">
+                                        <p>inherit 和 initial屬性有什麼差別？</p>
+                                    </div>
+                                    <div class="accordin-content">
+                                        <h4>inherit：</h4>
+                                        <p><em>inherit</em> 指的是繼承父元素的相同屬性的值。換句話說，當我們將某個 CSS 屬性設為 <em>inherit</em> 時，該屬性將會繼承父元素的對應屬性值。</p>
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-css">div {
+    color: red;
+}
+
+p {
+    color: inherit;    /* red */
+}</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                        <p><br></p>
+                                        <h4>initial：</h4>
+                                        <p><em>initial</em> 指的是將 CSS 屬性重設為該屬性的初始值（即瀏覽器預設值）。它不依賴父元素的樣式，而是將屬性設定為標準的初始狀態。</p>
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-css">div {
+    color: red;
+}
+
+p {
+    color: initial;    /* 瀏覽器預設的顏色 */
+}</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                    </div>
+                                    <button class="accordin-close" @click="isActive = 0;"></button>
+                                </div>
                             </div>
                         </div>
                     </template>
