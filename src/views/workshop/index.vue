@@ -929,6 +929,77 @@ onMounted(async () => {
                                     </div>
                                     <button class="accordin-close" @click="isActive = 0;"></button>
                                 </div>
+                                <div class="accordin-item" :class="isActive==3004 ? 'is-active' : ''">
+                                    <div class="accordin-title" @click="isActive = 3004;">
+                                        <p>[Vue3]如何在 v-for 迭代資料前先篩選要顯示的資料？</p>
+                                    </div>
+                                    <div class="accordin-content">
+                                        <p>假設我們現在手上有一份 JSON 檔案需要透過 <em>v-for</em> 將裡面的資料迭代顯示在畫面上，但並非全部都要顯示，而是只渲染出符合指定條件的資料，例如資料中 <em>status</em> 屬性值為 <em>true</em> 的項目。聰明的你可能會直覺優先想到使用 <em>v-if</em>，但偏偏 <em>v-if</em> 不能與 <em>v-for</em> 共存，那該怎麼辦？其實有以下兩種方式可以實現我們的需求。</p>
+                                        <h4>1. 使用 filter 方法：</h4>
+                                        <p>我們可以直接在 <em>v-for</em> 語法中的後方添加 <em>filter</em> 來實現需求。例如：</p>
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-html">&lt;ul&gt;
+    &lt;li v-for="item in displayedItems.filter(item =&gt; item.status)" :key="item.id"&gt;
+        &lt;h2 v-text="item.title"&gt;&lt;/h2&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                        <p><br></p>
+                                        <h4>2. 使用 computed 屬性：</h4>
+                                        <p>例如：</p>
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-javascript">const displayedItems = computed(() => {
+    // 過濾 status 為 true 的條件
+    const filteredData = jsonData.value.filter((b) => {
+        return (
+            b.status === true;
+        );
+    });
+});</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-html">&lt;ul&gt;
+    &lt;li v-for="item in displayedItems" :key="item.id"&gt;
+        &lt;h2 v-text="item.title"&gt;&lt;/h2&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                        <p>這兩種方法以後者會比前者更加推薦，因為性能上較優，且可讀性也比直接寫在組件 HTML 裡來得更好。</p>
+                                    </div>
+                                    <button class="accordin-close" @click="isActive = 0;"></button>
+                                </div>
+                                <div class="accordin-item" :class="isActive==3005 ? 'is-active' : ''">
+                                    <div class="accordin-title" @click="isActive = 3005;">
+                                        <p>[Vue3]如何插入 HTML 元素的內容到組件裡？</p>
+                                    </div>
+                                    <div class="accordin-content">
+                                        <p>首先在 <em>script</em> 元素中定義好要引入的 HTML 元素標籤與內容。例如：</p>
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-javascript">import { ref } from 'vue'
+
+const htmlContent = ref('&lt;h1&gt;Hello! World!&lt;/h1&gt;')</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                        <p>然後在 <em>template</em> 模板中利用 <em>v-html</em> 屬性載入它：</p>
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-html">&lt;template&gt;
+    &lt;div v-html="htmlContent"&gt;&lt;/div&gt;
+&lt;/template&gt;</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                    </div>
+                                    <button class="accordin-close" @click="isActive = 0;"></button>
+                                </div>
                             </div>
                         </div>
                     </template>
@@ -2002,7 +2073,7 @@ return response</code></pre>
                                 </div>
                                 <div class="accordin-item" :class="isActive==1002 ? 'is-active' : ''">
                                     <div class="accordin-title" @click="isActive = 1002;">
-                                        <p>按住 <b>Shift</b> 鍵移動物件的距離</p>
+                                        <p>按住 Shift 鍵移動物件的距離</p>
                                     </div>
                                     <div class="accordin-content">
                                         <p>在 Figma 的預設中，按方向鍵可以移動物件 1px 單位（稱為 Small Nudge），若按住 <b>Shift</b> 一下就會移動 10px（Big Nudge）。但如果想改變這個設定，可以在 Figma 的「Preferences」→「Nudge amount」功能中，調整自己想要的預設值：</p>
@@ -2019,6 +2090,15 @@ return response</code></pre>
                                     </div>
                                     <div class="accordin-content">
                                         <p>通過快捷鍵 <b>Shift</b> + <b>R</b> 打開或關閉標尺。</p>
+                                    </div>
+                                    <button class="accordin-close" @click="isActive = 0;"></button>
+                                </div>
+                                <div class="accordin-item" :class="isActive==1003 ? 'is-active' : ''">
+                                    <div class="accordin-title" @click="isActive = 1003;">
+                                        <p>快速返回畫布所在的位置</p>
+                                    </div>
+                                    <div class="accordin-content">
+                                        <p>通過快捷鍵 <b>Shift</b> + <b>1</b> 會自動將視圖縮放並調整到顯示當前畫布中所有內容的最佳視角。</p>
                                     </div>
                                     <button class="accordin-close" @click="isActive = 0;"></button>
                                 </div>
