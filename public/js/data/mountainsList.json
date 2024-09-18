@@ -8837,10 +8837,10 @@
         "application_m": false,
         "intro": "瑞太古道舊稱幼蛤山道，為連結瑞里及太和之山道，至今超過百年歷史，相傳清朝時期就已開闢，日治時期也曾整修，是早期先民遷徙入墾與農產運輸的主要交通要道。",
         "notes": "可順遊大風埕觀日峰",
-        "img": false,
+        "img": true,
         "gpx": "https://hiking.biji.co/index.php?q=trail&act=gpx_detail&id=3159328",
-        "finish": false,
-        "fDate": "",
+        "finish": true,
+        "fDate": "2024-09-17",
         "article": "",
         "aLink": ""
     },
