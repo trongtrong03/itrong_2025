@@ -717,6 +717,15 @@
         "time": "2024-06-15",
         "type": "develop",
         "class": "git",
-        "status": false
+        "status": true
+    },
+    {
+        "id": 81,
+        "href": "html_landingpage",
+        "title": "什麼是落地頁？淺談落地頁於廣告行銷的重要性",
+        "time": "2024-06-23",
+        "type": "html",
+        "class": "html",
+        "status": true
     }
 ]
