@@ -2079,5 +2079,16 @@
         "cover": true,
         "img": "webflow",
         "type": ["前端工具"]
+    },
+    {
+        "id": 191,
+        "title": "Uiverse",
+        "desc": "Uiverse 它是一個使用純 CSS 與 HTML 技術實現的精美 UI 網站，包含了 button、Loaders、Checkboxes、Toggle Switches、input、Cards 等多種類型，每種類型都自帶動畫效果，顏色搭配十分炫酷。",
+        "href": "https://uiverse.io/",
+        "article": false,
+        "path": "",
+        "cover": true,
+        "img": "uiverse",
+        "type": ["前端工具"]
     }
 ]
