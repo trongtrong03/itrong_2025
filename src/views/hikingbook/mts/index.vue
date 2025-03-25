@@ -91,7 +91,7 @@ onMounted(async () => {
                 <h2>山岳資料</h2>
             </div>
             <div class="hikingbook-tips">
-                <p>目前已蒐集 {{ jsonDataLength }} 筆資料</p>
+                <p>已蒐集 {{ jsonDataLength }} 筆資料</p>
             </div>
             <div class="list-wrap">
                 <div class="list-tools">
