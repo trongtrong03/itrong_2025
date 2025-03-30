@@ -828,6 +828,15 @@ app.use(pinia);</code></pre>
                                     </div>
                                     <button class="accordin-close" @click="isActive = 0;"></button>
                                 </div>
+                                <div class="accordin-item" :class="isActive==1004 ? 'is-active' : ''">
+                                    <div class="accordin-title" @click="isActive = 1004;">
+                                        <p>[@vue/compiler-sfc] defineProps is a compiler macro and no longer needs to be imported.</p>
+                                    </div>
+                                    <div class="accordin-content">
+                                        <p>這個警告訊息意思是不需要再手動 <em>import { defineProps } from 'vue'</em>，因為在 <b>&lt;script setup&gt;</b> 中 <em>defineProps()</em> 是 Vue 提供的編譯器巨集 (compiler macro)，它是自動提供的，不應該引用。</p>
+                                    </div>
+                                    <button class="accordin-close" @click="isActive = 0;"></button>
+                                </div>
                             </div>
                         </div>
                         <div class="text-group">
@@ -1932,6 +1941,33 @@ p {
 
 p {
     color: initial;    /* 瀏覽器預設的顏色 */
+}</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                    </div>
+                                    <button class="accordin-close" @click="isActive = 0;"></button>
+                                </div>
+                                <div class="accordin-item" :class="isActive==3014 ? 'is-active' : ''">
+                                    <div class="accordin-title" @click="isActive = 3014;">
+                                        <p>使用 aspect-ratio 設定元素的寬高比</p>
+                                    </div>
+                                    <div class="accordin-content">
+                                        <p><em>aspect-ratio</em> 屬性用於設定元素的寬高比（寬度與高度的比例），不需要明確指定 <em>width</em> 或 <em>height</em>，讓元素根據該比例自動調整尺寸。例如：</p>
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-css">div {
+    aspect-ratio: 16 / 9; /* 設定為 16:9 比例 */
+}</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                        <p>若將比例設定為 <em>1 / 1</em> 即可製作出正方形比例的元素。</p>
+                                        <p>也可以將此屬性設定於 <em>img</em> 元素以避免圖片載入前的畫面跳動，例如：</p>
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-css">img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
 }</code></pre>
                                             </div>
                                         </prism-highlight>

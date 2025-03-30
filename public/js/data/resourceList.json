@@ -2090,5 +2090,16 @@
         "cover": true,
         "img": "uiverse",
         "type": ["前端工具"]
+    },
+    {
+        "id": 192,
+        "title": "CURSOR",
+        "desc": "Cursor 是 Microsoft Windows、MacOS 和 Linux 平台上的一款由人工智慧驅動的專有集成開發環境。它擁有代碼生成、智能重寫和代碼庫查詢等具有人工智慧的功能。",
+        "href": "https://www.cursor.com/cn",
+        "article": false,
+        "path": "",
+        "cover": true,
+        "img": "cursor",
+        "type": ["應用程式"]
     }
 ]
