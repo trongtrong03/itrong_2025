@@ -46,18 +46,17 @@ const loadedItemCount = ref(defaultItemCount);
 
 // 計算顯示在頁面上的資料
 const displayedItems = computed(() => {
-    // 先過濾資料
     const filteredData = jsonData.value.filter((b) => {
         return (
             b.name.toLowerCase().includes(Filters.value.name.toLowerCase()) &&
             b.county.includes(Filters.value.county) &&
-            (Filters.value.tags === "" || b.tags.some(tag => tag.includes(Filters.value.tags)))
+            (Filters.value.tags === "" || b.tags.some(tag => tag === Filters.value.tags))
         );
     });
 
-    // 再取出前 N 筆資料
     return filteredData.slice(0, loadedItemCount.value);
 });
+
 
 // 滾動加載更多資料的處理函式
 const handleScroll = () => {
