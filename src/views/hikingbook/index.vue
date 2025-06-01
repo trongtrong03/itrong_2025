@@ -53,7 +53,9 @@ const filteredMountainsData = computed(() => {
 });
 
 // 避免數據重新排列觸發更新導致 Uncaught (in promise) Maximum recursive updates exceeded in component
-const filteredLogsData = computed(() => logsData.value.slice().reverse().slice(0, 3));
+const filteredLogsData = computed(() => logsData.value.filter(item => item.status === true).slice().reverse().slice(0, 3)
+);
+
 const filteredLinksData = computed(() => linksData.value);
 
 /* Gallery */

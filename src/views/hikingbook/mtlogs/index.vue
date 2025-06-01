@@ -26,7 +26,11 @@ const defaultItemCount = 15;
 const loadedItemCount = ref(defaultItemCount);
 
 // 計算顯示在頁面上的資料
-const displayedItems = computed(() => jsonData.value.slice(0, loadedItemCount.value));
+const displayedItems = computed(() =>
+  jsonData.value
+    .filter(item => item.status === true)
+    .slice(0, loadedItemCount.value)
+);
 
 // 滾動加載更多資料的處理函式
 const handleScroll = () => {
