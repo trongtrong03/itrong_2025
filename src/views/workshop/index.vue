@@ -1974,6 +1974,33 @@ p {
                                     </div>
                                     <button class="accordin-close" @click="isActive = 0;"></button>
                                 </div>
+                                <div class="accordin-item" :class="isActive==3015 ? 'is-active' : ''">
+                                    <div class="accordin-title" @click="isActive = 3015;">
+                                        <p>設定 img 元素中的圖片定位</p>
+                                    </div>
+                                    <div class="accordin-content">
+                                        <p>需要同時使用兩個屬性，分別是 <em>object-fit</em> 和 <em>object-position</em>。假設我們要讓 <em>img</em> 引用的影像能保持填滿且內容居中，語法可以這樣寫：</p>
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-css">img {
+    object-fit: cover; /* 保持比例填滿容器，可能會裁切 */
+    object-position: center; /* 圖片內容對齊中間 */
+}</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                        <p>上面的寫法雖然可以確保圖片裡的內容完全填滿，卻也有可能為了填滿不足的寬度或高度，造成圖片過度拉申導致失真。若不希望圖片被拉申，我們可以修改 <em>object-fit</em> 的值。例如：</p>
+                                        <p>也可以將此屬性設定於 <em>img</em> 元素以避免圖片載入前的畫面跳動，例如：</p>
+                                        <prism-highlight>
+                                            <div class="text-code" v-pre>
+                                                <pre><code class="language-css">img {
+    object-fit: contain; /* 保持原始比例不拉申 */
+    object-position: center;
+}</code></pre>
+                                            </div>
+                                        </prism-highlight>
+                                    </div>
+                                    <button class="accordin-close" @click="isActive = 0;"></button>
+                                </div>
                             </div>
                         </div>
                     </template>

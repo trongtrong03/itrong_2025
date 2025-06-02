@@ -13,9 +13,7 @@ const catalog = reactive<CatalogItem[]>([
     { id: 1, title: '一、CSS Values and Units Level 4' },
     { id: 2, title: '二、clamp()' },
     { id: 3, title: '三、min() 與 max()' },
-    { id: 4, title: '四、XXXX' },
-    { id: 5, title: '五、XXXX' },
-    { id: 6, title: '六、參考資料' },
+    { id: 4, title: '六、參考資料' },
 ]);
 </script>
 
@@ -310,11 +308,22 @@ max(val1, val2, ...)</code></pre>
         <p>接著會將 <em>max()</em> 篩出來的結果進入上一層包裹的 <em>min()</em> 函式繼續比較，假設 <em>.content</em> 元素在畫面中的 <em>100%</em> 寬度只有 <em>600px</em>（受到更父層的元素影響或其他因素），那麼此時 <em>min()</em> 裡頭數值便代換成 <em>min(600px, 800px)</em>，取其中最小者，最終得出 <em>600px</em> 之結果，也就是 <em>100%</em>。</p>
         <p><br></p>
         <p>一言以蔽之，整句表達式的行為等同在說「該元素想要一個寬度，最小值是 300px、彈性是畫面一半，但不能超過父容器寬度（100%）」。</p>
-
+        <p><br></p>
+        <h3>與 Clamp 結合：</h3>
+        <p>上個章節我們已經理解 <em>clamp()</em> 函式語法是由最小值、偏好值、最大值三個數值構成，有些人會以為這之中的最小值與最大值分別呼應 <em>min()</em> 與 <em>max()</em>，然而這其實是天大的誤解，<em>clamp()</em> 裡的最小值與最大值屬於「數值參數」，並非獨立函式。</p>
+        <p>儘管如此，我們依然可以在 <em>clamp()</em> 函式中導入 <em>min()</em> 以及 <em>max()</em> 來設定元素的限縮範圍。</p>
+        <p>例如：</p>
+        <prism-highlight>
+            <div class="text-code" v-pre>
+                <pre><code class="language-css">.title {
+    font-size: clamp(min(14px, 2vw), 3vw, max(18px, 5vw));
+}</code></pre>
+            </div>
+        </prism-highlight>
+        <p>要做到如此精細的設定是沒問題的，但這麼寫僅僅是表示我們在 <em>clamp()</em> 函式裡使用其他函式作為參數值，並不代表該函式是由 <em>min()</em> 和 <em>max()</em> 所構成。</p>
     </div>
-    
-    <div class="text-block" :id="'act' + catalog[6].id">
-        <h2 v-text="catalog[6].title"></h2>
+    <div class="text-block" :id="'act' + catalog[4].id">
+        <h2 v-text="catalog[4].title"></h2>
         <dl>
             <dd><a href="https://www.w3.org/TR/css-values-3/" target="_blank">W3C──CSS Values and Units Module Level 3</a></dd>
             <dd><a href="https://www.w3.org/TR/css-values-4/" target="_blank">W3C──CSS Values and Units Module Level 4</a></dd>
