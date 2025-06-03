@@ -2101,5 +2101,27 @@
         "cover": true,
         "img": "cursor",
         "type": ["應用程式"]
+    },
+    {
+        "id": 193,
+        "title": "GoDaddy",
+        "desc": "GoDaddy 是一個提供網域名稱註冊與網站相關服務的全球知名公司。它的主要功能是幫助個人或企業購買網域、架設網站、建立企業郵件、管理 DNS 等等。",
+        "href": "https://tw.godaddy.com/",
+        "article": false,
+        "path": "",
+        "cover": true,
+        "img": "godaddy",
+        "type": ["其他"]
+    },
+    {
+        "id": 194,
+        "title": "Background Remover",
+        "desc": "Background Remover 是一個線上去背工具，可以將圖片中的背景自動去除（去背），保留前景主體（例如人像、物件、商品等），不需 Photoshop 或專業設計工具。",
+        "href": "https://icons8.com/bgremover",
+        "article": false,
+        "path": "",
+        "cover": true,
+        "img": "bgremover",
+        "type": ["影音圖像", "ＡＩ生成"]
     }
 ]

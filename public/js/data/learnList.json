@@ -736,5 +736,14 @@
         "type": "css",
         "class": "css3",
         "status": true
+    },
+    {
+        "id": 83,
+        "href": "vue_vite_usegit",
+        "title": "Vite 專案要如何撈出 Git commit 提交記錄名稱？",
+        "time": "2024-09-03",
+        "type": "javascript",
+        "class": "vite",
+        "status": true
     }
 ]
