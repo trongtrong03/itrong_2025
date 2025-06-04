@@ -338,9 +338,9 @@ p {
                     <prism-highlight>
                         <div class="text-code" v-pre>
                             <pre><code class="language-css">img {
-        object-fit: cover; /* 保持比例填滿容器，可能會裁切 */
-        object-position: center; /* 圖片內容對齊中間 */
-    }</code></pre>
+    object-fit: cover; /* 保持比例填滿容器，可能會裁切 */
+    object-position: center; /* 圖片內容對齊中間 */
+}</code></pre>
                         </div>
                     </prism-highlight>
                     <p>上面的寫法雖然可以確保圖片裡的內容完全填滿，卻也有可能為了填滿不足的寬度或高度，造成圖片過度拉申導致失真。若不希望圖片被拉申，我們可以修改 <em>object-fit</em> 的值。例如：</p>
@@ -348,11 +348,86 @@ p {
                     <prism-highlight>
                         <div class="text-code" v-pre>
                             <pre><code class="language-css">img {
-        object-fit: contain; /* 保持原始比例不拉申 */
-        object-position: center;
-    }</code></pre>
+    object-fit: contain; /* 保持原始比例不拉申 */
+    object-position: center;
+}</code></pre>
                         </div>
                     </prism-highlight>
+                </div>
+                <button class="accordin-close" @click="toggle(0)"></button>
+            </div>
+            <div class="accordin-item" :class="isActive==3016 ? 'is-active' : ''">
+                <div class="accordin-title" @click="toggle(3016)">
+                    <p>隱藏瀏覽器卷軸但仍然保留捲動的效果</p>
+                </div>
+                <div class="accordin-content">
+                    <h4>1. 外層 overflow: hidden + 內層 overflow-y: auto：</h4>
+                    <prism-highlight>
+                        <div class="text-code" v-pre>
+                            <pre><code class="language-html">&lt;div class="outer-container"&gt;
+  &lt;div class="inner-container"&gt;
+    &lt;div class="scroll-content"&gt;
+      &lt;!-- 垂直超出內容 --&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                        </div>
+                    </prism-highlight>
+                    <p>CSS：</p>
+                    <prism-highlight>
+                        <div class="text-code" v-pre>
+                            <pre><code class="language-css">.outer-container {
+    height: 300px;
+    overflow: hidden; /* 隱藏滾動條 */
+    position: relative;
+}
+
+.inner-container {
+    height: 100%;
+    overflow-y: auto; /* 保留垂直滾動 */
+}
+
+.scroll-content {
+    height: 600px; /* 內容超出高度以產生滾動 */
+}
+</code></pre>
+                        </div>
+                    </prism-highlight>
+                    <p><br></p>
+                    <h4>2. 負 margin/padding 蓋住捲軸：</h4>
+                    <prism-highlight>
+                        <div class="text-code" v-pre>
+                            <pre><code class="language-css">.scroll-container {
+    height: 300px;
+    overflow-y: auto;
+    margin-right: -17px;  /* 通常捲軸寬為 17px，可根據實際情況調整 */
+    padding-right: 17px;
+}</code></pre>
+                        </div>
+                    </prism-highlight>
+                    <p><br></p>
+                    <h4>3. Webkit 滾動條隱藏法（只對 Chrome/Safari 有效）：</h4>
+                    <prism-highlight>
+                        <div class="text-code" v-pre>
+                            <pre><code class="language-css">.scroll-container {
+    overflow-y: auto;
+    height: 300px;
+}
+
+/* 隱藏捲軸（Webkit 專用） */
+.scroll-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* Firefox 支援 */
+.scroll-container {
+    scrollbar-width: none;        /* Firefox */
+    -ms-overflow-style: none;     /* IE 10+ */
+}</code></pre>
+                        </div>
+                    </prism-highlight>
+                    <p><br></p>
+                    <p>水平軸（<em>overflow-x</em>）基本上也是一樣的寫法。</p>
                 </div>
                 <button class="accordin-close" @click="toggle(0)"></button>
             </div>
