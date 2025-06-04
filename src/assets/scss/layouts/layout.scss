@@ -606,6 +606,14 @@ input::-webkit-calendar-picker-indicator {
             content: 'Sublime Text';
         }
     }
+    &.icon-others {
+        &::before {
+            background-image: url("/images/icon/other.png");
+        }
+        &::after {
+            content: 'Others';
+        }
+    }
 }
 
 // popup
