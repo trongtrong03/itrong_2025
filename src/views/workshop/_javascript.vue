@@ -61,10 +61,10 @@ console.log(dog);</code></pre>
                     <prism-highlight>
                         <div class="text-code" v-pre>
                             <pre><code class="language-javascript">function Animal() {
-        let dog = "阿比";
-        // ...其他程式
-        let dog = "咪咪";    // &lt;-- 重複宣告相同的變數名而發生錯誤
-    }</code></pre>
+    let dog = "阿比";
+    // ...其他程式
+    let dog = "咪咪";    // &lt;-- 重複宣告相同的變數名而發生錯誤
+}</code></pre>
                         </div>
                     </prism-highlight>
                 </div>
@@ -147,10 +147,10 @@ dog = "咪咪";    // &lt;-- 發生錯誤</code></pre>
                     <prism-highlight>
                         <div class="text-code" v-pre>
                             <pre><code class="language-javascript">var &dog = "阿比";    // Uncaught SyntaxError: Unexpected token '&'
-    var do@g = "阿比";    // Uncaught SyntaxError: Unexpected token 'do'
-    var dog# = "阿比";    // Uncaught SyntaxError: Invalid or unexpected token
-    var do.g = "阿比";    // Uncaught SyntaxError: Unexpected token 'do'
-    var d+o+g = "阿比";    // Uncaught SyntaxError: Unexpected token '+'</code></pre>
+var do@g = "阿比";    // Uncaught SyntaxError: Unexpected token 'do'
+var dog# = "阿比";    // Uncaught SyntaxError: Invalid or unexpected token
+var do.g = "阿比";    // Uncaught SyntaxError: Unexpected token 'do'
+var d+o+g = "阿比";    // Uncaught SyntaxError: Unexpected token '+'</code></pre>
                         </div>
                     </prism-highlight>
                 </div>

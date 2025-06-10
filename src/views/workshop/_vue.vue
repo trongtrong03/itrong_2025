@@ -498,6 +498,38 @@ onBeforeUnmount(() => {
                 </div>
                 <button class="accordin-close" @click="toggle(0)"></button>
             </div>
+            <div class="accordin-item" :class="isActive==4003 ? 'is-active' : ''">
+                <div class="accordin-title" @click="toggle(4003)">
+                    <p>複製指定元素內的文字按鈕</p>
+                </div>
+                <div class="accordin-content">
+                    <p>Template：</p>
+                    <prism-highlight>
+                        <div class="text-code" v-pre>
+                            <pre><code class="language-html">&lt;h1&gt;{{ Text }}&lt;/h1&gt;
+&lt;button :class="{ 'is-copied': isCopied }" @click="copy"&gt;&lt;/button&gt;</code></pre>
+                        </div>
+                    </prism-highlight>
+                    <p>JavaScrtipt（setup 格式）：</p>
+                    <prism-highlight>
+                        <div class="text-code" v-pre>
+                            <pre><code class="language-javascript">const copyText = async () => {
+    const textToCopy = `${Text.value}`
+    try {
+        await navigator.clipboard.writeText(textToCopy)
+        isCopied.value = true
+        setTimeout(() => {
+            isCopied.value = false
+        }, 2000)
+    } catch (error) {
+        console.error('複製失敗', error)
+    }
+}</code></pre>
+                        </div>
+                    </prism-highlight>
+                </div>
+                <button class="accordin-close" @click="toggle(0)"></button>
+            </div>
         </div>
     </div>
 </template>
