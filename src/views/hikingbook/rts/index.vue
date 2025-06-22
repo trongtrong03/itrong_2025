@@ -12,6 +12,9 @@ import fetchData from "@/hooks/fetchData";
 // 定義資料
 const jsonData = ref<Array<any>>([]);
 const jsonDataLength = computed(() => jsonData.value.length);
+const jsonDataFinish = computed(() =>
+    jsonData.value.filter(item => item.finish).length
+);
 const filterOpen = ref(false);
 const Filters = ref({
     name: "",
@@ -90,7 +93,7 @@ onMounted(async () => {
                 <h2>路線彙整</h2>
             </div>
             <div class="hikingbook-tips">
-                <p>已蒐集 {{ jsonDataLength }} 筆資料</p>
+                <p>已完成 {{ jsonDataFinish }} / {{ jsonDataLength }} 筆路線</p>
             </div>
             <div class="list-wrap">
                 <div class="list-tools">
