@@ -378,6 +378,20 @@ git push origin --delete 舊分支名稱</code></pre>
                 </div>
                 <button class="accordin-close" @click="toggle(0)"></button>
             </div>
+            <div class="accordin-item" :class="isActive==3009 ? 'is-active' : ''">
+                <div class="accordin-title" @click="toggle(3009)">
+                    <p>同時執行多個 Git 指令</p>
+                </div>
+                <div class="accordin-content">
+                    <p>可利用 <em>&&</em> 串聯不同的指令，就可以令 Git 一次全部執行。例如：</p>
+                    <prism-highlight>
+                        <div class="text-code" v-pre>
+                            <pre><code class="language-git">git add . && git commit -m "你的 commit 訊息" && git push origin master</code></pre>
+                        </div>
+                    </prism-highlight>
+                </div>
+                <button class="accordin-close" @click="toggle(0)"></button>
+            </div>
         </div>
     </div>
 </template>
