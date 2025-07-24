@@ -22,6 +22,7 @@ const Filters = ref({
     length: "",
 });
 const isDataLoaded = ref(false);
+const showOnlyFinished = ref(false);
 
 
 // 取得 JSON 資料
@@ -48,16 +49,15 @@ const loadedItemCount = ref(defaultItemCount);
 
 // 計算顯示在頁面上的資料
 const displayedItems = computed(() => {
-    // 先過濾資料
     const filteredData = jsonData.value.filter((b) => {
-        return (
-            b.name.toLowerCase().includes(Filters.value.name.toLowerCase()) &&
-            b.lv.includes(Filters.value.lv) &&
-            b.length.includes(Filters.value.length)
-        );
+        const nameMatch = b.name.toLowerCase().includes(Filters.value.name.toLowerCase());
+        const lvMatch = b.lv.includes(Filters.value.lv);
+        const lengthMatch = b.length.includes(Filters.value.length);
+        const finishMatch = !showOnlyFinished.value || b.finish;
+
+        return nameMatch && lvMatch && lengthMatch && finishMatch;
     });
 
-    // 再取出前 N 筆資料
     return filteredData.slice(0, loadedItemCount.value);
 });
 
@@ -93,6 +93,10 @@ onMounted(async () => {
                 <h2>路線彙整</h2>
             </div>
             <div class="hikingbook-tips">
+                <div class="checkbox">
+                    <input type="checkbox" id="fin" v-model="showOnlyFinished">
+                    <label for="fin">只顯示完成的路線</label>
+                </div>
                 <p>已完成 {{ jsonDataFinish }} / {{ jsonDataLength }} 筆路線</p>
             </div>
             <div class="list-wrap">

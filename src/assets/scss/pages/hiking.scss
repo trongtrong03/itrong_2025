@@ -278,6 +278,17 @@
 }
 
 .hikingbook-tips {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-top: 1rem;
+    .checkbox {
+        display: flex;
+        gap: .5rem;
+        font-size: 0.875rem;
+        label {}
+    }
     p {
         text-align: right;
         font-size: 0.875em;

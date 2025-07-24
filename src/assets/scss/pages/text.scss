@@ -239,8 +239,7 @@
     height: 100%;
     padding-top: 4rem;
     padding-bottom: 7rem;
-
-    @include scrollbar;
+    // @include scrollbar;
     @media only screen and (max-width: 768px) {
         padding-top: 0;
         padding-bottom: 4rem;
@@ -683,6 +682,29 @@
     }
 }
 
+.text-info {
+    background: #F7F7F7;
+    margin-top: -2rem;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    p {
+        display: flex;
+        align-items: flex-start;
+        line-height: 1.5;
+        font-size: 0.875rem;
+        margin: 0;
+        padding: 0.25rem 0;
+        span {
+            flex: 0 0 auto;
+            min-width: 0;
+        }
+        strong {
+            flex: 1;
+            min-width: 0;
+        }
+    }
+}
+
 .text-block {
     position: relative;
     padding: 5rem 0;
@@ -841,5 +863,45 @@
         &:last-child {
             margin-bottom: 0;
         }
+    }
+}
+
+
+// 登山心得
+.text-block {
+    .hikingbook-wrap & {
+        padding: 4rem 0;
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -2.5rem;
+            z-index: 0;
+            display: block;
+            width: 1px;
+            height: 100%;
+            border-right: 2px dashed var(--c1);
+        }
+    }
+}
+
+.mtlogs-title {
+    position: relative;
+    line-height: 2rem;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    &::before {
+        content: '';
+        position: absolute;
+        top: .5rem;
+        left: -3rem;
+        z-index: 1;
+        display: block;
+        width: 1rem;
+        aspect-ratio: 1/1;
+        background: #FFF;
+        outline: 4px solid var(--c1);
+        border-radius: 100%;
     }
 }

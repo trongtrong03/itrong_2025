@@ -22,6 +22,7 @@ const Filters = ref({
     tags: "",
 });
 const isDataLoaded = ref(false);
+const showOnlyFinished = ref(false);
 
 
 // 取得 JSON 資料
@@ -50,16 +51,16 @@ const loadedItemCount = ref(defaultItemCount);
 // 計算顯示在頁面上的資料
 const displayedItems = computed(() => {
     const filteredData = jsonData.value.filter((b) => {
-        return (
-            b.name.toLowerCase().includes(Filters.value.name.toLowerCase()) &&
-            b.county.includes(Filters.value.county) &&
-            (Filters.value.tags === "" || b.tags.some(tag => tag === Filters.value.tags))
-        );
+        const nameMatch = b.name.toLowerCase().includes(Filters.value.name.toLowerCase());
+        const countyMatch = b.county.includes(Filters.value.county);
+        const tagMatch = Filters.value.tags === "" || b.tags.some(tag => tag === Filters.value.tags);
+        const finishMatch = !showOnlyFinished.value || b.finish;
+
+        return nameMatch && countyMatch && tagMatch && finishMatch;
     });
 
     return filteredData.slice(0, loadedItemCount.value);
 });
-
 
 // 滾動加載更多資料的處理函式
 const handleScroll = () => {
@@ -93,6 +94,10 @@ onMounted(async () => {
                 <h2>山岳資料</h2>
             </div>
             <div class="hikingbook-tips">
+                <div class="checkbox">
+                    <input type="checkbox" id="fin" v-model="showOnlyFinished">
+                    <label for="fin">只顯示完成的路線</label>
+                </div>
                 <p>已完成 {{ jsonDataFinish }} / {{ jsonDataLength }} 筆路線</p>
             </div>
             <div class="list-wrap">

@@ -8,10 +8,12 @@ import Title from "@/components/Common/BaseTextTitle.vue";
 
 // 目錄
 const catalog = reactive<CatalogItem[]>([
-    { id: 0, title: '序、楔子' },
-    { id: 1, title: '壹、高山巷' },
-    { id: 2, title: '貳、電視轉播發射塔' },
-    { id: 3, title: '參、集集復唧唧' },
+    { id: 0, title: '0K：楔子' },
+    { id: 1, title: '1K：高山巷' },
+    { id: 2, title: '2K：車埕步道' },
+    { id: 3, title: '3K：電視轉播發射塔' },
+    { id: 4, title: '4K：集集大山' },
+    { id: 5, title: '5K：後記' },
 ]);
 </script>
 
@@ -27,12 +29,18 @@ const catalog = reactive<CatalogItem[]>([
             </li>
         </ul>
     </div>
+    <div class="text-info">
+        <p><span>登山日期：</span><strong>2021-02-15</strong></p>
+        <p><span>行走總長：</span><strong>約 14 KM</strong></p>
+        <p><span>累計耗時：</span><strong>約 5 HR</strong></p>
+        <p><span>路程總覽：</span><strong>車埕木馬道 → 高山巷 → 孟宗竹林 → 車埕步道 → 集集大山電視轉播站 → 集集大山</strong></p>
+    </div>
     <div class="text-block" :id="'act' + catalog[0].id">
-        <h2 v-text="catalog[0].title"></h2>
+        <div class="mtlogs-title" v-text="catalog[0].title"></div>
         <p>每每開車下國道三號名間交流道，接續台１６線往水里方向駛去，遠遠就能看見濁水溪河畔矗立著一座山容基盤寬闊，高聳挺拔，宛如相撲力士般屹立不搖的山岳，祂便是名聞遐邇的「集集大山」。儘管九二一地震嚴重覆蓋世人對集集此地的第一印象，但在過去集集鎮可是中台灣漢人與原住民交易往來的中心，素有「小台北」美譽。而外地商人總會稱小鎮東北面那座聳立的高山為「集集那邊大山」，久而久之，集集大山便成為這座大山的名字。</p>
     </div>
     <div class="text-block" :id="'act' + catalog[1].id">
-        <h2 v-text="catalog[1].title"></h2>
+        <div class="mtlogs-title" v-text="catalog[1].title"></div>
         <p>２０２１年２月１５日早晨８點４２分，從又名車埕木馬道的車埕休閒農業區展開今天的登山行程，如果問我為什麼選擇此處前往集集大山，而且還是採用徒步的方式，明明有水泥鋪設好的馬路可以開車直達山頂啊？其實倒也沒有什麼意義非凡的理由，單純是不想在狹小曲折的山路駕車蜿蜿蜒蜒，尤其對我這個連自己當駕駛都能暈車的重度易暈體質來說，當看見Ｇｏｏｇｌｅ　Ｍａｐ上通往集集大山的道路每一條皆有如擰成一團的絲線，車都還沒開，腦子便先暈頭轉向，於是只好選擇用徒步的方式走上集集大山。</p>
         <figure>
             <img src="/images/mtlogs/007/01.jpg">
@@ -46,6 +54,9 @@ const catalog = reactive<CatalogItem[]>([
         <figure>
             <img src="/images/mtlogs/007/03.jpg">
         </figure>
+    </div>
+    <div class="text-block" :id="'act' + catalog[2].id">
+        <div class="mtlogs-title" v-text="catalog[2].title"></div>
         <p>撇除可以開車直達集集大山的水泥路，集集大山的登山步道組成主要有兩條，一條是孟宗竹竹林步道，另一條則是車埕步道，沿著高山巷往上走到道路終點，自然便能與這兩條步道相接。而在行至高山巷盡頭處之前，會有一條岔路可以通往一座名為「烏土窟」的山岳，雖然看地圖標示並不遙遠，所見路況看上去也與傳統林道相似，但由於行前沒有研究過這條路徑，只能強壓左胸膛裡那顆蠢蠢欲動的心臟，以安全至上為由，老老實實往集集大山方向前進。</p>
         <p>孟宗竹林步道的末段沒有顯著的路徑，即使人還在ＧＰＸ軌跡上，一時間卻也摸不著方向，所幸當時有一位正在竹林裡採筍子的老大哥，還沒等我開口，似乎就已經預判到這邊的疑惑，他伸直手往我面向的方向指去，並點了點頭，表示這方確實走在正確的路徑上。果不其然，往前探了一小段路之後，開始陸續可見綁在竹子上，來自各路登山隊繫上的五顏六色路條。</p>
         <figure>
@@ -53,8 +64,8 @@ const catalog = reactive<CatalogItem[]>([
         </figure>
         <p>當來到車埕步道，就表示距離集集大山的山頂也不遠了，車埕步道為傳統的泥土路徑，這對已經被道路開發的集集大山來而言簡直是稀有財。車埕步道的出口會與集集鎮開闢上來的大山巷接壤，而這也是車輛上山的主要道路。</p>
     </div>
-    <div class="text-block" :id="'act' + catalog[2].id">
-        <h2 v-text="catalog[2].title"></h2>
+    <div class="text-block" :id="'act' + catalog[3].id">
+        <div class="mtlogs-title" v-text="catalog[3].title"></div>
         <p>集集大山的山頂有一座紅白相間，外觀非常突兀的巨大信號發射塔，在發射塔底下的建築則是號稱全台輸出功率最大的電視轉播站，這個電視轉播站的用途是為了能將電視訊號擴散到整個南投境內，乃至更遙遠的雲嘉偏僻山區，都能順利收看數位電視的節目內容。</p>
         <figure>
             <img src="/images/mtlogs/007/05.jpg">
@@ -66,10 +77,13 @@ const catalog = reactive<CatalogItem[]>([
         </figure>
         <p>集集大山不僅是小百岳其中一員，更與守城大山、水社大山、溪頭鳳凰山並列中部四大名山，祂們宛如四方聖獸，各自鎮守著南投中心的四處方位。</p>
         <p>假如蒐集完三角點便打道回府的話，那這集集大山可說是白來了，走到馬路另一側，那才是集集大山山頂精華所在。</p>
+    </div>
+    <div class="text-block" :id="'act' + catalog[4].id">
+        <div class="mtlogs-title" v-text="catalog[4].title"></div>
+        <p>馬路的另一邊同樣有好幾座漆得一紅一白的信號塔，其中一座信號塔底下則是三層樓高的瞭望台。</p>
         <figure>
             <img src="/images/mtlogs/007/07.jpg">
         </figure>
-        <p>馬路的另一邊同樣有好幾座漆得一紅一白的信號塔，其中一座信號塔底下則是三層樓高的瞭望台。</p>
         <p>冬季登山的好處之一，就是當那天氣候狀況良好的時候，蔚藍清晰的視野很高機率可以維持一整天，即便接近日正當午，映入眼簾的景象也不大會有過曝的狀況。頂著這厚重的天光藍，登上瞭望台的最高層，映入眼簾的是一幅環繞四面幾無死角的自然名畫，彷彿可以感受到山主正以非常自豪的口吻向這方訴說：「爾等現在可是站在大山的頂端」。</p>
         <figure>
             <img src="/images/mtlogs/007/08.jpg">
@@ -89,8 +103,8 @@ const catalog = reactive<CatalogItem[]>([
         </figure>
         <p>最後是南面，儘管南面因為有信號發射塔遮擋，展望稍微差了一些，但無論它們如何混淆人們的目光，卻依然藏不住背後遙遙矗立的巍峨高山，是的，那兩座異軍突起的山峰，便是名聞遐邇的「玉山主峰」以及「玉山北峰」。很意外竟然能從集集大山清楚地看見祂們的樣貌．．．．．．呃，好吧，客觀來講這距離「意外」兩字，恐怕還比實際距離更加遙遠，因為集集大山與玉山主峰之間的距離也不過百里之遙，在我家位於的大肚山上，若天氣條件良好，也每每可見上百公里以外的中央山脈。只是當下看見祂們兩兄弟，就像偶遇多年不見的老朋友，欣喜之情不免溢於言表。</p>
     </div>
-    <div class="text-block" :id="'act' + catalog[3].id">
-        <h2 v-text="catalog[3].title"></h2>
+    <div class="text-block" :id="'act' + catalog[5].id">
+        <div class="mtlogs-title" v-text="catalog[5].title"></div>
         <p>透過歷史課本的介紹，我們可以得知集集鎮在過去層是一座市聲鼎沸的小鎮，即便受到九二一大地震的重創，但憑藉轉型觀光旅遊導向，每逢假日來訪的遊客依然絡繹不絕，古鎮依然活絡了一段時間。然而，或許是觀光力度維繫不夠，又止不住不斷外移的人口，如今集集鎮不僅總人口數已跌破一萬，在全台灣所有城鎮裡距離末座僅存一步之遙，僅略多於台東縣關山鎮而已。</p>
         <figure>
             <img src="/images/mtlogs/007/12.jpg">

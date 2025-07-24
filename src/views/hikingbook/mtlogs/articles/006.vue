@@ -8,11 +8,12 @@ import Title from "@/components/Common/BaseTextTitle.vue";
 
 // 目錄
 const catalog = reactive<CatalogItem[]>([
-    { id: 0, title: '序、楔子' },
-    { id: 1, title: '壹、橘子屋的故事' },
-    { id: 2, title: '貳、武界山菜園遇故鄉' },
-    { id: 3, title: '參、一個人的武林' },
-    { id: 4, title: '肆、後記' },
+    { id: 0, title: '0K：楔子' },
+    { id: 1, title: '1K：橘子屋' },
+    { id: 2, title: '2K：武界山' },
+    { id: 3, title: '3K：獅凸魯山' },
+    { id: 4, title: '4K：橫屏山' },
+    { id: 5, title: '5K：後記' },
 ]);
 </script>
 
@@ -28,13 +29,19 @@ const catalog = reactive<CatalogItem[]>([
             </li>
         </ul>
     </div>
+    <div class="text-info">
+        <p><span>登山日期：</span><strong>2021-01-30</strong></p>
+        <p><span>行走總長：</span><strong>約 9 KM</strong></p>
+        <p><span>累計耗時：</span><strong>約 3.5 HR</strong></p>
+        <p><span>路程總覽：</span><strong>橘子屋 → 武界山 → 橫屏山步道 → 獅凸魯山 → 橫屏山 → 橫屏山西峰</strong></p>
+    </div>
     <div class="text-block" :id="'act' + catalog[0].id">
-        <h2 v-text="catalog[0].title"></h2>
+        <div class="mtlogs-title" v-text="catalog[0].title"></div>
         <p>車輛緩緩駛進這處宛如世外桃源的布農族部落，謐靜彷彿籠罩著這片山野，轟隆隆引擎聲都顯得格外刺耳。雲的故鄉，武界，相信這個名字注入多數人眼耳裡並不陌生。武界坐擁美麗壯闊的山川自然奇景、豐富多元的生態樣貌，以及純樸的原鄉文化，儘管不像日月潭或阿里山那樣盛名遠播，卻也是許多酷愛遊山玩水的遊人一生必訪之地。</p>
         <p>根據《台灣文獻》記載，「武界」一詞可信度較高的來源有二說：一是該地一帶的區域曾是布農族與泰雅族爭奪獵場的場域，時常發生交戰，後來兩族協調決議獵場範圍，以武界現址為界線，因而得名；另一說法則是源自布農語的發音「Ｂｕｑａｉｚ」，意指翻越某物，山或界線也包含在所謂的「物」範疇之中。看似兩種不同的說詞，不過就我看來，兩者之間隱隱約約似乎又存在著前因後果之關聯。無論地名起源真相是何者，就地理環境而言，這片位處南投深山的沖積平原為濁水溪一分為二，兩岸部落沿溪岸為居，並以濁水溪劃界區隔直至今日。</p>
     </div>
     <div class="text-block" :id="'act' + catalog[1].id">
-        <h2 v-text="catalog[1].title"></h2>
+        <div class="mtlogs-title" v-text="catalog[1].title"></div>
         <p>２０２１年１月某日的清晨，打開車門坐上駕駛座，頂著寒意與睡意，發動引擎緩緩駛離車庫，撇上國道和不知什麼時候才會熄滅的路燈競速。在事前規劃時事先查詢過交通路線，此次登山行程必須借道非大眾路線的武界產業道路，這條路既狹窄又崎嶇，對當時還不怎麼擅長開山路的我而言，無疑是一項富有壓力的挑戰。為避免塞車與會車的麻煩，即便寒流來襲，也不得不早早掀開溫暖的被褥著裝上路。</p>
         <p>．．．．．．話雖這麼說，但當我東摸西摸抵達埔里鎮其實也已七早八早，好在運氣不錯，又或者埔里六秀並沒有我想像中的那麼知名，總之離開埔里市區一直到武界的這段山路，幾乎沒有遇到任何人車，產業道路雖然一如預期的顛簸，卻也平安無事地抵達曾是舊哨所的「橘子屋」。</p>
         <figure>
@@ -50,7 +57,7 @@ const catalog = reactive<CatalogItem[]>([
         <p>從結果來說很慶幸自己選擇用雙腳一步一腳印走上山，高山茶園一貫標配壯闊的山景稜線盡收眼底，橘子屋到武界山最高點這一公里路無疑是整個登山行程視野最開闊、最美麗的一段。如果選擇駕車上山，恐怕會錯過沿途適合取景的拍攝點，甚至只勉強容得下一輛車寬的農路恐怕也令人無暇欣賞沿途明媚風光。</p>
     </div>
     <div class="text-block" :id="'act' + catalog[2].id">
-        <h2 v-text="catalog[2].title"></h2>
+        <div class="mtlogs-title" v-text="catalog[2].title"></div>
         <p>儘管世人稱呼武界是雲的故鄉，但是在造訪這天，天空藍的像是繪圖軟體直接用純藍色圖層覆蓋在最上層似的，僅能從極度遙遠幾乎脫離視野盡頭之處的一隅，覓得稀疏幾叢素色的雲團，唯一能與這片壓倒性的藍抗衡的，只有燃燒自身以綻放刺眼光芒的灼灼烈日。或許夏天走在這段沒有遮蔽的農路會是一場折磨，好在誤打誤撞選擇冬日前來拜訪，曬歸曬，卻未曾覺得自己是否正在烤爐裡接受酷刑。</p>
         <figure>
             <img src="/images/mtlogs/006/03.jpg">
@@ -69,7 +76,7 @@ const catalog = reactive<CatalogItem[]>([
         <p>儘管擬定登山計畫時就有事先查詢過路況，但再怎麼說，如果能從當地人口中獲得證實，邁出的步伐自然而然也會更加踏實。告別前的最後對方問我從哪裡來，我回答來自台中，對方感到驚訝地說她們也居住在台中，真是好巧不巧！</p>
     </div>
     <div class="text-block" :id="'act' + catalog[3].id">
-        <h2 v-text="catalog[3].title"></h2>
+        <div class="mtlogs-title" v-text="catalog[3].title"></div>
         <p>仍必須得說，縱然埔里六秀知名度無法比擬谷關七雄，卻也沒想過竟然這麼冷門，從橘子屋起登到走進山徑，除了遇到菜園主人外，再也沒聽到其他人類製造的聲響。山齡邁入第五年，這還是頭一次走在杳無人聲的密林當中，即便路徑清晰易辯，氣候也十分舒適，心裡仍著實為一股名為「寧靜」的巨大壓力所籠罩，一腳踩碎枯葉所發出的聲響，彷彿都能響徹整片雲霄。</p>
         <figure>
             <img src="/images/mtlogs/006/06.jpg">
@@ -84,6 +91,9 @@ const catalog = reactive<CatalogItem[]>([
         <figure>
             <img src="/images/mtlogs/006/08.jpg">
         </figure>
+    </div>
+    <div class="text-block" :id="'act' + catalog[4].id">
+        <div class="mtlogs-title" v-text="catalog[4].title"></div>
         <p>往橫屏山的路線基本都行走在稜線上，不時有破風處可以一探北方山景，而位於橫屏山北方的山巒裡，最惹眼的莫過於埔里六秀中的老大──守城大山，守城大山海拔２４１８公尺，幾乎快要比橫屏山高出一千公尺。岳界常言被稱作「大山」的通常都不好惹，無論從平地還是站在山裡眺望，守城大山總是散發著不怒而自威的氣場。</p>
         <p>除了守城大山，更遙遠的北方還可以看到同樣被冠上「大山」尊名的白姑大山、志佳陽大山與雪山主峰等一列著名百岳。</p>
         <figure>
@@ -97,8 +107,8 @@ const catalog = reactive<CatalogItem[]>([
         </figure>
         <p>地勢比較低的近景是板仔寮山，第二層則是舊武界越山、守城大山、南東眼山這幾座守護著埔里盆地的六秀山巒，最遙遠的則是大家耳熟能詳的合歡、奇萊兩大百岳群山線。明明時間已經來到正中午，視野卻還能如此清晰，我想這是只有冬季爬山才能獲得的禮遇吧。</p>
     </div>
-    <div class="text-block" :id="'act' + catalog[4].id">
-        <h2 v-text="catalog[4].title"></h2>
+    <div class="text-block" :id="'act' + catalog[5].id">
+        <div class="mtlogs-title" v-text="catalog[5].title"></div>
         <p>下山後回到埔里市區吃午餐，在東側道路上正好可以清楚地看見橫屏山的全貌，每每下山後在平地再次看見自己稍早走過的山，都不由得感嘆數小時前人還在如此遙遠的山區當中。</p>
         <figure>
             <img src="/images/mtlogs/006/11.jpg">

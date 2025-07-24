@@ -8,11 +8,12 @@ import Title from "@/components/Common/BaseTextTitle.vue";
 
 // 目錄
 const catalog = reactive<CatalogItem[]>([
-    { id: 0, title: '序、楔子' },
-    { id: 1, title: '壹、冷門的小百岳' },
-    { id: 2, title: '貳、大意「吃荊粥」' },
-    { id: 3, title: '參、中台灣的太師椅' },
-    { id: 4, title: '肆、橫看成嶺側成峰' },
+    { id: 0, title: '0K：楔子' },
+    { id: 1, title: '1K：後腳寮' },
+    { id: 2, title: '2K：迷途' },
+    { id: 3, title: '3K：大橫屏山前峰' },
+    { id: 4, title: '4K：大橫屏山' },
+    { id: 5, title: '5K：後記' },
 ]);
 </script>
 
@@ -28,12 +29,18 @@ const catalog = reactive<CatalogItem[]>([
             </li>
         </ul>
     </div>
+    <div class="text-info">
+        <p><span>登山日期：</span><strong>2020-08-09</strong></p>
+        <p><span>行走總長：</span><strong>約 7 KM</strong></p>
+        <p><span>累計耗時：</span><strong>約 4 HR</strong></p>
+        <p><span>路程總覽：</span><strong>碧山農場 → 大橫屏山山徑 → 後角寮展望點 → 大橫屏山</strong></p>
+    </div>
     <div class="text-block" :id="'act' + catalog[0].id">
-        <h2 v-text="catalog[0].title"></h2>
+        <div class="mtlogs-title" v-text="catalog[0].title"></div>
         <p>宋代著名文學家蘇軾一生漂泊，在某次貶途離開黃州，前往汝州路上經過廬山時，曾於西林寺的牆壁上寫了一首詩：「橫看成嶺側成峰，遠近高低各不同；不識廬山真面目，只緣身在此山中。」──這首詩便是著名的《題西林壁》。其中，蘇軾利用前兩句詩詞描述盧山的外觀，意指從不同的角度看，山的形狀會有所不同。強調的是視角變化，從正面看像是一條山脊，從側面看則是山峰，遠近的距離也會影響視覺的感受，這些自然現象說明了不同方向投視的視角，映入眼簾的也會呈現出不同的景象。</p>
     </div>
     <div class="text-block" :id="'act' + catalog[1].id">
-        <h2 v-text="catalog[1].title"></h2>
+        <div class="mtlogs-title" v-text="catalog[1].title"></div>
         <p>居住在大台中地區的我們，儘管此次的目標「大橫屏山」就位於台中太平與南投國姓交界，但若要攀登這一座山並依循大眾路線，我們不得不驅車繞過太平，從南投國姓進入山區。一路曲折蜿蜒，遙望山容橫亙的大橫屏山，還真頗有「橫看成嶺側成峰」之感。大橫屏山作為其山系最高峰，承襲雪山山脈的一條支脈，這條脈絡猶如一道屏障，劃開了台中盆地與南投國姓山區兩地，乃這一帶許多河川的發源地。</p>
         <figure>
             <img src="/images/mtlogs/012/01.jpg">
@@ -45,7 +52,7 @@ const catalog = reactive<CatalogItem[]>([
         <p>大橫屏山在Ｇｏｏｇｌｅ地圖上沒有明確的登山口標記，我們根據查詢的軌跡紀錄以及前人的經驗建議，導航產業道路上一處名為「碧山農場」的地點，過某個電稈後找一處路邊寬廣的腹地將車輛安置，再改由徒步前往登山口。而當天從我們脫離國姓鬧區進入山路一直到停好車這段過程，完全沒有遇見任何一輛來車，或是和我們有著一樣相同目標的登山客（一直到回程下山才遇到一位獨攀山友），大橫屏山冷門程度可見一斑。</p>
     </div>
     <div class="text-block" :id="'act' + catalog[2].id">
-        <h2 v-text="catalog[2].title"></h2>
+        <div class="mtlogs-title" v-text="catalog[2].title"></div>
         <p>大橫屏山不像其他熱門山岳立有明顯的登山口牌碑，或許多年過去至撰文的如今已經有了，但在我們登山的當年，仍然只能藉由其他登山隊綁的布條，辨識正確的起登位置。然而，大橫屏山的登山口並不在產業道路的終點，漫步在這條平坦的康莊大道上，若不多留心一旁的布條，很容易就會錯過登山口──我們就是只顧著聊天，一直走到產業道路盡頭都還在張望山徑的起點位置。</p>
         <figure>
             <img src="/images/mtlogs/012/03.jpg">
@@ -60,7 +67,7 @@ const catalog = reactive<CatalogItem[]>([
         <p>雖說用途廣泛，但它身上的荊棘始終是登山者頭痛的夢魘，無法跨出黃藤劍圍的我們，陷入了進退維谷的境地。最終我們被迫放棄攻城，往反方向撤退鏟回產業道路。當好不容易撤退到產業道路上時，身上早已傷痕纍纍，狼狽不堪。而也是這時重新對照軌跡，才驚覺登山口並不在產業道路的終點，乃位於更之前的路邊某處岔口。返回岔口，發現頭頂上方的樹枝繫著五顏六色的路條，儘管不是非常顯眼，卻也沒隱蔽到難以注意的程度，顯然一路走來我們兩對眼睛真的是白長在腦子上，甚至腦子可能也留在車內沒帶下車，不禁啞然失笑。</p>
     </div>
     <div class="text-block" :id="'act' + catalog[3].id">
-        <h2 v-text="catalog[3].title"></h2>
+        <div class="mtlogs-title" v-text="catalog[3].title"></div>
         <p>費盡千辛萬苦終於踏上正途，但歷經一番迷途與血路突圍，我們不由得佇立於登山口前，陷入是否打道回府的長考。思來想去，既然都來了就還是把它走完，畢竟這一趟山路進出不容易，此次放棄下次再來又不知是猴年馬月？況且眼前山徑看上去也友善許多，最壞時刻儼然已成過往。</p>
         <p>我們的堅持很快就得到了回報，儘管仍不免吃上好幾段陡上、拉繩套餐，以及偶遇迎面襲來的黃藤刺客，但對甫經歷一場苦難的我們來說，這些本應該有些挑戰的地形都變得和藹可親，須臾之間我們便抵達了大橫屏山前峰──一處有塊巨大突出的裸岩，視野極佳的破風處。</p>
         <figure>
@@ -73,7 +80,7 @@ const catalog = reactive<CatalogItem[]>([
         <p>但驚喜不單單只是巨岩前方無垠開闊的視野，往旁側一望，大橫屏山主峰突出的山頭便映入眼簾，蘇軾詩句「橫看成嶺側成峰」在此處得到完美的體現，可惜我們僅僅是單純的登山客，沒有懷抱著蘇軾題詩將各種角度的廬山比做世態變化無常，而廬山本身乃隱喻某種象徵的情懷。只想著倘若要登上這顆山頭的頂端，最後這段稜線必然十分陡峭。翻出軌跡記錄查看，從前峰出發抵達主峰的里程只剩下半公里再多一些，登頂已不再那麼遙遠。</p>
     </div>
     <div class="text-block" :id="'act' + catalog[4].id">
-        <h2 v-text="catalog[4].title"></h2>
+        <div class="mtlogs-title" v-text="catalog[4].title"></div>
         <figure>
             <img src="/images/mtlogs/012/07.jpg">
         </figure>
@@ -88,7 +95,13 @@ const catalog = reactive<CatalogItem[]>([
             <img src="/images/mtlogs/012/09.jpg">
         </figure>
         <p>突如其來的迷途經驗，不僅耽擱了原本預期的登山時間，也催速了快快返家的渴望，我們沒有在山頂逗留太久，簡單拍照留念後便循原路折返下山。事後聽友人說他回家後被髮小指著兩條刮花的手臂傷痕叨唸了好一頓，甚至差點就要被禁止登山了，好在最後只是被記一支大過，沒有被勒令退學，真是不幸中的大幸。</p>
+    </div>
+    <div class="text-block" :id="'act' + catalog[5].id">
+        <div class="mtlogs-title" v-text="catalog[5].title"></div>
         <p>儘管冷門，但嚴格來講大橫屏山並不是難度與危險係數很高的山岳，之所以會有這次驚魂記，全然是因為我們太過草率、輕浮地看待這座小百岳所招致的惡果。俗話說，不經一事不長一智，對當時山齡還非常稚嫩的我們來說，這次教訓使我們學會時時刻刻要多留意四周環境，培養習慣性地確認軌跡與自身位置也同樣至關重要。</p>
+        <figure>
+            <img src="/images/mtlogs/012/10.jpg">
+        </figure>
         <p>當然，最重要的還是秉持著崇敬與謙遜的登山心態。</p>
     </div>
 </div> 

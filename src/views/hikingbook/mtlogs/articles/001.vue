@@ -8,13 +8,13 @@ import Title from "@/components/Common/BaseTextTitle.vue";
 
 // 目錄
 const catalog = reactive<CatalogItem[]>([
-    { id: 0, title: '序、楔子' },
-    { id: 1, title: '壹、第零日' },
-    { id: 2, title: '貳、泛白的色調' },
-    { id: 3, title: '參、玉山西峰' },
-    { id: 4, title: '肆、會呼吸的痛' },
-    { id: 5, title: '伍、三個傻瓜' },
-    { id: 6, title: '陸、歸途' },
+    { id: 0, title: '0K：楔子' },
+    { id: 1, title: '1K：東埔山莊' },
+    { id: 2, title: '2K：玉山登山口' },
+    { id: 3, title: '3K：玉山西峰' },
+    { id: 4, title: '4K：大鐵籠' },
+    { id: 5, title: '5K：玉山主峰' },
+    { id: 6, title: '6K：歸途' },
 ]);
 </script>
 
@@ -29,6 +29,12 @@ const catalog = reactive<CatalogItem[]>([
                 <a :href="'#act' + item.id" v-text="item.title"></a>
             </li>
         </ul>
+    </div>
+    <div class="text-info">
+        <p><span>登山日期：</span><strong>2021-01-11</strong></p>
+        <p><span>行走總長：</span><strong>約 24 KM</strong></p>
+        <p><span>累計耗時：</span><strong>兩天一夜</strong></p>
+        <p><span>路程總覽：</span><strong>東埔山莊 → 排雲登山服務中心 → 大鐵杉 → 玉山登山口 → 白木林觀景台 → 玉山大峭壁 → 排雲山莊 → 玉山主峰</strong></p>
     </div>
     <div class="text-block" :id="'act' + catalog[0].id">
         <h2 v-text="catalog[0].title"></h2>

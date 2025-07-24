@@ -20,7 +20,7 @@ onBeforeMount(loadData);
 
 
 // 預設載入的資料筆數
-const defaultItemCount = 15;
+const defaultItemCount = 10;
 
 // 追蹤目前已經載入的資料數量
 const loadedItemCount = ref(defaultItemCount);
