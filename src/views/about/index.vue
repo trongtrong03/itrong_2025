@@ -309,8 +309,8 @@ onUnmounted(() => {
                                             <i class="icon icon-css3"></i>
                                             <i class="icon icon-sass"></i>
                                             <i class="icon icon-stylus"></i>
-                                            <!-- <i class="icon icon-less"></i> -->
-                                            <!-- <i class="icon icon-tailwindcss"></i> -->
+                                            <i class="icon icon-less"></i>
+                                            <i class="icon icon-tailwindcss"></i>
                                             <span></span>
                                             <i class="icon icon-javascript"></i>
                                             <i class="icon icon-jquery"></i>
