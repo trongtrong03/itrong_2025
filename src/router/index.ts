@@ -84,6 +84,11 @@ const router = createRouter({
       name: 'resources',
       component: () => import('../views/resources/index.vue')
     },
+    {
+      path: '/logodemo',
+      name: 'logodemo',
+      component: () => import('../views/_logodemo/index.vue')
+    },
     { 
       path: '/:pathMatch(.*)*',
       name: 'NotFound',

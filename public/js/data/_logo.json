@@ -1,0 +1,330 @@
+[
+    {
+        "id": 0,
+        "viewport": ["扁平", "立體"],
+        "shape": ["線體", "填滿"],
+        "layout": ["圖文分離", "圖文結合", "純文字", "純圖樣"],
+        "inspiration": ["文字", "生物", "物體", "天文地理", "數位", "抽象"],
+        "typography": ["較粗", "較細", "特殊"]
+    },
+    {
+        "id": 1,
+        "viewport": ["扁平"],
+        "shape": ["線體"],
+        "layout": ["圖文分離"],
+        "inspiration": ["文字"],
+        "typography": ["較粗"]
+    },
+    {
+        "id": 2,
+        "viewport": ["扁平"],
+        "shape": ["填滿"],
+        "layout": ["圖文結合"],
+        "inspiration": ["文字", "生物"],
+        "typography": ["較粗"]
+    },
+    {
+        "id": 3,
+        "viewport": ["扁平"],
+        "shape": ["線體"],
+        "layout": ["圖文分離"],
+        "inspiration": ["文字"],
+        "typography": ["較細"]
+    },
+    {
+        "id": 4,
+        "viewport": ["扁平"],
+        "shape": ["線體"],
+        "layout": ["圖文分離"],
+        "inspiration": ["文字"],
+        "typography": ["較粗"]
+    },
+    {
+        "id": 5,
+        "viewport": ["扁平"],
+        "shape": ["填滿"],
+        "layout": ["圖文分離"],
+        "inspiration": ["天文地理", "抽象"],
+        "typography": ["較細"]
+    },
+    {
+        "id": 6,
+        "viewport": ["扁平"],
+        "shape": ["線體"],
+        "layout": ["圖文分離"],
+        "inspiration": ["抽象"],
+        "typography": ["特殊"]
+    },
+    {
+        "id": 7,
+        "viewport": ["扁平"],
+        "shape": ["線體"],
+        "layout": ["圖文分離"],
+        "inspiration": ["數位"],
+        "typography": ["較粗"]
+    },
+    {
+        "id": 8,
+        "viewport": ["扁平"],
+        "shape": ["線體"],
+        "layout": ["圖文分離"],
+        "inspiration": ["物體"],
+        "typography": ["特殊"]
+    },
+    {
+        "id": 9,
+        "viewport": ["扁平"],
+        "shape": ["線體"],
+        "layout": ["圖文分離"],
+        "inspiration": ["文字"],
+        "typography": ["較細"]
+    },
+    {
+        "id": 10,
+        "viewport": ["扁平"],
+        "shape": ["線體"],
+        "layout": ["圖文分離"],
+        "inspiration": ["生物"],
+        "typography": ["較細"]
+    },
+    {
+        "id": 11,
+        "viewport": ["扁平", "立體"],
+        "shape": ["線體"],
+        "layout": ["圖文分離"],
+        "inspiration": ["天文地理", "抽象"],
+        "typography": ["較細"]
+    },
+    {
+        "id": 12,
+        "viewport": ["立體"],
+        "shape": ["線體"],
+        "layout": ["圖文分離"],
+        "inspiration": ["文字"],
+        "typography": ["特殊"]
+    },
+    {
+        "id": 13,
+        "viewport": ["立體"],
+        "shape": ["填滿"],
+        "layout": ["圖文分離"],
+        "inspiration": ["文字", "數位"],
+        "typography": ["較細"]
+    },
+    {
+        "id": 14,
+        "viewport": ["扁平"],
+        "shape": ["線體"],
+        "layout": ["圖文分離"],
+        "inspiration": ["生物"],
+        "typography": ["較細"]
+    },
+    {
+        "id": 15,
+        "viewport": ["扁平"],
+        "shape": ["線體"],
+        "layout": ["圖文分離"],
+        "inspiration": ["抽象"],
+        "typography": ["較粗"]
+    },
+    {
+        "id": 16,
+        "viewport": ["立體"],
+        "shape": ["線體"],
+        "layout": ["圖文分離"],
+        "inspiration": ["抽象"],
+        "typography": ["較細"]
+    },
+    {
+        "id": 17,
+        "viewport": ["立體"],
+        "shape": ["線體"],
+        "layout": ["圖文分離"],
+        "inspiration": ["抽象"],
+        "typography": ["較細"]
+    },
+    {
+        "id": 18,
+        "viewport": ["扁平"],
+        "shape": ["線體"],
+        "layout": ["圖文分離"],
+        "inspiration": ["文字"],
+        "typography": ["較粗"]
+    },
+    {
+        "id": 19,
+        "viewport": ["扁平"],
+        "shape": ["線體"],
+        "layout": ["圖文分離"],
+        "inspiration": ["生物"],
+        "typography": ["較粗"]
+    },
+    {
+        "id": 20,
+        "viewport": ["扁平"],
+        "shape": ["線體"],
+        "layout": ["圖文分離"],
+        "inspiration": ["數位", "抽象"],
+        "typography": ["較粗"]
+    },
+    {
+        "id": 21,
+        "viewport": ["扁平"],
+        "shape": ["填滿"],
+        "layout": ["圖文分離"],
+        "inspiration": ["文字"],
+        "typography": ["較細"]
+    },
+    {
+        "id": 22,
+        "viewport": ["扁平"],
+        "shape": ["填滿"],
+        "layout": ["圖文分離"],
+        "inspiration": ["生物"],
+        "typography": ["較粗"]
+    },
+    {
+        "id": 23,
+        "viewport": ["扁平"],
+        "shape": ["填滿"],
+        "layout": ["圖文分離"],
+        "inspiration": ["生物"],
+        "typography": ["較細"]
+    },
+    {
+        "id": 24,
+        "viewport": ["扁平"],
+        "shape": ["線體"],
+        "layout": ["圖文分離"],
+        "inspiration": ["抽象"],
+        "typography": ["較粗"]
+    },
+    {
+        "id": 25,
+        "viewport": ["立體"],
+        "shape": ["填滿"],
+        "layout": ["圖文分離"],
+        "inspiration": ["生物", "抽象"],
+        "typography": ["較粗"]
+    },
+    {
+        "id": 26,
+        "viewport": ["立體"],
+        "shape": ["線體"],
+        "layout": ["圖文分離"],
+        "inspiration": ["抽象"],
+        "typography": ["較細"]
+    },
+    {
+        "id": 27,
+        "viewport": ["扁平"],
+        "shape": ["線體"],
+        "layout": ["圖文分離"],
+        "inspiration": ["生物", "天文地理"],
+        "typography": ["較細"]
+    },
+    {
+        "id": 28,
+        "viewport": ["立體"],
+        "shape": ["線體"],
+        "layout": ["圖文分離"],
+        "inspiration": ["數位", "抽象"],
+        "typography": ["較粗"]
+    },
+    {
+        "id": 29,
+        "viewport": ["扁平"],
+        "shape": ["線體"],
+        "layout": ["圖文分離"],
+        "inspiration": ["抽象"],
+        "typography": ["較粗"]
+    },
+    {
+        "id": 30,
+        "viewport": ["扁平"],
+        "shape": ["線體"],
+        "layout": ["圖文分離"],
+        "inspiration": ["生物"],
+        "typography": ["較粗"]
+    },
+    {
+        "id": 31,
+        "viewport": ["扁平"],
+        "shape": ["填滿"],
+        "layout": ["圖文分離"],
+        "inspiration": ["生物"],
+        "typography": ["較粗"]
+    },
+    {
+        "id": 32,
+        "viewport": ["扁平"],
+        "shape": ["填滿"],
+        "layout": ["圖文分離"],
+        "inspiration": ["天文地理"],
+        "typography": ["較粗"]
+    },
+    {
+        "id": 33,
+        "viewport": ["扁平"],
+        "shape": ["線體"],
+        "layout": ["純圖樣"],
+        "inspiration": ["文字"],
+        "typography": [""]
+    },
+    {
+        "id": 34,
+        "viewport": ["立體"],
+        "shape": ["線體"],
+        "layout": ["圖文分離"],
+        "inspiration": ["抽象"],
+        "typography": ["較細"]
+    },
+    {
+        "id": 35,
+        "viewport": ["扁平"],
+        "shape": ["填滿"],
+        "layout": ["圖文結合"],
+        "inspiration": ["天文地理"],
+        "typography": ["較細"]
+    },
+    {
+        "id": 36,
+        "viewport": ["立體"],
+        "shape": ["線體"],
+        "layout": ["圖文分離"],
+        "inspiration": ["生物"],
+        "typography": ["較粗"]
+    },
+    {
+        "id": 37,
+        "viewport": ["扁平"],
+        "shape": ["填滿"],
+        "layout": ["圖文分離"],
+        "inspiration": ["生物"],
+        "typography": ["較細"]
+    },
+    {
+        "id": 38,
+        "viewport": ["扁平"],
+        "shape": ["填滿"],
+        "layout": ["圖文分離"],
+        "inspiration": ["數位"],
+        "typography": ["較粗"]
+    },
+    {
+        "id": 39,
+        "viewport": ["立體"],
+        "shape": ["線體"],
+        "layout": ["圖文分離"],
+        "inspiration": ["抽象"],
+        "typography": ["較粗"]
+    },
+    {
+        "id": 40,
+        "viewport": ["扁平"],
+        "shape": ["填滿"],
+        "layout": ["圖文分離"],
+        "inspiration": ["生物"],
+        "typography": ["較細"]
+    }
+]

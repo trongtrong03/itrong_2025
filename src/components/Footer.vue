@@ -1,14 +1,16 @@
 <script setup lang="ts">
     // 載入 pinia stores
     import { useBaseInfo } from "@/stores/baseInfo";
+
     const baseInfo = useBaseInfo();
+    const currentYear = new Date().getFullYear()
 </script>
 
 <template>
     <footer class="footer-wrap">
         <section class="footer-center">
             <div class="footer-copyright">
-                <p>Copyright © 2014-2024 {{ baseInfo.SHORTNAME }} All Rights Reserved.</p>
+                <p>Copyright © 2014-{{ currentYear }} {{ baseInfo.SHORTNAME }} All Rights Reserved.</p>
             </div>
         </section>
     </footer>

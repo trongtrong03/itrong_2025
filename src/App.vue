@@ -8,7 +8,7 @@
 </script>
 
 <template>
-    <Header />
+    <Header v-if="route.path !== '/logodemo'" />
     <transition name="fade" mode="out-in">
         <main class="main-wrap">
             <div class="main-inside">
@@ -17,7 +17,7 @@
             <Float />
         </main>
     </transition>
-    <Footer />
+    <Footer v-if="route.path !== '/logodemo'" />
 </template>
 
 <style lang="scss">
