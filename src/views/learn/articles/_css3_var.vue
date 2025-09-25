@@ -39,28 +39,42 @@ const catalog = reactive<CatalogItem[]>([
     <div class="text-block" :id="'act' + catalog[1].id">
         <h2 v-text="catalog[1].title"></h2>
         <p>既然序章提到過往我們習慣用 CSS 預處理器來建立變數，管理 CSS 編寫時會重複使用到的參數值，那麼我們就先以其中一種預處理器語言作舉例，認識如何宣告並使用變數。就以 Sass 來說，宣告變數的方法通常是這樣子的（使用 Scss 寫法）：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">$text: #000;
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                $text: #000;
 
-p {
-    color: $text;
-}</code></pre>
-            </div>
-        </prism-highlight>
+                p {
+                    color: $text;
+                }
+            </code>
+        </pre>
         <p>透過字符 <em>$</em> 並添加自定義的名稱（<em>text</em>）以表示變數成立，若要取用該變數，只需要在欲使用變數的屬性後方將變數名稱寫入即可。</p>
         <p>而如果要用 CSS3 原生變數宣告方法，基本寫法則是這樣：</p>
-        <prism-highlight>        
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">:root {
-    --text: #000;
-}
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                :root {
+                    --text: #000;
+                }
 
-p {
-    color: var(--$text);
-}</code></pre>
-            </div>
-        </prism-highlight>
+                p {
+                    color: var(--$text);
+                }
+            </code>
+        </pre>
         <p>對，寫法就是這麼簡單、這麼樸實無華，不僅與傳統預處理器的語法規則大同小異，還直接省略掉了轉譯輸出的動作（假如你是原生 CSS 樣式表的手刻黨）。透過在根元素 <em>root</em> 嵌套裡定義的變數，之後我們可以在任何選擇器裡自由地引用該變數，當瀏覽器載入網頁後，會自動將該變數所定義的值代入到引用選擇器的元素標籤上。</p>
     </div>
     <div class="text-block" :id="'act' + catalog[2].id">
@@ -77,32 +91,46 @@ p {
         <p><br></p>
         <p>儘管以下狀況比較不會發生，但我們還是來談談「如果引用某變數的屬性讀取不到該變數時」的情況。會發生這個問題，通常是開發者引用變數時不慎寫錯該變數名稱，譬如要引用 <em>--text</em>，結果卻錯寫成 <em>--test</em>，或者他想引用的變數從來就沒被宣告，甚至是變數作用範圍並不包含他當下引入的選擇器......行文至此，赫然發現好發率及可能原因似乎也沒想像中那麼低。</p>
         <p>總而言之，如果要避免引用無效或錯誤的變數，導致網頁元素並沒有正確地套用屬性值，我們在開發引用該變數時，可以在變數括號裡再增加一個值，作為變數無法讀取時的替代結果。例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">:root {
-    --text: #000;
-}
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                :root {
+                    --text: #000;
+                }
 
-p {
-    color: var(--$textt, #000);
-}</code></pre>
-            </div>
-        </prism-highlight>
+                p {
+                    color: var(--$textt, #000);
+                }
+            </code>
+        </pre>
         <p>在 <em>var()</em> 內的引用變數後方再加入另一個屬性值，並以逗號區隔，如此一來當前面的變數無效時，瀏覽器也會抓取後方的替代值，算是防範未然，為可能發生的錯誤增添另一道保險。</p>
     </div>
     <div class="text-block" :id="'act' + catalog[3].id">
         <h2 v-text="catalog[3].title"></h2>
         <p>一般情況下，我們會偏好將變數範圍設定為全域的，意即無論在任何有需要引用該變數值的選擇器皆能直接讀取到它，但是前面有提過，原生 CSS 變數必須宣告在選擇器裡，不像 CSS 預處理器可直接在文件任一行直接定義變數。然而如同一般樣式屬性，變數只會在其嵌套所屬的選擇器裡產生效果，它只會在符合該選擇器指定的對象產生作用...那麼我們該怎麼做才能讓原生 CSS 變數也能讓所有選擇器裡的屬性去套用它呢？</p>
         <p>答案其實很簡單，只要稍做換位思考便可明瞭。正所謂「山不轉路轉」，我們只要將變數寫在萬用選擇器 <em>*</em> 或根元素選擇器 <em>:root</em> 即可。只要將變數放在作用範圍較廣（或者說權重較低）的選擇器裡即可，像前面的例子都是將變數宣告在根元素選擇器裡。</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">:root {
-    --text: #000;
-    --bg: #f2f2f2;
-    --size: 30rem;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                :root {
+                    --text: #000;
+                    --bg: #f2f2f2;
+                    --size: 30rem;
+                }
+            </code>
+        </pre>
         <p>因為 CSS 有權重以及後面覆蓋前面的關係，通常 Coding Style 會習慣將根元素、萬用選擇器的定義寫在文件的起頭處，因此如果我們把變數寫在這些選擇器的好處，除了可以讓所有選擇器裡的屬性都能引用該變數之外，同時也便於管理維護。</p>
         <p>然而，根據開發者習性、團隊原則等原由，是有可能要求變數不要定義為全域可用，將變數作用範圍限制在指定選擇器或一定的範圍內就好。整體來說，CSS 變數的作用範圍可分為以下三種：</p>
         <h3>1. 全域變數</h3>
@@ -110,22 +138,29 @@ p {
         <p><br></p>
         <h3>2. 區域變數</h3>
         <p>這裡說的「區域」，泛指除了根元素與萬用選擇器之外的其他選擇器，比如 ID 選擇器、標籤選擇器、類別選擇器...等，在這些選擇器內宣告的變數，在其他選擇器裡去引用將沒有作用。例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">h1 {
-    --text: red;
-    color: var(--text);
-}
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                h1 {
+                    --text: red;
+                    color: var(--text);
+                }
 
-h2 {
-    color: var(--text);
-}
+                h2 {
+                    color: var(--text);
+                }
 
-h3 {
-    color: var(--text, green);
-}</code></pre>
-            </div>
-        </prism-highlight>
+                h3 {
+                    color: var(--text, green);
+                }
+            </code>
+        </pre>
         <p>在 <em>h1</em> 標籤選擇器裡宣告的 <em>--text</em> 變數值，只會作用於網頁裡所有 <em>h1</em> 元素，<em>h2</em>、<em>h3</em> 則沒有效果，其中 <em>h3</em> 由於有額外給予替代值，因此會以替代值為主，至於什麼都沒有的 <em>h2</em> 就只能依照瀏覽器的預設設定了。</p>
         <p>範例演練：</p>
         <div class="text-codepen">
@@ -139,37 +174,58 @@ h3 {
         </div>
         <p><br></p>
         <p>看完區域變數的範例，這時可能會有人不免產生好奇：假如全域變數名稱與區域變數名稱「撞名」會怎麼樣？</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">:root{
-    --text: red;
-}
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                :root{
+                    --text: red;
+                }
 
-p {
-    --text: blue;
-    color: var(--text);
-}</code></pre>
-            </div>
-        </prism-highlight>
+                p {
+                    --text: blue;
+                    color: var(--text);
+                }
+            </code>
+        </pre>
         <p>答案是會套用區域變數裡的值（<em>blue</em>），理由無它，單純遵循 CSS 權重規則而已，標籤選擇器的權重比根元素選擇器來的優先，換句話說，當變數名稱重複時，權重高的選擇器裡變數值將會蓋過權重較低的選擇器所宣告的值。</p>
         <p><br></p>
         <h3>3. 行內變數</h3>
         <p>CSS 的書寫方式主要分成外部引用 <em>.css</em> 文件、於 HTML <em>&lt;style&gt;</em> 元素標籤裡書寫，以及在 HTML 指定元素裡透過 <em>style</em> 屬性添加樣式這三種方法，而行內變數宣告方式指的是最後者。以下我們直接透過範例來了解：</p>
         <h4>HTML 部分：</h4>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;h1 style="--text: red"&gt;This is h1&lt;/h1&gt;</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>
+                &lt;h1 style="--text: red"&gt;This is h1&lt;/h1&gt;
+            </code>
+        </pre>
         <p><br></p>
         <h4>CSS 部分：</h4>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">h1 {
-    color: var(--text);
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                h1 {
+                    color: var(--text);
+                }
+            </code>
+        </pre>
         <p>範例中我們可以看到變數的宣告是直接透過 HTML 元素屬性寫在 <em>&lt;h1&gt;</em> 元素標籤內，然後經由 CSS 指定選擇器去引用它的值。</p>
         <p>範例演練：</p>
         <div class="text-codepen">
@@ -187,52 +243,73 @@ p {
     <div class="text-block" :id="'act' + catalog[4].id">
         <h2 v-text="catalog[4].title"></h2>
         <p>網頁響應式設計的方法是透過 <em>@media query</em> 規則，利用 CSS 後者覆蓋前者的特性，以實現 RWD 的效果。如果想要讓變數在畫面伸縮或不同裝置時可以代換成其他變數值，就只需要像其他屬性設置那般依樣畫葫蘆，將同一個變數名稱置入到指定的 <em>@media query</em> 裡面給予對應的值即可。例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">:root{
-    --center: 30rem;
-}
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                :root{
+                    --center: 30rem;
+                }
 
-@media only screen and (max-width: 768px) {
-    :root{
-        --center: 20rem;
-    }
-}
+                @media only screen and (max-width: 768px) {
+                    :root{
+                        --center: 20rem;
+                    }
+                }
 
-@media only screen and (max-width: 480px) {
-    :root{
-        --center: 15rem;
-    }
-}</code></pre>
-            </div>
-        </prism-highlight>
+                @media only screen and (max-width: 480px) {
+                    :root{
+                        --center: 15rem;
+                    }
+                }
+            </code>
+        </pre>
     </div>
     <div class="text-block" :id="'act' + catalog[5].id">
         <h2 v-text="catalog[5].title"></h2>
         <p>基本而言，只要是合法的屬性值，都能寫入到變數裡有所作用。其中值得一提的是 <em>calc</em> 這個屬性，<em>calc</em> 屬性可以讓我們直接在 CSS 裡面設定數學公式，由瀏覽器來計算出結果，而且很特別的是運算數值單位可以不一樣，譬如 <em>calc(100% - 40px)</em>，這大大提升了前端切版的靈活度。而這個運算函式裡的數值，同樣可以用變數去給值，例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">:root{
-    --W: 4rem;
-}
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                :root{
+                    --W: 4rem;
+                }
 
-.content {
-    width: calc(100% - var(--W));
-}</code></pre>
-            </div>
-        </prism-highlight>
+                .content {
+                    width: calc(100% - var(--W));
+                }
+            </code>
+        </pre>
         <p>也可以直接整個搬進變數裡作宣告：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">:root{
-    --W: calc(100vw - 4rem);
-}
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                :root{
+                    --W: calc(100vw - 4rem);
+                }
 
-.content {
-    width: var(--W);
-}</code></pre>
-            </div>
-        </prism-highlight>
+                .content {
+                    width: var(--W);
+                }
+            </code>
+        </pre>
         <p><br></p>
         <p>以上就是本文對原生 CSS 變數的大略介紹，雖說現階段原生 CSS 仍無法像 CSS 預處理器有大量函式可以運用，但如果你的專案不需要使用函式，只需要簡單的變數去管理網站整體的數值或色碼，那麼原生 CSS 的 Variables 便綽綽有餘，毋須額外安裝預處理器來輔助作業。</p>
     </div>

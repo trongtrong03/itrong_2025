@@ -38,27 +38,41 @@ const catalog = reactive<CatalogItem[]>([
         <h2 v-text="catalog[1].title"></h2>
         <p>儘管正確地使用 HTML 元素編寫網頁對搜尋優化已有幫助，但如果面對使用者想搜尋更精確的關鍵字，例如某某顏色（紅色、綠色...）、某某價格範圍（0 ~ 5000）等，單純的 HTML 標籤就顯得較為不足，於是後來 Google、Bing、Yandex 和 Yahoo! 等企業合作推出「資料結構化」的概念，透過為 HTML 標籤添加特定標記屬性，進一步提升關鍵字搜尋的最佳結果。</p>
         <p><a href="https://schema.org/" target="_blank">Schema.org</a> 就是集上述四家企業大成，共同訂定結構化標記的網站資源，網路上也可以搜尋到<a href="https://schema.org.cn/docs/index.html" target="_blank">中文化</a>的版本，然而距離前次更新已經要追溯至 2012 年，所以如果要獲取最新資訊，最好還是透過原文官方文件來取得。</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;div&gt;
-    &lt;h1&gt;《奇異果博士》&lt;/h1&gt;
-    &lt;span&gt;類型：動作&lt;/span&gt;
-    &lt;span&gt;演員：奇異果、蘋果、鳳梨&lt;/span&gt;
-    &lt;span&gt;&lt;a href="#0"&gt;搶先看&lt;/a&gt;&lt;/span&gt;
-&lt;/div&gt;</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>
+                &lt;div&gt;
+                    &lt;h1&gt;《奇異果博士》&lt;/h1&gt;
+                    &lt;span&gt;類型：動作&lt;/span&gt;
+                    &lt;span&gt;演員：奇異果、蘋果、鳳梨&lt;/span&gt;
+                    &lt;span&gt;&lt;a href="#0"&gt;搶先看&lt;/a&gt;&lt;/span&gt;
+                &lt;/div&gt;
+            </code>
+        </pre>
         <p>這是未添加結構化標記（Schema）的 HTML 程式碼片段，也就是平常我們網頁開發的標準結構，但導入 Schema 概念後，同樣的程式碼片段就會變成如下：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;div itemscope itemtype="http://schema.org/Movie"&gt;
-    &lt;h1 itemprop="name"&gt;《奇異果博士》&lt;/h1&gt;
-    &lt;span itemprop="genre"&gt;類型：動作&lt;/span&gt;
-    &lt;span itemprop="director"&gt;演員：奇異果、蘋果、鳳梨&lt;/span&gt;
-    &lt;span itemprop="trailer"&gt;&lt;a href="#0"&gt;搶先看&lt;/a&gt;&lt;/span&gt;
-&lt;/div&gt;</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>
+                &lt;div itemscope itemtype="http://schema.org/Movie"&gt;
+                    &lt;h1 itemprop="name"&gt;《奇異果博士》&lt;/h1&gt;
+                    &lt;span itemprop="genre"&gt;類型：動作&lt;/span&gt;
+                    &lt;span itemprop="director"&gt;演員：奇異果、蘋果、鳳梨&lt;/span&gt;
+                    &lt;span itemprop="trailer"&gt;&lt;a href="#0"&gt;搶先看&lt;/a&gt;&lt;/span&gt;
+                &lt;/div&gt;
+            </code>
+        </pre>
         <p>雖然程式碼看起來變多了，但也相對更明瞭元素裡面的內容存放著什麼樣的資料。有關 Schema 的語法放在下一個章節進行介紹。</p>
     </div>
     <div class="text-block" :id="'act' + catalog[2].id">
@@ -93,21 +107,28 @@ const catalog = reactive<CatalogItem[]>([
             <img src="/images/learn/html/schema-1.jpg">
         </figure>
         <p>首先選擇要添加結構化資料的文檔類型（網站或電子郵件），如果選擇「網站」，可以直接貼上目標網頁的網址，或是 HTML 原始碼。這裡我用「餐廳」作為此次練習的資料類型，圈選「餐廳」的核選按鈕，並在 HTML 處貼上下方程式碼片段：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;div&gt;
-    &lt;h1&gt;消波塊水餃&lt;/h1&gt;
-    &lt;p&gt;手工現包現做，內餡紮實又多汁，挑戰幸福味蕾的極限。&lt;/p&gt;
-    &lt;p&gt;
-        &lt;span&gt;台中市&lt;/span&gt;
-        &lt;span&gt;大甲區&lt;/span&gt;
-        &lt;span&gt;這條路那條巷一段一弄一號&lt;/span&gt;
-    &lt;/p&gt;
-    &lt;p&gt;營業時間：平日9:00-17:00&lt;/p&gt;
-    &lt;p&gt;聯絡電話：(04) 2444-1744&lt;/p&gt;
-&lt;/div&gt;</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>
+                &lt;div&gt;
+                    &lt;h1&gt;消波塊水餃&lt;/h1&gt;
+                    &lt;p&gt;手工現包現做，內餡紮實又多汁，挑戰幸福味蕾的極限。&lt;/p&gt;
+                    &lt;p&gt;
+                        &lt;span&gt;台中市&lt;/span&gt;
+                        &lt;span&gt;大甲區&lt;/span&gt;
+                        &lt;span&gt;這條路那條巷一段一弄一號&lt;/span&gt;
+                    &lt;/p&gt;
+                    &lt;p&gt;營業時間：平日9:00-17:00&lt;/p&gt;
+                    &lt;p&gt;聯絡電話：(04) 2444-1744&lt;/p&gt;
+                &lt;/div&gt;
+            </code>
+        </pre>
         <p><br></p>
         <h6>2. 標記資料</h6>
         <figure>
@@ -142,26 +163,33 @@ const catalog = reactive<CatalogItem[]>([
         <figure>
             <img src="/images/learn/html/schema-8.jpg">
         </figure>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;html&gt;
-&lt;head&gt;&lt;/head&gt;
-&lt;body&gt;
-    &lt;div itemscope itemtype="http://schema.org/Restaurant"&gt;
-        &lt;h1 itemprop="name"&gt;消波塊水餃&lt;/h1&gt;
-        &lt;p&gt;手工現包現做，內餡紮實又多汁，挑戰幸福味蕾的極限。&lt;/p&gt;
-        &lt;p itemprop="address" itemscope itemtype="http://schema.org/PostalAddress"&gt;
-            &lt;span itemprop="addressLocality"&gt;&lt;span&gt;台中市&lt;/span&gt;
-            &lt;span&gt;大甲區&lt;/span&gt;&lt;/span&gt;
-            &lt;span itemprop="streetAddress"&gt;這條路那條巷一段一弄一號&lt;/span&gt;
-        &lt;/p&gt;
-        &lt;p itemprop="openingHoursSpecification" itemscope itemtype="http://schema.org/OpeningHoursSpecification"&gt;營業時間：平日&lt;span itemprop="opens" content="請在這裡插入有效的 ISO 8601 日期/時間。例如：2015-07-27 或 2015-07-27T15:30"&gt;9:00-17:00&lt;/span&gt;&lt;/p&gt;
-        &lt;p&gt;聯絡電話：&lt;span itemprop="telephone"&gt;(04) 2444-1744&lt;/span&gt;&lt;/p&gt;
-    &lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>
+                &lt;html&gt;
+                &lt;head&gt;&lt;/head&gt;
+                &lt;body&gt;
+                    &lt;div itemscope itemtype="http://schema.org/Restaurant"&gt;
+                        &lt;h1 itemprop="name"&gt;消波塊水餃&lt;/h1&gt;
+                        &lt;p&gt;手工現包現做，內餡紮實又多汁，挑戰幸福味蕾的極限。&lt;/p&gt;
+                        &lt;p itemprop="address" itemscope itemtype="http://schema.org/PostalAddress"&gt;
+                            &lt;span itemprop="addressLocality"&gt;&lt;span&gt;台中市&lt;/span&gt;
+                            &lt;span&gt;大甲區&lt;/span&gt;&lt;/span&gt;
+                            &lt;span itemprop="streetAddress"&gt;這條路那條巷一段一弄一號&lt;/span&gt;
+                        &lt;/p&gt;
+                        &lt;p itemprop="openingHoursSpecification" itemscope itemtype="http://schema.org/OpeningHoursSpecification"&gt;營業時間：平日&lt;span itemprop="opens" content="請在這裡插入有效的 ISO 8601 日期/時間。例如：2015-07-27 或 2015-07-27T15:30"&gt;9:00-17:00&lt;/span&gt;&lt;/p&gt;
+                        &lt;p&gt;聯絡電話：&lt;span itemprop="telephone"&gt;(04) 2444-1744&lt;/span&gt;&lt;/p&gt;
+                    &lt;/div&gt;
+                &lt;/body&gt;
+                &lt;/html&gt;
+            </code>
+        </pre>
         <p>上方這段程式碼是協助工具最後生成的結果，我們將它貼入測試工具的「程式碼片段」的輸入區域中，接著點擊「執行測試」，經分析後測試工具就會回報測試結果：</p>
         <figure>
             <img src="/images/learn/html/schema-9.jpg">

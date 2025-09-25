@@ -40,21 +40,35 @@ const catalog = reactive<CatalogItem[]>([
     <div class="text-block" :id="'act' + catalog[1].id">
         <h2 v-text="catalog[1].title"></h2>
         <p>Transform 的 CSS 語法屬性名稱為 <em>transform</em>，和 CSS3 另一個使用率廣泛的 <em>animation</em> 屬性相比，<em>transform</em> 的語法規則比較單純，各種變化效果只需透過 <em>transform</em> 一行就能設置：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">element {
-    transform: value(argument);
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                element {
+                    transform: value(argument);
+                }
+            </code>
+        </pre>
         <p><em>value</em> 指的是要變形的效果，例如位移或旋轉，而括號內則是該效果的變量。假設我們要令元素透過變形效果水平向右位移 <em>50px</em>，語法如下：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">div {
-    transform: translateX(50px);
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                div {
+                    transform: translateX(50px);
+                }
+            </code>
+        </pre>
     </div>
     <div class="text-block" :id="'act' + catalog[2].id">
         <h2 v-text="catalog[2].title"></h2>
@@ -86,13 +100,20 @@ const catalog = reactive<CatalogItem[]>([
         <p><br></p>
         <h3>translate（位移）</h3>
         <p>語法：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">div {
-    transform: translate(x, y);
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                div {
+                    transform: translate(x, y);
+                }
+            </code>
+        </pre>
         <p>位移的概念與偏移屬性（<em>top</em>、<em>left</em>...）相似，但它不需要設定 <em>position</em> 屬性。語法內的 <em>x</em>、<em>y</em> 值分別從元素參考點中心往水平（X 軸）與垂直（Y 軸）移動。假設 <em>translate()</em> 裡面只有設定一個值，則視為 <em>x</em> 軸位移，<em>y</em> 軸位移為 <em>0</em>。</p>
         <p>範例演練：</p>
         <div class="text-codepen">
@@ -103,24 +124,38 @@ const catalog = reactive<CatalogItem[]>([
             </p>
         </div>
         <p>在範例中 <em>x</em> 值以百分比表示，百分比的位移程度是以元素寬度去計算，例如 <em>50%</em> 即位移該元素一半的寬度。</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">div {
-    transform: translateX(length);
-    transform: translateY(length);
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                div {
+                    transform: translateX(length);
+                    transform: translateY(length);
+                }
+            </code>
+        </pre>
         <p><br></p>
         <h3>scale（縮放）</h3>
         <p>語法：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">div {
-    transform: scale(x, y);
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                div {
+                    transform: scale(x, y);
+                }
+            </code>
+        </pre>
         <p>以元素參考點為中心做 X、Y 軸的倍率縮放，它填入的值只能是純數字（因為是倍數的意思），不接受其他單位，例如像素（<em>px</em>）或百分比（<em>%</em>）等都不能加入到屬性值內。</p>
         <p>範例演練：</p>
         <div class="text-codepen">
@@ -131,24 +166,38 @@ const catalog = reactive<CatalogItem[]>([
             </p>
         </div>
         <p>假如只填入一個數字，代表 X 與 Y 軸縮放的倍率相同。此外，如同位移效果，縮放亦可分別定義 X 與 Y 軸的縮放程度：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">div {
-    transform: scaleX(number);
-    transform: scaleY(number);
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                div {
+                    transform: scaleX(number);
+                    transform: scaleY(number);
+                }
+            </code>
+        </pre>
         <p><br></p>
         <h3>rotate（旋轉）</h3>
         <p>語法：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">div {
-    transform: rotate(θ);
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                div {
+                    transform: rotate(θ);
+                }
+            </code>
+        </pre>
         <p>以元素的參考點為中心進行旋轉，單位為 <em>deg</em>，代表角度，若填入的數字為正值，代表元素以順時針旋轉，負值則為逆時針。</p>
         <p>範例演練：</p>
         <div class="text-codepen">
@@ -161,13 +210,20 @@ const catalog = reactive<CatalogItem[]>([
         <p><br></p>
         <h3>skew（傾斜）</h3>
         <p>語法：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">div {
-    transform: skew(θx, θy);
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                div {
+                    transform: skew(θx, θy);
+                }
+            </code>
+        </pre>
         <p>以元素參考點為中心，使其分別向 X、Y 軸傾斜填入的角度。倘若只填入一個值，代表只有 X 軸傾斜，Y 軸不傾斜。</p>
         <div class="text-codepen">
             <p class="codepen" data-height="480" data-theme-id="dark" data-default-tab="css,result" data-user="itrong" data-slug-hash="KKdxKxR" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="css3: transform-4">
@@ -177,25 +233,39 @@ const catalog = reactive<CatalogItem[]>([
             </p>
         </div>
         <p>看過前面 <em>translate()</em> 與 <em>scale()</em>，應該心裡多少已有些底了吧？只要分別填入 X、Y 軸，就能更針對性地單獨定義其中一個方向的變形屬性，因此傾斜效果也不例外：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">div {
-    transform: skewX(θ);
-    transform: skewY(θ);
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                div {
+                    transform: skewX(θ);
+                    transform: skewY(θ);
+                }
+            </code>
+        </pre>
     </div>
     <div class="text-block" :id="'act' + catalog[3].id">
         <h2 v-text="catalog[3].title"></h2>
         <p>有些人會疑惑是否能在單一元素同時套用多個 <em>transform</em> 的效果？答案是可以的。但有別於許多人容易搞混的 <em>transition</em> 屬性，是以「逗號」來區隔不同的屬性值數組，<em>transform</em> 則以「空白符」區別不同的變形效果設置。例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">div {
-    transform: translateX(-50%) rotate(45deg) skew(5deg, 15deg);
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                div {
+                    transform: translateX(-50%) rotate(45deg) skew(5deg, 15deg);
+                }
+            </code>
+        </pre>
     </div>
     <div class="text-block" :id="'act' + catalog[4].id">
         <h2 v-text="catalog[4].title"></h2>
@@ -205,13 +275,20 @@ const catalog = reactive<CatalogItem[]>([
             <img src="/images/learn/css/transform-1.jpg">
         </figure>
         <p>當編輯綠色圖形變形效果時，其中央有一個圓形的小圓圈，它便是該圖形的參考點。一般而言，HTML 元素的參考點中心為正中央。假如要更改它的參考點，我們可以使用 <em>transform-origin</em> 屬性。</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">div {
-    transform-origin: x y z;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                div {
+                    transform-origin: x y z;
+                }
+            </code>
+        </pre>
         <p>計算起點是以元素的左上角為基準點，參數預設值為 <em>50% 50% 0%</em>，剛好就是元素的正中心。單位除了百分比外，也可以使用固定單位、角度（deg）或是偏移方向的名稱（<em>top</em>、<em>right</em>、<em>bottom</em>、<em>left</em>）。</p>
         <p>範例演練：</p>
         <div class="text-codepen">
@@ -235,25 +312,39 @@ const catalog = reactive<CatalogItem[]>([
             <img src="/images/learn/css/transform-3d-3.jpg">
         </figure>
         <p>示意圖中的「d」指的是物件（元素）到使用者（或稱攝影機）間的距離，而「z」則是物件的 Z 軸（translateZ），當 z 的數值越小，代表物件離我們越近，3D 的變化也越明顯；反之越遠，立體感也越不明顯。</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">.parent {
-    perspective: 100px;
-}
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                .parent {
+                    perspective: 100px;
+                }
 
-.child {
-    transform: ...  /* 屬性 */
-}</code></pre>
-            </div>
-        </prism-highlight>
+                .child {
+                    transform: ...  /* 屬性 */
+                }
+            </code>
+        </pre>
         <p>還有另一種定義 <em>perspective</em> 的方法是透過 <em>transform</em>，例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">div {
-    transform: perspective(100px) rotateX(45deg);
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                div {
+                    transform: perspective(100px) rotateX(45deg);
+                }
+            </code>
+        </pre>
         <p>以上這兩種方法實現出來的效果是一樣的。</p>
         <p>範例演練：</p>
         <div class="text-codepen">
@@ -269,13 +360,20 @@ const catalog = reactive<CatalogItem[]>([
         </figure>
         <p>藍色區域就是依據 <em>perspective-origin</em> 調整中心點後投現的可視範圍。</p>
         <p>語法：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">div {
-    perspective-origin: center center;    /* 預設值 */
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                div {
+                    perspective-origin: center center;    /* 預設值 */
+                }
+            </code>
+        </pre>
         <p>範例演練：</p>
         <div class="text-codepen">
             <p class="codepen" data-height="480" data-theme-id="dark" data-default-tab="css,result" data-user="itrong" data-slug-hash="bGVOmgM" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="CSS3: perspective-2">
@@ -312,13 +410,20 @@ const catalog = reactive<CatalogItem[]>([
         <p><br></p>
         <h3>translate3d（位移）</h3>
         <p>語法：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">div {
-    transform: translate3d(x, y, z);
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                div {
+                    transform: translate3d(x, y, z);
+                }
+            </code>
+        </pre>
         <p><em>x</em>、<em>y</em> 值與 2D 相同，分別是指往水平及垂直方向位移，而 <em>z</em> 值自然指的就是 Z 軸，預設值從 <em>0</em> 開始，數字越大，代表物件越往攝影機的方向靠近；反之數字越小則距離越遠。</p>
         <p>範例演練：</p>
         <div class="text-codepen">
@@ -332,13 +437,20 @@ const catalog = reactive<CatalogItem[]>([
         <p><br></p>
         <h3>scale3d（縮放）</h3>
         <p>語法：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">div {
-    transform: scale3d(x, y, z);
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                div {
+                    transform: scale3d(x, y, z);
+                }
+            </code>
+        </pre>
         <p>物件 3D 的縮放其實看不太出效果，但 <em>z</em> 的參數和另外兩個方向一樣皆是指該軸的縮放倍率。</p>
         <p>範例演練：</p>
         <div class="text-codepen">
@@ -352,13 +464,20 @@ const catalog = reactive<CatalogItem[]>([
         <p><br></p>
         <h3>rotate3d（旋轉）</h3>
         <p>語法：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">div {
-    transform: rotate3d(x, y, z, θ);
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                div {
+                    transform: rotate3d(x, y, z, θ);
+                }
+            </code>
+        </pre>
         <p><em>x</em>、<em>y</em>、<em>z</em> 分別對應旋轉軸三個方向的座標（通常會定義在 0 ~ 1 之間），<em>θ</em> 代表旋轉角度，單位可以是 <em>deg</em>（Degress，度）、<em>grad</em>（Gradians，梯度）、<em>turn</em>（Turns，圈數）、<em>rad</em>（Radians，弧度）等。</p>
         <p>範例演練：</p>
         <div class="text-codepen">
@@ -369,15 +488,22 @@ const catalog = reactive<CatalogItem[]>([
             </p>
         </div>
         <p>三個方向的旋轉亦能單獨定義：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">div {
-    transform: rotateX(θ);
-    transform: rotateY(θ);
-    transform: rotateZ(θ);
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                div {
+                    transform: rotateX(θ);
+                    transform: rotateY(θ);
+                    transform: rotateZ(θ);
+                }
+            </code>
+        </pre>
         <p>※ 避免誤會故提醒一下，上面語法定義單純圖方便，所以將三個 <em>transform</em> 寫在同一元素裡，若要套用複數屬性效果，務必記得正確的書寫方式是通過空白格隔開不同的參數。</p>
         <p><br></p>
         <p>另外補充各個角度單位的標準，請見下表：</p>
@@ -483,13 +609,20 @@ const catalog = reactive<CatalogItem[]>([
         <p><br></p>
         <h3>CSS Transforem 的 matrix()：</h3>
         <p>在 CSS3 <em>transform</em> 屬性中，<em>matrix</em> 的公式語法是長這個樣子的：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">div {
-    transform: matrix(a, b, c, d, tx, ty);
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                div {
+                    transform: matrix(a, b, c, d, tx, ty);
+                }
+            </code>
+        </pre>
         <p>如果要用矩陣來表示，則會是這副模樣：</p>
         <figure>
             <img src="/images/learn/css/transform-matrix-11.jpg">
@@ -500,13 +633,20 @@ const catalog = reactive<CatalogItem[]>([
             <img src="/images/learn/css/transform-matrix-12.jpg">
         </figure>
         <p><b>x</b>、<b>y</b> 分別指的是元素的參考點座標，根據兩矩陣相乘的結果，最後會得出新的 <b>xy</b> 座標值。以下實際練習一個例子：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">div {
-    transform: matrix(1, 0, 0, 1, 20, 20);
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                div {
+                    transform: matrix(1, 0, 0, 1, 20, 20);
+                }
+            </code>
+        </pre>
         <p>另外假設元素參考點的 <b>(x, y)</b> 座標值為 <b>(0, 0)</b>，那麼實際代入到公式時會變成這樣：</p>
         <figure>
             <img src="/images/learn/css/transform-matrix-13.jpg">
@@ -522,33 +662,54 @@ const catalog = reactive<CatalogItem[]>([
             </code>
         </div>
         <p>是的，不管是 <em>translate</em>、<em>scale</em>、<em>rotate</em>、<em>skew</em>，其實都是從 <em>matrix</em> 衍生出來的快速給值方法。所以 <em>matrix()</em> 裡提供的六個值，各自代表的是：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">div {
-    transform: matrix( scaleX(), skewY(), skewX(), scaleY(), translateX(), translateY() );
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                div {
+                    transform: matrix( scaleX(), skewY(), skewX(), scaleY(), translateX(), translateY() );
+                }
+            </code>
+        </pre>
         <p><br></p>
         <h4>位移：</h4>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">div {
-    transform: matrix(1, 0, 0, 1, tx, ty);
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                div {
+                    transform: matrix(1, 0, 0, 1, tx, ty);
+                }
+            </code>
+        </pre>
         <p>上面的介紹中已經提過位移的矩陣表示方法，這裡就不再重複說明。</p>
         <p><br></p>
         <h4>縮放：</h4>
         <p>根據定義，影響矩陣縮放的參數是 <em>matrix()</em> 第一及第四位的數字。</p> 
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">div {
-    transform: matrix(1, 0, 0, 1, 0, 0);
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                div {
+                    transform: matrix(1, 0, 0, 1, 0, 0);
+                }
+            </code>
+        </pre>
         <p>第一個數字改變的是 <b>X</b> 軸方向的縮放倍率，第四個數字則是 <b>Y</b> 軸方向的縮放倍率。範例演練：</p>
         <div class="text-codepen">
             <p class="codepen" data-height="480" data-theme-id="dark" data-default-tab="css,result" data-user="itrong" data-slug-hash="RwWveeg" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="css3: transform-matrix-2">
@@ -560,21 +721,35 @@ const catalog = reactive<CatalogItem[]>([
         <p><br></p>
         <h4>旋轉＆傾斜：</h4>
         <p>這兩個的參數計算方式比起位移和縮放複雜許多，因為它們必須動用到三角函數的概念（什麼賽、摳賽的...），這些東西早就已經通通還給了高中數學老師。再者，用 <em>matrix()</em> 寫旋轉或傾斜實在很沒效率，舉例來說，如果我們要令元素旋轉 <em>30deg</em>，我們可以直接用 <em>rotate()</em> 這樣寫：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">div {
-    transform: rotate(30deg);
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                div {
+                    transform: rotate(30deg);
+                }
+            </code>
+        </pre>
         <p>但如果要用矩陣去表示，則會變成一串相當複雜之數字：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">div {
-    transform: matrix(0.866025, 0.500000, -0.500000, 0.866025, 0, 0);
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                div {
+                    transform: matrix(0.866025, 0.500000, -0.500000, 0.866025, 0, 0);
+                }
+            </code>
+        </pre>
         <p>以下提供一個簡易矩陣傾斜變化工具，有興趣的看倌可以玩玩看傾斜角度的變化與矩陣的運算方式，感受矩陣的計算有多複雜。</p>
         <div class="text-codepen">
             <p class="codepen" data-height="480" data-theme-id="dark" data-default-tab="css,result" data-user="itrong" data-slug-hash="eYpxQBp" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="css3: transform-matrix-3">
@@ -586,18 +761,25 @@ const catalog = reactive<CatalogItem[]>([
         <p><br></p>
         <h3>matrix3d()</h3>
         <p>3D 的矩陣變化又比 2D 矩陣複雜更多，其矩陣語法是：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">div {
-    transform: matrix3d(
-        1, 0, 0, 0,
-        0, 1, 0, 0,
-        0, 0, 1, 0,
-        0, 0, 0, 1
-    );
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                div {
+                    transform: matrix3d(
+                        1, 0, 0, 0,
+                        0, 1, 0, 0,
+                        0, 0, 1, 0,
+                        0, 0, 0, 1
+                    );
+                }
+            </code>
+        </pre>
         <p>和 2D 矩陣有點類似，基本數值中的 <em>1</em>（撇除最後一列不算），掌控的就是三軸方向的縮放倍率。範例：</p>
         <div class="text-codepen">
             <p class="codepen" data-height="480" data-theme-id="dark" data-default-tab="css,result" data-user="itrong" data-slug-hash="LYpozxX" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="css3: transform-matrix3d-1">
@@ -608,18 +790,25 @@ const catalog = reactive<CatalogItem[]>([
         </div>
         <p><br></p>
         <p><em>translate3d()</em> 的矩陣對應位置則是：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">div {
-    transform: matrix3d(
-        1, 0, 0, 0,
-        0, 1, 0, 0,
-        0, 0, 1, 0,
-        tx, ty, tz, 1
-    );
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                div {
+                    transform: matrix3d(
+                        1, 0, 0, 0,
+                        0, 1, 0, 0,
+                        0, 0, 1, 0,
+                        tx, ty, tz, 1
+                    );
+                }
+            </code>
+        </pre>
         <p>範例演練：</p>
         <div class="text-codepen">
             <p class="codepen" data-height="480" data-theme-id="dark" data-default-tab="css,result" data-user="itrong" data-slug-hash="JjYqrye" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="css3: transform-matrix3d-2">

@@ -33,14 +33,21 @@ const catalog = reactive<CatalogItem[]>([
     <div class="text-block" :id="'act' + catalog[0].id">
         <h2 v-text="catalog[0].title"></h2>
         <p>試想如果我們今天要用 JavaScript 建立一份班級名冊，每個座號對應與號碼匹配對應的學生姓名，如果程式語言還在初出茅廬的階段，直覺或許會這樣寫：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">var number1 = "王小明";
-var number2 = "李大華";
-var number3 = "張小芬";
-...</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                var number1 = "王小明";
+                var number2 = "李大華";
+                var number3 = "張小芬";
+                ...
+            </code>
+        </pre>
         <p>上面程式碼片段所展示的解答是將座號當作變數名稱，依次宣告號碼對應的同學姓名，或許當班級總人數少的情況下，可能還不覺得有什麼不方便之處。但萬一人數很多呢？又或者未來某天來了名轉學生，勢必得需要額外宣告新的變數名稱（numberN），以在名冊裡加入新同學的資料。可是當每一筆資料都單獨通過變數命名存取，在程式操作上會相當不方便（例如變數只宣告到 <em>number50</em>，我就只能存取到 <em>number50</em> 以內的變數），且不確定資料數量情況下，這種所有資料都以變數命名各自管理的模式也顯得不具彈性，更別提資源消耗之類更深入的問題了。</p>
         <p>因此，遇到這類需要建立大量資料的需求，程式設計師一般都會利用「陣列」（Array）來建立名單並執行各種操作，不僅快速方便，也比較容易維護，本篇學習筆記的主角便要來談談 JavaScript 陣列基礎的概念及操作方法。</p>
     </div>
@@ -62,81 +69,144 @@ var number3 = "張小芬";
             </div>
         </div>
         <p>用方括號 <em>[ ]</em> 來存放同一系列的資料，範例裡的 <em>[1, 2, 3]</em> 便是陣列的表示形式，而這種方式是 JavaScript 建立陣列三種方式中最簡潔也是最常見的方式，這裡拿前言提到的班級名冊為例，完整的變數建立陣列語法為下：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">var nameList = ["王小明", "李大華", "張小芬"];</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                var nameList = ["王小明", "李大華", "張小芬"];
+            </code>
+        </pre>
         <p>需要注意的是要存放在同個陣列裡的資料，每一筆皆必須以逗號 <em>,</em> 作區隔。</p>
         <p>儘管另外兩種方式比較罕見，不過為了更完整瞭解陣列原理，我們仍有必要認識一下它們的宣告方式。首先是「宣告同一個變數，用位置分割不同資料」，意思是我們可以統一用一個變數，將每一筆資料逐一分割開成獨立的位置。例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">var nameList = [];
-nameList[0] = "王小明";
-nameList[1] = "李大華";
-nameList[2] = "張小芬";</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                var nameList = [];
+                nameList[0] = "王小明";
+                nameList[1] = "李大華";
+                nameList[2] = "張小芬";
+            </code>
+        </pre>
         <p>我們可以看到 <em>[ ]</em> 裡面填入了數字，這個數字一般稱為「索引值」（index），索引值從 0 開始計算，因此第一筆資料在陣列中的索引值為 0 而不是 1。此外，陣列的資料內容是可以動態新增的，假設現有名單 50 員情境下要新增第 51 人，只需要在程式碼裡新增 <em>nameList[50]</em> 即可（索引值從 0 開始算起，所以第 51 人的在陣列中的索引值為 50）。</p>
         <p>例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">nameList[50] = "林阿玉";</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                nameList[50] = "林阿玉";
+            </code>
+        </pre>
         <p><br></p>
         <p>另一種建立方式則是使用內建的建構式 <em>new Array()</em> 來取代 <em>[ ]</em> 的用法，譬如 <em>var nameList = new Array();</em> 即表示建立一個新的空陣列變數，而陣列的資料也是以 <em>,</em> 隔開每筆資料：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">var nameList = new Array("王小明", "李大華", "張小芬");</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                var nameList = new Array("王小明", "李大華", "張小芬");
+            </code>
+        </pre>
         <p>建構式和 <em>[ ]</em> 雖然都可以用來建立陣列，但還是存在些微差別。如果陣列資料只有一筆數字，<em>[ ]</em> 會將其視為第一筆資料，而 <em>new Array()</em> 則當作表示陣列的長度（Length），舉例來說：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">var arr1 = [3];
-var arr2 = new Array(3);
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                var arr1 = [3];
+                var arr2 = new Array(3);
 
-console.log(arr1);    // [3]  length: 1
-console.log(arr2);    // [,,] length: 3</code></pre>
-            </div>
-        </prism-highlight>
+                console.log(arr1);    // [3]  length: 1
+                console.log(arr2);    // [,,] length: 3
+            </code>
+        </pre>
         <p>也因為 <em>new Array()</em> 會將唯一數字參數當作陣列長度，如果數字是小數點，瀏覽器解譯時就會發生錯誤：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">var arr1 = [0.3];
-var arr2 = new Array(0.3);
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                var arr1 = [0.3];
+                var arr2 = new Array(0.3);
 
-console.log(arr1);    // [0.3]  length: 1
-console.log(arr2);    // Uncaught RangeError: Invalid array length</code></pre>
-            </div>
-        </prism-highlight>
+                console.log(arr1);    // [0.3]  length: 1
+                console.log(arr2);    // Uncaught RangeError: Invalid array length
+            </code>
+        </pre>
         <p><br></p>
         <p>承襲上面的範例，我們可得知存放在陣列的資料並不局限於字串，也可以是純數字，JavaScript 的陣列可以視為裝載任何資料型別的容器，故不光是字串、數字或物件，甚至還可以再放入另一個陣列，也就是「多維陣列」：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">var nameList = ["王小明", "李大華", ["張小芬", "阿芬", "芬仔"]];</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                var nameList = ["王小明", "李大華", ["張小芬", "阿芬", "芬仔"]];
+            </code>
+        </pre>
         <p><br></p>
         <p>再來，我們可以建立其他變數來取得陣列裡某個指定的值，例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">var nameList = ["王小明", "李大華", "張小芬"];
-var person = nameList[2];
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                var nameList = ["王小明", "李大華", "張小芬"];
+                var person = nameList[2];
 
-console.log(person);    // 張小芬</code></pre>
-            </div>
-        </prism-highlight>
+                console.log(person);    // 張小芬
+            </code>
+        </pre>
         <p>當然也可以更改已宣告陣列中某個資料的值，方法很簡單，只要指定新的值給陣列索引值就可以。例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">var nameList = ["王小明", "李大華", "張小芬", ...];
-nameList[0] = "盧小小";
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                var nameList = ["王小明", "李大華", "張小芬", ...];
+                nameList[0] = "盧小小";
 
-console.log(nameList[0]);    // 盧小小</code></pre>
-            </div>
-        </prism-highlight>
+                console.log(nameList[0]);    // 盧小小
+            </code>
+        </pre>
         <p>假如有看過上一篇關於物件基礎的介紹，你會發現修改陣列的值和更新物件既存屬性值的方式其實是一模一樣的，畢竟陣列就是物件之一。</p>
     </div>
     <div class="text-block" :id="'act' + catalog[2].id">
@@ -145,118 +215,188 @@ console.log(nameList[0]);    // 盧小小</code></pre>
         <p><br></p>
         <h3>1. constructor</h3>
         <p>此屬性用來回傳陣列物件的函式建構式，例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">var nameList = ["王小明", "李大華", "張小芬"];
-console.log(nameList.constructor);    // function Array() { [native code] }</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                var nameList = ["王小明", "李大華", "張小芬"];
+                console.log(nameList.constructor);    // function Array() { [native code] }
+            </code>
+        </pre>
         <p>function Array() { [native code] } 這個輸出結果是 JavaScript 內建的陣列物件定義，[native code] 表示該函式是用 C/C++ 等基礎程式語言所編寫，意指 JavaScript 某些方法或函式實現方式是藉由瀏覽器引擎本身的程式碼提供的，而不是 JavaScript 本身實現的。</p>
         <p>實務層面上通常不會直接使用 <em>Array.constructor</em>，因為它返回的是 Function 建構函式，而非 Array 建構函式，如果要建立陣列通常會直接使用後者，例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">var nameList = new Array();</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                var nameList = new Array();
+            </code>
+        </pre>
         <p>因此，<em>Array.constructor</em> 使用時機比較偏向檢查指定物件的類型是什麼。</p>
         <p><br></p>
         <h3>2. prototype</h3>
         <p>這個屬性用來表示 Array 建構式的原型，譬如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">console.log(Array.prototype);    // [object Array]</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                console.log(Array.prototype);    // [object Array]
+            </code>
+        </pre>
         <p>不過這個屬性僅作用於 Array 建構式本身，我們自行建立的陣列實例（Instances）是不直接具有 <em>prototype</em> 屬性的，去調用它只會得到 <em>undefined</em>，且看：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">var nameList = ["王小明", "李大華", "張小芬"];
-console.log(nameList.prototype);    // undefined</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                var nameList = ["王小明", "李大華", "張小芬"];
+                console.log(nameList.prototype);    // undefined
+            </code>
+        </pre>
         <p>僅管如此，我們建立的實例仍然會繼承 Array.prototype 的所有方法，有關這部分的內容留到下一章再來進一步說明。那麼，既然這個屬性和自建實例沒有直接關聯，那實務上什麼時候會用到它呢？答案是我們可以用它來添加自定義的方法，或是修改現有的方法內容，不過不建議後者行為，因為這有可能導致程式發生無法預料的問題。</p>
         <p>添加自定義方法釋例：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">Array.prototype.contains = function(element) {
-    return this.indexOf(element) !== -1;
-};
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                Array.prototype.contains = function(element) {
+                    return this.indexOf(element) !== -1;
+                };
 
-var nameList = ["王小明", "李大華", "張小芬"];
+                var nameList = ["王小明", "李大華", "張小芬"];
 
-// 使用新添加的方法檢查是否包含指定資料
-console.log(nameList.contains("王小明")); // true
-console.log(nameList.contains("張三")); // false</code></pre>
-            </div>
-        </prism-highlight>
+                // 使用新添加的方法檢查是否包含指定資料
+                console.log(nameList.contains("王小明")); // true
+                console.log(nameList.contains("張三")); // false
+            </code>
+        </pre>
         <p>範例中的 <em>contains</em> 就是自定義的方法名稱，我們可以修改成任何合乎命名規範的名字，例如 includesElement、hasElement 之類的。</p>
 
         <p><br></p>
         <h3>3. length</h3>
         <p>這個屬性主要用來取得指定陣列裡資料的數量，例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">var nameList = ["王小明", "李大華", "張小芬"];
-console.log(nameList.length);    // 3</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                var nameList = ["王小明", "李大華", "張小芬"];
+                console.log(nameList.length);    // 3
+            </code>
+        </pre>
         <p>和其他屬性只作用於 Array 建構式不同，<em>length</em> 屬性是每個陣列實例也都具有的，所以你才會看到上面例子我們能直接從 <em>nameList</em> 呼叫 <em>.length</em> 去讀取該陣列長度。</p>
         <p><br></p>
         <h3>4. Symbol.species</h3>
         <p>Symbol.species 是一個內建屬性，它是 ES6 引入的新功能之一，用來指定擴展（extends）物件對象的建構式類型。譬如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">console.log(Array[Symbol.species]);    // function Array() { [native code] }</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                console.log(Array[Symbol.species]);    // function Array() { [native code] }
+            </code>
+        </pre>
         <p>可以得知 Array 的建構式類型是陣列。通常開發者會利用設置 Symbol.species 以控制擴展目標的行為及特性，由於它的誕生是為了讓 ES6 類（Class）與繼承（Extends）更加完整，所以實務上通常都是在 ES6 程式碼中較為常見，初學階段還沒有接觸到這部分，所以先不贅述太多，待後續學到 ES6 再來詳細補完。</p>
         <p>實務運用範例：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">class MyArray extends Array {
-    static get [Symbol.species]() {
-        return Array;
-    }
-}
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                class MyArray extends Array {
+                    static get [Symbol.species]() {
+                        return Array;
+                    }
+                }
 
-const myArray = new MyArray(1, 2, 3);
-const mappedArray = myArray.map(x => x * 2);
-console.log(mappedArray instanceof MyArray); // false
-console.log(mappedArray instanceof Array);   // true</code></pre>
-            </div>
-        </prism-highlight>
+                const myArray = new MyArray(1, 2, 3);
+                const mappedArray = myArray.map(x => x * 2);
+                console.log(mappedArray instanceof MyArray); // false
+                console.log(mappedArray instanceof Array);   // true
+            </code>
+        </pre>
         <p><br></p>
         <h3>5. Symbol.iterator</h3>
         <p>Symbol.iterator 也是一個內建屬性，主要用來定義物件的預設迭代器（iteration），它允許陣列可以被 <em>for...of</em>、<em>Array.from()</em> 等方法來遍歷（iterate）陣列裡的每筆資料。例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">var nameList = ["王小明", "李大華", "張小芬"];
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                var nameList = ["王小明", "李大華", "張小芬"];
 
-for (var item of nameList) {
-    console.log(item);    // "王小明", "李大華", "張小芬"
-}</code></pre>
-            </div>
-        </prism-highlight>
+                for (var item of nameList) {
+                    console.log(item);    // "王小明", "李大華", "張小芬"
+                }
+            </code>
+        </pre>
         <p>Symbol.iterator 不需要直接在程式碼裡出現，一旦我們在程式碼中使用到可迭代的陣列物件，JavaScript 就會自動查找該物件是否實現了 Symbol.iterator 屬性，如果有，則將其視為預設的迭代器作使用。對陣列而言，Symbol.iterator 源自於陣列原型上的 <em>Array.prototype[Symbol.iterator]</em> 屬性所提供，因此，當我們使用 <em>for...of</em>、<em>Array.from()</em> 之類的方法遍歷陣列，JavaScript 就會自己調用 <em>Array.prototype[Symbol.iterator]</em> 以取得一個迭代器，然後使用這個迭代器來遍歷資料。</p>
         <p>如果對迭代器運作不甚瞭解，以下程式碼片段展示了前面 <em>for...of</em> 是如何遍歷震歷資料的：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">var nameList = ["王小明", "李大華", "張小芬"];
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                var nameList = ["王小明", "李大華", "張小芬"];
 
-// 建立迭代器函式
-var iteratorFunc = nameList[Symbol.iterator];
+                // 建立迭代器函式
+                var iteratorFunc = nameList[Symbol.iterator];
 
-// 使用迭代器獲取迭代器物件
-var iterator = iteratorFunc.call(nameList);
+                // 使用迭代器獲取迭代器物件
+                var iterator = iteratorFunc.call(nameList);
 
-// 使用迭代器物件遍歷物件資料
-let result = iterator.next();
-while (!result.done) {
-    console.log(result.value);
-    result = iterator.next();
-}</code></pre>
-            </div>
-        </prism-highlight>
+                // 使用迭代器物件遍歷物件資料
+                let result = iterator.next();
+                while (!result.done) {
+                    console.log(result.value);
+                    result = iterator.next();
+                }
+            </code>
+        </pre>
         <p>簡單來說 <em>for...of</em> 這個 JavaScript 語法糖簡化了迭代器遍歷資料的過程，讓開發者可以用更簡潔的方式去撰寫程式碼。</p>
     </div>
     <div class="text-block" :id="'act' + catalog[3].id">

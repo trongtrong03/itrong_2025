@@ -71,33 +71,47 @@ const catalog = reactive<CatalogItem[]>([
         <p><br></p>
         <h6>1. 於命令提示字元輸入安裝指令</h6>
         <p>開啟工作電腦內的終端機或命令提示字元，輸入以下安裝指令：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">gem install autoprefixer-rails</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>
+                gem install autoprefixer-rails
+            </code>
+        </pre>
         <p><br></p>
         <h6>2. 於 <b>config.rb</b> 設定文件加入參數。</h6>
         <p><b>config.rb</b> 文件是 Compass 執行編譯作業時最重要的依賴，故我們需要將 Autoprefixer 的相關函式加入到文件裡，Compass 才能正確執行它。</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">require 'autoprefixer-rails'
-on_stylesheet_saved do |file|
-    css = File.read(file)
-    map = file + '.map'
-    if File.exists? map
-        result = AutoprefixerRails.process(css,
-        from: file,
-        to:   file,
-        map:  { prev: File.read(map), inline: false })
-    File.open(file, 'w') { |io| io &lt;&lt; result.css }
-    File.open(map,  'w') { |io| io &lt;&lt; result.map }
-    else
-        File.open(file, 'w') { |io| io &lt;&lt; AutoprefixerRails.process(css) }
-    end
-end</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>
+                require 'autoprefixer-rails'
+                on_stylesheet_saved do |file|
+                    css = File.read(file)
+                    map = file + '.map'
+                    if File.exists? map
+                        result = AutoprefixerRails.process(css,
+                        from: file,
+                        to:   file,
+                        map:  { prev: File.read(map), inline: false })
+                    File.open(file, 'w') { |io| io &lt;&lt; result.css }
+                    File.open(map,  'w') { |io| io &lt;&lt; result.map }
+                    else
+                        File.open(file, 'w') { |io| io &lt;&lt; AutoprefixerRails.process(css) }
+                    end
+                end
+            </code>
+        </pre>
         <p><br></p>
         <h6>3. 開始或重新執行 <em>compass watch</em>。</h6>
         <p>如果編輯 <b>config.rb</b> 文件的同時忘記先把 <em>compass watch</em> 終止，記得要重新執行，修改的參數才能成功啟用。</p>

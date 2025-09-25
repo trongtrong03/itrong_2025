@@ -90,14 +90,21 @@ const catalog = reactive<CatalogItem[]>([
     <div class="text-block" :id="'act' + catalog[2].id">
         <h2 v-text="catalog[2].title"></h2>
         <p>假設目前有一個文字區域，其原本 HTML 程式碼片段如下：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;section&gt;
-    &lt;h1&gt;Aritcle Title&lt;/h1&gt;
-    &lt;p&gt;Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum adipisci tempora minus fugiat laudantium ullam a ad quam cum voluptates maxime nihil facere sint illum magni minima vitae, culpa nisi modi dignissimos voluptatem voluptas consequatur animi eveniet. Impedit minus earum soluta perspiciatis inventore blanditiis, quidem nisi necessitatibus ea reprehenderit deserunt labore sequi porro neque excepturi dignissimos enim animi voluptas beatae eum aspernatur? Mollitia natus magnam ducimus optio quia sapiente voluptatibus, sequi atque obcaecati quam veritatis, odio et deleniti at aut fugiat accusamus recusandae saepe quibusdam! Ullam ad sint iste quae modi reiciendis, similique, amet corrupti quia ex illo rem adipisci.&lt;/p&gt;
-&lt;/section&gt;</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>
+                &lt;section&gt;
+                    &lt;h1&gt;Aritcle Title&lt;/h1&gt;
+                    &lt;p&gt;Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum adipisci tempora minus fugiat laudantium ullam a ad quam cum voluptates maxime nihil facere sint illum magni minima vitae, culpa nisi modi dignissimos voluptatem voluptas consequatur animi eveniet. Impedit minus earum soluta perspiciatis inventore blanditiis, quidem nisi necessitatibus ea reprehenderit deserunt labore sequi porro neque excepturi dignissimos enim animi voluptas beatae eum aspernatur? Mollitia natus magnam ducimus optio quia sapiente voluptatibus, sequi atque obcaecati quam veritatis, odio et deleniti at aut fugiat accusamus recusandae saepe quibusdam! Ullam ad sint iste quae modi reiciendis, similique, amet corrupti quia ex illo rem adipisci.&lt;/p&gt;
+                &lt;/section&gt;
+            </code>
+        </pre>
         <p>畫面：</p>
         <div class="text-example">
             <div class="ex-column">
@@ -106,13 +113,20 @@ const catalog = reactive<CatalogItem[]>([
             </div>
         </div>
         <p>現在需要將其排版更改成三欄式，若以過去傳統思維，可能會想說要將 <em>&lt;section&gt;</em> 拆成三個，透過 <em>float</em> 之類的屬性使其並排，然後再去把內文切割成三等份，平均地分配到三個 <em>&lt;section&gt;</em> 元素裡，以達到需求要求的結果。聽起來挺大費周章，對吧？也許有其他更省心省事的方法，但通常還是必須對原本的程式碼結構進行一番加工修改，而 CSS3 Column 屬性完全不需要改變現有架構，單純在 CSS 下定義即可。譬如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">section {
-    column-count: 3;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                section {
+                    column-count: 3;
+                }
+            </code>
+        </pre>
         <p>效果展示：</p>
         <div class="text-example">
             <div class="ex-column" style="column-count: 3;">
@@ -130,25 +144,39 @@ const catalog = reactive<CatalogItem[]>([
         <p>會發現這個結果使得區域變成兩欄式了（但是 <em>column-count</em> 的值依舊是 <em>3</em>），你可以將欄位寬度值理解為「最小寬度值」，當欄位數量各自乘以寬度值的總和，大於總體版寬，瀏覽器將會自行調整欄位排版，減少欄位數量的同時，重新分配寬度以填滿整個版面。</p>
         <p><br></p>
         <p><em>column-width</em> 與 <em>column-count</em> 可以合併成 <em>columns</em> 單一簡寫屬性，例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">section {
-    columns: 3 200px;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                section {
+                    columns: 3 200px;
+                }
+            </code>
+        </pre>
         <p>屬性值先後不影響渲染結果，如果只設定一個值，會由瀏覽器自行判斷是 <em>column-width</em> 還是 <em>column-count</em>，然後去對版面進行欄位分割的調整。</p>
     </div>
     <div class="text-block" :id="'act' + catalog[3].id">
         <h2 v-text="catalog[3].title"></h2>
         <p>用來改變欄位之間距離的屬性是 <em>column-gap</em>，例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">section {
-    column-gap: 60px;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                section {
+                    column-gap: 60px;
+                }
+            </code>
+        </pre>
         <p>結果：</p>
         <div class="text-example">
             <div class="ex-column" style="column-count: 3; column-gap: 60px;">
@@ -167,13 +195,20 @@ const catalog = reactive<CatalogItem[]>([
         <p><br></p>
         <p>另外，除了可以改變分欄間的間距外，還有一個 <em>column-rule</em> 屬性，它可以在欄與欄之間添加分隔線，語法、參數如同 <em>border</em> 與 <em>outline</em>。</p>
         <p>語法：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">section {
-    column-rule: 4px dotted #f00;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                section {
+                    column-rule: 4px dotted #f00;
+                }
+            </code>
+        </pre>
         <p>結果：</p>
         <div class="text-example">
             <div class="ex-column" style="column-count: 3; column-rule: 4px dotted #f00;">
@@ -186,13 +221,20 @@ const catalog = reactive<CatalogItem[]>([
     <div class="text-block" :id="'act' + catalog[4].id">
         <h2 v-text="catalog[4].title"></h2>
         <p>假設添加 <em>columns</em> 屬性的區塊，裡面包含了標題和內文，通常 <em>columns</em> 會將整個區域內所有元素一視同仁進行分欄調配，但一般我們閱讀文章時，標題通常會佔據一整列，而不會跟內文混合在一起被切割。雖說可以直接把標題元素拉出 Column 區域外來解決問題，但秉持著不修改原先 HTML 程式碼片段的前提，是否有什麼 CSS 屬性可以直接處理這個問題？有的，答案是 <em>column-span</em> 這個屬性。</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">h1 {
-    column-span: all;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                h1 {
+                    column-span: all;
+                }
+            </code>
+        </pre>
         <p>要注意這個屬性不是添加在設置 <em>columns</em> 屬性的主區域元素，而是要下在標題所在的元素本身。預設值是 <em>none</em>，表示該元素會跟隨主區域的設置一起加入欄位分割；而 <em>all</em> 值則表示不參與分欄，它將會直接占據一整列。</p>
         <p>效果：</p>
         <div class="text-example">

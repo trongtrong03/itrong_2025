@@ -43,13 +43,20 @@ const catalog = reactive<CatalogItem[]>([
     <div class="text-block" :id="'act' + catalog[1].id">
         <h2 v-text="catalog[1].title"></h2>
         <p>CSS3 定義動畫效果的核心屬性為 <em>animation</em>，它的單一屬性撰寫規則是：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">element {
-    animation: Name 3s ease-in 1s infinite reverse both paused;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                element {
+                    animation: Name 3s ease-in 1s infinite reverse both paused;
+                }
+            </code>
+        </pre>
         <p>當然這種一行式的寫法屬於高手境界，我個人會習慣將它拆分成各自獨立的屬性，然後一一去做設定，儘管比起單行的寫法相對繁瑣些，但拆開的寫法易讀性比較高，未來也會比較容易維護。那麼這些各自的參數值分別有什麼功用？以下透過一張表格簡單說明：</p>
         <div class="text-flex">
             <div class="f-width">
@@ -92,160 +99,237 @@ const catalog = reactive<CatalogItem[]>([
             </div>
         </div>
         <p>範例：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">div {
-    animation-name: fadeIn;
-    animation-duration: 1s;
-    animation-delay: .5s;
-    animation-timing-function: ease;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    animation-fill-mode: both;
-    animation-play-state: running;
-}
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                div {
+                    animation-name: fadeIn;
+                    animation-duration: 1s;
+                    animation-delay: .5s;
+                    animation-timing-function: ease;
+                    animation-iteration-count: infinite;
+                    animation-direction: alternate;
+                    animation-fill-mode: both;
+                    animation-play-state: running;
+                }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}</code></pre>
-            </div>
-        </prism-highlight>
+                @keyframes fadeIn {
+                    from {
+                        opacity: 0;
+                    }
+                    to {
+                        opacity: 1;
+                    }
+                }
+            </code>
+        </pre>
     </div>
     <div class="text-block" :id="'act' + catalog[2].id">
         <h2 v-text="catalog[2].title"></h2>
         <p>基本上 CSS3 動畫一個週期由四個階段所組成，分別是「初始狀態」、「等待期」、「執行期」、「完成期」。在初始狀態階段，我們可以先建立好指定元素想呈現的動畫內容（注意喔，這裡用的詞彙是「可以」，意思是說你也可以先設定好動畫相關參數，再來寫動畫內容），定義動畫規則的屬性為 <em>@keyframes</em>，並於自定義的關鍵影格（幀）中設置其他屬性樣式。其語法規則為：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-            <pre><code class="language-css">@keyframes animationName {
-    keyframes-selector {
-        css-styles;
-    }
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                @keyframes animationName {
+                    keyframes-selector {
+                        css-styles;
+                    }
+                }
+            </code>
+        </pre>
         <p><em>animationName</em> 就是這組動畫影格的名稱，以令目標元素的 <em>animation-name</em> 可以指定到它。舉例來說，若要設定一個透明度（<em>opacity</em>）由 <em>0</em> 變為 <em>1</em> 的淡入出現動畫效果，則 <em>@keyframes</em> 動畫規則可以這樣寫：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                @keyframes fadeIn {
+                    from {
+                        opacity: 0;
+                    }
+                    to {
+                        opacity: 1;
+                    }
+                }
+            </code>
+        </pre>
         <p><em>@keyframes</em> 中的 <em>from</em> 其實就是動畫四個階段中的「初始狀態」，一般而言，若指定元素內 <em>opacity</em> 為 <em>0</em>，那麼要指定給它的動畫規則裡的初始值應該也會是 <em>0</em>。<em>to</em> 則是動畫結束處的關鍵影格，假如一個動畫規則沒有設定起始或結束影格，瀏覽器就會以元素自身設置的屬性作為起始或結束狀態。此外，<em>from</em> 與 <em>to</em> 也可以分別用百分比 <em>0%</em> 及 <em>100%</em> 表示，兩者可以混用。</p>
         <p>如果動畫要設置多個關鍵影格，我們可以在理想變化的關鍵點以百分比的方式加入屬性變值，例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">@keyframes topMove {
-    0% {
-        top: 0px;
-    }
-    20% {
-        top: -20px;
-    }
-    100% {
-        top: 80px;
-    }
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                @keyframes topMove {
+                    0% {
+                        top: 0px;
+                    }
+                    20% {
+                        top: -20px;
+                    }
+                    100% {
+                        top: 80px;
+                    }
+                }
+            </code>
+        </pre>
         <p>其他有關關鍵影格的一些用法和注意事項留到後面的章節再敘述，現在我們已經設定好關鍵影格規則，但動畫並不會自己在瀏覽器中觸發，我們需要在欲執行動畫的元素去呼叫它，這也就是 <em>animation-name</em> 的用處。</p>
         <p>例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">div {
-    animation-name: fadeIn;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                div {
+                    animation-name: fadeIn;
+                }
+            </code>
+        </pre>
         <p>再來要設定元素動畫執行的長度，用白話的方式解釋就是指要動畫播放多久的時間。使用屬性為 <em>animation-duration</em>，假設要讓動畫執行三秒：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">div {
-    animation-duration: 3s;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                div {
+                    animation-duration: 3s;
+                }
+            </code>
+        </pre>
         <p>截至目前為止的動畫完整程式碼範例：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">div {
-    animation-name: fadeIn;
-    animation-duration: 3s;
-}
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                div {
+                    animation-name: fadeIn;
+                    animation-duration: 3s;
+                }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}</code></pre>
-            </div>
-        </prism-highlight>
+                @keyframes fadeIn {
+                    from {
+                        opacity: 0;
+                    }
+                    to {
+                        opacity: 1;
+                    }
+                }
+            </code>
+        </pre>
     </div>
     <div class="text-block" :id="'act' + catalog[3].id">
         <h2 v-text="catalog[3].title"></h2>
         <p>答案是「可以」，有時我們不想要網頁一載入馬上執行動畫內容，想要等待一些時間再開始播放，而四大階段中的「等待期」指的就是動畫開始觸發前的這段過渡時間。使動畫延遲執行的屬性叫做 <em>animation-delay</em>，例如我們要讓動畫延遲 <em>0.5</em> 後再執行動畫：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">div {
-    animation-delay: .5s;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                div {
+                    animation-delay: .5s;
+                }
+            </code>
+        </pre>
         <p>但要注意的是，CSS3 的 <em>animation-delay</em> 屬性只要瀏覽器載入樣式表後就會作用，並不支援使用者的互動行為──像是網頁很常見的滑鼠滾輪觸發動畫事件，這就不在 <em>animation-delay</em> 應用範疇內，如果有類似功能的需求，則還是需要借助 JavaScript 的協助。</p>
         <p>常見的滾輪觸發套件：<a href="https://wowjs.uk/" target="_blank">WOW.js</a>、<a href="https://michalsnik.github.io/aos/" target="_blank">AOS</a>...等。</p>
     </div>
     <div class="text-block" :id="'act' + catalog[4].id">
         <h2 v-text="catalog[4].title"></h2>
         <p><em>animation-iteration-count</em> 可以用來設定動畫的執行次數，通常在主流瀏覽器的內建預設值為 <em>1</em>，也就是目標元素在沒有特別設定此屬性的情況下，動畫內容只會執行一次。假如想要讓動畫無限循環播放，則參數值要設置為 <em>infinite</em>：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">div {
-    animation-iteration-count: infinite;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                div {
+                    animation-iteration-count: infinite;
+                }
+            </code>
+        </pre>
         <p>有趣的是，雖然這個屬性的值不能設置為負數，卻允許使用小數點，假如我們給其 <em>0.5</em> 的值，代表動畫只播放一次動畫關鍵影格規則裡的一半。</p>
     </div>
     <div class="text-block" :id="'act' + catalog[5].id">
         <h2 v-text="catalog[5].title"></h2>
         <p>如果我們要製作頭尾相呼應的動畫，對 Animation 相關屬性還沒那麼熟悉的新手直覺想到的可能是在關鍵影格 <em>0%</em> 和 <em>100%</em> 設定一樣的屬性值，然後把其他動畫過程加入在中間的關鍵點。我們拿前面 <em>fadeIn</em> 作為範例，導入前面的思維，將會把關鍵影格規則改寫成：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">@keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    50% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-    }
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                @keyframes fadeIn {
+                    0% {
+                        opacity: 0;
+                    }
+                    50% {
+                        opacity: 1;
+                    }
+                    100% {
+                        opacity: 0;
+                    }
+                }
+            </code>
+        </pre>
         <p>這樣的寫法確實能達到預期結果，所以要說它錯似乎也不大對，只不過在簡單的動畫影格規則或許還可以從容應付，然而一旦要製作的動畫關鍵影格很多，又或者是改變的樣式屬性繁雜情況下，這樣的寫法就比較需要勞神費心了。</p>
         <p>事實上，我們只要透過 <em>animation-direction</em> 的設定，就能輕鬆搞定動畫來回的執行方向。例如我們賦予其參數值為 <em>alternate</em>，執行的動畫就會從起始關鍵點，利用一半執行時間跑至結束關鍵點，然後再折返回起始關鍵點：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">div {
-    animation-direction: alternate;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                div {
+                    animation-direction: alternate;
+                }
+            </code>
+        </pre>
         <p>除了 <em>alternate</em> 參數外，還有以下這些參數值可以設定：</p>
         <div class="text-flex">
             <div class="f-width">
@@ -277,13 +361,20 @@ const catalog = reactive<CatalogItem[]>([
         <h2 v-text="catalog[6].title"></h2>
         <p>所謂的「速度曲線」指的是動畫執行的過程，可能由快到慢、由慢到快，甚至忽慢忽快，並不完全是如一條水平線平平穩穩般從開始播放到結束。我們也可以將速度曲線理解成是加速度或是節奏，利用不同的節奏，使動畫看起來更加生動活潑、乃至於更貼近真實感。</p>
         <p>在 CSS3，定義動畫速度曲線的屬性為下：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">div {
-    animation-timing-function: ease;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                div {
+                    animation-timing-function: ease;
+                }
+            </code>
+        </pre>
         <p><em>ease</em> 表是動畫到 <em>50%</em> 前會逐漸加速，過了 <em>50%</em> 後則會慢慢減速到結束，而這個值同時也是 <em>animation-timing-function</em> 的預設值。其他的值可透過下表來了解：</p>
         <div class="text-flex">
             <div class="f-width">
@@ -324,34 +415,48 @@ const catalog = reactive<CatalogItem[]>([
         <p>動畫四階段中，完成期與初始狀態是相對的存在，指的是動畫跑完之後的狀態。有些人會以為關鍵影格的終點格就是完成狀態，但這其實並不是完全正確的說法，如同我們在執行期中會給動畫加上部分控制屬性，它們都會影響該元素在最後動畫完成時的樣式狀態。甚至，當 <em>animation-iteration-count</em> 為 <em>infinite</em>（無限循環）的時候，該目標動畫便沒有完成期可言。</p>
         <p>決定動畫「等待期」與「完成期」狀態的關鍵屬性為 <em>animation-fill-mode</em>，但是在解答標題內容之前，我們先來看在預設值（即不設置該屬性）條件下，元素動畫播放完會是什麼樣子。</p>
         <p>動畫規則為下：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">div {
-    background-color: red;
-    animation-name: demo;
-    animation-delay: 2s;
-}
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                div {
+                    background-color: red;
+                    animation-name: demo;
+                    animation-delay: 2s;
+                }
 
-@keyframes demo {
-    0% {
-        background-color: green;
-    }
-    100% {
-        background-color: blue;
-    }
-}</code></pre>
-        </div>
-        </prism-highlight>
+                @keyframes demo {
+                    0% {
+                        background-color: green;
+                    }
+                    100% {
+                        background-color: blue;
+                    }
+                }
+            </code>
+        </pre>
         <p><em>div</em> 的背景色（<em>background-color</em>）在其初始樣式為「紅色」，並且有兩秒的等待期。而其套用的動畫規則裡，關鍵影格第一格為「綠色」，最後一格為「藍色」。</p>
         <p><br></p>
         <h5>範例一：</h5>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-            <pre><code class="language-css">div {
-    animation-fill-mode: none;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                div {
+                    animation-fill-mode: none;
+                }
+            </code>
+        </pre>
         <div class="text-codepen">
             <p class="codepen" data-height="360" data-theme-id="dark" data-default-tab="css,result" data-user="itrong" data-slug-hash="VwvBWQe" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="CSS-animations-2">
             <span>See the Pen <a href="https://codepen.io/itrong/pen/VwvBWQe">
@@ -363,13 +468,20 @@ const catalog = reactive<CatalogItem[]>([
         <p>接下來的範例二就是標題要的解答。</p>
         <p><br></p>
         <h5>範例二：</h5>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">div {
-    animation-fill-mode: both;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                div {
+                    animation-fill-mode: both;
+                }
+            </code>
+        </pre>
         <div class="text-codepen">
             <p class="codepen" data-height="360" data-theme-id="dark" data-default-tab="css,result" data-user="itrong" data-slug-hash="qBOyjzb" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="CSS-animations-5">
             <span>See the Pen <a href="https://codepen.io/itrong/pen/qBOyjzb">
@@ -381,13 +493,20 @@ const catalog = reactive<CatalogItem[]>([
         <p>雖說已經得到標題想要的結果，但以下還是繼續將另外兩個屬性值補完：</p>
         <p><br></p>
         <h5>範例三：</h5>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">div {
-    animation-fill-mode: forwards;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                div {
+                    animation-fill-mode: forwards;
+                }
+            </code>
+        </pre>
         <p><em>div</em> 於等待期背景色為「紅色」，完成期則為「藍色」。</p>
         <div class="text-codepen">
             <p class="codepen" data-height="360" data-theme-id="dark" data-default-tab="css,result" data-user="itrong" data-slug-hash="KKdBqEG" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="CSS-animations-3">
@@ -398,13 +517,20 @@ const catalog = reactive<CatalogItem[]>([
         </div>
         <p><br></p>
         <h5>範例四：</h5>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">div {
-    animation-fill-mode: backwards;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                div {
+                    animation-fill-mode: backwards;
+                }
+            </code>
+        </pre>
         <p><em>div</em> 於等待期背景色為「綠色」，完成期則為「紅色」。</p>
         <div class="text-codepen">
             <p class="codepen" data-height="360" data-theme-id="dark" data-default-tab="css,result" data-user="itrong" data-slug-hash="YzyjQbN" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="CSS-animations-4">
@@ -472,85 +598,113 @@ const catalog = reactive<CatalogItem[]>([
         <p>第一個章節有介紹關鍵影格的基本語法，這個章節將對其他用法進行補充：</p>
         <h5>多個關鍵影格：</h5>
         <p>倘若動畫規則裡需要多個關鍵影格，我們可以在理想變化的關鍵點以百分比的方式加入屬性變值，例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">@keyframes animationName {
-    0% {
-        top: 0px;
-    }
-    20% {
-        top: -20px;
-    }
-    100% {
-        top: 80px;
-    }
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                @keyframes animationName {
+                    0% {
+                        top: 0px;
+                    }
+                    20% {
+                        top: -20px;
+                    }
+                    100% {
+                        top: 80px;
+                    }
+                }
+            </code>
+        </pre>
         <p><br></p>
         <h5>關鍵影格重複：</h5>
         <p>假設同個動畫規則裡設定了兩個以上相同百分比的關鍵影格，則會以最後一個百分比關鍵影格裡的屬性為主。</p>
         <p><br></p>
         <h5>關鍵影格屬性數量不固定：</h5>
         <p>不同個關鍵影格裡，屬性數量並不一定都得保持一致，比如中途插值，又或者在之前的某一格開始之後到結束都是相同的值，這些都會令整體動畫規則的各關鍵格裡屬性數量產生變動，舉例來說：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">@keyframes animationName {
-    0% {
-        top: 0px;
-        left: 0px;
-    }
-    50% {
-        top: -20px;
-    }
-    100% {
-        top: 0px;
-        left: 20px;
-    }
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                @keyframes animationName {
+                    0% {
+                        top: 0px;
+                        left: 0px;
+                    }
+                    50% {
+                        top: -20px;
+                    }
+                    100% {
+                        top: 0px;
+                        left: 20px;
+                    }
+                }
+            </code>
+        </pre>
         <p><em>left</em> 屬性於關鍵影格 <em>0%</em> 與 <em>100%</em> 的點上都有設置參數值，但 <em>50%</em> 時卻沒有作設定，此時瀏覽器會計算前後影格的值並自動插入到動畫中。需要注意的是，插值的屬性必須是要能計算的屬性，否則是不會有效果的，例如 <em>display</em>、<em>visibility</em>。</p>
         <p><br></p>
         <h5>關鍵影格重複被定義：</h5>
         <p>當動畫規則中重複定義了相同的關鍵影格，例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">@keyframes animationName {
-    0% {
-        top: 0px;
-    }
-    50% {
-        top: -20px;
-        left: 20px;
-    }
-    50% {
-        top: 40px;
-    }
-    100% {
-        top: 80px;
-    }
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                @keyframes animationName {
+                    0% {
+                        top: 0px;
+                    }
+                    50% {
+                        top: -20px;
+                        left: 20px;
+                    }
+                    50% {
+                        top: 40px;
+                    }
+                    100% {
+                        top: 80px;
+                    }
+                }
+            </code>
+        </pre>
         <p>關鍵影格 <em>50%</em> 重複寫了兩次，且都包含 <em>top</em> 屬性的設定，此時按照 CSS 規則，較後寫的值會覆蓋掉前面寫的值，至於 <em>left</em> 屬性沒有重複則不受影響。</p>
         <p><br></p>
         <h5>關鍵影格裡的 <em>!imporant</em>：</h5>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">@keyframes animationName {
-    0% {
-        top: 0px;
-    }
-    20% {
-        top: -20px !imporant;    /* 會被忽略 */
-    }
-    100% {
-        top: 80px;
-    }
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                @keyframes animationName {
+                    0% {
+                        top: 0px;
+                    }
+                    20% {
+                        top: -20px !imporant;    /* 會被忽略 */
+                    }
+                    100% {
+                        top: 80px;
+                    }
+                }
+            </code>
+        </pre>
         <p>如果關鍵影格裡的屬性使用到了 <em>!important</em> 參數，其屬性將直接被忽略。</p>
     </div>
     <div class="text-block" :id="'act' + catalog[10].id">

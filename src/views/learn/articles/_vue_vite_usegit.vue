@@ -36,9 +36,15 @@ const catalog = reactive<CatalogItem[]>([
         <h2 v-text="catalog[1].title"></h2>
         <h6>1. 建立 JavaScript 腳本文件：</h6>
         <p>找到 Vite 專案目錄中的 <b>script</b> 資料夾，建立一個 JavaScript 的 <em>.js</em> 文件，撰寫內容如下：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">// scripts/gen-commits.js
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>// scripts/gen-commits.js
 import { execSync } from 'child_process'
 import { writeFileSync } from 'fs'
 import { fileURLToPath } from 'url'
@@ -70,71 +76,101 @@ try {
     console.log('✔ Commit list generated successfully!')
 } catch (err) {
     console.error('✖ Failed to generate commit list:', err)
-}</code></pre>
-            </div>
-        </prism-highlight>
+}            </code>
+        </pre>
         <p>其中 <em>'../src/data/commits.json'</em> 可自行替換腳本執行後所輸出 JSON 檔案的存放路徑位置。</p>
         <p><br></p>
         <h6>2. 於 package.json 中新增內容：</h6>
         <p>打開 <b>package.json</b> 文件，在 <em>scripts</em> 程式碼區塊新增：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">"scripts": {
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>"scripts": {
     "generate:commits": "node scripts/gen-commits.js"
-}</code></pre>
-            </div>
-        </prism-highlight>
+}            </code>
+        </pre>
         <p>這個目的是讓每一次執行編譯指令時都會自動產生 <b>commits</b> 檔案。</p>
         <p><br></p>
         <h6>3. 指定組件引用 commits JSON 文件：</h6>
         <p>在要顯示 commit 記錄的 <b>.vue</b> 組件裡建立相關程式碼，首先我們要引入編譯指令輸出後的產生的 JSON 檔案：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;script setup&gt;
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>&lt;script setup&gt;
     import commits from '@/assets/commits.json'
-&lt;/script&gt;</code></pre>
-            </div>
-        </prism-highlight>
+&lt;/script&gt;            </code>
+        </pre>
         <p>接著透過 HTML 把資料渲染出來，例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;ul&gt;
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>&lt;ul&gt;
     &lt;li v-for="(commit, index) in commits" :key="index"&gt;
         &lt;p&gt;HASH：{{ commit.hash }}&lt;/p&gt;
         &lt;p&gt;作者：{{ commit.author }}&lt;/p&gt;
         &lt;p&gt;日期：{{ commit.date }}&lt;/p&gt;
         &lt;p&gt;提交名稱：{{ commit.message }}&lt;/p&gt;
     &lt;/li&gt;
-&lt;/ul&gt;</code></pre>
-            </div>
-        </prism-highlight>
+&lt;/ul&gt;            </code>
+        </pre>
         <p></p>
         <p><br></p>
         <h6>4. 執行編譯指令：</h6>
         <p>做完前面三個步驟，我們已經將 Vite 專案所需的設定和要顯示的排版方式都準備就緒，最後要做的就是執行編譯指令，讓 Node 協助打撈該專案 Git 版控裡的 commit 記錄。</p>
         <p>指令：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">npm run generate:commits</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>npm run generate:commits            </code>
+        </pre>
         <p>以下是執行成功的回傳結果：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">npm run generate:commits
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>npm run generate:commits
 
 > project@0.0.0 generate:commits
 > node scripts/gen-commits.js   
 
-✔ Commit list generated successfully!</code></pre>
-            </div>
-        </prism-highlight>
+✔ Commit list generated successfully!            </code>
+        </pre>
         <p><br></p>
         <p>重新整理網頁，就可以看到 Git commit 記錄顯示在網頁前端畫面上了。</p>
         <p>範例：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">HASH：92d8891
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>HASH：92d8891
 作者：iTrong
 日期：2024-05-27
 提交名稱：0527需求修改
@@ -147,9 +183,8 @@ HASH：93f88cd
 HASH：6640790
 作者：iTrong
 日期：2024-05-23
-提交名稱：first commit</code></pre>
-            </div>
-        </prism-highlight>
+提交名稱：first commit            </code>
+        </pre>
     </div>
     <div class="text-block" :id="'act' + catalog[2].id">
         <h2 v-text="catalog[2].title"></h2>
@@ -160,9 +195,15 @@ This file is being treated as an ES module because it has a '.js' file extension
         </blockquote>
         <p>這個錯誤訊息主要是說 Vite 專案 <b>package.json</b> 裡有設定 <em>"type": "module"</em>，這會讓所有 <b>.js</b> 文件都被視為 ESM 模組，倘若我們腳本中有使用 <em>require()</em> 方法，就會產生錯誤。</p>
         <p>舉例來說，如果我們的 <b>gen-commits.js</b> 是這樣寫：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">// scripts/gen-commits.js
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>// scripts/gen-commits.js
 const { execSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
@@ -176,21 +217,25 @@ const commits = execSync('git log --pretty=format:"%h - %s"')
 const outputPath = path.resolve(__dirname, '../src/data/commits.json');
 fs.writeFileSync(outputPath, JSON.stringify(commits, null, 2));
 
-console.log(`✔ Commit list generated to ${outputPath}`);</code></pre>
-            </div>
-        </prism-highlight>
+console.log(`✔ Commit list generated to ${outputPath}`);            </code>
+        </pre>
         <p>當執行打包或開發指令時，系統就會噴出錯誤導致無法順利運行。</p>
         <p>要解決這個問題，主要方法有兩種：</p>
         <p><br></p>
         <h4>1. 將檔案副檔名格式更改為 .cjs：</h4>
         <p>這是最直接快速的方法，我們直接將 <b>gen-commits.js</b> 的 <b>.js</b> 副檔名更改為 <b>.cjs</b> 格式，同時更新一下 <b>package.json</b>：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">"scripts": {
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>"scripts": {
   "generate:commits": "node scripts/gen-commits.cjs"
-}</code></pre>
-            </div>
-        </prism-highlight>
+}            </code>
+        </pre>
         <p>這樣就不需要改寫 <em>require</em>，簡單又穩定。</p>
         <p><br></p>
         <h4>2. 改用 ES Module 語法：</h4>

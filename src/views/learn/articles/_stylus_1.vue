@@ -41,18 +41,32 @@ const catalog = reactive<CatalogItem[]>([
     <div class="text-block" :id="'act' + catalog[1].id">
         <h2 v-text="catalog[1].title"></h2>
         <p>首先，我們得知道 Stylus 是來自於 <a href="https://nodejs.org/en/">Node.js</a>，因此使用之前，必須先確認工作電腦是否有安裝 Node.js 環境，我們可以打開命令提示字元，透過下方指令確認電腦是否已有安裝：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">node -v</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>
+                node -v
+            </code>
+        </pre>
         <p>這個指令是用來查詢 Node.js 的版本，假如電腦已經安裝 Node.js，命令提示字元會回應電腦目前安裝的版本號。如果沒有，請先執行下載與安裝的動作。</p>
         <p>安裝好 Node.js 後，接著要透過其核心指令 <em>npm</em> 來安裝 Stylus 了，完整指令語法為：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">npm install stylus -g</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>
+                npm install stylus -g
+            </code>
+        </pre>
         <p>指令中的 <em>-g</em> 指的是全域安裝，經由全域安裝我們就可以在任何專案直接執行 Stylus 的操作。換句話說，安裝 Stylus 的實質步驟其實就只有這一步而已。</p>
         <p>安裝完成的畫面：</p>
         <figure>
@@ -69,11 +83,18 @@ const catalog = reactive<CatalogItem[]>([
             <img src="/images/learn/css/stylus-2.jpg">
         </figure>
         <p>假設我們已經在 <b>.styl</b> 檔案寫完樣式，現在要將其編譯輸出可讓瀏覽器閱讀的 <b>.css</b> 文件，請輸入下方指令：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">stylus index.styl</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>
+                stylus index.styl
+            </code>
+        </pre>
         <p><b>index.syle</b> 是範例中的檔案名稱，可自行更換專案裡使用的命名。編譯成功則會返回 compiled 輸出檔案之名稱的訊息，如：</p>
         <figure>
             <img src="/images/learn/css/stylus-3.jpg">
@@ -88,30 +109,51 @@ const catalog = reactive<CatalogItem[]>([
         </figure>
         <p><br></p>
         <p>除了直接編譯輸出之外，也可以在指令裡加入 <em>--compress</em> 指令，使 Stylus 輸出成經過壓縮的 CSS 文件，以節省檔案空間。</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">stylus --compress index.syle</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>
+                stylus --compress index.syle
+            </code>
+        </pre>
         <figure>
             <img src="/images/learn/css/stylus-6.jpg">
         </figure>
         <p><br></p>
         <h3>多個檔案編譯：</h3>
         <p>如果同時有好幾個 <b>.styl</b> 檔案需要處理，我們可以一次全部執行，不需要逐一編譯每一個檔案，舉例來說：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">stylus p1.styl p2.styl p3.styl</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>
+                stylus p1.styl p2.styl p3.styl
+            </code>
+        </pre>
         <p><br></p>
         <h3>資料夾編譯：</h3>
         <p>當然，如果 <b>.styl</b> 文件很多，即便可以一次處理全部，但要一個個輸入檔案名稱不免仍覺得麻煩，且多數開發者也無法容許各種類型的檔案文件通通擁塞在同一層資料夾結構裡。通常我們會依據格式類型將檔案分門別類，例如 <b>.styl</b> 檔案通通放進名稱為 <b>styl</b> 的資料夾，這種情況下我們就可以直接編譯整個資料夾，省去逐一輸入檔名的麻煩。</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">stylus styl</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>
+                stylus styl
+            </code>
+        </pre>
         <p>指令中的 <em>styl</em> 為 <b>.styl</b> 文件所屬的資料夾名稱。</p>
         <figure>
             <img src="/images/learn/css/stylus-7.jpg">
@@ -123,29 +165,50 @@ const catalog = reactive<CatalogItem[]>([
         <h3>編譯至其他位置：</h3>
         <p>一路看範例到這裡的你應該已經嗅到不對勁的氛圍，沒錯，目前無論是單一檔案、多個檔案還是整個資料夾編譯，輸出的 <b>.css</b> 文件都生成於與 <b>.styl</b> 相同的資料夾層級。通常我們會將預處理器的檔案與生成的檔案分開管理，才不會混淆在一起。那麼我們要如何將 <b>.styl</b> 生成到指定的資料夾呢？</p>
         <p>方式其實不難，只要在編譯指令間加入 <em>--out</em>，後方加上要導出的資料夾名稱即可，例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">stylus styl --out css</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>
+                stylus styl --out css
+            </code>
+        </pre>
         <p>操作結果：</p>
         <figure>
             <img src="/images/learn/css/stylus-9.jpg">
         </figure>
         <p>如果是更深層的資料夾目錄，則指名路徑即可。例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">stylus styl --out public/css</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>
+                stylus styl --out public/css
+            </code>
+        </pre>
         <p><br></p>
         <h3>監聽編譯：</h3>
         <p>透過 <em>watch</em> 指令，可以令 Stylus 即時監測 <b>.styl</b> 檔案的變化，只要一儲存檔案，指令視窗便會自動執行編譯的動作，如此一來就不需要每編輯一次檔案就要下達一次編譯的指令了。</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">stylus --watch index.styl</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>
+                stylus --watch index.styl
+            </code>
+        </pre>
         <figure>
             <img src="/images/learn/css/stylus-10.jpg">
         </figure>
@@ -201,34 +264,62 @@ const catalog = reactive<CatalogItem[]>([
         </div>
         <p><br></p>
         <p>因為指令是可以在一行內輸入多個指令然後一次送出去執行的，這裡分享個自己常使用的懶人指令語法：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">stylus -w styl -o css</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>
+                stylus -w styl -o css
+            </code>
+        </pre>
         <p>這個指令的意思為當 <em>styl</em> 資料夾裡的 <b>.styl</b> 文件一旦有所變更，儲存檔案時就會立即執行編譯，並輸出 CSS 文件至外層的 <em>css</em> 資料夾中。</p>
     </div>
     <div class="text-block" :id="'act' + catalog[4].id">
         <h2 v-text="catalog[4].title"></h2>
         <p><a href="https://www.npmjs.com/package/autoprefixer-stylus" target="_blank">Autoprefixer</a> 是用來處理部份 CSS3 語法在不同瀏覽器需要添加指定前綴的工具，如果有瀏覽器兼容性要求的開發者建議安裝這個套件。安裝指令為：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">npm install autoprefixer-stylus -g</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>
+                npm install autoprefixer-stylus -g
+            </code>
+        </pre>
         <p><br></p>
         <p>執行 Stylus 編譯時的指令：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">stylus -u autoprefixer-stylus index.styl</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>
+                stylus -u autoprefixer-stylus index.styl
+            </code>
+        </pre>
         <p>結合懶人包：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">stylus -w -u autoprefixer-stylus styl -o css</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>
+                stylus -w -u autoprefixer-stylus styl -o css
+            </code>
+        </pre>
         <p>套件實際運用上的效果展示：</p>
         <figure>
             <img src="/images/learn/css/stylus-11.jpg">

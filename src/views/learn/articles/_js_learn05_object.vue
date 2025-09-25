@@ -109,76 +109,132 @@ const catalog = reactive<CatalogItem[]>([
         <p>藉由表格可以得知物件也是變數資料型別的其中一種，在 JavaScript 裡，一個基礎型別可以是一個數字、布林值或字串，但物件可能是由一個空值或一群屬性（property）組合而成的複雜型態資料。建立物件的方式分為兩種宣告方法：</p>
         <p><br></p>
         <h3>1. 物件實字（Object Literal）：</h3>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">var obj = {};</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                var obj = {};
+            </code>
+        </pre>
         <p>這種物件宣告方式很簡單也很好懂，就是單純用一對大括號（或稱花括號）指定給變數名稱，宣告該變數資料型別為物件。說是這樣說，但要如何客觀地確定它是物件？我們可以用瀏覽器的開發工具 Console 它，例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">var car = {};
-console.log(car);    // [object Object]</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                var car = {};
+                console.log(car);    // [object Object]
+            </code>
+        </pre>
         <p>或是用 <em>typeof</em> 運算子確認資料型別也可以：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">var car = {};
-console.log(typeof car);    // object</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                var car = {};
+                console.log(typeof car);    // object
+            </code>
+        </pre>
         <p>至於空物件的值為什麼會用 <em>[object Object]</em> 的形式表示，這種格式的產生其實是因為 JavaScript 將物件的資料型別與預設字符串結合起來的結果，前面的 <em>object</em> 是默認字符串的值，後面的 <em>Object</em> 則表示該變數的資料型別為物件。</p>
         <p>回到範例，雖然我們定義了名為 <em>car</em> 的物件，但此刻它仍只是一個空物件而已，通常物件裡會存放一些該物件的屬性，就像一輛車子會存在許多資料，例如廠牌、型號、顏色...等，這些資料即為該車輛（物件）的屬性。例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">var car = {
-    brand: "TOYOTA",
-    name: "C-HR",
-    color: "red",
-    year: 2016
-};</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                var car = {
+                    brand: "TOYOTA",
+                    name: "C-HR",
+                    color: "red",
+                    year: 2016
+                };
+            </code>
+        </pre>
         <p>每一條屬性皆是由名稱及值的組成，如果物件裡存在多條屬性，則每條屬性之間以逗號區隔。值可以放入任何型別的資料，當然也包含物件，這時整體看起來宛如 Sass 的巢狀結構：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">var car = {
-    brand: "TOYOTA",
-    name: "C-HR",
-    color: "red",
-    year: 2016,
-    price: {
-        LE: 895000,
-        XLE: 959000,
-        Limited: 1069000
-    }
-};</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                var car = {
+                    brand: "TOYOTA",
+                    name: "C-HR",
+                    color: "red",
+                    year: 2016,
+                    price: {
+                        LE: 895000,
+                        XLE: 959000,
+                        Limited: 1069000
+                    }
+                };
+            </code>
+        </pre>
         <p><br></p>
         <h3>2. 物件建構式（Object Constructor）：</h3>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">var obj = new Object();</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                var obj = new Object();
+            </code>
+        </pre>
         <p>用 <em>new</em> 關鍵字加上 <em>Object()</em> 也能建立一個型別為物件的變數，不過實務上來說這種宣告物件變數的方式較第一個方法來得少見，除了語法相對來說比較冗長外，某些情況下利用物件建構式宣告的物件還可能隱藏一些問題，因為 <em>new Object()</em> 預期會建立一個新的物件，假使傳入 <em>()</em> 的值是別種資料型別，它也依然可以運作。例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">var num = new Object(3);
-console.log(num);   // 3
-console.log(typeof num);    // object</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                var num = new Object(3);
+                console.log(num);   // 3
+                console.log(typeof num);    // object
+            </code>
+        </pre>
         <p>乍看似乎沒有什麼異樣，如果接著往下看：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">console.log(num + 1);    // 4
-console.log(num == 3);   // true 
-console.log(num === 3);  // false</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                console.log(num + 1);    // 4
+                console.log(num == 3);   // true 
+                console.log(num === 3);  // false
+            </code>
+        </pre>
         <p>注意到了嗎？明明 <em>num</em> 的資料型別判定為物件，它卻可以和數字 <em>1</em> 相加得到 <em>4</em> 的運算結果，如果我們一開始期望建立的東西是物件，那麼它應該要被轉換為字串，得到 <em>31</em> 這個字串與數字拼接的結果。</p>
         <p>至於物件實字的宣告方式就不會發生上述情況，因為使用 <em>{ }</em> 是無法直接傳入參數來建立物件的，必須添加屬性才能儲存我們要傳入的值。</p>
     </div>
@@ -188,176 +244,267 @@ console.log(num === 3);  // false</code></pre>
         <p><br></p>
         <h3>1. 點記法（Dot notation）：</h3>
         <p>以上個章節的範例為例，如果我們要索取該車輛物件 <em>car</em> 的「品牌」屬性（<em>brand</em>），那麼我們只需 <em>car.brand</em> 這樣寫即可：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">var car = {
-    brand: "TOYOTA",
-    name: "C-HR",
-    color: "red",
-    year: 2016,
-    price: {
-        LE: 895000,
-        XLE: 959000,
-        Limited: 1069000
-    }
-};
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                var car = {
+                    brand: "TOYOTA",
+                    name: "C-HR",
+                    color: "red",
+                    year: 2016,
+                    price: {
+                        LE: 895000,
+                        XLE: 959000,
+                        Limited: 1069000
+                    }
+                };
 
-console.log(car.brand);    // TOYOTA
-console.log(car.price.XLE);    // 959000</code></pre>
-            </div>
-        </prism-highlight>
+                console.log(car.brand);    // TOYOTA
+                console.log(car.price.XLE);    // 959000
+            </code>
+        </pre>
         <p>假如我們要取得的屬性並沒有在物件裡面，則會得到 <em>undefined</em>，表示這個屬性不存在於 <em>car</em> 物件裡面，再者我們若嘗試去取得不存在的屬性裡面的子屬性，則程式將會報錯：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">console.log(car.country);    // undefined
-console.log(car.country.flag);    // Uncaught TypeError: Cannot read properties of undefined</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                console.log(car.country);    // undefined
+                console.log(car.country.flag);    // Uncaught TypeError: Cannot read properties of undefined
+            </code>
+        </pre>
         <p>之所以引發 Uncaught TypeError 錯誤，是因為 <em>country</em> 已經返回了 <em>undefined</em>，所以當我們繼續訪問 <em>flag</em> 這個子屬性，實際上是在嘗試訪問 <em>undefined</em>，而 <em>undefined</em> 屬於基本資料型別之一，本身並不具有任何屬性，所以才會回吐類型錯誤的報錯訊息。</p>
         <p><br></p>
         <h3>2. 括弧記法（Bracket notation）：</h3>
         <p>這種方式或許沒有點記法來得那麼常見，但括弧記法可以突破一些點記法難以取值上的限制。括弧記法方式則是使用中括號，注意中括號裡的屬性名稱需要用單或雙引號囊括起來，例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">var car = {
-    brand: "TOYOTA",
-    name: "C-HR",
-    color: "red",
-    year: 2016,
-    price: {
-        LE: 895000,
-        XLE: 959000,
-        Limited: 1069000
-    }
-};
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                var car = {
+                    brand: "TOYOTA",
+                    name: "C-HR",
+                    color: "red",
+                    year: 2016,
+                    price: {
+                        LE: 895000,
+                        XLE: 959000,
+                        Limited: 1069000
+                    }
+                };
 
-console.log(car["brand"]);    // TOYOTA
-console.log(car["price"]["XLE"]);    // 959000</code></pre>
-            </div>
-        </prism-highlight>
+                console.log(car["brand"]);    // TOYOTA
+                console.log(car["price"]["XLE"]);    // 959000
+            </code>
+        </pre>
         <p>另外補充一個前面點記法沒說到的內容，那就是如何呼叫物件裡的函式，假如我們要取得物件裡頭的函式如下：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">var obj = {
-    demo: function(){
-        console.log("Hello!");
-    }
-};</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                var obj = {
+                    demo: function(){
+                        console.log("Hello!");
+                    }
+                };
+            </code>
+        </pre>
         <p>點記法與括弧記法的取用方式分別為：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">obj.demo();    // Hello!
-obj["demo"]();    // Hello!</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                obj.demo();    // Hello!
+                obj["demo"]();    // Hello!
+            </code>
+        </pre>
         <p><br></p>
         <p>雖然括弧記法結構上較點記法來得沒那麼直覺，但前面有提過，括弧記法可以突破點記法一些難以取值的限制，例如：</p>
         <h4>1. 其他基本資料型別的賦值、取值：</h4>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">var car = {};
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                var car = {};
 
-car[3] = "This number is 3";
-car.3 = "This number is 3";
+                car[3] = "This number is 3";
+                car.3 = "This number is 3";
 
-console.log(car[3]);    // This number is 3
-console.log(car.3);    // Uncaught SyntaxError: Unexpected number</code></pre>
-            </div>
-        </prism-highlight>
+                console.log(car[3]);    // This number is 3
+                console.log(car.3);    // Uncaught SyntaxError: Unexpected number
+            </code>
+        </pre>
         <p>這比較容易理解，使用點記法訪問物件的屬性名稱必須是有效的標識符命名格式，而範例中的純數字，或以數字開頭、名稱包含連字號 <em>-</em>、空格，又或者使用 JavaScript 內建的關鍵字及保留字，都屬於無效的命名。不過對括弧記法而言就沒有這方面的限制，因為括號中的內容會被視為運算式（Expression），即便內容只是很單純的數字，也依然有效。</p>
         <p><br></p>
         <h4>2. 用變數賦值、取值：</h4>
         <p>如果使用的是點記法，物件屬性匹配的值必須是直接指定的，例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">var car = {
-    carName: "C-HR"
-};
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                var car = {
+                    carName: "C-HR"
+                };
 
-console.log(car.carName);    // C-HR</code></pre>
-            </div>
-        </prism-highlight>
+                console.log(car.carName);    // C-HR
+            </code>
+        </pre>
         <p>這個範例裡，<em>carName</em> 屬性名稱明確指定為「C-HR」，所以 Console <em>car.carName</em> 可以正確地輸出 C-HR 這個結果。然而，當我們將 <em>carName</em> 設定成變數：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">var carName = "name";
-var car = {
-    name: "C-HR"
-};
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                var carName = "name";
+                var car = {
+                    name: "C-HR"
+                };
 
-console.log(car.carName);    // undefined</code></pre>
-            </div>
-        </prism-highlight>
+                console.log(car.carName);    // undefined
+            </code>
+        </pre>
         <p>這時點記法會因為 <em>car</em> 物件中裡面查找不到 <em>carName</em> 這個屬性名稱，所以只能輸出 <em>undefined</em>，但如果用括弧記法就不一樣了：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">var carName = "name";
-var car = {
-    name: "C-HR"
-};
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                var carName = "name";
+                var car = {
+                    name: "C-HR"
+                };
 
-console.log(car[carName]);    // C-HR</code></pre>
-            </div>
-        </prism-highlight>
+                console.log(car[carName]);    // C-HR
+            </code>
+        </pre>
         <p>括弧記法允許我們使用變數中儲存的屬性名，<em>car[carName]</em> 實際上指的就是 <em>car["name"]</em>，這個 <em>name</em> 又被指定給我們宣告的變數 <em>carName</em>，所以通過括弧技法我們能順利地取得「C-HR」這個屬性值。</p>
     </div>
     <div class="text-block" :id="'act' + catalog[4].id">
         <h2 v-text="catalog[4].title"></h2>
         <p>倘如要刪除物件裡的屬性，我們可以使用 <em>delete</em> 關鍵字，具體操作方式為下：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">delete object.property;</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                delete object.property;
+            </code>
+        </pre>
         <p>例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">var car = {
-    brand: "TOYOTA",
-    name: "C-HR",
-    color: "red",
-    year: 2016,
-};
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                var car = {
+                    brand: "TOYOTA",
+                    name: "C-HR",
+                    color: "red",
+                    year: 2016,
+                };
 
-delete car.name;
-delete car.color;
-delete car.year;
+                delete car.name;
+                delete car.color;
+                delete car.year;
 
-console.log(car);    // { "brand": "TOYOTA" }</code></pre>
-            </div>
-        </prism-highlight>
+                console.log(car);    // { "brand": "TOYOTA" }
+            </code>
+        </pre>
         <p>最後 <em>car</em> 物件裡的屬性便只剩下 <em>brand</em> 一條而已。</p>
     </div>
     <div class="text-block" :id="'act' + catalog[5].id">
         <h2 v-text="catalog[5].title"></h2>
         <p>前面的章節主要闡述如何索取物件裡已經宣告的屬性，而我們也可以另外賦值以更新原本的屬性值。方法很簡單，請看下例：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">var car = {
-    brand: "TOYOTA",
-    name: "C-HR",
-    color: "red",
-    year: 2016,
-};
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                var car = {
+                    brand: "TOYOTA",
+                    name: "C-HR",
+                    color: "red",
+                    year: 2016,
+                };
 
-car.name = "VIOS";
+                car.name = "VIOS";
 
-console.log(car);    // VIOS</code></pre>
-            </div>
-        </prism-highlight>
+                console.log(car);    // VIOS
+            </code>
+        </pre>
         <p>當然，更新物件屬性值也不僅只局限於更新現有屬性或函式的數值，我們也可以在物件外部建立全新的屬性或函式給該物件。例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">var car = {};
-car.currentSpeed = function(){
-    console.log("Now speed is 60 mph!")
-}
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                var car = {};
+                car.currentSpeed = function(){
+                    console.log("Now speed is 60 mph!")
+                }
 
-car.currentSpeed();   // Now speed is 60 mph!</code></pre>
-            </div>
-        </prism-highlight>
+                car.currentSpeed();   // Now speed is 60 mph!
+            </code>
+        </pre>
         <p><br></p>
         <p>以上是 JavaScript 物件的基本知識與使用語法介紹，但這些僅僅還只是皮毛，繼續深入窺探會發現它底下是非常巨大的深坑，畢竟 JavaScript 本身就是一個「物件導向」本質的程式語言。進一步窺探會發現還有「物件原型」（Prototype）、「原型繼承」（Prototypal inheritance）、「執行環境」（This）...等和物件息息相關的概念需要認識、學習，這些東西幾乎都需要單獨開篇幅來詳細記述，所以就留待後續再繼續做文章筆記囉。</p>
     </div>

@@ -40,27 +40,41 @@ const catalog = reactive<CatalogItem[]>([
         <h2 v-text="catalog[1].title"></h2>
         <p>電腦程式語言的同步，通常指的是「一次只會做一件事情，做完才繼續做下一件事」，若要打個比方，我們以下用炸雞店作業流程舉例：假設炸雞店只有一名員工，顧客甲點完餐點後，員工開始烹炸，等餐點做完並交給顧客甲後，才會繼續服務顧客乙，點餐、做餐、交餐、下一位...然後重複一樣的流程──後面的顧客永遠不會比前面顧客早拿到自己點的餐點。</p>
         <p>看完上面例子，我們接著來觀察單執行緒的 JavaScript 是如何運行的，以下是範例程式碼片段：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">console.log("執行A任務");
-for(let i = 1; i &lt;= 3; i++){
-    console.log("執行B" + i + "任務");
-}
-console.log("執行C任務");
-console.log("執行D任務");</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                console.log("執行A任務");
+                for(let i = 1; i &lt;= 3; i++){
+                    console.log("執行B" + i + "任務");
+                }
+                console.log("執行C任務");
+                console.log("執行D任務");
+            </code>
+        </pre>
         <p><em>console</em> 實際輸出的結果：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">"執行A任務"
-"執行B1任務"
-"執行B2任務"
-"執行B3任務"
-"執行C任務"
-"執行D任務"</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                "執行A任務"
+                "執行B1任務"
+                "執行B2任務"
+                "執行B3任務"
+                "執行C任務"
+                "執行D任務"
+            </code>
+        </pre>
         <p>如果要用一張圖表示，同步的處理流程會是這樣子的：</p>
         <figure>
             <img src="/images/learn/js/learn-saa-1.jpg">
@@ -73,29 +87,43 @@ console.log("執行D任務");</code></pre>
         <p>我們同樣以炸雞店作舉例：當店員接收到顧客甲的訂單後開始進行烹炸，在同步定義下，顧客乙必須等待顧客甲的訂單完成並交餐後才能換他開始點餐。然而如果是非同步行為模式，店員把顧客甲的炸物投入油鍋，烹炸等待的空檔就能回到櫃台，接受顧客乙的點單作業。假設顧客乙的炸物也下鍋但顧客甲的炸物尚未完成，店員便能趁這段空窗期再接著顧客丙、丁、戊......的訂單，直到顧客甲的餐點完成再呼叫顧客甲來索取。</p>
         <p>假設顧客丙的訂單很簡單，興許就只單純買杯冷飲，於是店員收到訂單後立即把飲料盛裝交付給顧客丙，那麼他的訂單就會比顧客甲與顧客乙還早完成。如此一來，炸雞店工作效率不但顯著提升，顧客也不需要非得等候前面的餐點完成才能輪到他們的訂單。</p>
         <p>我們來看程式碼實際演練的部份，由於 JavaScript 單執行緒的特性，本身並沒有提供非同步的語法定義，不過我們可以藉由 Web APIs 的 <em>setTimeout()</em> 方法來達成非同步的目的。例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">console.log("執行A任務");
-setTimeout(function () {
-    for(let i = 1; i &lt;= 3; i++){
-        console.log("執行B" + i + "任務");
-    }
-},0);
-console.log("執行C任務");
-console.log("執行D任務");</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                console.log("執行A任務");
+                setTimeout(function () {
+                    for(let i = 1; i &lt;= 3; i++){
+                        console.log("執行B" + i + "任務");
+                    }
+                },0);
+                console.log("執行C任務");
+                console.log("執行D任務");
+            </code>
+        </pre>
         <p><em>console</em> 實際輸出的結果：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">"執行A任務"
-"執行C任務"
-"執行D任務"
-"執行B1任務"
-"執行B2任務"
-"執行B3任務"</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                "執行A任務"
+                "執行C任務"
+                "執行D任務"
+                "執行B1任務"
+                "執行B2任務"
+                "執行B3任務"
+            </code>
+        </pre>
         <p>我們可以看到一個有趣的現象，<em>setTimeout()</em> 方法中最後面的參數 <em>0</em>，表示瀏覽器 Timer 等候的時間，即便設定為 <em>0</em> 秒，它裡頭事件也是排在任務 C 和 D 之後才完成，這不單意味著 <em>setTimeout()</em> 本身屬於非同步機制，同時也代表當 <em>setTimeout()</em> 的 Timer 等候結束被觸發後，裡頭的 B 任務才會「Callback」排入 JavaScript 執行序列中，等待前面事件輪循到它時再執行。</p>
         <blockquote>
             <p><em>setTimeout()</em> 裡面的函式也可稱為「回呼函式」（Callback Function）。</p>
@@ -120,67 +148,102 @@ console.log("執行D任務");</code></pre>
         <p>那麼非同步處理的 Web APIs 方法有哪些？以下列出一些常見的語法：</p>
         <p><br></p>
         <h3>1. setTimeout、setInterval：</h3>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">var timeoutID = window.setTimeout(( () => console.log("Hello!") ), 3000);
-var timeoutID = window.setInterval(( () => console.log("Hello!") ), 3000);</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                var timeoutID = window.setTimeout(( () => console.log("Hello!") ), 3000);
+                var timeoutID = window.setInterval(( () => console.log("Hello!") ), 3000);
+            </code>
+        </pre>
         <p><em>setTimeout</em> 與 <em>setInterval</em> 都是瀏覽器的計時器方法，JavaScript 將事件塞到計時器方法中讓瀏覽器進行計數，等計時秒數到了再將事件回傳至 JavaScript 任務序列裡排隊執行。</p>
         <p><em>setTimeout</em> 和 <em>setInterval</em> 差別在於前者只會在計時到點時執行一次，而後者則是會在設定的計時時間不斷循環去做，例如我們設定參數為 3000（三秒），則每三秒就會執行一次 <em>setInterval</em> 裡面的函式。</p>
         <p><br></p>
         <h3>2. XMLHttpRequest：</h3>
         <p><em>XmlHttpRequest</em> 又叫做 XHR，最早原是 IE5 以 ActiveX 元件的形式實現的內建物件，儘管除了 IE 以外的其他瀏覽器將其視為本地的 JavaScript 物件，各大瀏覽器也皆相容並予以支援。XHR 主要用來存取伺服器端的資料，我們可以在以不重新整理頁面為前提下，直接透過指定的 URL 進行資料交換。雖然我們現在可能比較少看到 XHR，然而有一個著名的非同步處理技術仍大量使用它，那就是 AJAX。事實上，AJAX 全名 Asynchronous JavaScript And XML，就同時包含了 Asynchronous（非同步）與 XML（<em>XmlHttpRequest</em>）等詞意。</p>
         <p>建立 <em>XMLHttpRequest</em> 物件的基本語法：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">var xhr = new XMLHttpRequest ();</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                var xhr = new XMLHttpRequest ();
+            </code>
+        </pre>
         <p><br></p>
         <h3>3. Fetch API：</h3>
         <p>Fetch API 也是 Web APIs 底下一種新標準，屬於 HTML5 的一部份。它和 <em>XmlHttpRequest</em> 有些相似，不過與其相比，Fetch API 提供了更強大且更具彈性的功能。</p>
         <p>Fetch API 的核心方法為 <em>fetch()</em>，其最大特點為使用 Promise 物件而不使用回呼函式（Callback Function），大幅度簡化了程式碼。它的基本結構為：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">fetch(url)
-  .then( ... )
-  .catch( ... )</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                fetch(url)
+                    .then( ... )
+                    .catch( ... )
+            </code>
+        </pre>
         <p>舉一個從伺服器端取得 JSON 資料的簡單範例：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">fetch('https://example.com/users/data')
-  .then(response => response.json())
-  .then(json => console.log(json))
-  .catch(err => console.log('Request Failed', err));</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                fetch('https://example.com/users/data')
+                    .then(response => response.json())
+                    .then(json => console.log(json))
+                    .catch(err => console.log('Request Failed', err));
+            </code>
+        </pre>
         <p>當我們在 JavaScript 使用 <em>fetch()</em> 傳入一段 URL，瀏覽器會返回一個 Promise 物件，接著我們就需要再透過 <em>then()</em> 去取得 Promise 裡面的資料。至於 <em>catch()</em> 則是用於得不到回應時的錯誤應對。</p>
         <p><br></p>
         <h3>4. Promise：</h3>
         <p>在前面 Fetch API 裡有提到 Promise 這個東西，有別於 AJAX 是屬於透過 JavaScript 與 Web APIs 結合的一種技術，<em>promise</em> 則是 JavaScript ES6 新增的其中一個物件，雖說兩者都專門用來處理非同步行為，但本質上並不相同。其實也正是為了改善 JavaScript 屬於同步執行指令的單執行緒程式語言，ES6 才會特意新增 Promise 這個方法來應對非同步行為的需求。</p>
         <p>以下是 <em>promise</em> 基本的語法結構：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">const promise = new Promise(function(resolve, reject) {
-    // 成功時
-    resolve(value)
-    // 失敗時
-    reject(reason)
-});
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                const promise = new Promise(function(resolve, reject) {
+                    // 成功時
+                    resolve(value)
+                    // 失敗時
+                    reject(reason)
+                });
 
-promise.then(
-    function(value) {
-        // on fulfillment（已實現時）
-    },
-    function(reason) {
-        // on rejection（已拒絕時）
-    }
-)</code></pre>
-            </div>
-        </prism-highlight>
+                promise.then(
+                    function(value) {
+                        // on fulfillment（已實現時）
+                    },
+                    function(reason) {
+                        // on rejection（已拒絕時）
+                    }
+                )
+            </code>
+        </pre>
         <p>一個 Promise 可以處於以下三種狀態之一：</p>
         <ul>
             <li>Pending（待定）：初始狀態，當 Promise 被建立但尚未被解決（完成或拒絕）時。</li>
@@ -189,34 +252,41 @@ promise.then(
         </ul>
         <p>當 Promise 被解決時，它將返回一個值（對於已完成狀態）或一個錯誤（對於已拒絕狀態）。</p>
         <p>以下是 一個 Promise 的基本使用示範：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">// 建立一個 Promise
-let myPromise = new Promise((resolve, reject) => {
-    // 一些非同步操作，例如從伺服器取得資料
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                // 建立一個 Promise
+                let myPromise = new Promise((resolve, reject) => {
+                    // 一些非同步操作，例如從伺服器取得資料
 
-    // 假設這裡的非同步操作成功完成
-    let success = true;
+                    // 假設這裡的非同步操作成功完成
+                    let success = true;
 
-    if (success) {
-        // 成功時，呼叫 resolve，將結果傳遞給 then 方法
-        resolve("操作成功");
-    } else {
-        // 失敗時，呼叫 reject，將錯誤傳遞給 catch 方法
-        reject("操作失敗");
-    }
-});
+                    if (success) {
+                        // 成功時，呼叫 resolve，將結果傳遞給 then 方法
+                        resolve("操作成功");
+                    } else {
+                        // 失敗時，呼叫 reject，將錯誤傳遞給 catch 方法
+                        reject("操作失敗");
+                    }
+                });
 
-// 使用 Promise
-myPromise.then((result) => {
-    // 操作成功時的處理邏輯
-    console.log(result); // 輸出："操作成功"
-}).catch((error) => {
-    // 操作失敗時的處理邏輯
-    console.error(error); // 輸出："操作失敗"
-});</code></pre>
-            </div>
-        </prism-highlight>
+                // 使用 Promise
+                myPromise.then((result) => {
+                    // 操作成功時的處理邏輯
+                    console.log(result); // 輸出："操作成功"
+                }).catch((error) => {
+                    // 操作失敗時的處理邏輯
+                    console.error(error); // 輸出："操作失敗"
+                });
+            </code>
+        </pre>
         <p>在此範例中，當 myPromise 被建立時，它處於待定狀態。根據非同步操作的結果，它將解決為已完成狀態（使用 <em>resolve</em>）或已拒絕狀態（使用 <em>reject</em>）。接著，我們使用 <em>then</em> 方法來處理操作成功的情況，使用 <em>catch</em> 方法來處理操作失敗的情況。</p>
     </div>
     <div class="text-block" :id="'act' + catalog[5].id">

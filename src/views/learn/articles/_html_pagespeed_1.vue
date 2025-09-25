@@ -186,32 +186,46 @@ const catalog = reactive<CatalogItem[]>([
         <h4>如何建立 AMP HTML？</h4>
         <p>AMP HTML 建立方式與一般網頁 HTML 類似，寫法大致上也大同小異。文件副檔名的部分 AMP HTML 一樣可以使用 <em>.html</em>，不過有些人為了方便識別，會採用 <em>.amp.html</em> 的格式來與一般 <em>.html</em> 做區隔。</p>
         <p>如果要建立 AMP HTML 網頁，記得要在 <em>&lt;html&gt;</em> 元素標籤裡加入 <em>amp</em> 屬性。除此之外，<em>&lt;head&gt;</em> 標籤裡則需要包含 <em>charset</em> 與 <em>viewport</em> 屬性的 <em>&lt;meta&gt;</em> 標籤，以及分別放置 CSS 與 JavaScript 的 <em>&lt;style&gt;</em> 與 <em>&lt;script&gt;</em> 標籤。當然，這裡說的 JavaScript 指的是 AMP 使用的 AMP JS。格式範例：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;div&gt;
-    &lt;p&gt;&lt;/p&gt;
-&lt;/div&gt;</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>
+                &lt;div&gt;
+                    &lt;p&gt;&lt;/p&gt;
+                &lt;/div&gt;
+            </code>
+        </pre>
         <p><em>div</em> > <em>p</em>，區塊元素包含行內元素，此為合法。</p>
         <p><br></p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;!doctype html&gt;
-&lt;html amp lang="en"&gt;
-    &lt;head&gt;
-        &lt;meta charset="utf-8"&gt;
-        &lt;meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1"&gt;
-        &lt;title&gt;Hello, AMPs&lt;/title&gt;
-        &lt;link rel="canonical" href="https://amp.dev/documentation/guides-and-tutorials/start/create/basic_markup/"&gt;
-        &lt;script async src="https://cdn.ampproject.org/v0.js"&gt;&lt;/script&gt;
-        &lt;style amp-boilerplate&gt; ... &lt;/style&gt;
-    &lt;/head&gt;
-    &lt;body&gt;
-    &lt;/body&gt;
-&lt;/html&gt;</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>
+                &lt;!doctype html&gt;
+                &lt;html amp lang="en"&gt;
+                    &lt;head&gt;
+                        &lt;meta charset="utf-8"&gt;
+                        &lt;meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1"&gt;
+                        &lt;title&gt;Hello, AMPs&lt;/title&gt;
+                        &lt;link rel="canonical" href="https://amp.dev/documentation/guides-and-tutorials/start/create/basic_markup/"&gt;
+                        &lt;script async src="https://cdn.ampproject.org/v0.js"&gt;&lt;/script&gt;
+                        &lt;style amp-boilerplate&gt; ... &lt;/style&gt;
+                    &lt;/head&gt;
+                    &lt;body&gt;
+                    &lt;/body&gt;
+                &lt;/html&gt;
+            </code>
+        </pre>
         <p>一般 HTML 使用的元素基本上 AMP HTML 也可以使用，不過 AMP HTML 也有自訂一些特別的元素標籤來取代對應的 HTML 標籤，像是 <em>&lt;amp-img&gt;</em>（取代 <em>&lt;img&gt;</em>）、<em>&lt;amp-video&gt;</em>（取代 <em>&lt;video&gt;</em>）...諸如此類的元素，還有一些顯示外部網站內容例如 <em>&lt;amp-facebook&gt;</em>、<em>&lt;amp-twitter&gt;</em> ...等等。</p>
         <p><br></p>
         <h4>驗證與 SEO</h4>

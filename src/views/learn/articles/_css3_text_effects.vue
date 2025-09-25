@@ -38,31 +38,52 @@ const catalog = reactive<CatalogItem[]>([
         <h2 v-text="catalog[1].title"></h2>
         <p>相信不少人都知道 <em>box-shadow</em> 屬性可以用來設置元素陰影，但該屬性只能針對元素本身，無法套用到元素內的文字上，如果想賦予文字陰影，則必須使用 <em>text-shadow</em> 屬性。</p>
         <p>語法規則：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">selector {
-    text-shadow: x y blur spread color;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                selector {
+                    text-shadow: x y blur spread color;
+                }
+            </code>
+        </pre>
         <p><em>x</em> 與 <em>y</em> 分別代表水平與垂直位移，<em>blur</em> 表示陰影模糊強度，<em>spread</em> 則是擴散程度，<em>color</em> 為陰影的顏色。基本上它們的預設值為 <em>0</em>（顏色則是黑色），如果沒有填入參數的話該值會視為 <em>0</em>。</p>
         <p>和 <em>box-shadow</em> 相同，單一元素可設置多重陰影，只需要用逗號隔開即可，例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">h2 {
-    text-shadow: 0px 0px 0px red, 2px 2px 2px blue, -2px -2px 2px green;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                h2 {
+                    text-shadow: 0px 0px 0px red, 2px 2px 2px blue, -2px -2px 2px green;
+                }
+            </code>
+        </pre>
         <p><br></p>
         <p>前面有提到 <em>box-shadow</em> 的效果無法單就針對文字去添加陰影，我們來實際看看效果是怎麼樣的：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">p {
-    box-shadow: 0 0 4px 0 #000;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                p {
+                    box-shadow: 0 0 4px 0 #000;
+                }
+            </code>
+        </pre>
         <p>結果：</p>
         <div class="text-example">
             <div class="ex-shadow">
@@ -70,13 +91,20 @@ const catalog = reactive<CatalogItem[]>([
             </div>
         </div>
         <p>換成使用 <em>text-shadow</em> 的話：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">p {
-    text-shadow: 0 0 4px #000;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                p {
+                    text-shadow: 0 0 4px #000;
+                }
+            </code>
+        </pre>
         <p>結果：</p>
         <div class="text-example">
             <div class="ex-shadow">
@@ -84,13 +112,20 @@ const catalog = reactive<CatalogItem[]>([
             </div>
         </div>
         <p>同場加映多重文字陰影的效果展示：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">p {
-    text-shadow: 2px -2px 2px red, 2px 2px 2px blue, -2px -2px 2px green
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                p {
+                    text-shadow: 2px -2px 2px red, 2px 2px 2px blue, -2px -2px 2px green
+                }
+            </code>
+        </pre>
         <p>結果：</p>
         <div class="text-example">
             <div class="ex-shadow">
@@ -101,16 +136,23 @@ const catalog = reactive<CatalogItem[]>([
     <div class="text-block" :id="'act' + catalog[2].id">
         <h2 v-text="catalog[2].title"></h2>
         <p>實現文字漸層的方法並非單一屬性直接去設置，而核心屬性 <em>background-clip</em> 也並非是單純針對文字特效誕生的屬性，以下我們先來看語法範例，再來講解各屬性的用途：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">h1 {
-    color: transparent;
-    background: linear-gradient(to bottom, #F00 0%,#000 100%);
-    -webkit-background-clip: text;  
-    background-clip: text;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                h1 {
+                    color: transparent;
+                    background: linear-gradient(to bottom, #F00 0%,#000 100%);
+                    -webkit-background-clip: text;  
+                    background-clip: text;
+                }
+            </code>
+        </pre>
         <p>首先，我們必須將文字顏色設置成透明色（<em>transparent</em>），如此在接下來填入背景色漸層與 <em>background-clip</em> 時，才能確保不會被文字顏色給覆蓋過去。而背景（<em>background</em>）的漸層色（<em>linear-gradient</em>）用來決定文字漸層的主要色彩。</p>
         <p>再來說說最重要的 <em>background-clip</em> 屬性，本屬性主要用途在於透過設定裁切範圍，控制圖片顯示區域。它有四種屬性值，以下透過表格來解釋：</p>
         <div class="text-flex">
@@ -151,30 +193,51 @@ const catalog = reactive<CatalogItem[]>([
     <div class="text-block" :id="'act' + catalog[3].id">
         <h2 v-text="catalog[3].title"></h2>
         <p>就像 <em>text-shadow</em> 之於 <em>box-shadow</em>，CSS3 同樣提供設定文字邊框的新屬性，其語法為：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">selector {
-    -webkit-text-stroke: width color;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                selector {
+                    -webkit-text-stroke: width color;
+                }
+            </code>
+        </pre>
         <p><em>-webkit-text-stroke</em> 是同時包含 <em>-webkit-text-stroke-width</em> 和 <em>-webkit-text-stroke-color</em> 兩個屬性的簡寫語法，因此也可以拆寫，例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">p {
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: #F00;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                p {
+                    -webkit-text-stroke-width: 1px;
+                    -webkit-text-stroke-color: #F00;
+                }
+            </code>
+        </pre>
         <p>至於若要將文字鏤空，只需要將文字顏色設置為透明色即可。當然，我們優先會想到使用 <em>color</em> 屬性，不過還有另外一個 CSS3 填色屬性可以運用：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">p {
-    -webkit-text-fill-color: transparent;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                p {
+                    -webkit-text-fill-color: transparent;
+                }
+            </code>
+        </pre>
         <p>它與 <em>color</em> 的呈現結果上幾乎無異，但是當兩者同時被設置的時候，因前者權重較高，故會以前者的屬性值為優先顯示結果，不過在瀏覽器相容性方面表現則遠比後者來得差。</p>
         <p>範例：</p>
         <div class="text-example">

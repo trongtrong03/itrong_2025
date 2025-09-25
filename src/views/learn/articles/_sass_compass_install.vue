@@ -60,63 +60,119 @@ const catalog = reactive<CatalogItem[]>([
         <p><br></p>
         <h6>2. 安裝 Sass。</h6>
         <p>呼叫你的終端機或命令提示字元（並非一定要用安裝 Ruby 附帶的 Start Command Prompt with Ruby），輸入下方指令：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">gem install sass</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>
+                gem install sass
+            </code>
+        </pre>
         <p>如果要確認是否有安裝成功，可以輸入 <em>sass -v</em> 來確認 Sass 的版本，若有反饋版本號，即代表 Sass 已成功安裝。</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">sass -v</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>
+                sass -v
+            </code>
+        </pre>
         <p><br></p>
         <h6>3. 安裝 Compass。</h6>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">gem install compass</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>
+                gem install compass
+            </code>
+        </pre>
         <p>和安裝 Sass 差不多，第三步要作的即是將 Compass 也安裝到工作電腦裡，安裝完畢後同樣可以透過輸入 <em>-v</em> 指令查看版本來確認是否有安裝 Compass 成功。</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">compass -v</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>
+                compass -v
+            </code>
+        </pre>
         <p>Ruby、Sass、Compass 皆分別安裝完畢後，我們就可以開始在自己的工作電腦用 Compass 編譯 Sass 了。</p>
     </div>
     <div class="text-block" :id="'act' + catalog[3].id">
         <h2 v-text="catalog[3].title"></h2>
         <h6>1. 建立空白資料夾並移動至資料夾內。</h6>
         <p>假設我們要在 D 槽建立並執行由 Compass 編譯的專案，而資料夾名稱為「demo」，那麼其完整資料夾路徑就是 <b>D:/demo</b>。開啟終端機或命令提示字元，輸入下方指令：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">d:</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>
+                d:
+            </code>
+        </pre>
         <p>上面的指令目的是將命令提示字元切換磁碟至指定的 D 槽，接著我們才可以使用 <em>cd</em> 指令，把命令提示字元切換路徑到 <b>demo</b> 資料夾內：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">cd demo</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>
+                cd demo
+            </code>
+        </pre>
         <blockquote>
             <p>如果你覺得你的專案資料夾的路徑太長，也可以使用滑鼠拖曳的方式，直接用滑鼠壓住資料夾不放，將其拉進命令提示字元內，然後按下 <b>Enter&crarr;</b> 鍵，一樣可以令命令提示字元快速移動至該專案資料夾內。</p>
         </blockquote>
         <h6>2. compass create 建立 Compass 專案</h6>
         <p>此刻 <b>demo</b> 資料夾裡頭仍空空如也，鍵入以下指令：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">compass create</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>
+                compass create
+            </code>
+        </pre>
         <p>這個指令的目的是讓 <b>demo</b> 產生編譯 Compass 所需的相關設定檔及初始配置，當然我們在下達 <em>compass create</em> 的同時也可以在後方添加一個名稱，例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">compass create project</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>
+                compass create project
+            </code>
+        </pre>
         <p>那麼 Compass 就會在 <b>demo</b> 資料夾底下新增一個 <b>project</b> 資料夾，將編譯相關檔案生成在其內部。</p>
         <p><br></p>
         <p><em>compass create</em> 執行完之後，會看見資料夾內產生以下這些內容物：</p>
@@ -134,11 +190,18 @@ const catalog = reactive<CatalogItem[]>([
         <p>我們可以透過添加或修改 <em>config.rb</em> 設定檔裡面的參數，變更 <b>sass</b> 與 <b>stylesheets</b> 的相關配置，又或是取消 <b>.sass-cache</b> 暫存機制，詳細說明將留到之後 <b>config.rb</b> 介紹再行敘述。</p>
         <p><br></p>
         <h6>3. compass watch 監控 Compass 專案</h6>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">compass watch</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>
+                compass watch
+            </code>
+        </pre>
         <p>輸入 <em>compass watch</em>，專案即開始執行監控，只要 <b>sass</b> 資料夾內的 <b>.sass</b> 文件一經儲存，Compass 便會將 <b>sass</b> 編譯輸出成 <b>css</b> 格式。舉例來說，我們在 <b>print.scss</b> 這支檔案新增 CSS 樣式，接著儲存 <b>print.scss</b>，Compass 就會立即監控檔案，將其編譯為 CSS 格式，並輸出至 <b>stylesheets</b> 資料夾裡生成 <b>print.css</b> 樣式表。</p>
         <figure>
             <img src="/images/learn/css/compass-3.jpg">
@@ -158,61 +221,89 @@ const catalog = reactive<CatalogItem[]>([
         <h2 v-text="catalog[4].title"></h2>
         <p><b>config.rb</b> 是 Compass 專案不可缺少的設定文件，它記載著 Compass 執行編譯時所需的相關參數。儘管我們不能隨意刪除它，但有些參數細節可以視個人或團隊的需要去作變更，本節將介紹其設定文件的幾個重要參數，以及可以額外新增哪些參數進去。</p>
         <p>我們先來看看透過 <em>compass create</em> 所產生預設 <b>config.rb</b> 文件裡的配置內容：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-ruby">require 'compass/import-once/activate'
-# Require any additional compass plugins here.
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-ruby" v-prism>
+                require 'compass/import-once/activate'
+                # Require any additional compass plugins here.
 
-# Set this to the root of your project when deployed:
-http_path = "/"
-css_dir = "stylesheets"
-sass_dir = "sass"
-images_dir = "images"
-javascripts_dir = "javascripts"
+                # Set this to the root of your project when deployed:
+                http_path = "/"
+                css_dir = "stylesheets"
+                sass_dir = "sass"
+                images_dir = "images"
+                javascripts_dir = "javascripts"
 
-# You can select your preferred output style here (can be overridden via the command line):
-# output_style = :expanded or :nested or :compact or :compressed
+                # You can select your preferred output style here (can be overridden via the command line):
+                # output_style = :expanded or :nested or :compact or :compressed
 
-# To enable relative paths to assets via compass helper functions. Uncomment:
-# relative_assets = true
+                # To enable relative paths to assets via compass helper functions. Uncomment:
+                # relative_assets = true
 
-# To disable debugging comments that display the original location of your selectors. Uncomment:
-# line_comments = false
+                # To disable debugging comments that display the original location of your selectors. Uncomment:
+                # line_comments = false
 
 
-# If you prefer the indented syntax, you might want to regenerate this
-# project again passing --syntax sass, or you can uncomment this:
-# preferred_syntax = :sass
-# and then run:
-# sass-convert -R --from scss --to sass sass scss && rm -rf sass && mv scss sass</code></pre>
-            </div>
-        </prism-highlight>
+                # If you prefer the indented syntax, you might want to regenerate this
+                # project again passing --syntax sass, or you can uncomment this:
+                # preferred_syntax = :sass
+                # and then run:
+                # sass-convert -R --from scss --to sass sass scss && rm -rf sass && mv scss sass
+            </code>
+        </pre>
         <p><em>#</em> 代表註解的意思，只要在起始處加上 <em>#</em> 符號，該行內容都會成為註解，因此可以看到文件預設狀態下，有很多功能參數尚未被啟用（因為被註解化）。</p>
         <p><br></p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-ruby">require 'compass/import-once/activate'</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-ruby" v-prism>
+                require 'compass/import-once/activate'
+            </code>
+        </pre>
         <p>這行的意思是當重複引用某 <b>sass</b> 文件時，最終也只會輸出一次編譯效果。</p>
         <p><br></p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-ruby">http_path = "/"
-css_dir = "stylesheets"
-sass_dir = "sass"
-images_dir = "images"
-javascripts_dir = "javascripts"</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-ruby" v-prism>
+                http_path = "/"
+                css_dir = "stylesheets"
+                sass_dir = "sass"
+                images_dir = "images"
+                javascripts_dir = "javascripts"
+            </code>
+        </pre>
         <p>這幾行用來決定資料夾根目錄的路徑，以及執行編譯時對應的資料夾名稱。<em>http_path</em> 指的是根目錄路徑，它主要用來幫助 Compass 提供的一些便利功能，例如 <em>image-url</em> 語法，只要預先設置好 <em>http_path</em> 的路徑，我們在 Sass 插入影像時只需要填入 <em>images</em> 之後的影像路徑就好。</p>
         <p>至於 <em>css_dir</em>、<em>sass_dir</em>、<em>images_dir</em>、<em>javascripts_dir</em> 則分別代表 CSS、Sass、Images、Javascript 的資料夾名稱，通常我會將 <em>css_dir</em> 預設值 <em>stylesheets</em> 修改成較直覺的 <em>css</em>（重新執行編譯後別忘記把舊的 <em>stylesheets</em> 資料夾移除）。其他像是將 <em>javascripts</em> 改成 <em>js</em>、<em>sass</em> 則變更為 <em>scss</em>（此乃因為我使用的格式是 Scss）。</p>
         <p><br></p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-ruby"># output_style = :expanded or :nested or :compact or :compressed</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-ruby" v-prism>
+                # output_style = :expanded or :nested or :compact or :compressed
+            </code>
+        </pre>
         <p><em>output_style</em> 指的是輸出 CSS 的格式，它有以下四種選擇：</p>
         <div class="text-flex">
             <div class="f-width">
@@ -239,127 +330,211 @@ javascripts_dir = "javascripts"</code></pre>
             </div>
         </div>
         <p>每一個參數都有其優劣，筆者較偏好維持預設的 <em>:expanded</em> 參數，或將選擇器僅佔單行表示的 <em>:compact</em> 格式。</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-ruby">output_style = :compact</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-ruby" v-prism>
+                output_style = :compact
+            </code>
+        </pre>
         <p>如果要使用其他格式，記得要將註解符號（<em>#</em>）刪除，由於 <em>:expanded</em> 是內建預設值所以有沒有取消註解的影響較不大。</p>
         <p><br></p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-ruby"># line_comments = false</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-ruby" v-prism>
+                # line_comments = false
+            </code>
+        </pre>
         <p><em>line_comments</em> 用來決定輸出的 CSS 樣式表是否加上 <b>Sass</b> 的逐行註解，它的預設值是 <em>true</em>，編譯出來的結果可參考下方此圖：</p>
         <figure>
             <img src="/images/learn/css/compass-5.jpg">
         </figure>
         <p>個人認為逐行註解沒有什麼必要，建議可以將參數註解取消，使其定義為 <em>false</em>：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-ruby">line_comments = false</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-ruby" v-prism>
+                line_comments = false
+            </code>
+        </pre>
         <p><br></p>
         <p>再來是額外添加的部分，我個人習慣讓自己開發的專案 <b>config.rb</b> 文件另外添加一些配置，取消不必要的暫存生成，以及相關識別輔助...等，額外增添的參數不侷限於寫在文件的何處，我習慣加在文件的末端。</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-ruby">cache = false</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-ruby" v-prism>
+                cache = false
+            </code>
+        </pre>
         <p>此參數可以使 <b>.sass-cache</b> 的生成失效。</p>
         <p><br></p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-ruby">sourcemap = true</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-ruby" v-prism>
+                sourcemap = true
+            </code>
+        </pre>
         <p>令 Compass 產出 CSS 樣式表的同時也生成 <b>.map</b> 格式的文件，它可以幫助我們直接在瀏覽器開發者模式裡閱讀到 CSS 屬性對應的 Sass 內容。</p>
         <p><br></p>
         <p>假如你有使用到 <em>image-url</em> 這個功能，像是給選擇器插入 <em>background-image</em> 屬性：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">body {
-    background-image: image-url('img.jpg');
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                body {
+                    background-image: image-url('img.jpg');
+                }
+            </code>
+        </pre>
         <p>編譯成 CSS 的結果為：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">body {
-    background-image: url('../images/img.jpg?1584062772');
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                body {
+                    background-image: url('../images/img.jpg?1584062772');
+                }
+            </code>
+        </pre>
         <p>會發現 CSS 的影像後方多了一串代碼，其實這是 <em>image-url</em> 公式裡的第三個參數 <em>$cache-buster</em> 生成的，其完整公式為：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-scss">image-url($path, $only-path, $cache-buster)</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-scss" v-prism>
+                image-url($path, $only-path, $cache-buster)
+            </code>
+        </pre>
         <p>這裡姑且不贅述它們的用途，只是要告訴大家如果使用這個函數，卻又不希望 CSS 生成那一串代碼，我們可以在使用 <em>image-url</em> 同時，給 <em>$cache-buster</em> 賦予 <em>false</em> 值即可，例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-scss">body {
-    background-image: image-url('img.jpg', false, false);
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                body {
+                    background-image: image-url('img.jpg', false, false);
+                }
+            </code>
+        </pre>
         <p>然而，每一個影像都需要這樣寫又稍嫌麻煩了些，因此，我們就可以在 <b>config.rb</b> 文件配置這個參數：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-ruby">asset_cache_buster {|*args| nil }</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-ruby" v-prism>
+                asset_cache_buster {|*args| nil }
+            </code>
+        </pre>
         <p>如此一來編譯時系統就不會產出那串代碼了。</p>
         <p><br></p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-ruby">Encoding.default_external = 'utf-8'</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-ruby" v-prism>
+                Encoding.default_external = 'utf-8'
+            </code>
+        </pre>
         <blockquote class="is-info">
             <p>部分 Ruby 版本（通常是比較早期的版本）在執行編譯時，會噴出「Error: Invalid CP950 character "\xxx"」這樣的訊息，大意是在說你的檔案內有存在 Ruby 無法識別的字元，遇到這種情況，我們可以在 <b>config.rb</b> 添加上方參數代碼，應該就能解決問題。</p>
         </blockquote>
         <p><br></p>
         <p>最後附上我個人的 <b>config.rb</b> 完整配置，提供給有需要的人員參考：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-ruby">require 'compass/import-once/activate'
-# Require any additional compass plugins here.
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-ruby" v-prism>
+                require 'compass/import-once/activate'
+                # Require any additional compass plugins here.
 
-# Set this to the root of your project when deployed:
-http_path = "../"
-css_dir = "css"
-sass_dir = "scss"
-images_dir = "images"
-javascripts_dir = "js"
+                # Set this to the root of your project when deployed:
+                http_path = "../"
+                css_dir = "css"
+                sass_dir = "scss"
+                images_dir = "images"
+                javascripts_dir = "js"
 
-# You can select your preferred output style here (can be overridden via the command line):
-# output_style = :expanded or :nested or :compact or :compressed
-output_style = :compact
+                # You can select your preferred output style here (can be overridden via the command line):
+                # output_style = :expanded or :nested or :compact or :compressed
+                output_style = :compact
 
-# To enable relative paths to assets via compass helper functions. Uncomment:
-# relative_assets = true
+                # To enable relative paths to assets via compass helper functions. Uncomment:
+                # relative_assets = true
 
-# To disable debugging comments that display the original location of your selectors. Uncomment:
-line_comments = false
+                # To disable debugging comments that display the original location of your selectors. Uncomment:
+                line_comments = false
 
 
-# If you prefer the indented syntax, you might want to regenerate this
-# project again passing --syntax sass, or you can uncomment this:
-# preferred_syntax = :sass
-# and then run:
-# sass-convert -R --from scss --to sass sass scss && rm -rf sass && mv scss sass
+                # If you prefer the indented syntax, you might want to regenerate this
+                # project again passing --syntax sass, or you can uncomment this:
+                # preferred_syntax = :sass
+                # and then run:
+                # sass-convert -R --from scss --to sass sass scss && rm -rf sass && mv scss sass
 
-Encoding.default_external = 'utf-8'
-cache = false
-sourcemap = true
-asset_cache_buster {|*args| nil }</code></pre>
-            </div>
-        </prism-highlight>
+                Encoding.default_external = 'utf-8'
+                cache = false
+                sourcemap = true
+                asset_cache_buster {|*args| nil }
+            </code>
+        </pre>
         <blockquote class="is-warning">
             <p>假如你在變更 <b>config.rb</b> 參數時已正在執行 <em>compass watch</em>，則必須終止並重新進行監控，<b>config.rb</b> 新變更的參數才會生效。</p>
         </blockquote>
@@ -369,23 +544,29 @@ asset_cache_buster {|*args| nil }</code></pre>
         <p>以下筆記從初始安裝到編譯專案的完整指令流程：</p>
         <h6>1. 下載、安裝 <a href="https://rubyinstaller.org/" target="_blank">RubyInstaller</a>。</h6>
         <h6>2. 於命令提示字元視窗依序輸入以下指令：</h6>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">// 安裝 sass、compass
-gem install sass
-gem install compass
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>
+                // 安裝 sass、compass
+                gem install sass
+                gem install compass
 
-// cd 至專案資料夾底下，也可用滑鼠拖曳的方式
-cd 專案資料夾
+                // cd 至專案資料夾底下，也可用滑鼠拖曳的方式
+                cd 專案資料夾
 
-// 建立 compass 初始環境
-compass create
+                // 建立 compass 初始環境
+                compass create
 
-// 執行監控
-compass watch</code></pre>
-            </div>
-        </prism-highlight>
-
+                // 執行監控
+                compass watch
+            </code>
+        </pre>
     </div>
     <div class="text-block" :id="'act' + catalog[6].id">
         <h2 v-text="catalog[6].title"></h2>

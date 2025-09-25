@@ -37,9 +37,15 @@ const catalog = reactive<CatalogItem[]>([
     <div class="text-block" :id="'act' + catalog[1].id">
         <h2 v-text="catalog[1].title"></h2>
         <p>首先，我們建立一個簡單的範例，這個範例展示了一輛卡車目前的時速和載重：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;template&gt;
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>&lt;template&gt;
     &lt;p&gt;時速: {{ speed }} km/h&lt;/p&gt;
     &lt;p&gt;載重: {{ weight }} kg&lt;/p&gt;
     &lt;button @click="changeSpeed"&gt;加速&lt;/button&gt;
@@ -58,54 +64,73 @@ const catalog = reactive<CatalogItem[]>([
     function changeWeight (){
         weight.value += 100;
     }
-&lt;/script&gt;</code></pre>
-            </div>
-        </prism-highlight>
+&lt;/script&gt;            </code>
+        </pre>
         <p>接著假設情境條件：當卡車時速大於 120 km/h 以上，或者載重大於 1000 KG 時，就 Console 回傳「已違規！」的字樣。這時就需要使用 <em>watch</em> 函式來監視卡車數據的變化。我們一步一步來，第一步先加入監視函式並輸出新、舊值觀察資料響應的變化：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">watch([speed, weight],(newValue, oldValue)=>{
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>watch([speed, weight],(newValue, oldValue)=>{
     console.log(newValue, oldValue);
-})</code></pre>
-            </div>
-        </prism-highlight>
+})            </code>
+        </pre>
         <p>（※ 記得 <em>import</em> 要導入 <em>watch</em>。）</p>
         <p>測試監視結果：</p>
         <figure>
             <img src="/images/learn/js/vue3-learn-5-1.jpg">
         </figure>
         <p>因為我們用陣列來顯示 <em>speed</em> 與 <em>weight</em> 的值，所以新舊值的打印輸出也是呈現陣列格式。但上一篇文章曾說過，實務開發上大多只會關注新的值，舊的值則不大理會，因此 <em>watch</em> 第二組參數的建構函式中，我們可以只傳入一個值，當只存在一個值時，會被視為新值。所以我們將函式再簡化一些：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">watch([speed, weight],(val)=>{
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>watch([speed, weight],(val)=>{
     console.log(val);
-})</code></pre>
-            </div>
-        </prism-highlight>
+})            </code>
+        </pre>
         <figure>
             <img src="/images/learn/js/vue3-learn-5-2.jpg">
         </figure>
         <p>再來是加上條件判斷：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">watch([speed, weight],(val)=>{
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>watch([speed, weight],(val)=>{
     if( speed.value >= 120 || weight.value > 1000){
         console.log("已違規！");
     }
-})</code></pre>
-            </div>
-        </prism-highlight>
+})            </code>
+        </pre>
         <p>當然可以只這樣寫，但是用解構賦值會更合適，比較能明顯辨別出解構賦值的變數是指向新的值：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">watch([speed, weight],(val)=>{
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>watch([speed, weight],(val)=>{
     let [newSpeed, newWeight] = val;
     if( newSpeed >= 120 || newWeight > 1000){
         console.log("已違規！");
     }
-})</code></pre>
-            </div>
-        </prism-highlight>
+})            </code>
+        </pre>
         <p>測試當時速大於等於 120 km/h 的時候：</p>
         <figure>
             <img src="/images/learn/js/vue3-learn-5-3.jpg">
@@ -118,38 +143,53 @@ const catalog = reactive<CatalogItem[]>([
         <p>承襲前一章節末段的問題，當要監視的條件非常多筆，要在 <em>watch</em> 函式裡面逐一設下條件固然可行，但無論是建立還是後續的維護都會相當麻煩，面對這種情況，顯然有更好的辦法，這個辦法便是使用 <em>watchEffect</em>。</p>
         <p>經過前面幾次關於 <em>watch</em> 的練習，應該可以認知到，<em>watch</em> 只會監視我們主動指定給它要請它監視的資料，假如沒有指定的，它就不會去監視，比如有 A、B、C、D、E 五筆資料，我們設定 <em>watch</em> 監視 A、B、C 這三筆資料，那它就只會監視這三筆響應式資料的狀態變化，D 和 E 有沒有變化則完全不理睬。</p>
         <p>但對 <em>watchEffect</em> 來說就不是這樣了，一旦調用 <em>watchEffect</em>，它會立即監視整個網頁應用的狀態變化，以同一個例子我們改用 <em>watchEffect</em> 來操作：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">import { ref, watchEffect } from "vue";
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>import { ref, watchEffect } from "vue";
 
 watchEffect(()=>{
     if( speed.value >= 120 || weight.value > 1000){
         console.log("已違規！");
     }
-})</code></pre>
-            </div>
-        </prism-highlight>
+})            </code>
+        </pre>
         <p>可以看到我們沒有傳入任何的參數，要 <em>watchEffect</em> 去監視它，單純只設定好條件，<em>watchEffect</em> 便會主動進行監視所有資料的狀態變化：</p>
         <figure>
             <img src="/images/learn/js/vue3-learn-5-4.jpg">
         </figure>
         <p>我們可以不設定任何條件，單純讓 <em>watchEffect</em> 輸出一個訊息：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">watchEffect(()=>{
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>watchEffect(()=>{
     console.log("Hello! world!");    // Hello! world!
-})</code></pre>
-            </div>
-        </prism-highlight>
+})            </code>
+        </pre>
         <p>當組件被載入，就能看到 Console 視窗輸出了「Hello! world!」，表示 <em>watchEffect</em> 會隨著該組件被載入到 DOM 裡頭後立刻開始作用。</p>
         <p>但如果使用 <em>watch</em>：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">watch(val, ()=>{
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>watch(val, ()=>{
     console.log("Hello! world!");    // Uncaught ReferenceError: val is not defined
-})</code></pre>
-            </div>
-        </prism-highlight>
+})            </code>
+        </pre>
         <p>則會出現 <b>Uncaught ReferenceError: val is not defined</b> 錯誤，它告訴你傳進去的參數 <em>val</em> 並沒有被定義，第一是因為我們前面沒有宣告一個名為 <em>val</em> 的變數；再者即使被定義，但因為 <em>val</em> 的資料沒有任何變化，<em>watch</em> 就不會有任何反應，和 <em>watchEffect</em> 一載入無論數據變化了沒都會先作用，兩相對比誰比較被動答案呼之欲出。</p>
         <p><br></p>
         <p>總結一下 <em>watch</em> 與 <em>watchEffect</em>：</p>

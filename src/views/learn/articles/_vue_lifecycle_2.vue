@@ -47,9 +47,15 @@ const catalog = reactive<CatalogItem[]>([
         <p>嚴格來說，<em>setup</em> 並不是生命週期鉤子，而是一個函式，它會在 Vue 實例尚未被建立之前執行，是組件中使用 Composition API 的入口，所以我們也可以稱之為「入口函式」，或者也可以說 Vue3 Composition API 附帶了一個 <em>setup</em> 這樣的方法，用於設置組件的初始狀態、數據、方法以及其他配置，取代了 Vue2.0 原先 <em>data</em>、<em>mehtods</em>、<em>computed</em> 等 Option API，使組件的結構更方便重複利用與更好的組織、模組化，而非根據屬性的類型（<em>data</em>、<em>mehtods</em>、<em>computed</em>...）進行分離管理。</p>
         <p>因為 <em>setup</em> 函式會在 <em>beforeCreate</em> 之前調用，此時 Vue 實例的數據和方法還沒有被初始化，若在這個生命週期鉤子使用 <em>this</em>，它無法指向實例裡的內容。此外，一方面也與 Vue3.0 版本鼓勵開發者不要使用 <em>this</em> 的方式有關，Vue3.0 傾向將所有相關的狀態和方法都明確地公開在 <em>setup</em> 函式的返回對象中，既可以簡化程式碼，減少程式碼中的誤用和混淆，也能增加可讀與一致性。</p>
         <p>舉例來說，這是 Vue2.0 使用 <em>this</em> 來訪問組件的數據與方法的範例：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;template&gt;
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>&lt;template&gt;
     &lt;div&gt;
         &lt;p&gt;{{ message }}&lt;/p&gt;
         &lt;button @click="increaseCount"&gt;增加計數&lt;/button&gt;
@@ -72,13 +78,18 @@ export default {
         },
     },
 };
-&lt;/script&gt;</code></pre>
-            </div>
-        </prism-highlight>
+&lt;/script&gt;            </code>
+        </pre>
         <p>如果用 Vue3.0 推廣的方式，則會變成這樣：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;template&gt;
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>&lt;template&gt;
     &lt;div&gt;
         &lt;p&gt;{{ message }}&lt;/p&gt;
         &lt;button @click="increaseCount"&gt;增加計數&lt;/button&gt;
@@ -108,9 +119,8 @@ export default {
         };
     },
 };
-&lt;/script&gt;</code></pre>
-            </div>
-        </prism-highlight>
+&lt;/script&gt;            </code>
+        </pre>
         <p>簡單來說，<em>setup</em> 有以下這些要點：</p>
         <ol>
             <li>是 Vue3.0 實例中使用 Composition API 的入口</li>
@@ -120,9 +130,15 @@ export default {
         </ol>
         <p>雖然在生命週期圖表中，<em>setup</em> 與其他生命週期鉤子是平行獨立的存在，但實際上某種程度來說它包含了 Vue2.0 之前 Option API 中的生命週期鉤子，例如 <em>mounted</em>、<em>updated</em> ...等，Vue3.0 的 Composition API 旨在更靈活地組織代碼並提供更多控制選項，因此它將這些生命週期鉤子轉移到了 <em>setup</em> 函式中。</p>
         <p>例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">import { ref, onMounted, onUpdated } from 'vue';
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>import { ref, onMounted, onUpdated } from 'vue';
 
 export default {
     setup() {
@@ -144,9 +160,8 @@ export default {
             count,
         };
     },
-};</code></pre>
-            </div>
-        </prism-highlight>
+};            </code>
+        </pre>
         <p>在這個範例中，我們使用 <em>onMounted</em> 和 <em>onUpdated</em> 函式來模擬 <em>mounted</em> 和 <em>updated</em> 鉤子的行為。這使得我們能夠在 <em>setup</em> 函式中執行相應的代碼，就像在 Vue2.0 中的生命週期鉤子中一樣。撇除函式寫法的部份，原先 Option API 所使用的生命週期鉤子函式，到 Vue3.0 所使用 Composition API 裡的名稱基本上皆是在前方加上了 on 之字首，以下為比較表：</p>
         <div class="text-flex">
             <div class="f-width">

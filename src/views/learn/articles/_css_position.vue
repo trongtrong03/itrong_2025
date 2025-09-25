@@ -38,13 +38,20 @@ const catalog = reactive<CatalogItem[]>([
         <h2 v-text="catalog[1].title"></h2>
         <p>CSS 的 <em>position</em> 和 <em>display</em> 屬性可以說是網頁排版裡地位舉足輕重，且所有前端開發者皆不得不學習的兩大重要屬性，<em>position</em> 主要用途在改變當前目標元素相對父元素或瀏覽器的空間位置，雖然用純文字敘述會覺得有些抽象，但後續章節透過示意圖搭配實際演練就會比較容易理解了。</p>
         <p>雖說 <em>position</em> 在 CSS 發展中已經存在很久，但它本身沒有什麼系列屬性，語法規則定義就一種：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">div {
-    position: static;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                div {
+                    position: static;
+                }
+            </code>
+        </pre>
         <p><em>static</em> 是預設值，表示調用該選擇器的 HTML 元素 <em>position</em> 值為「靜態定位」，不受偏移屬性影響。所謂的偏移屬性指的是 <em>top</em>、<em>right</em>、<em>bottom</em>、<em>left</em> 這四大各自代表不同方向的屬性，依據 <em>position</em> 參數的不同，這些偏移屬性也將會對其產生不同影響。</p>
     </div>
     <div class="text-block" :id="'act' + catalog[2].id">
@@ -88,29 +95,43 @@ const catalog = reactive<CatalogItem[]>([
         <h3>static（靜態定位）</h3>
         <p>此為 <em>position</em> 屬性的預設值，表示元素完全不受偏移屬性與 <em>z-index</em> 的影響。</p>
         <p>語法：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">div {
-    position: static;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                div {
+                    position: static;
+                }
+            </code>
+        </pre>
         <p>示意圖：</p>
         <figure>
             <img src="/images/learn/css/position-1.jpg">
         </figure>
         <p><br></p>
         <p>接下來的實際演練裡，我們分別設置三個矩形方塊 A、B、C，A 和 C 是完全不套用任何 <em>position</em> 值的一般方塊，B 則會根據介紹 <em>position</em> 帶入不同參數值，以比較異同。</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">.B {
-    position: static;
-    top: 50px;
-    left: 50px;
-    z-index: 1;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                .B {
+                    position: static;
+                    top: 50px;
+                    left: 50px;
+                    z-index: 1;
+                }
+            </code>
+        </pre>
         <p>結果：</p>
         <div class="text-example">
             <div class="ex-position">
@@ -132,28 +153,42 @@ const catalog = reactive<CatalogItem[]>([
         <h3>relative（相對定位）</h3>
         <p>設置此屬性值的元素會受到偏移屬性與 <em>z-index</em> 的影響，但偏移不影響後續其他元素，且原本佔據的空間依然佔據著。</p>
         <p>語法：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">div {
-    position: relative;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                div {
+                    position: relative;
+                }
+            </code>
+        </pre>
         <p>示意圖：</p>
         <figure>
             <img src="/images/learn/css/position-2.jpg">
         </figure>
         <p>範例：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">.B {
-    position: relative;
-    top: 20px;
-    left: -20px;
-    z-index: 1;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                .B {
+                    position: relative;
+                    top: 20px;
+                    left: -20px;
+                    z-index: 1;
+                }
+            </code>
+        </pre>
         <p>結果：</p>
         <div class="text-example">
             <div class="ex-position">
@@ -176,28 +211,42 @@ const catalog = reactive<CatalogItem[]>([
         <h3>absolute（絕對定位）</h3>
         <p>絕對定位與相對定位最大的差別在於使用絕對定位的元素，將不再佔據空間，意即原本所處的空間將由後續其他元素填補，而它則會像「懸浮」般的貼在畫面上。</p>
         <p>語法：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">div {
-    position: absolute;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                div {
+                    position: absolute;
+                }
+            </code>
+        </pre>
         <p>示意圖：</p>
         <figure>
             <img src="/images/learn/css/position-3.jpg">
         </figure>
         <p>範例：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">.B {
-    position: absolute;
-    top: 20px;
-    left: -20px;
-    z-index: 1;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                .B {
+                    position: absolute;
+                    top: 20px;
+                    left: -20px;
+                    z-index: 1;
+                }
+            </code>
+        </pre>
         <p>結果：</p>
         <div class="text-example">
             <div class="ex-position">
@@ -239,28 +288,42 @@ const catalog = reactive<CatalogItem[]>([
         <h3>fixed（固定定位）</h3>
         <p>固定定位與絕對定位的特性有那麼一些類似，都是「浮貼」在畫面上不佔據實體空間。然而不同的是，設定為 <em>fixed</em> 的子元素不會參考父元素是否為除了 <em>static</em> 以外的定位屬性，而是直接以根元素（<em>&lt;html&gt;</em>）的左上角作基準點偏移。</p>
         <p>語法：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">div {
-    position: fixed;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                div {
+                    position: fixed;
+                }
+            </code>
+        </pre>
         <p>示意圖：</p>
         <figure>
             <img src="/images/learn/css/position-4.jpg">
         </figure>
         <p>範例：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">.B {
-    position: fixed;
-    top: 20px;
-    left: -20px;
-    z-index: 1;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                .B {
+                    position: fixed;
+                    top: 20px;
+                    left: -20px;
+                    z-index: 1;
+                }
+            </code>
+        </pre>
         <p>結果：</p>
         <div class="text-example">
             <div class="ex-position">
@@ -288,28 +351,42 @@ const catalog = reactive<CatalogItem[]>([
         <h3>sticky（黏性定位）</h3>
         <p><em>sticky</em> CSS3 新增的定位屬性參數，它同時結合了 <em>relative</em> 與 <em>fixed</em> 特性，一般多用於畫面捲動到一定程度時，指定的元素隨即固定在畫面上的場合。</p>
         <p>語法：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">div {
-    position: sticky;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                div {
+                    position: sticky;
+                }
+            </code>
+        </pre>
         <p>示意圖：</p>
         <figure>
             <img src="/images/learn/css/position-5.jpg">
         </figure>
         <p>範例：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">.B {
-    position: sticky;
-    top: 20px;
-    left: -20px;
-    z-index: 1;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                .B {
+                    position: sticky;
+                    top: 20px;
+                    left: -20px;
+                    z-index: 1;
+                }
+            </code>
+        </pre>
         <p>結果：</p>
         <div class="text-example">
             <div class="ex-position">
@@ -337,15 +414,22 @@ const catalog = reactive<CatalogItem[]>([
         <p><br></p>
         <h3>座標偏移：</h3>
         <p>指的就是 <em>top</em>、<em>right</em>、<em>bottom</em>、<em>left</em> 這四個屬性，分別代表向上、右、下、左偏移。屬性數值的單位可以是任何絕對或相對單位，例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">div {
-    position: relative;
-    top: 50px;
-    left: 10%;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                div {
+                    position: relative;
+                    top: 50px;
+                    left: 10%;
+                }
+            </code>
+        </pre>
         <p>當元素定位為 <em>relative</em>，其座標以父元素左上角為原點作偏移，而 <em>absolute</em> 則是以父元素整體作偏移。</p>
         <blockquote class="is-warning">
             <p>若 <em>top</em> 與 <em>bottom</em> 同時存在時，則偏移會以 <em>top</em> 值為先，而 <em>left</em> 則優先於 <em>right</em>，除非 <em>top</em>、<em>left</em> 設置為 <em>auto</em>（預設值），才會以另外兩個偏移屬性的參數為主。</p>
@@ -353,17 +437,24 @@ const catalog = reactive<CatalogItem[]>([
         <p><br></p>
         <p>另外，當元素同時設置四個方向的偏移屬性且其值皆為 <em>0</em> 的時候，可以有以下兩種效果運用：</p>
         <p>1. 父子元素沒有明確寬高，子元素寬高會填滿整個父元素，等同 <em>width: 100%</em> 與 <em>height: 100%</em> 的效果。例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">.child {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                .child {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                }
+            </code>
+        </pre>
         <p>結果：</p>
         <div class="text-example">
             <div class="ex-position2">
@@ -373,20 +464,27 @@ const catalog = reactive<CatalogItem[]>([
         </div>
         <p><br></p>
         <p>2. 父子元素都有明確寬高，子元素加入 <em>margin: auto</em> 屬性，可實現子元素水平垂直居中的效果。</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">.child {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    width: 100px;
-    height: 100px;
-    margin: auto;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                .child {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                    width: 100px;
+                    height: 100px;
+                    margin: auto;
+                }
+            </code>
+        </pre>
         <p>結果：</p>
         <div class="text-example">
             <div class="ex-position2">
@@ -397,14 +495,21 @@ const catalog = reactive<CatalogItem[]>([
         <p><br></p>
         <h3>z-index：</h3>
         <p><em>z-index</em> 屬性用來設定非無定位（<em>static</em>）之定位元素發生重疊時的前後順序，其預設值是 <em>auto</em>，也可以視作為 <em>0</em>。</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">div {
-    position: relative;
-    z-index: 5;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                div {
+                    position: relative;
+                    z-index: 5;
+                }
+            </code>
+        </pre>
         <p>參數為純數值，參數值可設定正數和負數，正數數字越大代表越上面。在此語法範例中，只要同階層其他元素的 <em>z-index</em> 小於 <em>5</em>，重疊時皆在該元素之後（或稱下方），假設同時存在複數個參數值皆為 <em>5</em> 的元素發生交疊，則以原始碼較後方的元素會覆蓋前方元素之前。</p>
         <p><br></p>
         <p>另外，多個 <em>z-index</em> 的子元素重疊順序只在擁有 <em>z-index</em> 的第一個父元素內進行比較，假設向上遍歷父元素直至根元素都沒有碰到任何一個 <em>z-index</em>，子元素的 <em>z-index</em> 才可和其他不同父元素及其附屬的子元素比大小。請見下例：</p>
@@ -420,16 +525,23 @@ const catalog = reactive<CatalogItem[]>([
         <h2 v-text="catalog[4].title"></h2>
         <p>這個算是許多初學者實務上容易產生混亂的問題之一，我們都知道影響目標對象位置的 CSS 屬性除了本篇文章介紹的「偏移」屬性外，尚有 <em>transform</em> 的位移函數 <em>translate</em>，那麼，在目標對象已經添加 <em>position</em> 及偏移屬性，或已經使用 <em>translate</em> 函數的情況下，再套用另一個偏移屬性會互相牴觸或影響嗎？</p>
         <p>答案是不會互相牴觸，不過由於偏移與位移會個別運作，因此當兩類屬性同時存在於單一目標對象時，該對象會同時吃偏移屬性的設定和位移函數的值。實務上比較常見兩者同時運用的場合，當屬要將不確定尺寸的對象元素在區域內居中對齊的時候，其寫法為：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">div {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                div {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
+            </code>
+        </pre>
         <p>結果：</p>
         <div class="text-example">
             <div class="ex-position2">

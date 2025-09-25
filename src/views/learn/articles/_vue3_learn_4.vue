@@ -46,9 +46,15 @@ const catalog = reactive<CatalogItem[]>([
     <div class="text-block" :id="'act' + catalog[1].id">
         <h2 v-text="catalog[1].title"></h2>
         <p>首先，我們建立一個可響應同步資料的範例：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;template&gt;
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>&lt;template&gt;
     &lt;h2&gt;總和：{{ sum }}&lt;/h2&gt;
     &lt;button @click="addSum"&gt;Add&lt;/button&gt;
 &lt;/template&gt;
@@ -61,24 +67,34 @@ const catalog = reactive<CatalogItem[]>([
     function addSum(){
         sum.value += 1;
     }
-&lt;/script&gt;</code></pre>
-            </div>
-        </prism-highlight>
+&lt;/script&gt;            </code>
+        </pre>
         <p>這個範例效果是當使用者點擊 <em>button</em> 按鈕時，會觸發 <em>addSum</em> 事件，該事件會使目前 <em>sum</em> 的值累進 + 1。</p>
         <p>我們除了可以直接在 DOM 上綁定的元素觀察到資料的變化外，也可以透過 <em>watch</em> 來監視。在 Vue 2 年代，<em>watch</em> 是 Options API 的其中一個配置項，到了 Vue 3，<em>watch</em> 如同上一篇文章學習的 <em>computed</em>，變成了函式架構：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">import { watch } from "vue";
-watch(Val, (newValue, oldValue) => { ... }, { immediate: true })</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>import { watch } from "vue";
+watch(Val, (newValue, oldValue) => { ... }, { immediate: true })            </code>
+        </pre>
         <p>1. <em>Val</em>：指的是我們宣告為響應式資料的變數名稱。</p>
         <p>2. <em>(newValue, oldValue) => {}</em>：為回調函式，當監視的狀態發生變化時就會被呼叫，這個回調函式接收兩個參數，分別是新的值以及舊的值。</p>
         <p>3. <em>{ immediate: true }</em>：如果有設置這個參數，表示立即執行一次回調函式，而不需要等待狀態的變化，這個參數是可填也可不填的配置項目。</p>
         <p>所以 Vue 3 <em>watch</em> 函式結構主要由上面三個參數組成，而第三個參數通常不是必要選項，也並非只有 <em>immediate</em>，還有其他林林總總不同用途的參數。大概看完了結構，接著將 <em>watch</em> 導入到現有的範例中：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;template&gt;
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>&lt;template&gt;
     &lt;h2&gt;總和：{{ sum }}&lt;/h2&gt;
     &lt;button @click="addSum"&gt;Add&lt;/button&gt;
 &lt;/template&gt;
@@ -95,9 +111,8 @@ watch(Val, (newValue, oldValue) => { ... }, { immediate: true })</code></pre>
     watch(sum, (newValue, oldValue) => {
         console.log("newValue:", newValue, "oldValue", oldValue);
     })
-&lt;/script&gt;</code></pre>
-            </div>
-        </prism-highlight>
+&lt;/script&gt;            </code>
+        </pre>
         <p>實際測試：</p>
         <figure>
             <img src="/images/learn/js/vue3-learn-4-1.jpg">
@@ -106,9 +121,15 @@ watch(Val, (newValue, oldValue) => { ... }, { immediate: true })</code></pre>
     <div class="text-block" :id="'act' + catalog[2].id">
         <h2 v-text="catalog[2].title"></h2>
         <p><em>ref</em> 物件型別的響應式監視會比基本型別來得複雜一些，開始說明前同樣先建立個範例，這次就一併把 <em>watch</em> 定義進去，然後再慢慢說明細節：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;template&gt;
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>&lt;template&gt;
     &lt;p&gt;名字：{{ user.name }}&lt;/p&gt;
     &lt;p&gt;年齡：{{ user.age }}&lt;/p&gt;
     &lt;button @click="changeName"&gt;修改名字&lt;/button&gt;
@@ -142,9 +163,8 @@ watch(Val, (newValue, oldValue) => { ... }, { immediate: true })</code></pre>
     watch(user, (newValue, oldValue) => {
         console.log("change", newValue, oldValue);
     })
-&lt;/script&gt;</code></pre>
-            </div>
-        </prism-highlight>
+&lt;/script&gt;            </code>
+        </pre>
         <p>首先，我們在此範例加入了三個按鈕，分別觸發三種不同的事件：修改姓名（添加 ~ 符號）、修改年齡，以及改變 <em>user</em> 物件裡所有屬性的值。確保它們能各自正常運作後，接著來看監視函式的部分，<em>watch</em> 裡頭定義的內容很簡單，就單純只是打印回傳響應式資料變更後的新、舊值。</p>
         <p>於是實際來觀測各個按鈕觸發後與監視之間的變化：</p>
         <p>觸發 <em>changeName</em>，DOM 上面的資料有響應，但是 <em>watch</em> 沒有反應。</p>
@@ -157,28 +177,43 @@ watch(Val, (newValue, oldValue) => { ... }, { immediate: true })</code></pre>
         <h5>參考是什麼？</h5>
         <p>在 JavaScript 中，物件的參考指的是指向物件在記憶體中位置的指標。當我們建立一個物件並將其賦值給一個變數時，實際上是將該物件在記憶體中的位置保存在變數中，而不是物件本身的副本。因此，多個變數可以指向同一個對象，它們共享相同的參考。</p>
         <p>舉例來說，我們建立了以下一個物件：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">const obj1 = { name: "阿比" };</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>const obj1 = { name: "阿比" };            </code>
+        </pre>
         <p>在這裡，<em>obj1</em> 指向了一個具有 <em>name</em> 屬性的對象，而物件在記憶體中的位置被儲存在 <em>obj1</em> 中。如果現在將 <em>obj1</em> 賦值給另一個變數：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">const obj2 = obj1;</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>const obj2 = obj1;            </code>
+        </pre>
         <p>那麼 <em>obj2</em> 現在也指向同一個對象，即與 <em>obj1</em> 共享相同的引用。當我們修改 <em>obj1</em> 或 <em>obj2</em> 中的屬性時，實際上是修改了同一個對象，因為它們指向相同的記憶體位置。</p>
         <p>在 Vue.js 中，預設的 <em>watch</em> 行為是只監視物件的參考變化，也就是只有當物件的參考發生變化時才會觸發 <em>watch</em> 函式。如果只是修改物件內部的屬性而不改變物件的參考，<em>watch</em> 函式便不會觸發。</p>
         <p>然而，這也並不代表我們就完全無法監視特定物件屬性值的變化，只是我們需要多添加一個參數──<em>deep</em>，一般稱為深度或深層監視。</p>
         <p>在原本範例裡的 <em>watch</em> 函式多添加 <em>deep</em> 參數：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">watch(user, (newValue, oldValue) => {
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>watch(user, (newValue, oldValue) => {
     console.log("change", newValue, oldValue);
-}, { deep: true })</code></pre>
-            </div>
-        </prism-highlight>
+}, { deep: true })            </code>
+        </pre>
         <p>這時我們再去點擊 <em>button</em> 觸發 <em>changeName</em>、<em>changeAge</em> 事件，就可以在 Console 視窗觀看 <em>watch</em> 作用時回傳的資料變化。</p>
         <p>修改名字：</p>
         <figure>
@@ -200,9 +235,15 @@ watch(Val, (newValue, oldValue) => { ... }, { immediate: true })</code></pre>
     <div class="text-block" :id="'act' + catalog[3].id">
         <h2 v-text="catalog[3].title"></h2>
         <p>範例：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;template&gt;
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>&lt;template&gt;
     &lt;p&gt;名字：{{ user.name }}&lt;/p&gt;
     &lt;p&gt;年齡：{{ user.age }}&lt;/p&gt;
     &lt;button @click="changeName"&gt;修改名字&lt;/button&gt;
@@ -233,9 +274,8 @@ watch(Val, (newValue, oldValue) => { ... }, { immediate: true })</code></pre>
     watch(user, (newValue, oldValue) => {
         console.log("change", newValue, oldValue);
     })
-&lt;/script&gt;</code></pre>
-            </div>
-        </prism-highlight>
+&lt;/script&gt;            </code>
+        </pre>
         <p><em>reactive</em> 定義物件型別響應式資料的方式和 <em>ref</em> 差不多，所以直接進到差異比較的環節。</p>
         <p>上一篇文章介紹 <em>reactive</em> 用法時曾提到，透過 <em>reactive</em> 建立的響應式物件資料，只能針對物件裡的個別屬性，沒有辦法直接修改整個物件的內容，必須使用 <em>Object.assign</em> 函式，把新的物件資料匹配到原本的物件，覆蓋原本物件同名的屬性值。</p>
         <p>當我們監視由 <em>ref</em> 創建的響應式物件資料，只有整個物件被變更時，監視才會有所動作，如果只是修改物件裡面某個屬性的值，雖然 DOM 會響應新的值，但監視事件並不會有任何反應，除非我們在監視函式的後方加入第三個參數：<em>{ deep: true }</em>，啟用深層監視的功能。</p>
@@ -245,9 +285,15 @@ watch(Val, (newValue, oldValue) => { ... }, { immediate: true })</code></pre>
         </figure>
         <p>如果監視的對象是 <em>reactive</em> 響應式物件資料，那麼預設就是會啟用深層監視模式。以下再舉一個包含多層嵌套屬性的物件，來證明前面敘述的正確性。</p>
         <p>範例：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;template&gt;
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>&lt;template&gt;
     &lt;p&gt;好詩好詩： {{ obj.stage1.stage2.stage3 }}&lt;/p&gt;
     &lt;button @click="changeObj"&gt;修改&lt;/button&gt;
 &lt;/template&gt;
@@ -270,9 +316,8 @@ watch(Val, (newValue, oldValue) => { ... }, { immediate: true })</code></pre>
     watch(obj, (newValue, oldValue) => {
         console.log("change", newValue, oldValue);
     })
-&lt;/script&gt;</code></pre>
-            </div>
-        </prism-highlight>
+&lt;/script&gt;            </code>
+        </pre>
         <p>實測結果：</p>
         <figure>
             <img src="/images/learn/js/vue3-learn-4-6.jpg">
@@ -286,9 +331,15 @@ watch(Val, (newValue, oldValue) => { ... }, { immediate: true })</code></pre>
         <p><br></p>
         <h3>如果指定的屬性值是基本型別的值</h3>
         <p>複習一下上一章寫的範例（刪去修改整個物件資料的程式碼片段）：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;template&gt;
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>&lt;template&gt;
     &lt;p&gt;名字：{{ user.name }}&lt;/p&gt;
     &lt;p&gt;年齡：{{ user.age }}&lt;/p&gt;
     &lt;button @click="changeName"&gt;修改名字&lt;/button&gt;
@@ -314,18 +365,16 @@ watch(Val, (newValue, oldValue) => { ... }, { immediate: true })</code></pre>
     watch(user, (newValue, oldValue) => {
         console.log("change", newValue, oldValue);
     })
-&lt;/script&gt;</code></pre>
-            </div>
-        </prism-highlight>
+&lt;/script&gt;            </code>
+        </pre>
         <p>當我們分別點擊按鈕觸發 <em>changeName</em> 以及 <em>changeAge</em> 事件，都會使監視函式偵測到資料改變而產生指定的動作。但如果現在我們只希望某個特定的屬性值被改變時，才會啟用監視功能，其餘屬性值被修改則不反應，也就是章節標題所描述的：監視 <em>ref</em> 或 <em>reactive</em> 物件裡的指定屬性。</p>
         <p>首先，直覺可能會想到我在監視函式裡直接調用物件該屬性如何？譬如只監視 <em>name</em> 屬性值的變化：</p>
         <prism-highlight>
             <div class="text-code" v-pre>
                     <pre><code class="language-javascript">watch(user, (newValue, oldValue) => {
     console.log("change", newValue, oldValue);
-})</code></pre>
-            </div>
-        </prism-highlight>
+})            </code>
+        </pre>
         <p>回到瀏覽器去做測試，點擊按鈕發現 DOM 對應元素裡面顯示的資料數值是更新了，但 Console 視窗裡並沒有看到監視作用時回傳的內容，反倒是給了這方一條警告訊息：</p>
         <blockquote class="is-danger">
             <p>[Vue warn]: Invalid watch source:  阿比 A watch source can only be a getter/effect function, a ref, a reactive object, or an array of these types.</p>
@@ -336,9 +385,8 @@ watch(Val, (newValue, oldValue) => { ... }, { immediate: true })</code></pre>
             <div class="text-code" v-pre>
                     <pre><code class="language-javascript">watch(()=>{ return user.name }, (newValue, oldValue) => {
     console.log("change", newValue, oldValue);
-})</code></pre>
-            </div>
-        </prism-highlight>
+})            </code>
+        </pre>
         <p>測試結果：</p>
         <figure>
             <img src="/images/learn/js/vue3-learn-4-7.jpg">
@@ -349,15 +397,20 @@ watch(Val, (newValue, oldValue) => { ... }, { immediate: true })</code></pre>
             <div class="text-code" v-pre>
                     <pre><code class="language-javascript">watch(()=> user.name, (newValue, oldValue) => {
     console.log("change", newValue, oldValue);
-})</code></pre>
-            </div>
-        </prism-highlight>
+})            </code>
+        </pre>
         <p><br></p>
         <h3>如果指定的屬性值是物件</h3>
         <p>一樣，先呈上範例：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;template&gt;
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>&lt;template&gt;
     &lt;p&gt;品種：{{ user.pets.b1 }}、{{ user.pets.b2 }}&lt;/p&gt;
     &lt;button @click="changeB1"&gt;換b1&lt;/button&gt;
     &lt;button @click="changeB2"&gt;換b2&lt;/button&gt;
@@ -392,9 +445,8 @@ watch(Val, (newValue, oldValue) => { ... }, { immediate: true })</code></pre>
     watch(user.pets, (newValue, oldValue) => {
         console.log("change", newValue, oldValue);
     })
-&lt;/script&gt;</code></pre>
-            </div>
-        </prism-highlight>
+&lt;/script&gt;            </code>
+        </pre>
         <p>在這個範例應用中，我們不管是觸發 <em>changeB1</em> 抑或者 <em>changeB2</em> 事件，都會被 <em>watch</em> 監視到並回傳 Console 結果：</p>
         <figure>
             <img src="/images/learn/js/vue3-learn-4-8.jpg">
@@ -410,9 +462,8 @@ watch(Val, (newValue, oldValue) => { ... }, { immediate: true })</code></pre>
             <div class="text-code" v-pre>
                     <pre><code class="language-javascript">watch(() => user.pets, (newValue, oldValue) => {
     console.log("change", newValue, oldValue);
-})</code></pre>
-            </div>
-        </prism-highlight>
+})            </code>
+        </pre>
         <p>這麼一來就能實現屬性值為物件的監視功能了：</p>
         <figure>
             <img src="/images/learn/js/vue3-learn-4-10.jpg">
@@ -422,9 +473,8 @@ watch(Val, (newValue, oldValue) => { ... }, { immediate: true })</code></pre>
             <div class="text-code" v-pre>
                     <pre><code class="language-javascript">watch(() => user.pets, (newValue, oldValue) => {
     console.log("change", newValue, oldValue);
-}, { deep: true })</code></pre>
-            </div>
-        </prism-highlight>
+}, { deep: true })            </code>
+        </pre>
         <p>實測結果：</p>
         <figure>
             <img src="/images/learn/js/vue3-learn-4-11.jpg">
@@ -473,17 +523,15 @@ function changePets(){
         b1: "貓頭鷹",
         b2: "鸚鵡"
     }
-}</code></pre>
-            </div>
-        </prism-highlight>
+}            </code>
+        </pre>
         <p>首先，一樣得透過 <em>getter</em> 函式，只不過我們要將這個函式放在陣列裡面：</p>
         <prism-highlight>
             <div class="text-code" v-pre>
                     <pre><code class="language-javascript">watch([() => user.name, () => user.pets.b1], (newValue, oldValue) => {
     console.log("change", newValue, oldValue);
-})</code></pre>
-            </div>
-        </prism-highlight>
+})            </code>
+        </pre>
         <p>陣列裡的每筆資料都是獨立的 <em>getter</em> 函式。</p>
         <p>實測結果：</p>
         <figure>
@@ -501,25 +549,35 @@ function changePets(){
         <p>停止監視可以避免不必要的資源消耗，提高效能，並且在不再需要時釋放對狀態的引用，有助於避免記憶體洩漏問題。</p>
         <p>具體停止監視的方法並不複雜，在 Vue 3中，停止對響應式資料的監視可以透過呼叫 <em>watch</em> 函式傳回的停止函式來實現。當呼叫這個停止函式時，對應的監視將會被移除。</p>
         <p>以第一種情況的範例來衍伸，原本 <em>watch</em> 的敘述為：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">watch(sum, (newValue, oldValue) => {
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>watch(sum, (newValue, oldValue) => {
     console.log("newValue:", newValue, "oldValue", oldValue);
-});</code></pre>
-            </div>
-        </prism-highlight>
+});            </code>
+        </pre>
         <p>改成用變數包裝（當然這個變數定義的內容也還是個函式），手動設定停止監視的條件，比如當總和響應累加到 5 便終止持續監視的行為：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">const stopWatch = watch(sum, (newValue, oldValue) => {
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>const stopWatch = watch(sum, (newValue, oldValue) => {
     console.log("newValue:", newValue, "oldValue", oldValue);
     if(newValue >= 5){
         stopWatch();
         console.log("Stop watch!!");
     }
-});</code></pre>
-            </div>
-        </prism-highlight>
+});            </code>
+        </pre>
         <p>實測結果：</p>
         <figure>
             <img src="/images/learn/js/vue3-learn-4-13.jpg">

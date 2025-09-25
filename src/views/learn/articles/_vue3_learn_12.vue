@@ -51,26 +51,40 @@ const catalog = reactive<CatalogItem[]>([
         </figure>
         <p>也因為如此，自然不會有所謂的歷史記錄（之前的歷史記錄直接被「取代」掉了），瀏覽器上、下一頁的功能也就無法產生功能，使用者無法直接透過按鈕回到先前瀏覽的內容，只能從導航路由再次前往。</p>
         <p>設定 <em>replace</em> 的方式很簡單，只要在導航路由 <em>&lt;RouterLink&gt;</em> 標籤裡面直接加上 <em>replace</em> 屬性即可。例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;nav&gt;
-    &lt;RouterLink replace to="/home"&gt;Home&lt;/RouterLink&gt;
-    &lt;RouterLink replace to="/about"&gt;About&lt;/RouterLink&gt;
-    &lt;RouterLink replace to="/news"&gt;News&lt;/RouterLink&gt;
-&lt;/nav&gt;</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>
+                &lt;nav&gt;
+                    &lt;RouterLink replace to="/home"&gt;Home&lt;/RouterLink&gt;
+                    &lt;RouterLink replace to="/about"&gt;About&lt;/RouterLink&gt;
+                    &lt;RouterLink replace to="/news"&gt;News&lt;/RouterLink&gt;
+                &lt;/nav&gt;
+            </code>
+        </pre>
         <p>這樣你就會發現不管怎麼切換組件，瀏覽器上一頁的功能完全不會記錄導航路由切換的過程。</p>
         <p>當然我們也可以只針對某幾個導航路由設置 <em>replace</em>，例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;nav&gt;
-    &lt;RouterLink replace to="/home"&gt;Home&lt;/RouterLink&gt;
-    &lt;RouterLink replace to="/about"&gt;About&lt;/RouterLink&gt;
-    &lt;RouterLink to="/news"&gt;News&lt;/RouterLink&gt;
-&lt;/nav&gt;</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>
+                &lt;nav&gt;
+                    &lt;RouterLink replace to="/home"&gt;Home&lt;/RouterLink&gt;
+                    &lt;RouterLink replace to="/about"&gt;About&lt;/RouterLink&gt;
+                    &lt;RouterLink to="/news"&gt;News&lt;/RouterLink&gt;
+                &lt;/nav&gt;
+            </code>
+        </pre>
         <p>像這樣，假如從 About 切換到 News，那麼就會產生一個 About 的歷史記錄，點擊上一頁就可以回到 About 的組件內容。</p>
         <p><em>replace</em> 方法會取代目前的路由記錄，不會將新的路由新增至歷史記錄中，適用於需要防止使用者透過後退按鈕返回特定頁面或保持瀏覽器歷史記錄簡潔的場景。</p>
         <p>也因為該方法取代目前的路由記錄會將新的路由記錄覆寫目前的記錄，這表示先前的路由記錄會被刪除，使用者無法透過後退按鈕返回到先前的路由，可能會導致使用者流失和體驗降低。</p>

@@ -44,9 +44,15 @@ const catalog = reactive<CatalogItem[]>([
     <div class="text-block" :id="'act' + catalog[1].id">
         <h2 v-text="catalog[1].title"></h2>
         <p>專案結構：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">index.html
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>index.html
 src
 ├── assets
 │    ├── base.css
@@ -59,65 +65,95 @@ src
 │    ├── HomeView.vue
 │    └── AboutView.vue
 ├── App.vue
-└── main.js</code></pre>
-            </div>
-        </prism-highlight>
+└── main.js            </code>
+        </pre>
         <p>這個結構是先前 <em>create vue@3</em> 創建的 Vite 專案，通常 Vite 專案裡置入 CSS 的方式不外乎兩種，第一種是直接寫在組件的 <em>&lt;style&gt;</em> 標籤裡面，這種我們稱為組件範圍內的 CSS 或 作用域 CSS。另一種則是單獨寫在 <b>.css</b> 樣式表文件，讓 <b>main.js</b> 入口文件去引用它。</p>
         <p>前面有提過，現代 SPA 網頁應用的主要宗旨是快速加載內容，同時兼顧可讀性與維護性，因此大多數的框架工具會將各功能套用的樣式，寫在撰寫該功能程式的組件裡，這樣一來，只有在該組件被渲染的時候才會去載入相關的 CSS 樣式。</p>
         <p>話是這麼說，但並不是所有的樣式都只會套用在某個頁面功能，總會有些各頁面共用的功能區塊，例如 Header、Footer、導覽列......等等，如果把這些功能套用的樣式屬性通通複製貼上到各個組件裡，那對維護的人而言無疑將會是一場災難。</p>
         <p>所以在 Vite 初始建立的範本裡，我們可以看到它將共用的內容獨立拉出來一個檔案 <b>base.css</b>，這個樣式表裡面的內容主要是針對 HTML 元素進行初始化，避免受各家瀏覽器不同的預設值造成樣式不一致的情況。</p>
         <p>然後由 <b>main.css</b> 來引用它：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">@import './base.css';</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>@import './base.css';            </code>
+        </pre>
         <p>會發現其實它和組件彼此引用的思維很相像，都是父層使用 <em>import</em> 關鍵字去引用指定的目標進來。循著這個思路，我們可以自行建立 <b>header.css</b>、<b>footer.css</b> 等樣式文件，把共用功能的樣式屬性分門別類編寫進各自的樣式表裡，例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">@import './base.css';
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>@import './base.css';
 @import './header.css';
-@import './footer.css';</code></pre>
-            </div>
-        </prism-highlight>
+@import './footer.css';            </code>
+        </pre>
         <p>也可以集中寫在同一支檔案，命名 <b>layout.css</b> 之類的，總之取決於個人習慣。</p>
         <p>至於 <b>main.css</b> 又是從哪裡引用的？答案自然是入口文件 <b>main.js</b> 了：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">import './assets/main.css'</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>import './assets/main.css'            </code>
+        </pre>
         <p>當然這些樣式表的名稱和位置都可以依據規劃自行做變更。</p>
         <p>也許會有人說：那我把這些共用的 CSS 寫在 <b>App.vue</b>，或是另外把那些共用功能拉出來做成 <b>components/</b> 裡面的子組件，比如 <b>Header.vue</b>，把與它相關的樣式集中在裡面，然後讓其他組件引用它。所以像前面 Vite 初始範例，要把 <b>assets/</b> 資料夾裡面的 <b>.css</b> 內容轉移到其他適當的組件，讓整個結構完全不存在 CSS 文件確實是可行的，說到底這其實也不過是取決各路開發者自身或團隊的習慣與共識而已，並沒有絕對的標準規範。</p>
         <p><br></p>
         <p>說完獨立樣式表檔案的部份，再來要看的是個別組件裡頭的 <em>&lt;style&gt;</em> 標籤，以 <b>App.vue</b> 為例：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;style scoped&gt;
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>&lt;style scoped&gt;
     header {
         ...
     }
-&lt;/style&gt;</code></pre>
-            </div>
-        </prism-highlight>
+&lt;/style&gt;            </code>
+        </pre>
         <p>和以往我們熟知的 HTML 標籤格式沒有什麼區別，只是多了一條屬性 <em>scoped</em>，這個屬性是 Vue.js 提供的一種特性，用意是宣告該 <em>&lt;style&gt;</em> 標籤裡的 CSS 樣式僅對當前組件內的元素生效，而不會影響到其他組件或全域範圍，假設我們在 A 組件使用 <em>scoped</em> 並定義了 <em>p</em> 元素的樣式，那這個樣式只會在 A 組件的 <em>p</em> 元素作用，B 組件乃至其他組件中的 <em>p</em> 元素就不會被套用。這樣可以防止組件中的樣式與其他組件或全域樣式產生衝突，從而提高了組件的封裝性和可重用性。</p>
         <p>不過如果是 A 組件裡面嵌套了 B 組件，那麼 A 組件定義的樣式即便有設置 <em>scoped</em>，B 組件仍然會繼承 A 組件的樣式內容，所以像 <b>App.vue</b> 作為整個 Vite 網頁應用架構的根組件，有些人會習慣直接將全域套用的樣式寫在這裡面，不另外建立 CSS 文件，從而落實作用域 CSS「不需要在多個文件之間切換」的可讀性特點。</p>
         <p><br></p>
         <h3>Vue 3 提供給 style 元素的其他屬性：</h3>
         <p>除了前面提到的 <em>scoped</em> 之外，Vue 3 還支援了 <em>&lt;style&gt;</em> 另外兩個特殊的屬性：</p>
         <h5>1. <em>module</em>：</h5>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;style module&gt;
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>&lt;style module&gt;
     ...
-&lt;/style&gt;</code></pre>
-            </div>
-        </prism-highlight>
+&lt;/style&gt;            </code>
+        </pre>
         <p>在專案打包到生產環境下，此屬性作用域範圍內的樣式屬性的 <em>.class</em> 或 <em>#id</em> 選擇器名稱會被添加 Hash 值，用來確保該樣式只會在該組件裡生效，不會影響到其他組件或全域範圍。例如：</p>
         <p><b>A.vue</b>：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;template&gt;
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>&lt;template&gt;
     &lt;h1 class="title"&gt;Hello, world!&lt;/h1&gt;
 &lt;/template&gt;
 
@@ -126,63 +162,92 @@ src
         font-size: 5rem;
         color: red;
     }
-&lt;/style&gt;</code></pre>
-            </div>
-        </prism-highlight>
+&lt;/style&gt;            </code>
+        </pre>
         <p>當 <b>A.vue</b> 組件渲染時，它將生成以下 HTML：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;h1 class="_title_3o93j"&gt;Hello, world!&lt;/h1&gt;</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>&lt;h1 class="_title_3o93j"&gt;Hello, world!&lt;/h1&gt;            </code>
+        </pre>
         <p>後面那串看起來像隨機字串的名稱就是該 <em>h1</em> 元素唯一的 Hash 值。假如一個組件內有好幾個元素都有用到 <em>.title</em>，那麼每個元素的哈希值也都會不一樣，這樣可以確保每個元素的樣式都是獨立的，不會受到其他元素影響。</p>
         <p><br></p>
         <h5>2. <em>lang</em>：</h5>
         <p>這個屬性用來指定 <em>&lt;style&gt;</em> 使用的 CSS 語言類型，例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;style lang="scss"&gt;
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>&lt;style lang="scss"&gt;
     ...
-&lt;/style&gt;</code></pre>
-            </div>
-        </prism-highlight>
+&lt;/style&gt;            </code>
+        </pre>
         <p>那麼 Vite 在渲染的時候就會將此 <em>&lt;style&gt;</em> 識別為 Sass 的 SCSS 格式。除了 Sass 之外，其他熱門的預處理器如 Less、Stylus 等也都可以被識別，然而，並非直接添加 <em>lang</em> 就可以被判別，我們需要提前透過 NPM 安裝相應的預處理器語言，Vite 才能正常進行解析。</p>
         <p>有關具體使用方法會在下一個章節進行說明。</p>
     </div>
     <div class="text-block" :id="'act' + catalog[2].id">
         <h2 v-text="catalog[2].title"></h2>
         <p>我們先來看在沒有安裝預處理器套件之前，直接在 <em>&lt;style&gt;</em> 標籤定義 <em>lang</em> 屬性會發生什麼事：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;style lang="scss"&gt;
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>&lt;style lang="scss"&gt;
     ...
-&lt;/style&gt;</code></pre>
-            </div>
-        </prism-highlight>
+&lt;/style&gt;            </code>
+        </pre>
         <figure>
             <img src="/images/learn/js/vite-3-1.jpg">
         </figure>
         <p>Vite 會噴出錯誤訊息，大意是說找不到指定的預處理器依賴（dependency），因此不是我們說想使用哪一個 CSS 預處理器語言就能直接使用，還是必須得執行一些安裝步驟。不過，Vite 雖然不是非常推薦開發者使用預處理器語言進行開發，但它們還是有把熱門的幾款預處理器內設在 Vite 專案包裡面，所以我們不用自己上 NPM 社區去找相關套件安裝與設定方式，只需要安裝相應的預處理器依賴即可。</p>
         <p>SCSS 是 Sass 的其中一個格式，因此我們以 Sass 為例：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">npm add -D sass</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>npm add -D sass            </code>
+        </pre>
         <p>等安裝跑完後，重新執行 <em>npm run dev</em>，就可以正常地在專案裡編寫 Sass 或 SCSS 格式的 CSS 預處理器語言了。</p>
         <p>其他熱門預處理器的安裝指令：</p>
         <p>less：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">npm add -D less</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>npm add -D less            </code>
+        </pre>
         <p>stylus：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">npm add -D stylus</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>npm add -D stylus            </code>
+        </pre>
         <p>可能有些調皮的人會問說：那我能不能不同組件使用不同 CSS 預處理器？答案是可以的，只要專案內有把需要使用的預處理器依賴都確認安裝進去，那麼要在 A 組件使用 SCSS，B 組件使用 Sass、C 組件使用 less......都不會影響編譯運作，只是這種做法無疑也是為他人和自己找麻煩而已。</p>
     </div>
     <div class="text-block" :id="'act' + catalog[3].id">
@@ -195,24 +260,34 @@ src
         <p>所以非必要狀況下，我個人還是盡可能維持原生 CSS 寫作方式，唯獨預處理器諸多方便功能最為倚賴的「嵌套寫法」例外。在得知 Vite 以 PostCSS 作為預設開發預處理器之後，稍微研究了一下 PostCSS，發現它的擴充套件也有嵌套寫法的功能，設定方式也很簡單。</p>
         <p>首先，不管你是用 <em>create vue@3</em> 還是 <em>create vite@latest</em> 去創建 Vite 專案，<em>npm install</em> 之後專案 <b>node_modules/</b> 資料夾裡都會有一個 <b>postcss/</b> 資料夾，表示我們不需要另外自己手動安裝 PostCSS 基本功能──這裡只說基本功能，是因為 PostCSS 有許多擴充功能，例如 autoprefixer、postcss-nested、postcss-preset-env 等，但這些套件並不包含在一開始創建的 Vite 專案裡面，如果我們需要這些功能，仍必須透過 <em>npm</em> 手動安裝並於設定檔引用它。</p>
         <p>以我個人最需要的巢狀嵌套寫法為例，於終端器輸入以下指令：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">npm install postcss-nested --save-dev</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>npm install postcss-nested --save-dev            </code>
+        </pre>
         <p>接著開啟 <b>vite.config.js</b> 文件，添加以下設定：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">import postcssNested from 'postcss-nested';
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>import postcssNested from 'postcss-nested';
 
 export default defineConfig({
     plugins: [
         postcssNested(),
     ],
 });
-            </code></pre>
-            </div>
-        </prism-highlight>
+                        </code>
+        </pre>
         <p>（這裡我忽略 Vite 原本就有的 plugin-vue 沒一起貼進來，避免混淆。）</p>
         <p>重新啟動 <em>npm run dev</em>，便可以開始在組件裡面編寫 PostCSS。至於其他擴充套件使用步驟也都大致相同，故就不一一贅述，以下列出常見的幾款擴充套件：</p>
         <div class="text-flex">

@@ -170,30 +170,37 @@ const catalog = reactive<CatalogItem[]>([
         </figure>
         <h6>2. 編輯 index.html</h6>
         <p>將以下程式碼複製貼到 <b>index.html</b> 裡：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;meta charset="UTF-8"&gt;
-    &lt;title&gt;Lottie Demo&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;div id="animation" style="width: 200px; height: 200px;"&gt;&lt;/div&gt;
-    &lt;script src="lottie.min.js"&gt;&lt;/script&gt;
-    &lt;script&gt;
-        lottie.loadAnimation({
-            path:'data.json',   // json 文件路徑與名稱
-            loop:true,
-            autoplay:true,
-            renderer:'canvas',  // 渲染方式，有 html、canvas、svg 三種可以設定
-            container:document.getElementById('animation')
-        });
-    &lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>
+                &lt;!DOCTYPE html&gt;
+                &lt;html&gt;
+                &lt;head&gt;
+                    &lt;meta charset="UTF-8"&gt;
+                    &lt;title&gt;Lottie Demo&lt;/title&gt;
+                &lt;/head&gt;
+                &lt;body&gt;
+                    &lt;div id="animation" style="width: 200px; height: 200px;"&gt;&lt;/div&gt;
+                    &lt;script src="lottie.min.js"&gt;&lt;/script&gt;
+                    &lt;script&gt;
+                        lottie.loadAnimation({
+                            path:'data.json',   // json 文件路徑與名稱
+                            loop:true,
+                            autoplay:true,
+                            renderer:'canvas',  // 渲染方式，有 html、canvas、svg 三種可以設定
+                            container:document.getElementById('animation')
+                        });
+                    &lt;/script&gt;
+                &lt;/body&gt;
+                &lt;/html&gt;
+            </code>
+        </pre>
         <p>其中，將 <em>#animation</em> <em>div</em> 的寬度（<em>width</em>）、高度（<em>height</em>）更改為動畫專案設定的寬高。這麼做的目的是確保到時候網頁打開後，動畫與我們在 AE 裡製作的尺寸一致。</p>
         <h6>3. 利用虛擬網頁伺服器預覽</h6>
         <p>在網址列輸入 <b>localhost/</b> 與 <b>demo</b> 資料夾路徑即可，例如 <b>localhost/202004/demo</b>：</p>

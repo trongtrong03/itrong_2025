@@ -43,17 +43,24 @@ const catalog = reactive<CatalogItem[]>([
         <h2 v-text="catalog[1].title"></h2>
         <p>在講 SPA 之前，先來談談 MPA。MPA 全名「Multi-Page Application」，意指多頁面網頁應用，也就是採用 MPA 模式架設的網站，其網頁根據網頁內容有多少功能，就會有多少個頁面，當使用者點擊連結，瀏覽器視窗會重新刷新整個畫面，並導覽到指定的頁面，或者說是向伺服器發送請求，接著伺服器再將指定的頁面檔案資料回傳給瀏覽器顯示。</p>
         <p>例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;nav&gt;
-    &lt;a href="index.html"&gt;首頁&lt;/a&gt;
-    &lt;a href="about.html"&gt;關於我們&lt;/a&gt;
-    &lt;a href="news.html"&gt;最新消息&lt;/a&gt;
-    &lt;a href="products.html"&gt;產品介紹&lt;/a&gt;
-    &lt;a href="contact.html"&gt;聯絡我們&lt;/a&gt;
-&lt;/nav&gt;</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>
+                &lt;nav&gt;
+                    &lt;a href="index.html"&gt;首頁&lt;/a&gt;
+                    &lt;a href="about.html"&gt;關於我們&lt;/a&gt;
+                    &lt;a href="news.html"&gt;最新消息&lt;/a&gt;
+                    &lt;a href="products.html"&gt;產品介紹&lt;/a&gt;
+                    &lt;a href="contact.html"&gt;聯絡我們&lt;/a&gt;
+                &lt;/nav&gt;
+            </code>
+        </pre>
         <p>五個功能連結，代表該網站至少有五個頁面。</p>
         <p>又或者是像 form 表單這種，使用者填完表單資料按下送出按鈕，瀏覽器隨即將資料傳送給伺服器，伺服器接收處理後再將網站開發者設定的頁面內容回傳瀏覽器，反饋給使用者查看。</p>
         <p>示意圖：</p>
@@ -118,22 +125,36 @@ const catalog = reactive<CatalogItem[]>([
         <p>不過前面 MPA 有舉了頁面導覽的程式碼結構例子，所以這裡也稍微提供相對應的範例，一般來說 MPA 的頁面導覽的網頁連結尾端通常是所使用網頁格式的副檔名，像是 <em>.html</em>、<em>.php</em> 等。而 SPA 網站導覽的網址大多都是用路由來表示，主要有以下兩種：</p>
         <h4>1. 哈希（Hash）路由：</h4>
         <p>在 URL 中使用井號（#）來表示路由：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">http://example.com/#/home
-http://example.com/#/about
-http://example.com/#/news/20240101</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>
+                http://example.com/#/home
+                http://example.com/#/about
+                http://example.com/#/news/20240101
+            </code>
+        </pre>
         <h4>2. 歷史（History API）路由：</h4>
         <p>使用 HTML5 提供的 History API 來處理路由，這樣 URL 就可以不使用井號，而是直接使用正常的路徑，例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">http://example.com/home
-http://example.com/about
-http://example.com/news/20240101</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>
+                http://example.com/home
+                http://example.com/about
+                http://example.com/news/20240101
+            </code>
+        </pre>
         <p>不管是使用哈希路由還是歷史路由，當 URL 的路徑部分發生變化時，SPA 框架（如 React Router、Vue Router ......等）會根據設置的路由規則，動態地渲染對應的組件或畫面，而不會重新加載整個頁面。這樣就實現了在單一頁面中實現多個不同路徑的內容切換，從而實現了 SPA 的核心特性。</p>
         <p><br></p>
         <h3>常見的 SPA 技術有？</h3>
@@ -260,18 +281,28 @@ http://example.com/news/20240101</code></pre>
         <p>所以啦，老話一句，究竟要使用哪一種技術來建構網站，終究還是得和團隊溝通討論後再一起作決定才是最適合的方法。</p>
         <p><br></p>
         <p>既然前面提過 SSG 通常會和前端框架一同使用，具體來說是使用在哪一個階段呢？就拿個人目前在使用的 Nuxt 來說，當我完成網站的開發，準備要進行發布時，會下達以下指令讓編譯器為我生成頁面：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">npm run generate</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>npm run generate            </code>
+        </pre>
         <p>這個指令就是 SSG 在做的事情，它將 Nuxt 框架建立的資料與路由，預先生成所有頁面的靜態 HTML 檔案，生成後的這些檔案可以讓我們上傳到指定網路空間或 CDN（Content Delivery Network）上，從而實現高性能、低成本的靜態網站部署。所以 <em>npm run generate</em> 這個指令不單單只是打包和優化我們寫的程式及使用到的相關資源（Images、CSS、JavaScript......等），它同時也包含建構出所有頁面靜態 HTML 的動作。</p>
         <p>不過 Nuxt 除了 <em>generate</em> 之外，還有個 <em>build</em> 指令：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">npm run build</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>npm run build            </code>
+        </pre>
         <p>它的功能同樣也是把框架編寫好的內容打包輸出成靜態網站，只不過和 <em>generate</em> 相比，<em>build</em> 主要在做的事情只有將我們寫的內容打包成網頁佈署時所需的靜態資源，並不包含產生靜態網頁，所以我們可以說 <em>generate</em> 指令包含了 <em>build</em> 在做的事情。</p>
         <p>既然如此為什麼 Nuxt 要保留 <em>build</em>？主要是因為 Nuxt 的宗旨之一是想確保與其他前端開發工具的相容性，或許有部分開發者會同時使用 Nuxt 或其他框架工具，譬如 Jenkins、Travis CI、CircleCI 之類的 CI/CD 工具，又或者 React、Vue.js、Angular 等其他框架，因此才保留 <em>build</em> 這個通用指令增加相容性與靈活度。至於 <em>generate</em> 則是 Nuxt 本身獨有的指令，其他開發工具是不支援這個指令的。</p>
     </div>

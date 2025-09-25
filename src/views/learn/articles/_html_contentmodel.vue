@@ -101,75 +101,117 @@ const catalog = reactive<CatalogItem[]>([
     <div class="text-block" :id="'act' + catalog[3].id">
         <h2 v-text="catalog[3].title"></h2>
         <p><b>Transparent</b> 是一個很特殊的分類，透明元素可包含其他元素，<em>&lt;a&gt;</em> 就是典型的透明內容模型元素，我們很常自己或看到他人在 <em>&lt;a&gt;</em> 裡面嵌套其他內容模型的元素，然而，必須依循一定規則才可算是合法。什麼樣叫做合法？為方便了解，我們搬出 HTML4 之前提到「行內元素不能包含區塊元素」的規則，來檢視 <em>&lt;p&gt;</em>（行內元素）與 <em>&lt;div&gt;</em>（區塊元素）之間的嵌套關係：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;div&gt;
-    &lt;p&gt;&lt;/p&gt;
-&lt;/div&gt;</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>
+                &lt;div&gt;
+                    &lt;p&gt;&lt;/p&gt;
+                &lt;/div&gt;
+            </code>
+        </pre>
         <p><em>div</em> > <em>p</em>，區塊元素包含行內元素，此為合法。</p>
         <p><br></p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;p&gt;
-    &lt;div&gt;&lt;/div&gt;
-&lt;/p&gt;</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>
+                &lt;p&gt;
+                    &lt;div&gt;&lt;/div&gt;
+                &lt;/p&gt;
+            </code>
+        </pre>
         <p><em>p</em> > <em>div</em>，區塊元素在行內元素之內，這樣是不合法的。</p>
         <p><br></p>
         <p>知道以上元素嵌套的合法規則後，我們回頭瞧瞧透明內容模型，透明內容模型的元素特性是其子元素會依據其父元素（也就是透明元素的上一層）決定是否合法，假如父元素仍然是透明元素，則繼續向上遍歷直到 <em>&lt;body&gt;</em> 為止，假設這之間透明元素的子元素都沒遍歷到非透明元素的其他內容模型父級元素，則該透明元素可以包含任何 <b>Flow content</b> 的元素，不論它的初始型態是區塊（Block）還是行內（Inline）元素。我們也可以從上方 Content Models 示意圖作想像，<b>Flow content</b> 包含所有 <b>Phrasing content</b>，但 <b>Phrasing content</b> 卻沒有包含全部的 <b>Flow content</b>。舉例來說：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;p&gt;
-    &lt;span&gt;
-        &lt;a href="###"&gt;
-            &lt;div&gt;this is a link.&lt;/div&gt;
-        &lt;/a&gt;
-    &lt;/span&gt;
-&lt;/p&gt;</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>
+                &lt;p&gt;
+                    &lt;span&gt;
+                        &lt;a href="###"&gt;
+                            &lt;div&gt;this is a link.&lt;/div&gt;
+                        &lt;/a&gt;
+                    &lt;/span&gt;
+                &lt;/p&gt;
+            </code>
+        </pre>
         <p>我們將這串程式碼簡化為階層順序：<em>&lt;p&gt;</em> > <em>&lt;span&gt;</em> > <em>&lt;a&gt;</em> > <em>&lt;div&gt;</em>，作為透明內容屬性元素（<em>&lt;a&gt;</em>）的子元素 <em>&lt;div&gt;</em> 是為 <b>Flow content</b>，跳過 <em>&lt;a&gt;</em> 往上查看父級元素先碰到 <em>&lt;span&gt;</em>，<em>&lt;span&gt;</em> 的內容模型不是透明元素而是 <b>Phrasing content</b>，因此就不再繼續向上檢查。由於 <em>&lt;div&gt;</em> 內容模型分類是不屬於 <b>Phrasing content</b> 的 <b>Flow content</b>，不應存在於 <em>&lt;span&gt;</em> 之內，故這段程式碼的結構是不正確（不合法）的。</p>
         <p><br></p>
         <p>我們接著來看第二個例子：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;p&gt;
-    &lt;ins&gt;
-        &lt;a href="###"&gt;
-            &lt;div&gt;this is a link.&lt;/div&gt;
-        &lt;/a&gt;
-    &lt;/ins&gt;
-&lt;/p&gt;</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>
+                &lt;p&gt;
+                    &lt;ins&gt;
+                        &lt;a href="###"&gt;
+                            &lt;div&gt;this is a link.&lt;/div&gt;
+                        &lt;/a&gt;
+                    &lt;/ins&gt;
+                &lt;/p&gt;
+            </code>
+        </pre>
         <p>一樣先將其簡化：<em>&lt;p&gt;</em> > <em>&lt;ins&gt;</em> > <em>&lt;a&gt;</em> > <em>&lt;div&gt;</em>，<em>&lt;ins&gt;</em> 和 <em>&lt;a&gt;</em> 一樣同屬透明內容屬性，因此<em>&lt;div&gt;</em> 將略過它們繼續向上遍歷直至 <em>&lt;p&gt;</em>，然而 <em>&lt;p&gt;</em> 只能包含其他 <b>Phrasing content</b> 的元素，所以這段程式碼依然是錯誤的撰寫結構。</p>
         <p><br></p>
         <p>第三個範例：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;ul&gt;
-    &lt;li&gt;
-        &lt;a href="###"&gt;
-            &lt;div&gt;this is a link.&lt;/div&gt;
-        &lt;/a&gt;
-    &lt;/li&gt;
-&lt;/ul&gt;</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>
+                &lt;ul&gt;
+                    &lt;li&gt;
+                        &lt;a href="###"&gt;
+                            &lt;div&gt;this is a link.&lt;/div&gt;
+                        &lt;/a&gt;
+                    &lt;/li&gt;
+                &lt;/ul&gt;
+            </code>
+        </pre>
         <p><em>&lt;li&gt;</em> 內容模型與 <em>&lt;div&gt;</em> 皆屬 <b>Flow content</b>，所以這段程式碼是合法的。</p>
         <p><br></p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;body&gt;
-    &lt;a href="###"&gt;
-        &lt;div&gt;this is a link.&lt;/div&gt;
-    &lt;/a&gt;
-&lt;/body&gt;</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>
+                &lt;body&gt;
+                    &lt;a href="###"&gt;
+                        &lt;div&gt;this is a link.&lt;/div&gt;
+                    &lt;/a&gt;
+                &lt;/body&gt;
+            </code>
+        </pre>
         <p>最後這個例子，由於 <em>&lt;a&gt;</em> 與 <em>&lt;body&gt;</em> 間已無其他父級元素，因此 <em>&lt;a&gt;</em> 內的子元素就可以包含任一 <b>Flow content</b> 的元素。</p>
     </div>
     <div class="text-block" :id="'act' + catalog[4].id">

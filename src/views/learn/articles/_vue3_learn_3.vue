@@ -39,9 +39,15 @@ const catalog = reactive<CatalogItem[]>([
         <h2 v-text="catalog[1].title"></h2>
         <p>在開始操作計算屬性之前，我們先建立一個範例，這個範例的功能需要兩個輸入框，分別是姓氏和名字，該輸入框可以即時接收使用者輸入的內容，然後在表單下方將姓氏與名字相結合並輸出成純文字。</p>
         <p>程式碼結構範例：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;template&gt;
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>&lt;template&gt;
     &lt;div&gt;
         &lt;label&gt;姓氏：&lt;/label&gt;
         &lt;input type="text" v-model="firstName"&gt;
@@ -60,9 +66,8 @@ const catalog = reactive<CatalogItem[]>([
 
     let firstName = ref("黃");
     let lastName = ref("阿比");
-&lt;/script&gt;</code></pre>
-            </div>
-        </prism-highlight>
+&lt;/script&gt;            </code>
+        </pre>
         <p>簡單說明幾個要點：</p>
         <p>1. 使用 <em>v-model</em> 來綁定輸入框與對應響應式資料的值。</p>
         <p>2. 定義的變數資料使用 <em>ref</em> 來使其成為響應式資料，否則若只是單純的變數，縱使修改了輸入框的值，也無法同步響應到變數身上。</p>
@@ -78,12 +83,17 @@ const catalog = reactive<CatalogItem[]>([
         <p>事實上，這個把姓氏與名字串接起來的 <em v-pre>{{ firstName + lastName }}</em> 就是一個簡單的計算邏輯，既然這種方式就能實現計算需求，那還有必要使用 <em>computed</em> 屬性嗎？先不急著下定論，先就上方建立好的範例，繼續衍生其它需求。</p>
         <p>假設現在輸入的是英文姓名，譬如「li」（姓）、「jessica」（名），正常情況下，英文姓名的首字應該為大寫，可是我們無法保證每個填寫表單的使用者都會自動自發地將首字母輸入為大寫，因此我們只能透過程式輔助，將輸入框裡的資料首字母強制以大寫表示。</p>
         <p>在不改變目前程式碼結構的前提下，我們只能從 <em v-pre>{{ firstName + lastName }}</em> 作文章，詳細實現過程就不多作解釋了，直接呈上結果：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">
-&lt;p&gt;姓名：{{ firstName.slice(0, 1).toUpperCase() + firstName.slice(1)+ "." + lastName.slice(0, 1).toUpperCase() + lastName.slice(1) }}&lt;/p&gt;</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>
+&lt;p&gt;姓名：{{ firstName.slice(0, 1).toUpperCase() + firstName.slice(1)+ "." + lastName.slice(0, 1).toUpperCase() + lastName.slice(1) }}&lt;/p&gt;            </code>
+        </pre>
         <p>實測結果：</p>
         <figure>
             <img src="/images/learn/js/vue3-learn-3-3.jpg">
@@ -93,30 +103,51 @@ const catalog = reactive<CatalogItem[]>([
     <div class="text-block" :id="'act' + catalog[2].id">
         <h2 v-text="catalog[2].title"></h2>
         <p>承接上一章節的尾段，比起把模板搞得花花綠綠，Vue 官方更希望開發者將這些程式碼轉移到 <em>&lt;script&gt;</em> 裡面，透過 <em>computed</em> 計算屬性來撰寫程式運算邏輯。過往 Vue 2 Options API 的 <em>computed</em> 屬性配置是這樣調用：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">new Vue({
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>new Vue({
     computed: { ... }
-});</code></pre>
-            </div>
-        </prism-highlight>
+});            </code>
+        </pre>
         <p>到了 Vue 3 Composition API 寫法則有些不同，首先我們一樣要在 <em>import</em> 裡把 <em>computed</em> 呼叫進來：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">import { computed } from "vue";</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>import { computed } from "vue";            </code>
+        </pre>
         <p>而 <em>computed</em> 則變成了函式定義的寫法：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">let Func = computed(() => { ... })</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>let Func = computed(() => { ... })            </code>
+        </pre>
         <p>因為 Vue 3 淡化了 <em>this</em> 的存在，所以在 Vue 3 的函式普遍都會直接用箭頭函式來陳述程式敘述句。</p>
         <p>結合前一章範例的內容，完整程式碼將會改寫為：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;template&gt;
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>&lt;template&gt;
     &lt;div&gt;
         &lt;label&gt;姓氏：&lt;/label&gt;
         &lt;input type="text" v-model="firstName"&gt;
@@ -139,9 +170,8 @@ const catalog = reactive<CatalogItem[]>([
     let fullName = computed(() => {
         return firstName.value.slice(0, 1).toUpperCase() + firstName.value.slice(1)+ "." + lastName.value.slice(0, 1).toUpperCase() + lastName.value.slice(1);
     });
-&lt;/script&gt;</code></pre>
-            </div>
-        </prism-highlight>
+&lt;/script&gt;            </code>
+        </pre>
         <p>唯一要注意的重點就是在 JavaScript 裡面操作 <em>firstName</em> 和 <em>lastName</em> 的值時，別忘記要添加 <em>.value</em>，因為它們都是藉由 <em>ref</em> 定義的響應式資料。</p>
         <p>實測結果：</p>
         <figure>
@@ -152,9 +182,15 @@ const catalog = reactive<CatalogItem[]>([
             <p>計算屬性是一種依賴其他屬性值並且具有快取機制的屬性。它們的值是根據相關屬性值計算得出的，只有在相關屬性發生變化時才會重新計算，否則會直接傳回快取的結果。</p>
         </blockquote>
         <p>現在我們於 <em>computed</em> 添加一個 Console 句，並且在模板多次呼叫調用 <em>computed</em> 的函式名稱：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;template&gt;
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>&lt;template&gt;
     &lt;!-- 略 --&gt;
     &lt;div&gt;
         &lt;p&gt;姓名：{{ fullName }}&lt;/p&gt;
@@ -175,9 +211,8 @@ const catalog = reactive<CatalogItem[]>([
         console.log("computed!");
         return firstName.value.slice(0, 1).toUpperCase() + firstName.value.slice(1)+ "." + lastName.value.slice(0, 1).toUpperCase() + lastName.value.slice(1);
     });
-&lt;/script&gt;</code></pre>
-            </div>
-        </prism-highlight>
+&lt;/script&gt;            </code>
+        </pre>
         <p>呼叫了五次，憑感覺來說 Console 也應該會輸出五次「computed!」，然而實際測試的結果卻是：</p>
         <figure>
             <img src="/images/learn/js/vue3-learn-3-4.jpg">
@@ -188,9 +223,15 @@ const catalog = reactive<CatalogItem[]>([
         </figure>
         <p>這時就會看到 Console 回傳了四次「computed!」，因為先是逐一刪除「l」、「i」單字，後又分別鍵入了「w」以及「u」，總計發生了四次變化。</p>
         <p>簡單來說，只要資料沒有變動，那麼 <em>computed</em> 就不會重複做多餘的動作，但如果不使用它，單純使用函式來處裡需求：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;template&gt;
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>&lt;template&gt;
     &lt;!-- 略 --&gt;
     &lt;div&gt;
         &lt;p&gt;姓名：{{ fullName() }}&lt;/p&gt;
@@ -211,9 +252,8 @@ const catalog = reactive<CatalogItem[]>([
         console.log("computed!");
         return firstName.value.slice(0, 1).toUpperCase() + firstName.value.slice(1)+ "." + lastName.value.slice(0, 1).toUpperCase() + lastName.value.slice(1);
     } 
-&lt;/script&gt;</code></pre>
-            </div>
-        </prism-highlight>
+&lt;/script&gt;            </code>
+        </pre>
         <p>這麼做確實也能達到姓氏與名字字首皆強制大寫且拼接成完整姓名的效果，然而打開 Console 視窗一看：</p>
         <figure>
             <img src="/images/learn/js/vue3-learn-3-6.jpg">
@@ -231,9 +271,15 @@ const catalog = reactive<CatalogItem[]>([
             <img src="/images/learn/js/vue3-learn-3-8.jpg">
         </figure>
         <p>為了驗證 <em>fullName</em> 的類型，我們在模板新增一個按鈕，並且添加一個點擊事件 <em>changeFullName</em>：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;template&gt;
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>&lt;template&gt;
     &lt;div&gt;
         &lt;label&gt;姓氏：&lt;/label&gt;
         &lt;input type="text" v-model="firstName"&gt;
@@ -261,22 +307,26 @@ const catalog = reactive<CatalogItem[]>([
     function changeFullName(){
         console.log(fullName);
     }
-&lt;/script&gt;</code></pre>
-            </div>
-        </prism-highlight>
+&lt;/script&gt;            </code>
+        </pre>
         <p>先在 <em>changeFullName</em> 函式中 Console <em>fullName</em>，點擊按鈕觸發該事件，得到的 Console 輸出結果是：</p>
         <figure>
             <img src="/images/learn/js/vue3-learn-3-9.jpg">
         </figure>
         <p><em>fullName</em> 的類型是 ComputedRefImpl，雖然不完全等同 RefImpl，但這也代表它也是一個響應式資料，如果我們想修改它的值，就必須添加 <em>.value</em>。</p>
         <p>──直覺這麼想，合理，對吧？於是我們嘗試透過 <em>changeFullName</em> 函式變更其資料，例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">function changeFullName(){
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>function changeFullName(){
     fullName.value = "李喵喵";
-}</code></pre>
-            </div>
-        </prism-highlight>
+}            </code>
+        </pre>
         <p>來到網頁應用進行測試，卻發現按鈕點擊了沒有任何反應，打開 Console 工具，發現視窗裡頭反饋了一則警告：</p>
         <blockquote class="is-danger">
             <p>[Vue warn] Write operation failed: computed value is readonly</p>
@@ -288,9 +338,15 @@ const catalog = reactive<CatalogItem[]>([
         <h5><em>set</em>：</h5>
         <p>用於定義計算屬性的 setter，即設定計算屬性的值時會執行的函式。它會接收一個參數，通常用於處理計算屬性值的修改，並且可以執行一些額外的邏輯。</p>
         <p>範例：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">let fullName = computed({
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>let fullName = computed({
     get(){
         return firstName.value.slice(0, 1).toUpperCase() + firstName.value.slice(1) + lastName.value.slice(0, 1).toUpperCase() + lastName.value.slice(1);
     },
@@ -301,14 +357,19 @@ const catalog = reactive<CatalogItem[]>([
 
 function changeFullName(){
     fullName.value = "李喵喵";
-}</code></pre>
-            </div>
-        </prism-highlight>
+}            </code>
+        </pre>
         <p>現階段 <em>set</em> 裡的程式功能只有單純輸出（Console）傳進來參數的值是什麼而已，目的是要讓我們瞭解它傳進來的參數指向是 <em>changeFullName</em> 事件觸發時 <em>value</em> 改變的值。</p>
         <p>回到原本的程式需求，讓 <em>changeFullName</em> 事件觸發後，DOM 畫面上的 <em>fullName</em> 能變更成我們設定的資料，<em>set</em> 應該要這樣寫：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">let fullName = computed({
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>let fullName = computed({
     get(){
         return firstName.value.slice(0, 1).toUpperCase() + firstName.value.slice(1) + lastName.value.slice(0, 1).toUpperCase() + lastName.value.slice(1);
     },
@@ -318,17 +379,22 @@ function changeFullName(){
         firstName.value = str1;
         lastName.value = str2;
     }
-});</code></pre>
-            </div>
-        </prism-highlight>
+});            </code>
+        </pre>
         <p>實測結果：</p>
         <figure>
             <img src="/images/learn/js/vue3-learn-3-10.jpg">
         </figure>
         <p>完整的程式碼：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;template&gt;
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>&lt;template&gt;
     &lt;div&gt;
         &lt;label&gt;姓氏：&lt;/label&gt;
         &lt;input type="text" v-model="firstName"&gt;
@@ -364,9 +430,8 @@ function changeFullName(){
     function changeFullName(){
         fullName.value = "李喵喵";
     }
-&lt;/script&gt;</code></pre>
-            </div>
-        </prism-highlight>
+&lt;/script&gt;            </code>
+        </pre>
     </div>
     <div class="text-block" :id="'act' + catalog[4].id">
         <h2 v-text="catalog[4].title"></h2>

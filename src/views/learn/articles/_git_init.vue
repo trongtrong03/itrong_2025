@@ -51,20 +51,34 @@ import PrismHighlight from '@/components/Common/PrismHighlight.vue';
         </figure>
         <p><br></p>
         <p>或也可以用 Windows 內建的命令提示字元進行操作，打開命令提示字元後，通過 <em>cd</em> 指令進入你要進行版控的資料夾目錄。例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">cd demo</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>
+                cd demo
+            </code>
+        </pre>
     </div>
     <div class="text-block" :id="'act' + catalog[2].id">
         <h2 v-text="catalog[2].title"></h2>
         <p>在專案還沒建立版本庫之前，任何有關 Git 的指令皆無效，因此我們必須先在專案資料夾裡建立版本庫，其指令語法為：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-git">$git init</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-git" v-prism>
+                $git init
+            </code>
+        </pre>
         <p><em>$</em> 是 Bash 的執行緒代號，如果是用 Windows 命令提示字元下指令的話不用加這個字符。版本庫建立完成後，<b>demo</b> 資料夾會生成一個「<b>.git</b>」的隱藏資料夾。「<b>.git</b>」資料夾將用來存取每一次版本提交的內容。</p>
         <p>另外要注意的是，Git 指令有大小寫之分。</p>
         <figure>
@@ -88,19 +102,33 @@ import PrismHighlight from '@/components/Common/PrismHighlight.vue';
         <p>還記得這張流程圖嗎？建立版本庫後，該專案就可以開始執行 Git 版控的步驟，目前 <b>demo</b> 專案資料夾裡的檔案所在位置為「<b>Working directory</b>」（工作區域）。從流程圖中我們可以看到檔案從工作區域要進入到最後階段（Repository）分別要經過添加（add） 和提交（commit）的動作，而這同時也是我們提交至版本庫分別要下的指令。</p>
         <p><br></p>
         <h6>1. 將工作區域檔案添加至暫存區域（Ataging area）</h6>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-git">$git add .</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-git" v-prism>
+                $git add .
+            </code>
+        </pre>
         <p><em>add</em> 是 Git 將工作區域的檔案「添加」到暫存區域的動作，其指令參數有很多種，詳細留到以後再獨立成篇介紹。這裡先使用最簡單灑脫的參數 <em>.</em>，意即將所有檔案通通添加到暫存區域。</p>
         <p><br></p>
         <h6>2. 將暫存區域檔案提交至版本庫（Repository）</h6>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-git">$git commit -m "c1"</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-git" v-prism>
+                $git commit -m "c1"
+            </code>
+        </pre>
         <p><em>commit</em> 則是將暫存區域內的檔案「提交」到版本庫的命令，<em>-m</em> 中的 m 是 message 的意思，我們需要在其後方用雙引號撰寫此次提交版本的訊息，例如範例中「c1」。Git 的 Commit Message 最好以清楚易讀為原則，以方便未來檢視提交日誌時，能更一目了然各個提交版本的目的是什麼。</p>
         <p>Git 提交成功後的畫面：</p>
         <figure>
@@ -110,22 +138,36 @@ import PrismHighlight from '@/components/Common/PrismHighlight.vue';
         <p><em>add</em> 和 <em>commit</em> 依序執行完就算是完成本地端版本庫的一次版控流程了，假如想確認檔案是否有紮紮實實地進入版控，我們可以用兩種方式確認：</p>
         <h3>git status：</h3>
         <p>第一個方法是 <em>git status</em> 指令，它可以查看目前檔案的狀態，如果你的檔案已是最新版本，它會返回「nothing to commit, working tree clean」的訊息。</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-git">$git status</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-git" v-prism>
+                $git status
+            </code>
+        </pre>
         <figure>
             <img src="/images/learn/dev/git-init-8.jpg">
         </figure>
         <p><br></p>
         <h3>git log：</h3>
         <p>第二種方法則是 <em>git log</em>，這個指令可以列出版本庫的所有 Commit 記錄，是 Git 裡非常重要且也是相當好用的功能。</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-git">$git log</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-git" v-prism>
+                $git log
+            </code>
+        </pre>
         <figure>
             <img src="/images/learn/dev/git-init-9.jpg">
         </figure>

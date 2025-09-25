@@ -37,13 +37,20 @@ const catalog = reactive<CatalogItem[]>([
     <div class="text-block" :id="'act' + catalog[1].id">
         <h2 v-text="catalog[1].title"></h2>
         <p>以下是 CSS3 <em>filter</em> 屬性基本的語法規則：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">selector {
-    filter: filter-function(value);
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                selector {
+                    filter: filter-function(value);
+                }
+            </code>
+        </pre>
         <p><em>filter-function</em> 表示濾鏡效果的名稱，並在括號類填入要套用的 <em>value</em> 值。</p>
         <p><em>filter-function</em> 目前有以下這些參數值：</p>
         <div class="text-flex">
@@ -115,13 +122,20 @@ const catalog = reactive<CatalogItem[]>([
         <p>這個章節要來展示 <em>filter</em> 內建的十大效果呈現出來的結果會是什麼樣子的：</p>
         <p><br></p>
         <h3>grayscale：</h3>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">img {
-    filter: grayscale(1);
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                img {
+                    filter: grayscale(1);
+                }
+            </code>
+        </pre>
         <p><em>grayscale</em> 可使元素變成灰階，它的範圍從 <em>0</em> 到 <em>1</em>（也可以用百分比表示），數值越小代表越接近原色，反之則越灰階化。</p>
         <p>效果展示：</p>
         <div class="ex-filter">
@@ -134,13 +148,20 @@ const catalog = reactive<CatalogItem[]>([
         </div>
         <p><br></p>
         <h3>sepia：</h3>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">img {
-    filter: sepia(1);
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                img {
+                    filter: sepia(1);
+                }
+            </code>
+        </pre>
         <p><em>sepia</em> 可使元素變成褐色（復古風），它的範圍從 <em>0</em> 到 <em>1</em>（也可以用百分比表示），數值越小代表越接近原色，反之則越褐色化。</p>
         <p>效果展示：</p>
         <div class="ex-filter">
@@ -153,13 +174,20 @@ const catalog = reactive<CatalogItem[]>([
         </div>
         <p><br></p>
         <h3>saturate：</h3>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">img {
-    filter: saturate(3);
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                img {
+                    filter: saturate(3);
+                }
+            </code>
+        </pre>
         <p><em>saturate</em> 可調整元素的飽和度，其參數值以 <em>1</em>（或 <em>100%</em>）作為分野，<em>1</em> 代表維持原狀，越靠近 <em>0</em> 則飽和度越低，數字越大則色彩越飽滿。</p>
         <p>效果展示：</p>
         <div class="ex-filter">
@@ -172,13 +200,20 @@ const catalog = reactive<CatalogItem[]>([
         </div>
         <p><br></p>
         <h3>hue-rotate：</h3>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">img {
-    filter: hue-rotate(180deg);
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                img {
+                    filter: hue-rotate(180deg);
+                }
+            </code>
+        </pre>
         <p><em>hue-rotate</em> 可令元素進行色相旋轉，使元素產生異色的變化。它的參數值是 <em>0</em> 到 <em>360</em> ，單位為 <em>deg</em> 的旋轉角度，<em>0</em> 與 <em>360</em> 皆為原狀。</p>
         <p>效果展示：</p>
         <div class="ex-filter">
@@ -191,13 +226,20 @@ const catalog = reactive<CatalogItem[]>([
         </div>
         <p><br></p>
         <h3>invert：</h3>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">img {
-    filter: invert(1);
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                img {
+                    filter: invert(1);
+                }
+            </code>
+        </pre>
         <p><em>invert</em> 可讓元素產生負片效果，它的範圍從 <em>0</em> 到 <em>1</em>（也可以用百分比表示），數值越小代表越接近原色，反之則越負片化。</p>
         <p>效果展示：</p>
         <div class="ex-filter">
@@ -210,13 +252,20 @@ const catalog = reactive<CatalogItem[]>([
         </div>
         <p><br></p>
         <h3>opacity：</h3>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">img {
-    filter: opacity(0.5);
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                img {
+                    filter: opacity(0.5);
+                }
+            </code>
+        </pre>
         <p><em>opacity</em> 這個參數和 CSS3 獨立屬性 <em>opacity</em> 產生的效果是一樣的，皆是用來設定元素的不透明度，範圍從 <em>0</em> 到 <em>1</em>（也可以用百分比表示），數值越接近 <em>0</em> 代表越透明，<em>1</em> 則是完全不透明。</p>
         <p>效果展示：</p>
         <div class="ex-filter">
@@ -229,13 +278,20 @@ const catalog = reactive<CatalogItem[]>([
         </div>
         <p><br></p>
         <h3>brightness：</h3>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">img {
-    filter: brightness(2);
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                img {
+                    filter: brightness(2);
+                }
+            </code>
+        </pre>
         <p><em>brightness</em> 可為元素調整亮度，以 <em>1</em> 為界（即 <em>100%</em>），代表保持原本亮度，數值越靠近 <em>0</em> 越暗，數值越大則越亮。</p>
         <p>效果展示：</p>
         <div class="ex-filter">
@@ -248,13 +304,20 @@ const catalog = reactive<CatalogItem[]>([
         </div>
         <p><br></p>
         <h3>contrast：</h3>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">img {
-    filter: contrast(0.6);
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                img {
+                    filter: contrast(0.6);
+                }
+            </code>
+        </pre>
         <p><em>contrast</em> 用來調整元素的對比度，<em>1</em>（<em>100%</em>）是為原狀，數字越大對比度越高。</p>
         <p>效果展示：</p>
         <div class="ex-filter">
@@ -267,13 +330,20 @@ const catalog = reactive<CatalogItem[]>([
         </div>
         <p><br></p>
         <h3>blur：</h3>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">img {
-    filter: blur(5px);
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                img {
+                    filter: blur(5px);
+                }
+            </code>
+        </pre>
         <p><em>blur</em> 可設定元素的高斯模糊程度，<em>0</em> 代表不進行任何模糊。和其他多數濾鏡效果不同，它需要指定明確的數值單位，數值越大則模糊強度越高。</p>
         <p>效果展示：</p>
         <div class="ex-filter">
@@ -286,21 +356,35 @@ const catalog = reactive<CatalogItem[]>([
         </div>
         <p><br></p>
         <h3>drop-shadow：</h3>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">img {
-    filter: drop-shadow(x y blur color);
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                img {
+                    filter: drop-shadow(x y blur color);
+                }
+            </code>
+        </pre>
         <p>例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">img {
-    filter: drop-shadow(4px 4px 8px #000);
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                img {
+                    filter: drop-shadow(4px 4px 8px #000);
+                }
+            </code>
+        </pre>
         <p><em>drop-shadow</em> 可以為元素添加「真實描邊」的陰影，何謂真實描邊？假如影像是透明背景格式（如 PNG）的圖片，則 <em>drop-shadow</em> 會沿著有色彩的像素格邊緣添加陰影。它常常會拿來與 <em>box-shadow</em> 做比較，只不過後者是針對元素的輪廓給予陰影，無法像 <em>drop-shadow</em> 可以賦予形狀多變的透明背景影像貼合的陰影。</p>
         <p>效果展示：</p>
         <div class="ex-filter">
@@ -315,13 +399,20 @@ const catalog = reactive<CatalogItem[]>([
     <div class="text-block" :id="'act' + catalog[3].id">
         <h2 v-text="catalog[3].title"></h2>
         <p>如同 <em>transform</em> 屬性，同一個元素亦可以套用多個 <em>filter</em> 效果，只需要各濾鏡參數之間用「空格」間隔開來即可。例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">img {
-    filter: saturate(120%) brightness(150%) blur(10px);
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                img {
+                    filter: saturate(120%) brightness(150%) blur(10px);
+                }
+            </code>
+        </pre>
         <p>效果展示：</p>
         <div class="ex-filter">
             <div>
@@ -340,14 +431,21 @@ const catalog = reactive<CatalogItem[]>([
             <figcaption>主流瀏覽器的 filter 兼容一覽表</figcaption>
         </figure>
         <p>假如想使用 <em>filter</em> 屬性卻又必須顧及 IE11 以下版本兼容性問題的話，則可以試著在 <em>filter</em> 後方添加支援方案：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">img {
-    filter: grayscale(1);
-    filter: progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                img {
+                    filter: grayscale(1);
+                    filter: progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);
+                }
+            </code>
+        </pre>
         <p>然而，也有一派專家認為這條 IE 替代語法可能沒有效果，並提出透過 SVG 或 Canvas 圖形繪製的方式才是最佳的兼容方案。至於如何利用 SVG、Canvas 實現濾鏡的效果，由於這已經超過 CSS3 的範疇，因此就先不在這篇文章進行記述，待日後有開這兩者的學習筆記再行補述。</p>
     </div>
     <div class="text-block" :id="'act' + catalog[5].id">

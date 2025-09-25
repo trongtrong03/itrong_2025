@@ -80,81 +80,151 @@ const catalog = reactive<CatalogItem[]>([
         <h3 id="msdos_cd">cd：</h3>
         <p><em>cd</em> 也被稱作 <em>chdir</em>，全名 change directory，即改變目錄之意，更直白地講就是移動到指定資料夾目錄，或是進行返回的動作。</p>
         <p>移動至指定目錄：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">cd path\filename</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>
+                cd path\filename
+            </code>
+        </pre>
         <p>假如沒有輸入指定路徑，則視同在當前指令所在的路徑執行操作（其他命令也是一樣概念）。另外，也可以直接將資料夾拖曳到命令提示字元視窗，視窗將會自動顯示路徑，如此在路徑很長的情況下，就不需要一層一層慢慢 <em>cd</em> 了。</p>
         <p><br></p>
         <p>返回當前目錄的上一層：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">cd..</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>
+                cd..
+            </code>
+        </pre>
         <p><br></p>
         <p>返回當前目錄最上層的目錄：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">cd\</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>
+                cd\
+            </code>
+        </pre>
         <p>補充，<em>cd</em> 也可以用 <em>chdir</em> 替代指令。</p>
         <p><br></p>
         <h3 id="msdos_ren">ren：</h3>
         <p><em>ren</em>，又稱 <em>rename</em>，意即幫檔案或資料夾重新命名。</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">ren path\filename Newfilename</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>
+                ren path\filename Newfilename
+            </code>
+        </pre>
         <p>例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">ren d:\demo demo2</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>
+                ren d:\demo demo2
+            </code>
+        </pre>
         <p>也可以用 <em>rename</em> 替代 <em>ren</em> 來下指令。</p>
         <p><br></p>
         <h3 id="msdos_md">md：</h3>
         <p>又稱 <em>mkdir</em>，全名 make directory，即建立目錄的意思。</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">md path\filename</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>
+                md path\filename
+            </code>
+        </pre>
         <p><em>md</em> 也可以使用 <em>mkdir</em> 來操作。</p>
         <p><br></p>
         <h3 id="msdos_rd">rd：</h3>
         <p>刪除空目錄使用的指令為 <em>rd</em>，即 remove directory。</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">rd path\filename</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>
+                rd path\filename
+            </code>
+        </pre>
         <p>需注意，單純的 <em>rd</em> 指令只能移除「空的目錄」，若該目錄裡有子檔案的情況下使用此指令，會得到「目錄不是空的」訊息且無法刪除成功。</p>
         <p>若要連同目錄內的子檔案一併移除，則須加上 <em>/s</em> 指令，例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">rd /s demo</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>
+                rd /s demo
+            </code>
+        </pre>
         <p>此時系統會再次詢問是否確定要執行刪除的動作，若不想讓系統再次詢問，則可以加上 <em>/q</em>，例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">rd /s /q demo</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>
+                rd /s /q demo
+            </code>
+        </pre>
         <p><em>/s</em> 與 <em>/q</em> 先後沒有差別。<em>rd</em> 也可以替換成 <em>rmdir</em> 來操作。</p>
         <p><br></p>
         <h3 id="msdos_del">del：</h3>
         <p><em>rd</em> 指令僅限於刪除資料夾，若要針對檔案進行刪除動作，則必須使用 <em>del</em> 或 <em>erase</em>。</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">del path\filename</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>
+                del path\filename
+            </code>
+        </pre>
         <p>輸入 <em>del</em> 時還可以附加一些參數執行更詳細的動作：</p>
         <div class="text-flex">
             <div class="f-width">
@@ -180,27 +250,48 @@ const catalog = reactive<CatalogItem[]>([
                 </div>
             </div>
         </div>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">del /a *.txt</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>
+                del /a *.txt
+            </code>
+        </pre>
         <p>刪除當前目錄內所有副檔名是 .txt 的檔案。</p>
         <p><em>del</em> 也可以使用 <em>erase</em> 來操作。</p>
         <p><br></p>
         <h3 id="msdos_copy">copy：</h3>
         <p><em>copy</em> 指令是複製檔案的方法。</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">copy path\filename Newfilename</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>
+                copy path\filename Newfilename
+            </code>
+        </pre>
         <p>例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">copy demo.txt demo02.txt</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>
+                copy demo.txt demo02.txt
+            </code>
+        </pre>
         <p>附加參數：</p>
         <div class="text-flex">
             <div class="f-width">
@@ -243,20 +334,34 @@ const catalog = reactive<CatalogItem[]>([
             </div>
         </div>
         <p>要注意的是，不能只單下達一個複製檔案的指令，例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">copy demo.txt</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>
+                copy demo.txt
+            </code>
+        </pre>
         <p>系統會告訴你「檔案不可以複製到檔案本身」的訊息，由此可知複製的動作必須同時給予新的名稱。</p>
         <p><br></p>
         <h3 id="msdos_dir">dir：</h3>
         <p><em>dir</em> 指令用於顯示某個指定資料夾下的全部或部分檔案目錄和子目錄的相關資訊，包含檔案名、副檔名、檔案長度、檔案建立日期和時間。同時給出所顯示檔案的總數和所剩餘的磁碟空間。</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">dir path\filename</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>
+                dir path\filename
+            </code>
+        </pre>
         <figure>
             <img src="/images/learn/others/dir-01.png">
         </figure>
@@ -288,32 +393,60 @@ const catalog = reactive<CatalogItem[]>([
         <p><br></p>
         <h3 id="msdos_type">type：</h3>
         <p><em>type</em> 指令可用來顯示輸入檔案之內容。</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">type path\filename</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>
+                type path\filename
+            </code>
+        </pre>
         <p><br></p>
         <h3 id="msdos_echo">echo：</h3>
         <p><em>echo</em> 指令可以將輸入的字串顯示在終端機（命令提示字元）上，或是指定一個檔案，將字串內容輸入到該檔案內。</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">echo "string" > path\filename</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>
+                echo "string" > path\filename
+            </code>
+        </pre>
         <p>例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">echo "This is title" > abc.txt</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>
+                echo "This is title" > abc.txt
+            </code>
+        </pre>
         <p>「This is title」這串文字將會直接輸入到 abc.txt 檔案裡。</p>
         <p><br></p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">echo This is title</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>
+                echo This is title
+            </code>
+        </pre>
         <p>在沒有指定檔案目標前提下，「This is title」則將直接顯示在命令提示字元視窗上。</p>
     </div>
 </div>

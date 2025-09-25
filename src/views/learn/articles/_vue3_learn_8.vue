@@ -45,191 +45,268 @@ const catalog = reactive<CatalogItem[]>([
     <div class="text-block" :id="'act' + catalog[2].id">
         <h2 v-text="catalog[2].title"></h2>
         <p>假設目前有個組件，其功能如下：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;template&gt;
-    &lt;p&gt;{{ sum }}&lt;/p&gt;
-    &lt;button @click="changeSum"&gt;Count&lt;/button&gt;
-    &lt;hr&gt;
-    &lt;p&gt;{{ user.name }} -- {{ user.age }}&lt;/p&gt;
-    &lt;button @click="changeUser"&gt;Edit&lt;/button&gt;
-&lt;/template&gt;
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;p&gt;{{ sum }}&lt;/p&gt;
+                    &lt;button @click="changeSum"&gt;Count&lt;/button&gt;
+                    &lt;hr&gt;
+                    &lt;p&gt;{{ user.name }} -- {{ user.age }}&lt;/p&gt;
+                    &lt;button @click="changeUser"&gt;Edit&lt;/button&gt;
+                &lt;/template&gt;
 
-&lt;script lang="ts" setup&gt;
-    import { ref, reactive } from "vue";
+                &lt;script lang="ts" setup&gt;
+                    import { ref, reactive } from "vue";
 
-    // 加總
-    let sum = ref(0);
-    function changeSum (){
-        sum.value += 1;
-    }
+                    // 加總
+                    let sum = ref(0);
+                    function changeSum (){
+                        sum.value += 1;
+                    }
 
-    // 更改資料
-    let user = reactive({
-        name: "阿比",
-        age: 18
-    })
-    function changeUser (){
-        user.name = "喵喵"
-        user.age = 32
-    }
-&lt;/script&gt;</code></pre>
-            </div>
-        </prism-highlight>
+                    // 更改資料
+                    let user = reactive({
+                        name: "阿比",
+                        age: 18
+                    })
+                    function changeUser (){
+                        user.name = "喵喵"
+                        user.age = 32
+                    }
+                &lt;/script&gt;
+            </code>
+        </pre>
         <p>我們希望把「加總」及「更改資料」都拉出來獨立一個 hooks，方便其它組件引用。</p>
         <h6>1. 建立 hooks 資料夾</h6>
         <p>於 <b>src/</b> 資料夾底下新增一個資料夾，命名為「hooks」。</p>
         <p><br></p>
         <h6>2. 建立 .ts 文件</h6>
         <p>在 <b>hooks/</b> 資料夾裡建立一個附檔名為 <b>.ts</b> 的文件，我們先處理 <em>sum</em> 的函式功能，所以將該文件命名為「useSum」。當然也可以把 <em>user</em> 一定進行處理，為避免直接命名 userUser 產生混淆，這裡改命名為「useChangeUser」。</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">src
-    └── hooks
-        ├── useSum.ts
-        └── useChangeUser.ts</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>
+                src
+                └── hooks
+                    ├── useSum.ts
+                    └── useChangeUser.ts
+            </code>
+        </pre>
         <p><br></p>
         <h6>3. 把組件中的函式轉移到 .ts 文件裡</h6>
         <p><b>useSum.ts</b>：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">import { ref } from "vue";
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                import { ref } from "vue";
                 
-let sum = ref(0);
-function changeSum (){
-    sum.value += 1;
-}</code></pre>
-            </div>
-        </prism-highlight>
+                let sum = ref(0);
+                function changeSum (){
+                    sum.value += 1;
+                }
+            </code>
+        </pre>
         <p>但不是單純把函式剪下貼進來就完事了，因為我們現在要做的事將功能封裝起來成為一個方法，所以我們要讓該功能封裝成一個函式，然後導出（export）：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">import { ref } from "vue";
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                import { ref } from "vue";
 
-export default function (){
-    let sum = ref(0);
-    function changeSum (){
-        sum.value += 1;
-    }
+                export default function (){
+                    let sum = ref(0);
+                    function changeSum (){
+                        sum.value += 1;
+                    }
 
-    return { sum, changeSum }
-}</code></pre>
-            </div>
-        </prism-highlight>
+                    return { sum, changeSum }
+                }
+            </code>
+        </pre>
         <p>把程式碼封裝到導出用的函式裡面，最後必須記得要加上 <em>return</em>，這樣其它組件調用這個函式時才能接收到內容。在這個範例裡我們回傳了 <em>sum</em> 與 <em>changeSum</em>，表示當其它組件調用這個函式會得到 <em>sum</em> 的響應式資料，以及 <em>changeSum</em> 這個方法。</p>
         <p>同理，<b>useChangeUser.ts</b> 也是相同寫法：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">import { reactive } from "vue";
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                import { reactive } from "vue";
 
-export default function (){
-    let user = reactive({
-        name: "阿比",
-        age: 18
-    })
-    function changeUser (){
-        user.name = "喵喵"
-        user.age = 32
-    }
+                export default function (){
+                    let user = reactive({
+                        name: "阿比",
+                        age: 18
+                    })
+                    function changeUser (){
+                        user.name = "喵喵"
+                        user.age = 32
+                    }
 
-    return { user, changeUser }
-}</code></pre>
-            </div>
-        </prism-highlight>
+                    return { user, changeUser }
+                }
+            </code>
+        </pre>
         <p><br></p>
         <h6>4. 於組件中引用自定義的 hooks</h6>
         <p>回到組件，第一件要做的事情自然是 <em>import</em> 建立好的 hooks 文件：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">import useSum from "../hooks/useSum";</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                import useSum from "../hooks/useSum";
+            </code>
+        </pre>
         <p>接著調用函式，這裡我們採用解構賦值的方式去解構 <em>useSum</em> 回傳的內容：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">const { sum, changeSum } = useSum();</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                const { sum, changeSum } = useSum();
+            </code>
+        </pre>
         <p>如此，便完成了。</p>
         <p>組件程式碼全貌：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;template&gt;
-    &lt;p&gt;{{ sum }}&lt;/p&gt;
-    &lt;button @click="changeSum"&gt;Count&lt;/button&gt;
-    &lt;hr&gt;
-    &lt;p&gt;{{ user.name }} -- {{ user.age }}&lt;/p&gt;
-    &lt;button @click="changeUser"&gt;Edit&lt;/button&gt;
-&lt;/template&gt;
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;p&gt;{{ sum }}&lt;/p&gt;
+                    &lt;button @click="changeSum"&gt;Count&lt;/button&gt;
+                    &lt;hr&gt;
+                    &lt;p&gt;{{ user.name }} -- {{ user.age }}&lt;/p&gt;
+                    &lt;button @click="changeUser"&gt;Edit&lt;/button&gt;
+                &lt;/template&gt;
 
-&lt;script lang="ts" setup&gt;
-    import useSum from "../hooks/useSum";
-    import useChangeUser from "../hooks/useChangeUser";
+                &lt;script lang="ts" setup&gt;
+                    import useSum from "../hooks/useSum";
+                    import useChangeUser from "../hooks/useChangeUser";
 
-    const { sum, changeSum } = useSum();
-    const { user, changeUser } = useChangeUser();
-&lt;/script&gt;</code></pre>
-            </div>
-        </prism-highlight>
+                    const { sum, changeSum } = useSum();
+                    const { user, changeUser } = useChangeUser();
+                &lt;/script&gt;
+            </code>
+        </pre>
         <p>可以看見組件的程式碼不僅變清爽了，若有其它組件也重複使用到相同功能的函式，未來該功能需要修改時，只需要找出 hooks 引用來源的文件進行維護就好，不需要每個組件一一去調整。</p>
     </div>
     <div class="text-block" :id="'act' + catalog[3].id">
         <h2 v-text="catalog[3].title"></h2>
         <p>hooks 的功能不單只是用來封裝函式裡的功能，它也可以為功能添加生命鉤子，比如前面範例的加總功能，我們可以加入 <em>onMounted</em> 生命鉤子，讓組件掛載完成後立即執行鉤子裡面的內容：</p>
         <p><b>useSum.ts</b>：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">import { ref, onMounted } from "vue";
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                import { ref, onMounted } from "vue";
 
-export default function (){
-    let sum = ref(0);
-    function changeSum (){
-        sum.value += 1;
-    }
-    onMounted(()=>{
-        sum.value = 10;
-    })
+                export default function (){
+                    let sum = ref(0);
+                    function changeSum (){
+                        sum.value += 1;
+                    }
+                    onMounted(()=>{
+                        sum.value = 10;
+                    })
 
-    return { sum, changeSum }
-}</code></pre>
-            </div>
-        </prism-highlight>
+                    return { sum, changeSum }
+                }
+            </code>
+        </pre>
         <p>如此當組件載入完成，<em>sum</em> 就會從 10 開始計算。</p>
         <p>除了可以添加生命鉤子，hooks 裡面當然也可以再使用其它 hooks，舉例來說，我們新增一個變數並調用一個計算屬性，計算 <em>sum</em> 的值乘以 10 倍：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">import { ref, computed } from "vue";
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                import { ref, computed } from "vue";
 
-export default function (){
-    let sum = ref(0);
-    let newSum = computed(()=>{
-        return sum.value * 10;
-    })
-    function changeSum (){
-        sum.value += 1;
-    }
+                export default function (){
+                    let sum = ref(0);
+                    let newSum = computed(()=>{
+                        return sum.value * 10;
+                    })
+                    function changeSum (){
+                        sum.value += 1;
+                    }
 
-    return { sum, newSum, changeSum }
-}</code></pre>
-            </div>
-        </prism-highlight>
+                    return { sum, newSum, changeSum }
+                }
+            </code>
+        </pre>
         <p>然後別忘記組件那邊也要同步調用新增的 <em>newSum</em>：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;template&gt;
-    &lt;p&gt;{{ sum }} -- {{ newSum }}&lt;/p&gt;
-    &lt;button @click="changeSum"&gt;Count&lt;/button&gt;
-&lt;/template&gt;
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;p&gt;{{ sum }} -- {{ newSum }}&lt;/p&gt;
+                    &lt;button @click="changeSum"&gt;Count&lt;/button&gt;
+                &lt;/template&gt;
 
-&lt;script lang="ts" setup&gt;
-    import useSum from "../hooks/useSum";
+                &lt;script lang="ts" setup&gt;
+                    import useSum from "../hooks/useSum";
 
-    const { sum, newSum, changeSum } = useSum();
-&lt;/script&gt;</code></pre>
-            </div>
-        </prism-highlight>
+                    const { sum, newSum, changeSum } = useSum();
+                &lt;/script&gt;
+            </code>
+        </pre>
         <p>每點擊一次按鈕，輸出的值就會以 1 -- 10、2 -- 20、3 -- 30 ...依此類推累計。</p>
     </div>
     <div class="text-block" :id="'act' + catalog[4].id">

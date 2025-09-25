@@ -321,11 +321,18 @@ import PrismHighlight from '@/components/Common/PrismHighlight.vue';
         <p><br></p>
         <h5>2. 正確定義字元集</h5>
         <p>網站必須定義字元編碼宣告，以防止文字變成亂碼。通常我們會在 HTML 的 <meta> 標籤裡加入 charset 屬性來做明確的定義。例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;meta charset="UTF-8"&gt;</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>
+                &lt;meta charset="UTF-8"&gt;
+            </code>
+        </pre>
         <p><br></p>
         <h5>3. 圖片的顯示比例正確</h5>
         <p>圖片顯示尺寸應符合正常顯示比例，如果圖片渲染時與其原始尺寸不符，不僅會導致圖片內容失真，也會給使用者帶來不好的觀賞體驗。</p>
@@ -521,11 +528,18 @@ import PrismHighlight from '@/components/Common/PrismHighlight.vue';
         <p>在上篇文章的優化項目說明曾提過，瀏覽器快取可以減少使用者對伺服器的請求，加快頁面載入的時間。假如網站沒有建立快取機制，對於一些靜態資源（例如圖片、影片）使用量龐大的網站來說，意味著使用者每造訪一次該網站，都要重新下載那些龐大的內容，不僅對伺服器造成負擔，同時也影響網站載入的效率。Google PageSpeed Insights 稽核的本項目指的就是如此，它建議我們可以嘗試延長快取生命週期，加快使用者再次造訪網頁的速度。</p>
         <p>所有透過瀏覽器發送的 HTTP 請求，都會先經過瀏覽器的快取，在這裡會先檢查是否有有效的快取內容可作為回應，如果有的話就直接讀取快取的內容，以減少網路的延遲和傳輸造成的成本。一般來說，瀏覽器會在發送請求的時候自動選擇最適合的快取方式，因此即使不去設定 <em>Cache-Control</em> 的 <em>header</em>，瀏覽器依然會選擇最適合的方式。</p>
         <p>Google 建議將網站伺服器的 <em>Cache-Control</em> 設定為：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">Cache-Control: max-age=31536000</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>
+                Cache-Control: max-age=31536000
+            </code>
+        </pre>
         <p><em>31536000</em> 的單位為秒數，而這個數字相當於一年。</p>
         <p><br></p>
         <blockquote class="is-info">
@@ -568,11 +582,18 @@ import PrismHighlight from '@/components/Common/PrismHighlight.vue';
         <p>「按鈕」（<em>button</em>）是網頁與使用者進行互動的媒介之一，假如網站使用按鈕卻沒有為其賦予「名稱」，站在無障礙網頁的角度而言，按鈕就單純只是個「按鈕」，沒有辦法讓身障使用者透過螢幕閱讀器清楚明瞭該按鈕的用途是什麼。</p>
         <p>在 HTML 中，通常會使用 <em>aria-label</em> 這個屬性，使特定元素提供一個具有描述性的純文字標籤，讓使用螢幕閱讀器或其他輔助裝置的身障人士，得以更容易地理解該元素標籤的用途或作用。<em>aria-label</em> 不僅侷限於 <em>button</em> 元素，包含 <em>img</em>、<em>a</em>、<em>input</em> 在內的表單元素也都適用。</p>
         <p>語法範例：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;button aria-label="確認送出"&gt;Confirm&lt;/button&gt;</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>
+                &lt;button aria-label="確認送出"&gt;Confirm&lt;/button&gt;
+            </code>
+        </pre>
         <p><br></p>
         <blockquote class="is-info">
             <p>改善作法：</p>
@@ -616,11 +637,18 @@ import PrismHighlight from '@/components/Common/PrismHighlight.vue';
         </figure>
         <p>有時為了顧及一般大眾使用者的使用體驗，網站開發者會將 HTML 中的 <em>meta name="viewport"</em> 屬性關閉使用者縮放，以及限縮放大功能的倍率為 <em>1</em>（即不給縮放），但這麼做反倒讓視障人士無法藉由放大內容去看清楚網站的內容。</p>
         <p>Google PageSpeed Insights 的建議將 <em>meta name="viewport"</em> 的設定為：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"&gt;</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>
+                &lt;meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"&gt;
+            </code>
+        </pre>
         <p>然而，如果按照其建議，網站在行動裝置上可能很容易因為使用者無心的觸控操作，時不時一不小心就會放大內容，這對部分人而言在閱讀上可能會有不太舒暢的瀏覽體驗，因此，如何取捨就看各自團隊的決策了。</p>
         <p><br></p>
         <h4>5. 背景和前景顏色沒有足夠的對比度</h4>
@@ -644,11 +672,18 @@ import PrismHighlight from '@/components/Common/PrismHighlight.vue';
             <img src="/images/learn/html/pagespeed-46.jpg">
         </figure>
         <p>在網站 <em>&lt;html&gt;</em> 標籤中加入 <em>lang</em> 屬性，可以幫助使用者更容易且正確地知道網站的主要語言是什麼，例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;html lang="en"&gt; ... &lt;/html&gt;</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>
+                &lt;html lang="en"&gt; ... &lt;/html&gt;
+            </code>
+        </pre>
         <p>假如有需要，也可以在個別有包含文字內容的標籤添加 <em>lang</em> 屬性，讓網站裡各自區塊使用的文字語言更加精準化。而常見的 <em>lang</em> 屬性值有：</p>
         <div class="text-flex">
             <div class="f-width">

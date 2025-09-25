@@ -237,20 +237,34 @@ const catalog = reactive<CatalogItem[]>([
         <h3>MAC 安裝流程：</h3>
         <h6>1. 安裝 Homebrew</h6>
         <p>如果使用的作業系統為蘋果 MAC，可以考慮透過 <a href="https://brew.sh/" target="_blank">Homebrew</a> 來安裝 FFmepg，如果你的 MAC 沒有安裝過 Homebrew，請打開終端機，輸入下方指令：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">$ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>
+                $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+            </code>
+        </pre>
         <p>安裝完成後可以透過 <em>brew -v</em> 來檢查 Homebrew 是否有安裝成功。</p>
         <p><br></p>
         <h6>2. 安裝 FFmepg</h6>
         <p>開啟終端機，透過 Homebrew 的 <em>brew</em> 指令來安裝 FFmepg：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">$ brew install ffmpeg</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>
+                $ brew install ffmpeg
+            </code>
+        </pre>
         <p>之後可輸入 <em>ffmpeg -v</em> 指令來確認 FFmepg 是否有成功安裝至 MAC 電腦裡。</p>
         <p><br></p>
         <p>假如因為各種原因導致你的 MAC 怎麼樣就是無法透過 Homebrew 指令順利安裝 FFmepg，那麼也可以考慮下載 <a href="https://ffmpeg.org/download.html" target="_blank">FFmepg</a> 提供的資源包，滑鼠移至蘋果圖示上方，點擊下方的「Static builds for macOS 64-bit」連結：</p>
@@ -268,32 +282,53 @@ const catalog = reactive<CatalogItem[]>([
         <p>由於這個檔案並非從 App Store 下載的應用程式，直接開啟嘗試安裝通常會跳出「無法打開『ffmpeg』，因為無法驗證開發者」的阻擋警告訊息，請確認是否已有開啟第三方 APP 安裝的允許權限。</p>
         <p><br></p>
         <p>打開終端機，用指令前往「下載」資料夾並進行安裝：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">$ cd Downloads
-$ ./ffmpeg [option]</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>
+                $ cd Downloads
+                $ ./ffmpeg [option]
+            </code>
+        </pre>
         <p>如果上述方法依舊無法安裝，可試著參閱這篇文章的方法： <a href="https://www.bilibili.com/read/cv16171744/" target="_blank" >MAC 安装ffmpeg失败解决方案(附ffmpeg常用命令使用文档)</a></p>
         <p><br></p>
         <h3>事前作業：</h3>
         <p>在開始用 FFmepg 指令對影音媒體檔案進行各項操作之前，記得要將命令提示字元的路徑切換至影音媒體檔案所在的資料夾路徑底下，否則 FFmepg 執行指令時會無法找到影音檔案的所在位置。比如資料夾（名稱為 video）在桌面，其輸入指令為：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">cd Desktop\video</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>
+                cd Desktop\video
+            </code>
+        </pre>
         <p><br></p>
         <h3>語法規則：</h3>
         <p>我們可以在命令提示字元視窗輸入 <em>ffmpeg</em> 指令，可以從返回訊息中找到 FFmepg 編譯指令的語法基本規則：</p>
         <figure>
             <img src="/images/learn/html/m3u8/m3u8-34.jpg">
         </figure>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">ffmpeg [options] [[infile options] -i infile]... {[outfile options] outfile}...</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>
+                ffmpeg [options] [[infile options] -i infile]... {[outfile options] outfile}...
+            </code>
+        </pre>
         <ul>
             <li><em>ffmpeg</em>：表示 FFmepg 執行的基本指令名稱。</li>
             <li><em>[options]</em>：表示 FFmepg 全域參數項目。譬如 <em>-y</em> 用來複寫輸出的檔案、<em>-vol volume</em> 用來改變聲音檔的音量...等等，非必要指令。</li>
@@ -302,21 +337,35 @@ $ ./ffmpeg [option]</code></pre>
         </ul>
         <p><br></p>
         <p>輸入與輸出指令的規則乍看不好理解，我們直接透過下方的簡易範例演示其功用：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">ffmpeg -i a.mov -c copy b.mp4</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>
+                ffmpeg -i a.mov -c copy b.mp4
+            </code>
+        </pre>
         <p><em>-i</em> a.mov 為輸入部份，<em>-i</em> 表示輸入指定檔案，<em>a.mov</em> 為檔案名稱，整體的意思為將 <em>a.mov</em> 餵給 <em>ffmpeg</em>，讓它吐出我們想要的另一個東西。<em>-c copy b.mp4</em> 則表示輸出的部份，<em>b.mp4</em> 就是前面我們餵的 <em>a.mov</em> 經過 <em>ffmpeg</em> 轉換後輸出的新檔案。<em>-c</em> 表示為輸出的檔案指定編碼格式，<em>copy</em> 意思則是直接複製 <em>a.mov</em> 的音頻與影像編碼數據，這整串指令得以將來源檔案快速地轉換成另一種想要的格式。</p>
         <p>補充一點，輸入指令中的 <em>[infile options]</em> 參數選項只對輸入的檔案有作用，不過大多情況下不太會去使用到它；反之 <em>[outfile options]</em> 為輸出檔案的參數選項。</p>
         <p><br></p>
         <h3>切割檔案：</h3>
         <p>以下各項情境需求將都會先看範例，然後再來解釋各個指令代碼的用途。假設我們只要分割來源檔案的部份內容並另外輸出新的影片片段，比如只擷取 <em>In.mp4</em> 這個影片開頭的前五秒，FFmpeg 的指令為：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">ffmpeg -ss 00:00:00 -t 00:00:05 -i In.mp4 -vcodec copy -acodec copy Out.mp4</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>
+                ffmpeg -ss 00:00:00 -t 00:00:05 -i In.mp4 -vcodec copy -acodec copy Out.mp4
+            </code>
+        </pre>
         <ul>
             <li><em>-ss</em>：開始擷取的時間點。</li>
             <li><em>-t</em>：擷取的時間長度。</li>
@@ -332,11 +381,18 @@ $ ./ffmpeg [option]</code></pre>
         <p><br></p>
         <h3>合併檔案：</h3>
         <p>前面講到分割檔案，那麼如果要將很多不同的檔案合併成一個新檔案呢？假設現在手邊有 <em>file01.ts</em> ~ <em>file03.ts</em> 共計三個檔案，我們要將其合併成一個檔案並命名為 <em>Out.mp4</em>，整串指令為：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">ffmpeg -i "concat:file01.ts|file02.ts|file03.ts" -c copy Out.mp4</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>
+                ffmpeg -i "concat:file01.ts|file02.ts|file03.ts" -c copy Out.mp4
+            </code>
+        </pre>
         <ul>
             <li><em>-i：</em>輸入的檔案對象。</li>
             <li><em>concat</em>：表示要用來合併的檔案，以 <em>|</em> 串聯每一個檔案，並用雙引號 " 概括起來。</li>
@@ -349,11 +405,18 @@ $ ./ffmpeg [option]</code></pre>
         <p><br></p>
         <h3>製作 M3U8 播放清單：</h3>
         <p>其實和上一節「合併檔案」的指令有同工異曲之妙，拿上面範例來說，我們只要將合併輸出的新檔案副檔名格式修改為 <em>.m3u8</em> 即可：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">ffmpeg -i "concat:file01.ts|file02.ts|file03.ts" -c copy Out.m3u8</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>
+                ffmpeg -i "concat:file01.ts|file02.ts|file03.ts" -c copy Out.m3u8
+            </code>
+        </pre>
         <p>結果：</p>
         <figure>
             <img src="/images/learn/html/m3u8/m3u8-37.jpg">
@@ -361,11 +424,18 @@ $ ./ffmpeg [option]</code></pre>
         <p>你會發現 <em>.m3u8</em> 播放清單製作好了，且 FFmepg 會自動將原本輸入的檔案視情況重新分割成許多分割檔案。</p>
         <p>所以在這裡可以得出一個結論：如果使用 FFmepg 來製作 M3U8 播放清單，我們大可不必先將原始檔案切割成許多細小的 <em>.ts</em> 或 <em>.m4s</em> 之類的串流格式，然後再重新合併成播放清單。我們反而可以直接用指令讓原始檔輸出 <em>.m3u8</em> 格式，FFmpeg 就可以自動幫我們完成分割的動作。</p>
         <p>我們拿前面 <em>In.mp4</em> 為例，輸入：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-bash">ffmpeg -i "concat:In.mp4" -c copy Out.m3u8</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>
+                ffmpeg -i "concat:In.mp4" -c copy Out.m3u8
+            </code>
+        </pre>
         <p>然後得到：</p>
         <figure>
             <img src="/images/learn/html/m3u8/m3u8-38.jpg">
@@ -395,44 +465,72 @@ $ ./ffmpeg [option]</code></pre>
         <h3>使用方式：</h3>
         <h6>1. 下載腳本文件並引用</h6>
         <p>將 hls.js 的運行角本檔案引用到網頁上，語法：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;script src="https://cdn.jsdelivr.net/npm/hls.js@latest"&gt;&lt;/script&gt;</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>
+                &lt;script src="https://cdn.jsdelivr.net/npm/hls.js@latest"&gt;&lt;/script&gt;
+            </code>
+        </pre>
         <p>建議將腳本檔案下載到專案資料夾裡用本機端引用的方式為佳。</p>
         <p><br></p>
         <h6>2. 建立 video 元素</h6>
         <p>在要插入影片的位置處建立 <em>&lt;video&gt;</em> 標籤，並賦予 ID 名稱，以便給 hls.js 調用。例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;video id="demo" loop autoplay muted&gt;&lt;/video&gt;</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>
+                &lt;video id="demo" loop autoplay muted&gt;&lt;/video&gt;
+            </code>
+        </pre>
         <p>hls.js 只是幫助我們播放 HLS 協議的函式庫，其運行基本不影響 <em>&lt;video&gt;</em> 標籤本身的屬性，因此可視需求自行添加，比如範例裡就另外啟用了「重複播放」、「自動播放」、「靜音」三個屬性功能。（基於瀏覽器資安政策，如果要讓影片自動播放，起始狀態必須設置為靜音）</p>
         <p><br></p>
         <h6>3. 撰寫 JavaScript</h6>
         <p>接著是 JavaScript 的部份，一般而言會透過呼叫 <em>Hls.isSupported()</em> 檢查使用者瀏覽器是否支援 HLS 功能並回傳 Boolean 值，如果 Boolean 值為 <em>true</em>，就會繼續執行判斷式裡面的內容。</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">if (Hls.isSupported()) {
-    // 要執行的函式內容
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                if (Hls.isSupported()) {
+                    // 要執行的函式內容
+                }
+            </code>
+        </pre>
         <p>再來就是建立 hls 物件並與 video 做綁定了，以下先展示基本執行的程式碼，然後再解釋各個關鍵事件與方法的用途：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">if (Hls.isSupported()) {
-    var video = document.getElementById("demo");
-    var hls = new Hls();
-    hls.attachMedia(video);
-    hls.on(Hls.Events.MEDIA_ATTACHED, function () {
-        hls.loadSource("file.m3u8");
-    });
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>
+                if (Hls.isSupported()) {
+                    var video = document.getElementById("demo");
+                    var hls = new Hls();
+                    hls.attachMedia(video);
+                    hls.on(Hls.Events.MEDIA_ATTACHED, function () {
+                        hls.loadSource("file.m3u8");
+                    });
+                }
+            </code>
+        </pre>
         <ul>
             <li><em>hls.attachMedia()</em>：attachMedia 可以幫我們連結 HLS 物件與 video 變數所設定的 <em>video</em> 對應的 ID 對象。</li>
             <li><em>hls.on()</em>：表示 hls.js 事件監聽的方法，其構成為 <em>hls.on(事件名稱, 回呼函式)</em>。</li>
@@ -513,11 +611,18 @@ $ ./ffmpeg [option]</code></pre>
         <h3>MIME type：</h3>
         <p>中文譯為「網際網路媒體類型」，是一種給網際網路上傳輸的內容賦予分類的網際網路標準，最早是用在電子郵件系統上，後來也應用拓展到瀏覽器服務。藉由 MIME 語法來表示引用對象的類型與格式，瀏覽器運作的時候就能準確地判讀目標的用途，但假如引用的檔案類型與 MIME 描述不符，就會造成瀏覽器解讀錯誤，致使網頁無法正常地運作。</p>
         <p>通常網頁宣告引用對象的 MIME type 是由 <em>type/subtype</em> 大類型細分小類型的語法結構所組成，大小寫不限，不過通常會以小寫書寫表示。以下就是過去我們很常見的一個經典定義範例：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;script type="text/javascript" src="script.js"&gt;&lt;/script&gt;</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>
+                &lt;script type="text/javascript" src="script.js"&gt;&lt;/script&gt;
+            </code>
+        </pre>
         <p>儘管現在的瀏覽器已能識別部分 MIME type 故可以省略不寫，但其中 <em>type="text/javascript"</em> 這串語法即表示 &lt;script&gt; 要引用的檔案類型是 JavaScript 的文件檔案。</p>
         <p><br></p>
         <h3>H.264：</h3>
@@ -529,25 +634,32 @@ $ ./ffmpeg [option]</code></pre>
         <p><br></p>
         <h3>M3U8 編碼語法：</h3>
         <p>如果用文字編輯器打開 <em>.m3u8</em> 文件，裡面的編碼格式最基本的通常會長這樣：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">#EXTM3U
-#EXT-X-VERSION:3
-#EXT-X-TARGETDURATION:2
-#EXT-X-MEDIA-SEQUENCE:0
-#EXTINF:2.000000,
-IndexVideo1_0.ts
-#EXTINF:2.000000,
-IndexVideo1_1.ts
-#EXTINF:2.000000,
-IndexVideo1_2.ts
-#EXTINF:2.000000,
-IndexVideo1_3.ts
-#EXTINF:2.000000,
-IndexVideo1_4.ts
-#EXT-X-ENDLIST</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-bash" v-prism>
+                #EXTM3U
+                #EXT-X-VERSION:3
+                #EXT-X-TARGETDURATION:2
+                #EXT-X-MEDIA-SEQUENCE:0
+                #EXTINF:2.000000,
+                IndexVideo1_0.ts
+                #EXTINF:2.000000,
+                IndexVideo1_1.ts
+                #EXTINF:2.000000,
+                IndexVideo1_2.ts
+                #EXTINF:2.000000,
+                IndexVideo1_3.ts
+                #EXTINF:2.000000,
+                IndexVideo1_4.ts
+                #EXT-X-ENDLIST
+            </code>
+        </pre>
         <ul>
             <li><em>#EXTM3U</em>：M3U8 的開頭標籤，是必須包含也必須位於文件中的第一行。</li>
             <li><em>#EXT-X-VERSION</em>：M3U8 文件的版本。</li>

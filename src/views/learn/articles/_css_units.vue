@@ -443,14 +443,21 @@ const catalog = reactive<CatalogItem[]>([
             </p>
         </div>
         <p>這種單位類型十分強大，像是可以輕鬆製作一個不會溢出 Viewport 的等比縮放正方形，例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">div {
-    width: 100vmin;
-    height: 100vmin;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                div {
+                    width: 100vmin;
+                    height: 100vmin;
+                }
+            </code>
+        </pre>
         <p>需要注意的是，<em>vw</em>、<em>vh</em>、<em>vmin</em> 與 <em>vmax</em> 都是 CSS3 新增的度量單位，假如要兼顧老舊版本瀏覽器的相容性問題，就要斟酌是否要使用或另外書寫替代屬性以確保網頁在舊瀏覽器上的排版完整性。</p>
     </div>
 </div>

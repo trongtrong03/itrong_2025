@@ -38,22 +38,33 @@ const catalog = reactive<CatalogItem[]>([
     <div class="text-block" :id="'act' + catalog[1].id">
         <h2 v-text="catalog[1].title"></h2>
         <p>首先，以下有段 HTML 程式碼：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;template&gt;
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>&lt;template&gt;
     &lt;ul&gt;
         &lt;li&gt;科目一&lt;/li&gt;
         &lt;li&gt;科目二&lt;/li&gt;
         &lt;li&gt;科目三&lt;/li&gt;
     &lt;/ul&gt;
-&lt;/template&gt;</code></pre>
-            </div>
-        </prism-highlight>
+&lt;/template&gt;            </code>
+        </pre>
         <p>此時有個需求傳來，表示希望使用者點擊某個按鈕後，便回傳「科目三」所在的元素。要實現這個需求很簡單，只需要賦予科目三所在的 <em>li</em> 一個唯一識別的 ID 值，並且新增一個按鈕用來觸發 JavaScript 事件，該事件的指令是取得指定 ID 的元素。</p>
         <p>於是，我們將程式碼改寫成：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;template&gt;
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>&lt;template&gt;
     &lt;ul&gt;
         &lt;li&gt;科目一&lt;/li&gt;
         &lt;li&gt;科目二&lt;/li&gt;
@@ -66,9 +77,8 @@ const catalog = reactive<CatalogItem[]>([
     function getElement (){
         console.log(document.getElementById("third").textContent);
     }
-&lt;/script&gt;</code></pre>
-            </div>
-        </prism-highlight>
+&lt;/script&gt;            </code>
+        </pre>
         <p>實際測試：</p>
         <figure>
             <img src="/images/learn/js/vue3-learn-6-1.jpg">
@@ -77,14 +87,19 @@ const catalog = reactive<CatalogItem[]>([
         <p><em>id</em> 作為 HTML 頁面唯一的識別符，我們用它指定給目標對象好讓程式可以取得它的內容，儘管在同一文件裡重複使用了相同的 ID，瀏覽器也不會報錯，因為它只會抓取第一個使用該 ID 元素的值，但是當開發者發現輸出結果不如預期的時候，通常也不難找出該文件是否命名或使用了重複的 ID。</p>
         <p>但是在 Vue.js 裡面，組件彼此之間互相呼叫使用是家常便飯的事情，假設現在引用範例組件的根組件 <b>App.vue</b> 同樣也有一個 ID 名稱為 <em>three</em> 的元素，請問會發生什麼情況？</p>
         <p><b>App.vue</b>：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;template&gt;
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>&lt;template&gt;
     &lt;h2 id="third"&gt;阿比&lt;/h2&gt;
     &lt;User/&gt;
-&lt;/template&gt;</code></pre>
-            </div>
-        </prism-highlight>
+&lt;/template&gt;            </code>
+        </pre>
         <p>※ <em>&lt;User/&gt;</em> 是前面展示列表的模板組件。</p>
         <p>點擊按鈕，會發現 Console 輸出結果是：</p>
         <figure>
@@ -97,32 +112,48 @@ const catalog = reactive<CatalogItem[]>([
         </figure>
         <p>結構裡出現了兩個 ID 為 <em>third</em> 的元素，當按鈕觸發 <em>getElement</em>，它只會取得第一個符合條件的值，所以程式本身並沒有問題，但站在人累的角度而言可能就不是如此了，這就是前面說的「潛藏問題」。在同一個頁面裡誤用重複的 ID 名稱，我們還能迅速地找到它們在哪裡並修正，但如果其他組件也使用了相同的 ID 名稱，尤其在多人團隊共同開發以及大型的專案，勢必就要花上不少時間和心力去找出問題在哪一支檔案，所謂牽一髮動全身，如果那個 ID 還被其它程式功能所引用......</p>
         <p>所以，在 Vue3，一般建議不要使用 ID 作為特定元素的唯一識別方法，而是使用 <em>ref</em> 來賦予該元素唯一的識別值，它的定義方法很簡單，其實就和 <em>ref</em> 宣告可響應式資料一樣：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">import { ref } from "vue";
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>import { ref } from "vue";
 let third = ref();
 
 function getElement (){
     console.log(third.value.textContent);
-}</code></pre>
-            </div>
-        </prism-highlight>
+}            </code>
+        </pre>
         <p>然後把原本模板裡的 <em>id</em> 改成 <em>ref</em>：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;template&gt;
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>&lt;template&gt;
     &lt;ul&gt;
         &lt;li&gt;科目一&lt;/li&gt;
         &lt;li&gt;科目二&lt;/li&gt;
         &lt;li ref="third"&gt;科目三&lt;/li&gt;
     &lt;/ul&gt;
-&lt;/template&gt;</code></pre>
-            </div>
-        </prism-highlight>
+&lt;/template&gt;            </code>
+        </pre>
         <p>為了更明顯地感受到 <em>ref</em> 和 <em>id</em> 的差異，我們連 <b>App.vue</b> 的相同 ID 也改成 <em>ref</em>：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;template&gt;
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>&lt;template&gt;
     &lt;h2 ref="third"&gt;阿比&lt;/h2&gt;
     &lt;User/&gt;
 &lt;/template&gt;
@@ -132,9 +163,8 @@ function getElement (){
     import { ref } from "vue";
     
     let third = ref();
-&lt;/script&gt;</code></pre>
-            </div>
-        </prism-highlight>
+&lt;/script&gt;            </code>
+        </pre>
         <p>測試結果：</p>
         <figure>
             <img src="/images/learn/js/vue3-learn-6-4.jpg">
@@ -148,9 +178,15 @@ function getElement (){
     <div class="text-block" :id="'act' + catalog[2].id">
         <h2 v-text="catalog[2].title"></h2>
         <p>我們都知道 Vue.js 有個特性就是可以在某個組件模板裡引入另一個組件，那引入的組件是否也可以添加 <em>ref</em> 識別呢？既然有這個疑慮我們就直接來做實驗，承襲上個章節的範例，我們在 <b>App.vue</b> 引用的 <em>&lt;User/&gt;</em> 子組件上加入 <em>ref</em>：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;template&gt;
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>&lt;template&gt;
     &lt;User ref="temp"/&gt;
     &lt;button @click="consoleTemp"&gt;測試&lt;/button&gt;
 &lt;/template&gt;
@@ -164,13 +200,18 @@ function getElement (){
     function consoleTemp() {
         console.log(temp.value);
     }
-&lt;/script&gt;</code></pre>
-            </div>
-        </prism-highlight>
+&lt;/script&gt;            </code>
+        </pre>
         <p>同時我們也調整一下 <b>User.vue</b> 的內容，在該組件裡建立三個 <em>ref</em> 變數，我們有沒有使用它不重要，單純知道這個組件裡面有三個 <em>ref</em> 變數資料即可：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;template&gt;
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>&lt;template&gt;
     &lt;ul&gt;
         &lt;li&gt;科目一&lt;/li&gt;
         &lt;li&gt;科目二&lt;/li&gt;
@@ -184,9 +225,8 @@ function getElement (){
     let a = ref(0);
     let b = ref(3);
     let c = ref(5);
-&lt;/script&gt;</code></pre>
-            </div>
-        </prism-highlight>
+&lt;/script&gt;            </code>
+        </pre>
         <p>在 <b>App.vue</b> 根組件哩，我們建立了一個按鈕，這個按鈕觸發的 <em>consoleTemp</em> 事件，會輸出 <em>ref</em> 為 <em>temp</em> 的元素內容，而現在持有這個識別符的正是 <em>&lt;User/&gt;</em> 組件，直接打印這個組件回傳的內容是：</p>
         <figure>
             <img src="/images/learn/js/vue3-learn-6-6.jpg">
@@ -194,28 +234,43 @@ function getElement (){
         <p>毫無意外，就是該組件的實例物件。</p>
         <p>但是我們如果展開該實例物件的詳細資料，會發現這些各式各樣的資料屬性當中，找不到我們定義的 <em>a</em>、<em>b</em>、<em>c</em> 三個響應式資料變數。其實這是 Vue.js 的一種保護機制，不讓父組件能隨意取得子組件的 <em>ref</em> 資料，這就好比孩子房間（子組件）內有些私人物品（a、b、c），父親（父組件）也不能恣意觀看的概念，除非孩子明確表示某些東西是可以讓父親查看的。</p>
         <p>那子組件要如何明確表示哪些資料是可以開放給父組件操作的呢？首先，我們需要在子組件引用 <em>defineExpose</em> 這個函式：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">import { ref, defineExpose } from "vue";</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>import { ref, defineExpose } from "vue";            </code>
+        </pre>
         <p>這個函式可以導出指定的變數：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">defineExpose({ a, b, c });</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>defineExpose({ a, b, c });            </code>
+        </pre>
         <p>完整程式碼：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-javascript">import { ref, defineExpose } from "vue";
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-javascript" v-prism>import { ref, defineExpose } from "vue";
 let a = ref(0);
 let b = ref(3);
 let c = ref(5);
 
-defineExpose({ a, b, c });</code></pre>
-            </div>
-        </prism-highlight>
+defineExpose({ a, b, c });            </code>
+        </pre>
         <p>回到瀏覽器測試結果：</p>
         <figure>
             <img src="/images/learn/js/vue3-learn-6-7.jpg">

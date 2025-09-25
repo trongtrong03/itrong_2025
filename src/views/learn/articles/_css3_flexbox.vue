@@ -54,27 +54,41 @@ const catalog = reactive<CatalogItem[]>([
             <img src="/images/learn/css/flexbox-1.jpg">
         </figure>
         <p>基本上就是建立一個父容器元素，然後裡面（下一階層）包覆著一或多個子元件。也有一說是外容器與內元件的關係，無妨，傳達概念都是一樣的。知道基礎概念後，實務層面應該如何寫呢？假定我們賦予父容器元素一個 <em>.parent</em> 的類別選擇器名稱，而子元件則給予 <em>.child</em>，HTML 標籤的程式碼將會是：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-html">&lt;div class="parent"&gt;
-    &lt;div class="child"&gt;子元件1&lt;/div&gt;
-    &lt;div class="child"&gt;子元件2&lt;/div&gt;
-    &lt;div class="child"&gt;子元件3&lt;/div&gt;
-&lt;/div&gt;</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-html" v-prism>
+                &lt;div class="parent"&gt;
+                    &lt;div class="child"&gt;子元件1&lt;/div&gt;
+                    &lt;div class="child"&gt;子元件2&lt;/div&gt;
+                    &lt;div class="child"&gt;子元件3&lt;/div&gt;
+                &lt;/div&gt;
+            </code>
+        </pre>
         <p>CSS：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">.parent {
-    display: flex;
-}
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                .parent {
+                    display: flex;
+                }
 
-.child {
-    flex: 1;
-}</code></pre>
-            </div>
-        </prism-highlight>
+                .child {
+                    flex: 1;
+                }
+            </code>
+        </pre>
         <p>這樣就能建立一個基本的 Flexbox 了，父容器必須將 <em>display</em> 定義為 <em>flex</em> 或 <em>inline-flex</em> 才能使其成為彈性盒子，這應該不難理解，比較令一般人生疏的是子元件的 <em>flex</em> 屬性，此屬性其實是 <em>flex-grow</em>、<em>flex-shrink</em>、<em>flex-basis</em> 組合起來的單行簡寫屬性，當 <em>flex</em> 只有一個值的時候，瀏覽器會默認其為 <em>flex-grow</em> 的值，而 <em>flex-grow</em> 的用途，主要用來分配該元素在父容器裡可佔據之寬度空間。以下我們針對這三個屬性個別做更詳盡的說明：</p>
         <p><br></p>
         <h3>flex-grow：</h3>
@@ -89,19 +103,26 @@ const catalog = reactive<CatalogItem[]>([
         <h3>flex-basis：</h3>
         <p>它用來定義子元件的基本寬度，是個有單位的數值，例如 <em>100px</em>、<em>20em</em>...等等，預設值為 <em>0</em>。當此屬性沒有設定數值的時候，子元素將會以 <em>flex-grow</em> 的值去作彈性伸縮。</p>
         <p>舉例來說，某個彈性盒子裡有兩個子元件，CSS 設定分別為下：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">.child-1 {
-    flex-grow: 1;
-    flex-basis: 200px;
-}
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                .child-1 {
+                    flex-grow: 1;
+                    flex-basis: 200px;
+                }
 
-.child-2 {
-    flex-grow: 0;
-    flex-basis: 200px;
-}</code></pre>
-            </div>
-        </prism-highlight>
+                .child-2 {
+                    flex-grow: 0;
+                    flex-basis: 200px;
+                }
+            </code>
+        </pre>
         <p>實際結果：</p>
         <div class="text-example">
             <div class="parent" style="display: flex; text-align: center; border: 1px dashed #000;">
@@ -113,38 +134,52 @@ const catalog = reactive<CatalogItem[]>([
         <p>很明顯可以發現，<em>.child-1</em> 因為允許該元素自動延展填充整個父容器的剩餘空間，因此兩個子元素平平都設定基本寬度為 <em>200px</em>，但 <em>.child-1</em> 實際佔寬明顯比較多；而 <em>.child-2</em> 雖然將伸展參數值設定為 <em>0</em>，但因為有設置基本寬度的緣故，所以最起碼還是能在父容器裡分得 <em>200px</em> 的寬度空間。</p>
         <p><br></p>
         <p>看完三個屬性的說明，接著回頭看看簡寫屬性 <em>flex</em>，如果我們要定義一個可延展，但不接受收縮，基本寬度為 <em>150px</em> 的子元件，則語法定義如下：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">.child {
-    flex: 1 0 150px;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                .child {
+                    flex: 1 0 150px;
+                }
+            </code>
+        </pre>
         <p>接下來的內容會需要大量相關範例展示，幫助我們了解彈性盒子相關屬性的應用，以下建立一組包含三個子元件的彈性盒子，作為後續練習的基礎：</p>
         <p>CSS（只列出彈性盒子必要，及區分父容器與子元件的邊框、背景識別屬性）：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">.parent {
-    display: flex;
-    border: 1px dashed #000;
-}
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                .parent {
+                    display: flex;
+                    border: 1px dashed #000;
+                }
 
-.child-1 {
-    flex: 1;
-    background-color: aliceblue;
-}
+                .child-1 {
+                    flex: 1;
+                    background-color: aliceblue;
+                }
 
-.child-2 {
-    flex: 2;
-    background-color: antiquewhite;
-}
+                .child-2 {
+                    flex: 2;
+                    background-color: antiquewhite;
+                }
 
-.child-3 {
-    flex: 0 0 100px;
-    background-color: lavender;
-}</code></pre>
-            </div>
-        </prism-highlight>
+                .child-3 {
+                    flex: 0 0 100px;
+                    background-color: lavender;
+                }
+            </code>
+        </pre>
         <p>實際結果：</p>
         <div class="text-example">
             <div class="parent" style="display: flex; text-align: center; border: 1px dashed #000;">
@@ -162,17 +197,24 @@ const catalog = reactive<CatalogItem[]>([
         </figure>
         <p>CSS 彈性盒子裡有個 <em>flex-direction</em> 屬性，它可以控制父容器的主軸、交錯軸的起始值，改變其他排序屬性的對齊依據，如同上方式意圖，瀏覽器預設情況下，<em>flex-direction</em> 的值為 <em>row</em>，表示子元件的排列參考點為由左至右。</p>
         <p>範例：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">.parent {
-    display: flex;
-}
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                .parent {
+                    display: flex;
+                }
 
-.child {
-    flex: 0 0 100px;
-}</code></pre>
-            </div>
-        </prism-highlight>
+                .child {
+                    flex: 0 0 100px;
+                }
+            </code>
+        </pre>
         <div class="text-example">
             <div class="parent" style="display: flex; text-align: center; border: 1px dashed #000;">
                 <div class="child" style="flex: 0 0 100px; background-color: aliceblue; padding: 1rem">child 1</div>
@@ -181,14 +223,21 @@ const catalog = reactive<CatalogItem[]>([
             </div>
         </div>
         <p>如果改變 <em>flex-direction</em> 的值：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">.parent {
-    display: flex;
-    flex-direction: row-reverse;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                .parent {
+                    display: flex;
+                    flex-direction: row-reverse;
+                }
+            </code>
+        </pre>
         <div class="text-example">
             <div class="parent" style="display: flex; flex-direction: row-reverse; text-align: center; border: 1px dashed #000;">
                 <div class="child" style="flex: 0 0 100px; background-color: aliceblue; padding: 1rem">child 1</div>
@@ -230,17 +279,24 @@ const catalog = reactive<CatalogItem[]>([
         <h2 v-text="catalog[3].title"></h2>
         <p>當父容器中的子元件未填滿整個寬度空間時，若要使子元件水平方向居中，我們需要在父容器對應的 CSS 選擇器裡，添加 <em>justify-content</em> 屬性，此屬性主要就是用來定義子元件要如何對齊父容器的主軸。</p>
         <p>在未設置 <em>justify-content</em> 屬性前，子元件在父容器裡的排列是靠「頭」（左）開始排列：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">.parent {
-    display: flex;
-}
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                .parent {
+                    display: flex;
+                }
 
-.child {
-    flex: 0 0 100px;
-}</code></pre>
-            </div>
-        </prism-highlight>
+                .child {
+                    flex: 0 0 100px;
+                }
+            </code>
+        </pre>
         <div class="text-example">
             <div class="parent" style="display: flex; text-align: center; border: 1px dashed #000;">
                 <div class="child" style="flex: 0 0 100px; background-color: aliceblue; padding: 1rem">child 1</div>
@@ -250,13 +306,20 @@ const catalog = reactive<CatalogItem[]>([
         </div>
         <p><br></p>
         <p>若要靠中對齊，則加入 <em>justify-content</em>，並給予參數值 <em>center</em>：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">.parent {
-    justify-content: center;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                .parent {
+                    justify-content: center;
+                }
+            </code>
+        </pre>
         <div class="text-example">
             <div class="parent" style="display: flex; justify-content: center; text-align: center; border: 1px dashed #000;">
                 <div class="child" style="flex: 0 0 100px; background-color: aliceblue; padding: 1rem">child 1</div>
@@ -265,13 +328,20 @@ const catalog = reactive<CatalogItem[]>([
             </div>
         </div>
         <p>靠「尾」（右）對齊則是 <em>flex-end</em>：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">.parent {
-    justify-content: flex-end;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                .parent {
+                    justify-content: flex-end;
+                }
+            </code>
+        </pre>
         <div class="text-example">
             <div class="parent" style="display: flex; justify-content: flex-end; text-align: center; border: 1px dashed #000;">
                 <div class="child" style="flex: 0 0 100px; background-color: aliceblue; padding: 1rem">child 1</div>
@@ -281,13 +351,20 @@ const catalog = reactive<CatalogItem[]>([
         </div>
         <p>另外還有 <em>space-between</em> 與 <em>space-around</em> 兩個參數值，將子元件平均分散在父容器裡，兩者差別在於後者會保留首、尾子元素距離父元素兩側的間距。</p>
         <p><em>space-between</em>：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">.parent {
-    justify-content: space-between;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                .parent {
+                    justify-content: space-between;
+                }
+            </code>
+        </pre>
         <div class="text-example">
             <div class="parent" style="display: flex; justify-content: space-between; text-align: center; border: 1px dashed #000;">
                 <div class="child" style="flex: 0 0 100px; background-color: aliceblue; padding: 1rem">child 1</div>
@@ -296,13 +373,20 @@ const catalog = reactive<CatalogItem[]>([
             </div>
         </div>
         <p><em>space-around</em>：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">.parent {
-    justify-content: space-around;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                .parent {
+                    justify-content: space-around;
+                }
+            </code>
+        </pre>
         <div class="text-example">
             <div class="parent" style="display: flex; justify-content: space-around; text-align: center; border: 1px dashed #000;">
                 <div class="child" style="flex: 0 0 100px; background-color: aliceblue; padding: 1rem">child 1</div>
@@ -357,13 +441,20 @@ const catalog = reactive<CatalogItem[]>([
             </div>
         </div>
         <p>如果要針對單一子元件的垂直排序方式做調整，可以透過 <em>align-self</em> 屬性，這部分留到晚點再說，假如現在要處理的是將父容器裡的子元件通通垂直置中對齊的話，只需要在父容器對應的 CSS 選擇器裡，添加 <em>align-items</em> 屬性並給 <em>center</em> 值即可。</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">.parent {
-    align-items: center;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                .parent {
+                    align-items: center;
+                }
+            </code>
+        </pre>
         <div class="text-example">
             <div class="parent" style="display: flex; align-items: center; text-align: center; border: 1px dashed #000;">
                 <div class="child" style="flex: 0 0 100px; background-color: aliceblue; padding: 1rem">child 1</div>
@@ -413,13 +504,20 @@ const catalog = reactive<CatalogItem[]>([
         <h2 v-text="catalog[5].title"></h2>
         <p>上一個章節問題介紹的是父容器裡的子元件垂直對齊方式，<em>align-items</em> 設定的值會套用到父容器裡面的所有子元件，那如果要針對某些子元件之間的對齊方式，則需要針對目標子元件添加 <em>align-self</em> 屬性。</p>
         <p>例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">.child-1 {
-    align-self: center;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                .child-1 {
+                    align-self: center;
+                }
+            </code>
+        </pre>
         <div class="text-example">
             <div class="parent" style="display: flex; text-align: center; border: 1px dashed #000;">
                 <div class="child-1" style="align-self: center; flex: 0 0 100px; background-color: aliceblue; padding: 1rem">child 1</div>
@@ -466,13 +564,20 @@ const catalog = reactive<CatalogItem[]>([
         <h2 v-text="catalog[6].title"></h2>
         <p>CSS Flexbox 中有一個 <em>flex-wrap</em> 屬性，可以令父容器裡的子元件超過、溢出父容器寬度範圍時，是否要進行換行或其他動作。通常瀏覽器預設值為 <em>nowrap</em>，也就是不換行，若子元件有設定 <em>flex-shrink</em> 收縮值，一旦子元件總佔寬超過父容器寬度，那些收縮值不為 <em>0</em> 的子元件就會向內收縮；反之若所有子元件都不允許收縮，則會直接溢出父容器外。</p>
         <p>例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">.child {
-    flex: 1 0 30%;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                .child {
+                    flex: 1 0 30%;
+                }
+            </code>
+        </pre>
         <div class="text-example" style="overflow-y: auto;">
             <div class="parent" style="display: flex; text-align: center; border: 1px dashed #000;">
                 <div class="child-1" style="flex: 1 0 30%; background-color: aliceblue; padding: 1rem">child 1</div>
@@ -482,17 +587,24 @@ const catalog = reactive<CatalogItem[]>([
             </div>
         </div>
         <p>若要實現父容器換行效果，將 <em>flex-wrap</em> 值修改為 <em>wrap</em> 即可：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">.parent {
-    flex-wrap: wrap;
-}
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                .parent {
+                    flex-wrap: wrap;
+                }
 
-.child {
-    flex: 1 0 30%;
-}</code></pre>
-            </div>
-        </prism-highlight>
+                .child {
+                    flex: 1 0 30%;
+                }
+            </code>
+        </pre>
         <div class="text-example">
             <div class="parent" style="display: flex; flex-wrap: wrap; text-align: center; border: 1px dashed #000;">
                 <div class="child-1" style="flex: 1 0 30%; background-color: aliceblue; padding: 1rem">child 1</div>
@@ -534,21 +646,35 @@ const catalog = reactive<CatalogItem[]>([
             </div>
         </div>
         <p>補充說明一點，<em>flex-direction</em> 和 <em>flex-wrap</em> 屬性可以簡寫為 <em>flex-flow</em> 一行屬性，前者用來控制子元件排列的主軸方向，後者則是設定當子元件溢出父容器寬度範圍時是否要換行。語法規則為：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">.parent {
-    flex-flow: flex-direction flex-wrap;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                .parent {
+                    flex-flow: flex-direction flex-wrap;
+                }
+            </code>
+        </pre>
         <p>例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">.parent {
-    flex-flow: row wrap;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                .parent {
+                    flex-flow: row wrap;
+                }
+            </code>
+        </pre>
         <p><br></p>
         <p>除此之外，這裡還要再另外介紹一個看上去跟 <em>align-items</em> 有幾分神似的 <em>align-content</em> 屬性，堪稱是前者的多行版本，也是用來控制子元件在多行排版情況下，於父容器裡交錯軸的對齊方向。以下是它的參數值列表：</p>
         <div class="text-flex">
@@ -588,16 +714,23 @@ const catalog = reactive<CatalogItem[]>([
             <img src="/images/learn/css/flexbox-5.jpg">
         </figure>
         <p>範例：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">.parent {
-    display: flex;
-    flex-wrap: wrap;
-    align-content: space-between;
-    height: 200px;  /* 用來凸顯 align-content 的效果 */
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                .parent {
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-content: space-between;
+                    height: 200px;  /* 用來凸顯 align-content 的效果 */
+                }
+            </code>
+        </pre>
         <div class="text-example">
             <div class="parent" style="display: flex; flex-wrap: wrap; height: 200px; align-content: space-between; text-align: center; border: 1px dashed #000;">
                 <div class="child-1" style="flex: 1 0 30%; background-color: aliceblue; padding: 1rem">child 1</div>
@@ -614,25 +747,32 @@ const catalog = reactive<CatalogItem[]>([
         <p>雖說前面練習各種彈性盒子的相關屬性語法中，其實已經多次改變了子元件在畫面上顯示的順序，譬如透過 <em>flex-direction</em> 進行方向的反轉，不過這些充其量都是針對父容器裡的子元件做出整體的排序調整，若要在不變更 HTML 標籤順序的前提下，用 CSS 改變子元件的排列順序，那麼就需要 <em>order</em> 這個強大的屬性了，而這也是彈性盒子比過去傳統 Table 與 Div 佈局來得更強大、更具「彈性」靈活的優勢之一。</p>
         <p><em>order</em> 的使用方式很簡單，只要直接添加在子元件對應的 CSS 選擇器裡，並依想要排序的順序給數字值即可，數字越大，表示優先度越靠後。</p>
         <p>例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">.child-1 {
-    order: 3;
-}
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                .child-1 {
+                    order: 3;
+                }
 
-.child-2 {
-    order: 2;
-}
+                .child-2 {
+                    order: 2;
+                }
 
-.child-3 {
-    order: 4;
-}
+                .child-3 {
+                    order: 4;
+                }
 
-.child-4 {
-    order: 1;
-}</code></pre>
-            </div>
-        </prism-highlight>
+                .child-4 {
+                    order: 1;
+                }
+            </code>
+        </pre>
         <div class="text-example">
             <div class="parent" style="display: flex; flex-wrap: wrap; text-align: center; border: 1px dashed #000;">
                 <div class="child-1" style="flex: 0 0 100px; order: 3; background-color: aliceblue; padding: 1rem">child 1</div>
@@ -642,35 +782,42 @@ const catalog = reactive<CatalogItem[]>([
             </div>
         </div>
         <p><em>order</em> 的預設值是 <em>0</em>，且允許使用負數，它會和其他子元件的 <em>order</em> 數值比較，數字越小排在越前面。回到開頭遇到的問題，如果子元件在面對 RWD 不同尺寸區間有不同的排序，那麼只要在指定的 <em>@media</em> 區間針對子元件的 <em>order</em> 值做數字大小上的更動即可，例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">.child-1 {
-    order: 1;
-}
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                .child-1 {
+                    order: 1;
+                }
 
-.child-2 {
-    order: 2;
-}
+                .child-2 {
+                    order: 2;
+                }
 
-.child-3 {
-    order: 3;
-}
+                .child-3 {
+                    order: 3;
+                }
 
-@media only screen and (max-width: 768px) {
-    .child-1 {
-        order: 3;
-    }
+                @media only screen and (max-width: 768px) {
+                    .child-1 {
+                        order: 3;
+                    }
 
-    .child-2 {
-        order: 2;
-    }
+                    .child-2 {
+                        order: 2;
+                    }
 
-    .child-3 {
-        order: 1;
-    }
-}</code></pre>
-            </div>
-        </prism-highlight>
+                    .child-3 {
+                        order: 1;
+                    }
+                }
+            </code>
+        </pre>
     </div>
     <div class="text-block" :id="'act' + catalog[8].id">
         <h2 v-text="catalog[8].title"></h2>

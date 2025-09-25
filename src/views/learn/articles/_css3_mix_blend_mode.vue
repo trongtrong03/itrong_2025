@@ -164,13 +164,20 @@ const catalog = reactive<CatalogItem[]>([
         <p><br></p>
         <h3>multiply（色彩增值）</h3>
         <p>語法：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">img {
-    mix-blend-mode: multiply;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                img {
+                    mix-blend-mode: multiply;
+                }
+            </code>
+        </pre>
         <p>範例：</p>
         <div class="text-flex">
             <div class="f-width">
@@ -195,13 +202,20 @@ const catalog = reactive<CatalogItem[]>([
         <p><br></p>
         <h3>screen（濾色）</h3>
         <p>語法：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">img {
-    mix-blend-mode: screen;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                img {
+                    mix-blend-mode: screen;
+                }
+            </code>
+        </pre>
         <p>範例：</p>
         <div class="text-flex">
             <div class="f-width">
@@ -226,13 +240,20 @@ const catalog = reactive<CatalogItem[]>([
         <p><br></p>
         <h3>overlay（覆蓋）</h3>
         <p>語法：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">img {
-    mix-blend-mode: overlay;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                img {
+                    mix-blend-mode: overlay;
+                }
+            </code>
+        </pre>
         <p>範例：</p>
         <div class="text-flex">
             <div class="f-width">
@@ -257,13 +278,20 @@ const catalog = reactive<CatalogItem[]>([
         <p><br></p>
         <h3>darken（變暗）</h3>
         <p>語法：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">img {
-    mix-blend-mode: darken;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                img {
+                    mix-blend-mode: darken;
+                }
+            </code>
+        </pre>
         <p>範例：</p>
         <div class="text-flex">
             <div class="f-width">
@@ -288,13 +316,20 @@ const catalog = reactive<CatalogItem[]>([
         <p><br></p>
         <h3>lighten（變亮）</h3>
         <p>語法：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">img {
-    mix-blend-mode: lighten;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                img {
+                    mix-blend-mode: lighten;
+                }
+            </code>
+        </pre>
         <p>範例：</p>
         <div class="text-flex">
             <div class="f-width">
@@ -319,13 +354,20 @@ const catalog = reactive<CatalogItem[]>([
         <p><br></p>
         <h3>color-dodge（加亮顏色）</h3>
         <p>語法：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">img {
-    mix-blend-mode: color-dodge;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                img {
+                    mix-blend-mode: color-dodge;
+                }
+            </code>
+        </pre>
         <p>範例：</p>
         <div class="text-flex">
             <div class="f-width">
@@ -350,13 +392,20 @@ const catalog = reactive<CatalogItem[]>([
         <p><br></p>
         <h3>color-burn（加深顏色）</h3>
         <p>語法：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">img {
-    mix-blend-mode: color-burn;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                img {
+                    mix-blend-mode: color-burn;
+                }
+            </code>
+        </pre>
         <p>範例：</p>
         <div class="text-flex">
             <div class="f-width">
@@ -381,13 +430,20 @@ const catalog = reactive<CatalogItem[]>([
         <p><br></p>
         <h3>hard-light（實光）</h3>
         <p>語法：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">img {
-    mix-blend-mode: hard-light;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                img {
+                    mix-blend-mode: hard-light;
+                }
+            </code>
+        </pre>
         <p>範例：</p>
         <div class="text-flex">
             <div class="f-width">
@@ -412,13 +468,20 @@ const catalog = reactive<CatalogItem[]>([
         <p><br></p>
         <h3>soft-light（柔光）</h3>
         <p>語法：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">img {
-    mix-blend-mode: soft-light;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                img {
+                    mix-blend-mode: soft-light;
+                }
+            </code>
+        </pre>
         <p>範例：</p>
         <div class="text-flex">
             <div class="f-width">
@@ -443,13 +506,20 @@ const catalog = reactive<CatalogItem[]>([
         <p><br></p>
         <h3>difference（差異化）</h3>
         <p>語法：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">img {
-    mix-blend-mode: difference;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                img {
+                    mix-blend-mode: difference;
+                }
+            </code>
+        </pre>
         <p>範例：</p>
         <div class="text-flex">
             <div class="f-width">
@@ -474,13 +544,20 @@ const catalog = reactive<CatalogItem[]>([
         <p><br></p>
         <h3>exclusion（排除）</h3>
         <p>語法：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">img {
-    mix-blend-mode: exclusion;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                img {
+                    mix-blend-mode: exclusion;
+                }
+            </code>
+        </pre>
         <p>範例：</p>
         <div class="text-flex">
             <div class="f-width">
@@ -505,13 +582,20 @@ const catalog = reactive<CatalogItem[]>([
         <p><br></p>
         <h3>hue（色相）</h3>
         <p>語法：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">img {
-    mix-blend-mode: hue;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                img {
+                    mix-blend-mode: hue;
+                }
+            </code>
+        </pre>
         <p>範例：</p>
         <div class="text-flex">
             <div class="f-width">
@@ -536,13 +620,20 @@ const catalog = reactive<CatalogItem[]>([
         <p><br></p>
         <h3>saturation（飽和度）</h3>
         <p>語法：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">img {
-    mix-blend-mode: saturation;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                img {
+                    mix-blend-mode: saturation;
+                }
+            </code>
+        </pre>
         <p>範例：</p>
         <div class="text-flex">
             <div class="f-width">
@@ -567,13 +658,20 @@ const catalog = reactive<CatalogItem[]>([
         <p><br></p>
         <h3>color（顏色）</h3>
         <p>語法：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">img {
-    mix-blend-mode: color;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                img {
+                    mix-blend-mode: color;
+                }
+            </code>
+        </pre>
         <p>範例：</p>
         <div class="text-flex">
             <div class="f-width">
@@ -598,13 +696,20 @@ const catalog = reactive<CatalogItem[]>([
         <p><br></p>
         <h3>luminosity（明度）</h3>
         <p>語法：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">img {
-    mix-blend-mode: luminosity;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                img {
+                    mix-blend-mode: luminosity;
+                }
+            </code>
+        </pre>
         <p>範例：</p>
         <div class="text-flex">
             <div class="f-width">

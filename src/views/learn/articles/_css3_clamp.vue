@@ -142,20 +142,34 @@ const catalog = reactive<CatalogItem[]>([
     <div class="text-block" :id="'act' + catalog[2].id">
         <h2 v-text="catalog[2].title"></h2>
         <p><em>clamp()</em> 是用來設定指定屬性的範圍函式，其規則如下：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">clamp(MIN, PREFERRED, MAX)</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                clamp(MIN, PREFERRED, MAX)
+            </code>
+        </pre>
         <p>括號內的參數分別代表最小值、偏好值與最大值，最小值表示縮到再小也不能低於這個值，最大值則表示放大到再大也不能超過這個值，至於偏好值就如同字面意思，為該屬性在網頁排版中最理想的呈現數值，該值通常會使用 <em>vw</em> 或其他動態單位。</p>
         <p>舉例來說：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">.title {
-  font-size: clamp(16px, 10vw, 32px);
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                .title {
+                    font-size: clamp(16px, 10vw, 32px);
+                }
+            </code>
+        </pre>
         <p>透過這個範例可以看到，我們編寫了 <em>.title</em> 這個 class 的元素以限縮字級的範圍，在理想情境下我們期望使用該 class 樣式的元素字型大小是隨著畫面可視範圍寬度縮放的 10%。然而根據以往實務操作經驗，按照過去直接指定單位數值的寫法，多少會遇到單一設定動態單位在大畫面過分巨大，抑或者在小畫面太過渺小的狀況。當有了最小值與最大值的加入，我們得以進一步將 <em>10vw</em> 控制在 <em>16px</em> 到 <em>32px</em> 之間，充分避免上述提到的問題。</p>
         <figure>
             <img src="/images/learn/css/clamp-1.jpg">
@@ -166,141 +180,225 @@ const catalog = reactive<CatalogItem[]>([
         </blockquote>
         <p><br></p>
         <p>或許你會說：我也可以用 Media Queries 解決字級在某些可視範圍過大或過小的問題呀？譬如前面的例子可以這樣寫：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">.title {
-    font-size: 10vw;
-}
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                .title {
+                    font-size: 10vw;
+                }
 
-@media (min-width: 1600px) {
-    .title {
-        font-size: 32px;
-    }
-}
+                @media (min-width: 1600px) {
+                    .title {
+                        font-size: 32px;
+                    }
+                }
 
-@media (max-width: 480px) {
-    .title {
-        font-size: 16px;
-    }
-}</code></pre>
-            </div>
-        </prism-highlight>
+                @media (max-width: 480px) {
+                    .title {
+                        font-size: 16px;
+                    }
+                }
+            </code>
+        </pre>
         <p>確實，但一樣解決問題需求的方式，<em>clamp()</em> 只需要一行就能解決，不僅快速便捷，也有利於程式碼的易讀性以及方便維護。當然，這也不意味著 <em>clamp()</em> 從此完美取代 Media Queries 的地位，總有些那麼特殊狀況是 <em>clamp()</em> 無法實現最理想的排版需求，此時就可以搭配 Media Queries 一起使用，達到相輔相成的效果。</p>
         <p><br></p>
         <h3>結合 Calc：</h3>
         <p>既然本篇文章主要介紹 Clamp 這些 Values and Units Level 4 新入世的函式，那就不得不也提提他們的大前輩──Calc，在先前其他文章曾經介紹過 <em>calc()</em> 的用途，簡單來說，它讓 CSS 得以不藉由 JavaScript 之手就能逕自進行基本的數學運算。</p>
         <p>那麼問題來啦，如果我們在某個屬性已經使用了 <em>calc()</em> 函式執行計算，是否還能再兼容 <em>clamp()</em>？答案是可以的，而且兩者結合使用能令網頁排版更具靈活及彈性。用法和語法規則相同，直接定義於某一個參數值即可：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">.title {
-    font-size: clamp(1rem, calc(2vw + 0.5rem), 4rem);
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                .title {
+                    font-size: clamp(1rem, calc(2vw + 0.5rem), 4rem);
+                }
+            </code>
+        </pre>
         <p><br></p>
         <h3>常見的運用方式：</h3>
         <p>前面的範例我們都是用字級作示範，除了活用於字型大小的區間範圍判斷外，還有以下這些常見的使用情境：</p>
         <h4>1. 響應式容器寬度：</h4>
         <p>範例：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">.container {
-    width: clamp(300px, 80vw, 1200px);
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                .container {
+                    width: clamp(300px, 80vw, 1200px);
+                }
+            </code>
+        </pre>
         <p>表示 <em>.container</em> 元素的寬度範圍會介於 <em>300px</em> 與 <em>1200px</em> 之間，填滿整個可視畫面範圍寬度的 <em>80%</em>。</p>
         <p><br></p>
         <h4>2. 響應式內、外距：</h4>
         <p>範例：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">.section {
-    padding: clamp(1rem, 3vw, 5rem);
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                .section {
+                    padding: clamp(1rem, 3vw, 5rem);
+                }
+            </code>
+        </pre>
         <p>根據填入不同數量的值，表示的是 <em>padding</em> 不同方向的內距時，而不管是單一全域內推，還是兩個值代表水平與垂直方向，又或者四個值各自設定不同方向的內距值，通通都可以用 <em>clamp()</em> 來設定，外距（<em>margin</em>）也同理。</p>
         <p><br></p>
         <h4>3. 響應式 Gap：</h4>
         <p>範例：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">.grid {
-    display: grid;
-    gap: clamp(8px, 1.5vw, 32px);
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                .grid {
+                    display: grid;
+                    gap: clamp(8px, 1.5vw, 32px);
+                }
+            </code>
+        </pre>
         <p>CSS Grid 屬性可用來實現網頁的欄位布局模式，而 <em>gap</em> 這個屬性值主要用於設定 Grid 或 Flexbox 彼此欄位之間的間距值，我們可以套用 <em>clamp()</em> 來規範間距的作用範圍。</p>
         <p><br></p>
         <h4>4. 響應式導圓角：</h4>
         <p>範例：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">.card {
-    border-radius: clamp(4px, 1vw, 16px);
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                .card {
+                    border-radius: clamp(4px, 1vw, 16px);
+                }
+            </code>
+        </pre>
         <p>如果有需要，像是 <em>border-radius</em> 或 <em>backgrounnd-size</em> 這些可以設定數值單位的屬性，我們都可以藉由 <em>clamp()</em> 函式去細部設定指定元素在不同視圖裡最佳的樣貌。</p>
     </div>
     <div class="text-block" :id="'act' + catalog[3].id">
         <h2 v-text="catalog[3].title"></h2>
         <p>儘管 Values and Units Level 4 版本由 <em>clamp()</em> 函式大放異彩，但除了它之外，同版本還釋出另外兩種有關的函式，分別是 <em>min()</em> 和 <em>max()</em>。這兩個函式分別代表最大與最小的相關設定，語法規則為：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">min(val1, val2, ...)
-max(val1, val2, ...)</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                min(val1, val2, ...)
+                max(val1, val2, ...)
+            </code>
+        </pre>
         <p>從規則中可以理解函式裡面的數值不侷限於一、兩個而已，他們可分別回傳函式裡多個值中最小或最大的那個值。</p>
         <p>例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">.container {
-    width: min(100%, 600px);
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                .container {
+                    width: min(100%, 600px);
+                }
+            </code>
+        </pre>
         <p>這個函式的定義是在述說當 <em>.container</em> 於螢幕可視畫面範圍小於 <em>600px</em> 的時候，其寬度將會是 <em>100%</em>，當畫面大於 <em>600px</em> 以上，則元素的寬度也不會超過 <em>600px</em>。這乍看是不是有些似曾相識？其實這樣的寫法就相當於 <em>width</em> 與 <em>max-width</em> 的結合，同樣的需求，我們用傳統的寫法其實會是這樣寫：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">.container {
-    width: 100%;
-    max-width: 600px;
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                .container {
+                    width: 100%;
+                    max-width: 600px;
+                }
+            </code>
+        </pre>
         <p>如果要考量瀏覽器新舊版本的兼容性，選擇傳統的寫法或許是比較穩當的選擇，否則現代化的 <em>min()</em> 函式語法會來得更為精簡，而且也不是所有屬性都有 <em>max-</em> 語法，再像是針對 <em>font-size</em> 或 <em>background-size</em>、<em>border-radius</em>...等定義元素樣式尺寸相關的屬性，使用　<em>min()</em> 函式會方便許多。</p>
         <p>上述的說明同樣也適用於 <em>max()</em>身上，前面的範例我們用 <em>width</em> 屬性來對照函式與傳統寫法，那既然 <em>width: min()</em> 是 <em>width</em> 與 <em>max-width</em> 的結合，那 <em>max()</em> 便是反過來 <em>width</em> 加上 <em>min-width</em> 的綜合體。</p>
         <p>例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">.container {
-    width: max(100%, 600px);
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                .container {
+                    width: max(100%, 600px);
+                }
+            </code>
+        </pre>
         <p>這樣就表示 <em>.container</em> 於可視範圍中從 <em>100%</em> 和 <em>600px</em> 之間挑選最大的那個值。若你不假思索或許會想，最大的值不是 <em>100%</em> 嗎？非也，如果可視範圍只有 <em>500px</em> 的時候，那麼 <em>100%</em> 等同於 <em>500px</em>，實際上是比另一個值 <em>600px</em> 來的小，所以該元素的寬度值將會是 <em>600px</em>，將溢出可視區域範圍之外。</p>
         <p>倘若有需要，我們可以在 <em>min()</em> 和 <em>max()</em> 函式中設定很多個值，讓瀏覽器自適應挑選符合當下條件的數值。例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">.content {
-    width: max(300px, 50%, 20vw);
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                .content {
+                    width: max(300px, 50%, 20vw);
+                }
+            </code>
+        </pre>
         <p><br></p>
         <h3>進階的巢狀表達式：</h3>
         <p>前一段曾提過 <em>min()</em> 與 <em>max()</em> 函式使傳統的寫法可以更加簡潔之外，許多用來設定度量衡的屬性都可以透過函式來指定其最大或最小範圍，然其靈活度還不僅如此，更甚者，我們可以同時將兩者結合在一塊兒使用，成為「巢狀」語法。舉例來說：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">.content {
-    width: min(100%, max(300px, 50vw));
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                .content {
+                    width: min(100%, max(300px, 50vw));
+                }
+            </code>
+        </pre>
         <p>這條表達式的整體邏輯是：設定一個寬度，這個寬度是在 <em>100%</em> 之內的「最大值」，而這個最大值則是從 <em>300px</em> 和 <em>50vw</em> 之中挑出來的最大者。以下一一進行步驟拆解：</p>
         <h6>1. 先處理 max(300px, 50vw)</h6>
         <p>首先會選出當下畫面可視範圍中符合條件的最大數值，假設目前可視區域的寬度為 <em>800px</em>，<em>50vw</em> 為其一半，也就是 <em>400px</em>，這大於另一個值 <em>300px</em>，所以此刻 <em>max()</em> 挑出來的數值為 <em>50vw</em>。</p>
@@ -313,13 +411,20 @@ max(val1, val2, ...)</code></pre>
         <p>上個章節我們已經理解 <em>clamp()</em> 函式語法是由最小值、偏好值、最大值三個數值構成，有些人會以為這之中的最小值與最大值分別呼應 <em>min()</em> 與 <em>max()</em>，然而這其實是天大的誤解，<em>clamp()</em> 裡的最小值與最大值屬於「數值參數」，並非獨立函式。</p>
         <p>儘管如此，我們依然可以在 <em>clamp()</em> 函式中導入 <em>min()</em> 以及 <em>max()</em> 來設定元素的限縮範圍。</p>
         <p>例如：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-css">.title {
-    font-size: clamp(min(14px, 2vw), 3vw, max(18px, 5vw));
-}</code></pre>
-            </div>
-        </prism-highlight>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-css" v-prism>
+                .title {
+                    font-size: clamp(min(14px, 2vw), 3vw, max(18px, 5vw));
+                }
+            </code>
+        </pre>
         <p>要做到如此精細的設定是沒問題的，但這麼寫僅僅是表示我們在 <em>clamp()</em> 函式裡使用其他函式作為參數值，並不代表該函式是由 <em>min()</em> 和 <em>max()</em> 所構成。</p>
     </div>
     <div class="text-block" :id="'act' + catalog[4].id">
