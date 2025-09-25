@@ -42,7 +42,7 @@ import PrismHighlight from '@/components/Common/PrismHighlight.vue';
         </figure>
         <p><br></p>
         <p>首先，我們可以先在專案 Git Bash 視窗中輸入以下指令：</p>
-        <div class="text-code is-bash" v-pre>
+        <div class="text-code is-bash" >
             <div class="text-pre">
             <pre><code>$git remove -v</code></pre>
             </div>

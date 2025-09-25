@@ -44,20 +44,22 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;h1&gt;姓名：{{ name }}&lt;/h1&gt;
-    &lt;h2&gt;年齡：{{ age }}&lt;/h2&gt;
-    &lt;button @click = "addAge();"&gt;Add&lt;/button&gt;
-&lt;/template&gt;
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;h1&gt;姓名：&#123;&#123; name &#125;&#125;&lt;/h1&gt;
+                    &lt;h2&gt;年齡：&#123;&#123; age &#125;&#125;&lt;/h2&gt;
+                    &lt;button @click = "addAge();"&gt;Add&lt;/button&gt;
+                &lt;/template&gt;
 
-&lt;script lang="ts" setup&gt;
-    let name = "阿比";
-    let age = 18;
+                &lt;script lang="ts" setup&gt;
+                    let name = "阿比";
+                    let age = 18;
 
-    function addAge(){
-        age += 1;
-    }
-&lt;/script&gt;            </code>
+                    function addAge(){
+                        age += 1;
+                    }
+                &lt;/script&gt;
+            </code>
         </pre>
         <p>承襲上一篇文章的範例，現在我們稍微改變一下內容，把原本 <em>name</em> 以及 <em>age</em> 分開獨立宣告的兩個變數，改由物件來進行管裡：</p>
         <pre
@@ -68,22 +70,24 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;h1&gt;姓名：{{ user.name }}&lt;/h1&gt;
-    &lt;h2&gt;年齡：{{ user.age }}&lt;/h2&gt;
-    &lt;button @click = "addAge();"&gt;Add&lt;/button&gt;
-&lt;/template&gt;
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;h1&gt;姓名：&#123;&#123; user.name &#125;&#125;&lt;/h1&gt;
+                    &lt;h2&gt;年齡：&#123;&#123; user.age &#125;&#125;&lt;/h2&gt;
+                    &lt;button @click = "addAge();"&gt;Add&lt;/button&gt;
+                &lt;/template&gt;
 
-&lt;script lang="ts" setup&gt;
-    let user = {
-        name: "阿比",
-        age: 18
-    }
+                &lt;script lang="ts" setup&gt;
+                    let user = {
+                        name: "阿比",
+                        age: 18
+                    }
 
-    function addAge(){
-        user.age += 1;
-    }
-&lt;/script&gt;            </code>
+                    function addAge(){
+                        user.age += 1;
+                    }
+                &lt;/script&gt;
+            </code>
         </pre>
         <p>但即使改成了物件格式，渲染進 DOM 的資料也依然無法隨著 <em>addAge</em> 事件更新其數值，證據就是如果我們去 Console <em>user.age</em>，可以明確從 Console 上看到它的值確實是有隨著事件觸發作累加，只是新數值並沒有同步響應到 DOM 上對應的資料。</p>
         <figure>
@@ -98,24 +102,26 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;h1&gt;姓名：{{ user.name }}&lt;/h1&gt;
-    &lt;h2&gt;年齡：{{ user.age }}&lt;/h2&gt;
-    &lt;button @click = "addAge();"&gt;Add&lt;/button&gt;
-&lt;/template&gt;
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;h1&gt;姓名：&#123;&#123; user.name &#125;&#125;&lt;/h1&gt;
+                    &lt;h2&gt;年齡：&#123;&#123; user.age &#125;&#125;&lt;/h2&gt;
+                    &lt;button @click = "addAge();"&gt;Add&lt;/button&gt;
+                &lt;/template&gt;
 
-&lt;script lang="ts" setup&gt;
-    import { reactive } from "vue";
+                &lt;script lang="ts" setup&gt;
+                    import { reactive } from "vue";
 
-    let user = reactive({
-        name: "阿比",
-        age: 18
-    })
+                    let user = reactive({
+                        name: "阿比",
+                        age: 18
+                    })
 
-    function addAge(){
-        user.age += 1;
-    }
-&lt;/script&gt;            </code>
+                    function addAge(){
+                        user.age += 1;
+                    }
+                &lt;/script&gt;
+            </code>
         </pre>
         <p>如此一來，模板裡的 <em>age.value</em> 就會隨 <em>addAge</em> 事件觸發而跟著響應更新了。</p>
         <p>用 <em>reactive</em> 建立的物件和一般直接宣告物件之間除了是否為響應式這點不同外還有什麼區別呢？我們可以透過 Console 來瞭解，首先是普通的宣告方式，物件在 Console 打印的結果是：</p>
@@ -135,7 +141,9 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>console.log(Proxy);    // ƒ Proxy() { [native code] }            </code>
+            <code class="language-javascript" v-prism>
+                console.log(Proxy);    // ƒ Proxy() { [native code] }
+            </code>
         </pre>
         <p>在 Vue 3 中，<em>reactive</em> 函式會傳回一個代理物件，而不是直接傳回傳入的物件。這個代理物件與原始物件之間存在一層代理，Vue 使用 Proxy 來劫持物件的訪問，從而實現響應式資料的追蹤和依賴收集。代理對象與原始物件相比有以下不同：</p>
         <h5>1. 響應式追蹤：</h5>
@@ -155,11 +163,13 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>let userList = reactive([
-    { id: 1, name: "阿比", age: 18 },
-    { id: 2, name: "花花", age: 26 },
-    { id: 3, name: "喵喵", age: 5 }
-])            </code>
+            <code class="language-javascript" v-prism>
+                let userList = reactive([
+                    { id: 1, name: "阿比", age: 18 },
+                    { id: 2, name: "花花", age: 26 },
+                    { id: 3, name: "喵喵", age: 5 }
+                ])
+            </code>
         </pre>
         <p>或</p>
         <pre
@@ -170,13 +180,15 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>let obj = reactive({
-    stage1: {
-        stage2: {
-            stage3: "test"
-        }
-    }
-})            </code>
+            <code class="language-javascript" v-prism>
+                let obj = reactive({
+                    stage1: {
+                        stage2: {
+                            stage3: "test"
+                        }
+                    }
+                })
+            </code>
         </pre>
     </div>
     <div class="text-block" :id="'act' + catalog[2].id">
@@ -190,13 +202,15 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;h1&gt;姓名：{{ name }}&lt;/h1&gt;
-&lt;/template&gt;
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;h1&gt;姓名：&#123;&#123; name &#125;&#125;&lt;/h1&gt;
+                &lt;/template&gt;
 
-&lt;script lang="ts" setup&gt;
-    let name = reactive("阿比");
-&lt;/script&gt;            </code>
+                &lt;script lang="ts" setup&gt;
+                    let name = reactive("阿比");
+                &lt;/script&gt;
+            </code>
         </pre>
         <p>組件渲染到畫面，<em>h1</em> 一樣正常顯示「阿比」，可是打開 Console 視窗，會發現 Vue 發來了警告：</p>
         <blockquote class="is-danger">
@@ -212,24 +226,26 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;h1&gt;姓名：{{ user.name }}&lt;/h1&gt;
-    &lt;h2&gt;年齡：{{ user.age }}&lt;/h2&gt;
-    &lt;button @click = "addAge();"&gt;Add&lt;/button&gt;
-&lt;/template&gt;
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;h1&gt;姓名：&#123;&#123; user.name &#125;&#125;&lt;/h1&gt;
+                    &lt;h2&gt;年齡：&#123;&#123; user.age &#125;&#125;&lt;/h2&gt;
+                    &lt;button @click = "addAge();"&gt;Add&lt;/button&gt;
+                &lt;/template&gt;
 
-&lt;script lang="ts" setup&gt;
-    import { ref } from "vue";
+                &lt;script lang="ts" setup&gt;
+                    import { ref } from "vue";
 
-    let user = ref({
-        name: "阿比",
-        age: 18
-    })
+                    let user = ref({
+                        name: "阿比",
+                        age: 18
+                    })
 
-    function addAge(){
-        user.age += 1;
-    }
-&lt;/script&gt;            </code>
+                    function addAge(){
+                        user.age += 1;
+                    }
+                &lt;/script&gt;
+            </code>
         </pre>
         <p>回到瀏覽器檢測會發現 DOM 渲染出來的資料沒有問題，這就意味著 <em>ref</em> 不單單是用來定義基本型別的響應式資料，就連物件型別的資料也可以透過 <em>ref</em> 轉換為響應式。</p>
         <p>不過這只是單就資料的部份而言，如果只是單純把 <em>reactive</em> 替換成 <em>ref</em>，你會發現 <em>addAge</em> 方法並沒有如預期觸發事件，回想一下上一章的內容，其實很快就能找到原因：那就是忘記了 <em>.value</em>，上一章有提過，如果要修改 <em>ref</em> 定義的值，就必須透過 <em>value</em> 去賦值，因此再重新稍微調整一下程式碼：</p>
@@ -241,24 +257,26 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;h1&gt;姓名：{{ user.name }}&lt;/h1&gt;
-    &lt;h2&gt;年齡：{{ user.age }}&lt;/h2&gt;
-    &lt;button @click = "addAge();"&gt;Add&lt;/button&gt;
-&lt;/template&gt;
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;h1&gt;姓名：&#123;&#123; user.name &#125;&#125;&lt;/h1&gt;
+                    &lt;h2&gt;年齡：&#123;&#123; user.age &#125;&#125;&lt;/h2&gt;
+                    &lt;button @click = "addAge();"&gt;Add&lt;/button&gt;
+                &lt;/template&gt;
 
-&lt;script lang="ts" setup&gt;
-    import { ref } from "vue";
+                &lt;script lang="ts" setup&gt;
+                    import { ref } from "vue";
 
-    let user = ref({
-        name: "阿比",
-        age: 18
-    })
+                    let user = ref({
+                        name: "阿比",
+                        age: 18
+                    })
 
-    function addAge(){
-        user.value.age += 1;
-    }
-&lt;/script&gt;            </code>
+                    function addAge(){
+                        user.value.age += 1;
+                    }
+                &lt;/script&gt;
+            </code>
         </pre>
         <p>如此就完美完成了 <em>reactive</em> 物件型別響應式資料的 <em>ref</em> 替換。</p>
         <p>既然 <em>ref</em> 也能定義物件型別響應式資料，那還要留著 <em>reactive</em> 這麼尷尬的東西作什麼呢？我一律採用 <em>ref</em> 建立所有響應式資料不就好了嗎？話也不能完全這麼說，我們可以透過 Console 去觀察由 <em>ref</em> 建立的物件資料，其細節如下圖：</p>
@@ -280,27 +298,29 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;h1&gt;姓名：{{ user.name }}&lt;/h1&gt;
-    &lt;h2&gt;年齡：{{ user.age }}&lt;/h2&gt;
-    &lt;button @click = "changeUser();"&gt;切換使用者&lt;/button&gt;
-&lt;/template&gt;
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;h1&gt;姓名：&#123;&#123; user.name &#125;&#125;&lt;/h1&gt;
+                    &lt;h2&gt;年齡：&#123;&#123; user.age &#125;&#125;&lt;/h2&gt;
+                    &lt;button @click = "changeUser();"&gt;切換使用者&lt;/button&gt;
+                &lt;/template&gt;
 
-&lt;script lang="ts" setup&gt;
-    import { reactive } from "vue";
+                &lt;script lang="ts" setup&gt;
+                    import { reactive } from "vue";
 
-    let user = reactive({
-        name: "阿比",
-        age: 18
-    })
+                    let user = reactive({
+                        name: "阿比",
+                        age: 18
+                    })
 
-    function changeUser(){
-        user = {
-            name: "喵喵",
-            age: 32
-        }
-    }
-&lt;/script&gt;            </code>
+                    function changeUser(){
+                        user = {
+                            name: "喵喵",
+                            age: 32
+                        }
+                    }
+                &lt;/script&gt;
+            </code>
         </pre>
         <p>我們在 <em>changeUser</em> 事件中重新定義了 <em>user</em> 物件的內容，我們試圖點擊按鈕觸發該事件，讓 <em>h1</em>、<em>h2</em> 裡的資料能替換新的物件資料，這就叫重新分配。實際執行這段程式碼，會發現按鈕點擊下去，畫面並沒有任何反應，可是 Console <em>user</em> 值還是可以看到物件內容是有被更新的：</p>
         <figure>
@@ -316,10 +336,12 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>function changeUser(){
-    user.name = "喵喵";
-    user.age = 32;
-}            </code>
+            <code class="language-javascript" v-prism>
+                function changeUser(){
+                    user.name = "喵喵";
+                    user.age = 32;
+                }
+            </code>
         </pre>
         <p>確實這麼做可以，但問題是如果今天物件裡的屬性多達數十種呢？難道要一一條列寫上去嗎？顯然這並非好的處理方式。通常面對這種需求，我們會使用 <em>Object.assign</em> 函式方法，它的語法格式為：</p>
         <pre
@@ -330,7 +352,9 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>Object.assign(target, ...sources)            </code>
+            <code class="language-javascript" v-prism>
+                Object.assign(target, ...sources)
+            </code>
         </pre>
         <p><em>target</em>：指目標物件，也就是需要被複製的物件。</p>
         <p><em>sources</em>：一或多個來源物件，它們的屬性將會被複製到目標物件裡。</p>
@@ -343,9 +367,11 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>function changeUser(){
-    Object.assign(user, {name: "喵喵", age: 32});
-}            </code>
+            <code class="language-javascript" v-prism>
+                function changeUser(){
+                    Object.assign(user, {name: "喵喵", age: 32});
+                }
+            </code>
         </pre>
         <p>如此就能順利地更新原本響應式資料 <em>user</em> 物件裡屬性的值了。</p>
         <p>在這裡延伸一下 <em>Object.assign</em> 的應用，假如今天它引用的 <em>sources</em> 包含原本目標物件沒有的屬性，結果會發生什麼事？比如：</p>
@@ -357,9 +383,11 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>function changeUser(){
-    Object.assign(user, {name: "喵喵", age: 32}, {gender: "女"});
-}            </code>
+            <code class="language-javascript" v-prism>
+                function changeUser(){
+                    Object.assign(user, {name: "喵喵", age: 32}, {gender: "女"});
+                }
+            </code>
         </pre>
         <p>用 Console 去觀看觸發 <em>changeUser</em> 事件後的 <em>user</em> 物件：</p>
         <figure>
@@ -376,16 +404,18 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>import { ref } from "vue";
+            <code class="language-javascript" v-prism>
+                import { ref } from "vue";
 
-let user = ref({
-    name: "阿比",
-    age: 18
-})
+                let user = ref({
+                    name: "阿比",
+                    age: 18
+                })
 
-function changeUser(){
-    user.value = { name: "喵喵", age: 32 }
-}            </code>
+                function changeUser(){
+                    user.value = { name: "喵喵", age: 32 }
+                }
+            </code>
         </pre>
         <p>所以我們可以直接大膽地說，凡經過 <em>.value</em> 修改的值，不管是針對單一屬性還是直接給予一整個物件，它都必定會是響應式的資料。</p>
         <p><br></p>
@@ -407,7 +437,9 @@ function changeUser(){
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>let [variable1, variable2, ...rest] = array;            </code>
+            <code class="language-javascript" v-prism>
+                let [variable1, variable2, ...rest] = array;
+            </code>
         </pre>
         <p><em>[ ]</em> 裡面是我們宣告的變數，用來儲存陣列中對應位置的值。</p>
         <p><em>array</em> 是要用來解構的陣列。</p>
@@ -421,10 +453,12 @@ function changeUser(){
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>let [a, b, ...rest] = [1, 2, 3, 4, 5, 6];
-console.log(a);    // 1
-console.log(b);    // 2
-console.log(...rest);     // 3 4 5 6            </code>
+            <code class="language-javascript" v-prism>
+                let [a, b, ...rest] = [1, 2, 3, 4, 5, 6];
+                console.log(a);    // 1
+                console.log(b);    // 2
+                console.log(...rest);     // 3 4 5 6
+            </code>
         </pre>
         <p>以上是陣列解構賦值的格式，既然陣列可以，那物件同樣也可以用於解構賦值，它的語法格式是：</p>
         <pre
@@ -435,7 +469,9 @@ console.log(...rest);     // 3 4 5 6            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>let { property1: variable1, property2: variable2, ...rest } = object;            </code>
+            <code class="language-javascript" v-prism>
+                let { property1: variable1, property2: variable2, ...rest } = object;
+            </code>
         </pre>
         <p>因為結構和陣列解構賦值差不多，所以就不再重複敘述一遍各個參數的意義，直接來看範例：</p>
         <pre
@@ -446,9 +482,11 @@ console.log(...rest);     // 3 4 5 6            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>let { name, age } = { name: "阿比", age: 18 };
-console.log(name);    // 阿比
-console.log(age);    // 18            </code>
+            <code class="language-javascript" v-prism>
+                let { name, age } = { name: "阿比", age: 18 };
+                console.log(name);    // 阿比
+                console.log(age);    // 18
+            </code>
         </pre>
         <p>使用解構賦值的好處是可以用在陣列和物件，使得從資料結構中提取資料變得更加簡潔和方便，它在處理複雜資料結構時非常有用，並且能夠提高程式碼的可讀性。</p>
         <p>既然知道解構賦值的用途和用法後，接下來要思考的是，解構賦值是否可以取得 <em>reactive</em> 物件響應式資料的值？以先前的範例來說，我們如果試圖用解構賦值來取值，程式碼將會是：</p>
@@ -460,27 +498,29 @@ console.log(age);    // 18            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;h1&gt;姓名：{{ user.name }}&lt;/h1&gt;
-    &lt;h2&gt;年齡：{{ user.age }}&lt;/h2&gt;
-    &lt;button @click = "changeUser();"&gt;Change&lt;/button&gt;
-&lt;/template&gt;
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;h1&gt;姓名：&#123;&#123; user.name &#125;&#125;&lt;/h1&gt;
+                    &lt;h2&gt;年齡：&#123;&#123; user.age &#125;&#125;&lt;/h2&gt;
+                    &lt;button @click = "changeUser();"&gt;Change&lt;/button&gt;
+                &lt;/template&gt;
 
-&lt;script lang="ts" setup&gt;
-    import { reactive } from "vue";
+                &lt;script lang="ts" setup&gt;
+                    import { reactive } from "vue";
 
-    let user = reactive({
-        name: "阿比",
-        age: 18
-    })
+                    let user = reactive({
+                        name: "阿比",
+                        age: 18
+                    })
 
-    let { name, age } = user;
+                    let { name, age } = user;
 
-    function changeUser(){
-        user.name = "咪咪";
-        user.age += 1;
-    }
-&lt;/script&gt;            </code>
+                    function changeUser(){
+                        user.name = "咪咪";
+                        user.age += 1;
+                    }
+                &lt;/script&gt;
+            </code>
         </pre>
         <p>我們刻意在解構賦值新增了 <em>name</em> 和 <em>age</em> 這兩個變數，對應物件 <em>user</em> 的同名屬性。</p>
         <h5>1. 解構賦值中的 <em>name</em> 和 <em>age</em> 是否可以取得 <em>reactive</em> 響應式資料物件對應的值？</h5>
@@ -493,8 +533,10 @@ console.log(age);    // 18            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>let { name, age } = user;
-console.log(name, age);    // 阿比, 18            </code>
+            <code class="language-javascript" v-prism>
+                let { name, age } = user;
+                console.log(name, age);    // 阿比, 18
+            </code>
         </pre>
         <h5>2. 如果我們把模板中的 <em>user.name</em> 和 <em>user.age</em> 替換成解構賦值提取的 <em>name</em> 和 <em>age</em>，是否可以顯示資料？</h5>
         <p>答案也是可以。</p>
@@ -506,10 +548,12 @@ console.log(name, age);    // 阿比, 18            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;h1&gt;姓名：{{ name }}&lt;/h1&gt;    &lt;!-- 阿比 --&gt;
-    &lt;h2&gt;年齡：{{ age }}&lt;/h2&gt;    &lt;!-- 18 --&gt;
-&lt;/template&gt;            </code>
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;h1&gt;姓名：&#123;&#123; name &#125;&#125;&lt;/h1&gt;    &lt;!-- 阿比 --&gt;
+                    &lt;h2&gt;年齡：&#123;&#123; age &#125;&#125;&lt;/h2&gt;    &lt;!-- 18 --&gt;
+                &lt;/template&gt;
+            </code>
         </pre>
         <h5>3. 承上，如果我們點擊按鈕觸發 <em>changeUser</em> 事件，資料是否會發生變化？</h5>
         <p>將原本 <em>user.</em> 全部改由解構賦值對應的變數所取代：</p>
@@ -521,27 +565,29 @@ console.log(name, age);    // 阿比, 18            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;h1&gt;姓名：{{ name }}&lt;/h1&gt;
-    &lt;h2&gt;年齡：{{ age }}&lt;/h2&gt;
-    &lt;button @click = "changeUser();"&gt;Change&lt;/button&gt;
-&lt;/template&gt;
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;h1&gt;姓名：&#123;&#123; name &#125;&#125;&lt;/h1&gt;
+                    &lt;h2&gt;年齡：&#123;&#123; age &#125;&#125;&lt;/h2&gt;
+                    &lt;button @click = "changeUser();"&gt;Change&lt;/button&gt;
+                &lt;/template&gt;
 
-&lt;script lang="ts" setup&gt;
-    import { reactive } from "vue";
+                &lt;script lang="ts" setup&gt;
+                    import { reactive } from "vue";
 
-    let user = reactive({
-        name: "阿比",
-        age: 18
-    })
+                    let user = reactive({
+                        name: "阿比",
+                        age: 18
+                    })
 
-    let { name, age } = user;
+                    let { name, age } = user;
 
-    function changeUser(){
-        name = "咪咪";
-        age += 1;
-    }
-&lt;/script&gt;            </code>
+                    function changeUser(){
+                        name = "咪咪";
+                        age += 1;
+                    }
+                &lt;/script&gt;
+            </code>
         </pre>
         <p>測試結果得到答案為「否」，因為模板裡的資料並沒有隨著 <em>changeUser</em> 事件觸發而有所變化。要如何確認 <em>changeUser</em> 究竟有沒有在執行，我們一樣可以用老方法 Console 進行確認：</p>
         <pre
@@ -552,11 +598,13 @@ console.log(name, age);    // 阿比, 18            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>function changeUser(){
-    name = "咪咪";
-    age += 1;
-    console.log(name, age);
-}            </code>
+            <code class="language-javascript" v-prism>
+                function changeUser(){
+                    name = "咪咪";
+                    age += 1;
+                    console.log(name, age);
+                }
+            </code>
         </pre>
         <figure>
             <img src="/images/learn/js/vue3-learn-2-7.jpg">
@@ -570,12 +618,14 @@ console.log(name, age);    // 阿比, 18            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>function changeUser(){
-    name = "咪咪";
-    age += 1;
-    console.log("name: " + name + " / " + "age: " + age);
-    console.log("user.name: " + user.name + " / " + "user.age: " + user.age);
-}            </code>
+            <code class="language-javascript" v-prism>
+                function changeUser(){
+                    name = "咪咪";
+                    age += 1;
+                    console.log("name: " + name + " / " + "age: " + age);
+                    console.log("user.name: " + user.name + " / " + "user.age: " + user.age);
+                }
+            </code>
         </pre>
         <p>反覆多次觸發 <em>changeUser</em> 事件：</p>
         <figure>
@@ -592,14 +642,16 @@ console.log(name, age);    // 阿比, 18            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>import { reactive, toRefs } from "vue";
+            <code class="language-javascript" v-prism>
+                import { reactive, toRefs } from "vue";
 
-let user = reactive({
-    name: "阿比",
-    age: 18
-})
+                let user = reactive({
+                    name: "阿比",
+                    age: 18
+                })
 
-let { name, age } = toRefs(user);            </code>
+                let { name, age } = toRefs(user);
+            </code>
         </pre>
         <p>然後我們一樣用 <em>console.log(name, age)</em> 去觀察解構賦值的變數內容：</p>
         <figure>
@@ -615,7 +667,9 @@ let { name, age } = toRefs(user);            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>console.log(toRefs(user));    // {name: ObjectRefImpl, age: ObjectRefImpl}            </code>
+            <code class="language-javascript" v-prism>
+                console.log(toRefs(user));    // {name: ObjectRefImpl, age: ObjectRefImpl}
+            </code>
         </pre>
         <p><em>user</em> 裡面的屬性都轉換成了 <em>ref</em> 響應式資料，所以解構賦值的 <em>let { name, age }</em> 就等同解構了 <em>{ name: ObjectRefImpl, age: ObjectRefImpl }</em>。</p>
         <p>回來接著繼續講 <em>changeUser</em> 函式的部份，因為解構賦值的變數轉換成 <em>ref</em> 響應式資料，那麼按照規則，如果要改變它們的值，必須在變數名稱後方加上 <em>.value</em>：</p>
@@ -627,12 +681,14 @@ let { name, age } = toRefs(user);            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>function changeUser(){
-    name.value = "咪咪";
-    age.value += 1;
-    console.log("name: " + name.value + " / " + "age: " + age.value);
-    console.log("user.name: " + user.name + " / " + "user.age: " + user.age);
-}            </code>
+            <code class="language-javascript" v-prism>
+                function changeUser(){
+                    name.value = "咪咪";
+                    age.value += 1;
+                    console.log("name: " + name.value + " / " + "age: " + age.value);
+                    console.log("user.name: " + user.name + " / " + "user.age: " + user.age);
+                }
+            </code>
         </pre>
         <p>底下多寫兩行 Console 來幫助我們觀察事件觸發後解構賦值和原本 <em>reactive</em> 建立的 <em>user</em> 物件資料的變化：</p>
         <figure>
@@ -649,15 +705,17 @@ let { name, age } = toRefs(user);            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>import { reactive, toRef } from "vue";
+            <code class="language-javascript" v-prism>
+                import { reactive, toRef } from "vue";
 
-let user = reactive({
-    name: "阿比",
-    age: 18
-})
+                let user = reactive({
+                    name: "阿比",
+                    age: 18
+                })
 
-let name = toRef(user, "name");
-console.log(name.value);    // 阿比            </code>
+                let name = toRef(user, "name");
+                console.log(name.value);    // 阿比
+            </code>
         </pre>
     </div>    
     <div class="text-block" :id="'act' + catalog[5].id">

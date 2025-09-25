@@ -46,17 +46,19 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;div class="user"&gt;{{ user.name }} - {{ user.age }}&lt;/div&gt;
-&lt;/template&gt;
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;div class="user"&gt;&#123;&#123; user.name &#125;&#125; - &#123;&#123; user.age &#125;&#125;&lt;/div&gt;
+                &lt;/template&gt;
 
-&lt;script lang="ts" setup&gt;
-    let user = {
-        id: 1, 
-        name: "阿比",
-        age: 18
-    }
-&lt;/script&gt;            </code>
+                &lt;script lang="ts" setup&gt;
+                    let user = {
+                        id: 1, 
+                        name: "阿比",
+                        age: 18
+                    }
+                &lt;/script&gt;
+            </code>
         </pre>
         <p>這個組件模板展示了 <em>user</em> 的名字和年齡，程式碼看起來沒有問題，實際上模板中的 <em>user.name</em> 和 <em>user.age</em> 也確實能對應到 <em>script</em> 定義的資料。那，假設不小心資料裡的屬性名稱 Key 錯了，比如把 <em>name</em> 誤植成 <em>nmae</em>，而我們一時間也沒發現異狀，組件在渲染的時候會發生什麼事呢？</p>
         <pre
@@ -67,17 +69,19 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;div class="user"&gt;{{ user.name }} - {{ user.age }}&lt;/div&gt;
-&lt;/template&gt;
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;div class="user"&gt;&#123;&#123; user.name &#125;&#125; - &#123;&#123; user.age &#125;&#125;&lt;/div&gt;
+                &lt;/template&gt;
 
-&lt;script lang="ts" setup&gt;
-    let user = {
-        id: 1, 
-        nmae: "阿比",    // 屬性名稱誤植拼錯
-        age: 18
-    }
-&lt;/script&gt;            </code>
+                &lt;script lang="ts" setup&gt;
+                    let user = {
+                        id: 1, 
+                        nmae: "阿比",    // 屬性名稱誤植拼錯
+                        age: 18
+                    }
+                &lt;/script&gt;
+            </code>
         </pre>
         <p>會發現 DOM 只會顯示年齡，名字則不會顯示，但因為顯示的內容很少，且出問題的資料和引用資料的模板元素都放在同一支檔案裡，所以我們很快就能查覺到錯誤，並且盡速修正。可是假如網頁內容很多呢？又或者引用的資料來自別的檔案，或引用某個組件裡的某組件裡的某組件裡的某些資料，我們就需要花大量時間和心力，抽絲剝繭地尋找問題源頭──而這還是我們已經知道資料有狀況的前提，因為模板抓資料時對應不上相符的來源名稱，將會直接跳過留白，而瀏覽器也不會回報錯誤，這有可能會讓開發者沒有意識到該筆資料的內容有誤。</p>
         <p>所以為了解決這個問題，最好的辦法就是從一開始建立好一套標準格式，讓整個網頁應用裡定義同類型的資料通通都得依循這套格式，而這時候就需要使用 TypeScript 了。</p>
@@ -91,9 +95,11 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-bash" v-prism>src
-└── types
-     └── index.ts            </code>
+            <code class="language-bash" v-prism>
+                src
+                └── types
+                    └── index.ts
+            </code>
         </pre>
         <p><br></p>
         <h6>2. 定義接口對象</h6>
@@ -106,11 +112,13 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>export interface UserInter {
-    id: number,
-    name: string,
-    age: number
-}            </code>
+            <code class="language-javascript" v-prism>
+                export interface UserInter {
+                    id: number,
+                    name: string,
+                    age: number
+                }
+            </code>
         </pre>
         <p><em>interface</em> 是一個抽象結構，用來描述物件的「形狀」，形狀指的就是物件的屬性與方法。之所以說它抽象，是因為它只能用來定義物件的類型規範，但本身並不包含實作。</p>
         <p>我們定義的規範包含三個屬性，分別是 <em>id</em>、<em>name</em>、<em>age</em>，並且明確敘述它們各自的值是什麼樣的資料型別，資料型別字首的大小寫有別，但這裡統一使用小寫。</p>
@@ -125,9 +133,11 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;script lang="ts" setup&gt;
-    import { type UserInter } from "../types"
-&lt;/script&gt;            </code>
+            <code class="language-html" v-prism>
+                &lt;script lang="ts" setup&gt;
+                    import { type UserInter } from "../types"
+                &lt;/script&gt;
+            </code>
         </pre>
         <p>為了證明定義的 <em>UserInter</em> 不是實體結構，我們可以嘗試用 Console 輸出它的內容：</p>
         <pre
@@ -139,7 +149,8 @@ const catalog = reactive<CatalogItem[]>([
             data-toolbar-order="copy-to-clipboard" 
         >
             <code class="language-javascript" v-prism>
-console.log(UserInter);    // User.vue:9 Uncaught ReferenceError: UserInter is not defined            </code>
+                console.log(UserInter);    // User.vue:9 Uncaught ReferenceError: UserInter is not defined
+            </code>
         </pre>
         <p><br></p>
         <h6>4. 為資料加上規範限制</h6>
@@ -152,11 +163,13 @@ console.log(UserInter);    // User.vue:9 Uncaught ReferenceError: UserInter is n
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>let user:UserInter = {
-    id: 1, 
-    name: "阿比",
-    age: 18
-}            </code>
+            <code class="language-javascript" v-prism>
+                let user:UserInter = {
+                    id: 1, 
+                    name: "阿比",
+                    age: 18
+                }
+            </code>
         </pre>
         <p>如此就為這個 <em>user</em> 變數所定義的資料成功加上了限制，假如你所使用的編輯器（例如 VSCode）有安裝 Vue 3 或 TypeScript 相關擴充套件，如果在資料屬性定義過程中出現了不符合規範的行為，譬如 <em>name</em> 錯寫成 <em>nmae</em>，那麼編輯器通常會立刻出現紅線並告知相關錯誤訊息。</p>
         <figure>
@@ -172,11 +185,13 @@ console.log(UserInter);    // User.vue:9 Uncaught ReferenceError: UserInter is n
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>let userList = [
-    { id: 1, name: "阿比", age: 18},
-    { id: 2, name: "喵喵", age: 40},
-    { id: 3, name: "花花", age: 6}
-]            </code>
+            <code class="language-javascript" v-prism>
+                let userList = [
+                    { id: 1, name: "阿比", age: 18},
+                    { id: 2, name: "喵喵", age: 40},
+                    { id: 3, name: "花花", age: 6}
+                ]
+            </code>
         </pre>
         <p>如果要套用我們定義好的 TS 規範，可以這樣寫：</p>
         <pre
@@ -187,11 +202,13 @@ console.log(UserInter);    // User.vue:9 Uncaught ReferenceError: UserInter is n
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>let userList:Array&lt;UserInter&gt; = [
-    { id: 1, name: "阿比", age: 18},
-    { id: 2, name: "喵喵", age: 40},
-    { id: 3, name: "花花", age: 6}
-]            </code>
+            <code class="language-javascript" v-prism>
+                let userList:Array&lt;UserInter&gt; = [
+                    { id: 1, name: "阿比", age: 18},
+                    { id: 2, name: "喵喵", age: 40},
+                    { id: 3, name: "花花", age: 6}
+                ]
+            </code>
         </pre>
         <p>但是這麼做並不是最好的寫法，因為如果要套用的規範不只有一個，<em>Array</em> 裡面引用的規範名稱越加越長就越不好閱讀，因此像陣列這種情況，我們會在 TS 裡面追加定義，稱為自定義類型：</p>
         <pre
@@ -202,13 +219,15 @@ console.log(UserInter);    // User.vue:9 Uncaught ReferenceError: UserInter is n
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>export interface UserInter {
-    id: number,
-    name: string,
-    age: number
-}
+            <code class="language-javascript" v-prism>
+                export interface UserInter {
+                    id: number,
+                    name: string,
+                    age: number
+                }
 
-export type Users = UserInter[]    // 新增自定義類型，引用自 UserInter 的規範            </code>
+                export type Users = UserInter[]    // 新增自定義類型，引用自 UserInter 的規範
+            </code>
         </pre>
         <p>回到組件，同樣要加新定義好的 <em>Users</em> import 到組件裡：</p>
         <pre
@@ -219,15 +238,17 @@ export type Users = UserInter[]    // 新增自定義類型，引用自 UserInte
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;script lang="ts" setup&gt;
-    import { type UserInter, type Users } from "../types"
+            <code class="language-html" v-prism>
+                &lt;script lang="ts" setup&gt;
+                    import { type UserInter, type Users } from "../types"
 
-    let userList:Users = [
-        { id: 1, name: "阿比", age: 18},
-        { id: 2, name: "喵喵", age: 40},
-        { id: 3, name: "花花", age: 6}
-    ]
-&lt;/script&gt;            </code>
+                    let userList:Users = [
+                        { id: 1, name: "阿比", age: 18},
+                        { id: 2, name: "喵喵", age: 40},
+                        { id: 3, name: "花花", age: 6}
+                    ]
+                &lt;/script&gt;
+            </code>
         </pre>
         <p>然後 <em>userList</em> 就能直接套用 <em>Users</em> 的規範了，一旦陣列的某筆資料的屬性名稱或值的型別有誤，就可以馬上看到編輯器傳出警告：</p>
         <figure>
@@ -245,13 +266,15 @@ export type Users = UserInter[]    // 新增自定義類型，引用自 UserInte
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;User demo="hello!"/&gt;
-&lt;/template&gt;
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;User demo="hello!"/&gt;
+                &lt;/template&gt;
 
-&lt;script setup lang="ts"&gt;
-    import User from "./components/User.vue";
-&lt;/script&gt;            </code>
+                &lt;script setup lang="ts"&gt;
+                    import User from "./components/User.vue";
+                &lt;/script&gt;
+            </code>
         </pre>
         <p>然後在子組件 <b>User.vue</b> 接收父組件傳進來的值，如何接收呢？第一步先引入傳遞函式 API <em>defineProps</em>：</p>
         <pre
@@ -262,7 +285,9 @@ export type Users = UserInter[]    // 新增自定義類型，引用自 UserInte
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>import { defineProps } from "vue";            </code>
+            <code class="language-javascript" v-prism>
+                import { defineProps } from "vue";
+            </code>
         </pre>
         <p>但是這個引入與否其實無所謂，因為 <em>defineProps</em> 在 Vue 3 組件中預設就已經被引用進來。</p>
         <p>再來是調用 <em>defineProps</em> 函式的部分，語法很簡單，就在函式裡面寫一個陣列，然後把父組件傳遞的屬性名稱填進來即可：</p>
@@ -274,7 +299,9 @@ export type Users = UserInter[]    // 新增自定義類型，引用自 UserInte
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>defineProps(["demo"]);            </code>
+            <code class="language-javascript" v-prism>
+                defineProps(["demo"]);
+            </code>
         </pre>
         <p>假如要接收的父組件傳遞屬性不只一個，那麼只要在陣列裡面每筆資料都用逗號相隔即可：</p>
         <pre
@@ -285,7 +312,9 @@ export type Users = UserInter[]    // 新增自定義類型，引用自 UserInte
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>defineProps(["demo", "a", "b", "c"]);            </code>
+            <code class="language-javascript" v-prism>
+                defineProps(["demo", "a", "b", "c"]);
+            </code>
         </pre>
         <p>這樣就完成了簡單的屬性接收，我們可以直接在子組件模板裡使用接收進來的屬性值：</p>
         <pre
@@ -296,13 +325,15 @@ export type Users = UserInter[]    // 新增自定義類型，引用自 UserInte
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;h2&gt;{{ demo }}&lt;/h2&gt;
-&lt;/template&gt;
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;h2&gt;&#123;&#123; demo &#125;&#125;&lt;/h2&gt;
+                &lt;/template&gt;
 
-&lt;script lang="ts" setup&gt;
-    defineProps(["demo"]);
-&lt;/script&gt;            </code>
+                &lt;script lang="ts" setup&gt;
+                    defineProps(["demo"]);
+                &lt;/script&gt;
+            </code>
         </pre>
         <p>確認結果：</p>
         <figure>
@@ -317,8 +348,10 @@ export type Users = UserInter[]    // 新增自定義類型，引用自 UserInte
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>defineProps(["demo"]);
-console.log(demo);    // Uncaught (in promise) ReferenceError: demo is not defined            </code>
+            <code class="language-javascript" v-prism>
+                defineProps(["demo"]);
+                console.log(demo);    // Uncaught (in promise) ReferenceError: demo is not defined
+            </code>
         </pre>
         <p>會發現瀏覽器直接回傳 <b>Uncaught (in promise) ReferenceError: demo is not defined</b> 表示 <em>demo</em> 並未被定義的錯誤訊息，但其實這也不難理解，因為子組件中傳進來的 <em>demo</em> 是陣列裡的某一個值，本身並非變數。</p>
         <p>所以為了讓接收到的參數能被保存起來使用，我們需要這麼做：</p>
@@ -330,7 +363,9 @@ console.log(demo);    // Uncaught (in promise) ReferenceError: demo is not defin
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>let x = defineProps(["demo"]);            </code>
+            <code class="language-javascript" v-prism>
+                let x = defineProps(["demo"]);
+            </code>
         </pre>
         <p>透過變數宣告讓傳進來的值直接變成變數。這時若再去打印這個 <em>x</em>，得到的輸出結果就會是：</p>
         <figure>
@@ -348,21 +383,23 @@ console.log(demo);    // Uncaught (in promise) ReferenceError: demo is not defin
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;User/&gt;
-&lt;/template&gt;
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;User/&gt;
+                &lt;/template&gt;
 
-&lt;script setup lang="ts"&gt;
-    import User from "./components/User.vue";
-    import { reactive } from "vue";
-    import { type Users } from "./types";
+                &lt;script setup lang="ts"&gt;
+                    import User from "./components/User.vue";
+                    import { reactive } from "vue";
+                    import { type Users } from "./types";
 
-    let userList = reactive&lt;Users&gt;([
-        { id: 1, name: "阿比", age: 18},
-        { id: 2, name: "喵喵", age: 40},
-        { id: 3, name: "花花", age: 6}
-    ])
-&lt;/script&gt;            </code>
+                    let userList = reactive&lt;Users&gt;([
+                        { id: 1, name: "阿比", age: 18},
+                        { id: 2, name: "喵喵", age: 40},
+                        { id: 3, name: "花花", age: 6}
+                    ])
+                &lt;/script&gt;
+            </code>
         </pre>
         <p>我們用 <em>reactive</em> 定義了一個響應式的陣列資料，並且套用第一個章節建立的 TS 自定義類型 <em>Users</em> 的規範標準。</p>
         <p>現在要把 <em>userList</em> 的資料傳遞給 <em>&lt;User/&gt;</em>，和單純透過自訂屬性賦值不同，我們需要借助 <em>v-bind</em> 定義一個屬性名稱，然後把 <em>userList</em> 賦值給它：</p>
@@ -374,9 +411,11 @@ console.log(demo);    // Uncaught (in promise) ReferenceError: demo is not defin
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;User :list="userList"/&gt;
-&lt;/template&gt;            </code>
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;User :list="userList"/&gt;
+                &lt;/template&gt;
+            </code>
         </pre>
         <p>回到子組件，把 <em>list</em> 傳遞給它：</p>
         <pre
@@ -387,15 +426,17 @@ console.log(demo);    // Uncaught (in promise) ReferenceError: demo is not defin
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;h2>{{ list }}&lt;/h2&gt;
-&lt;/template&gt;
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;h2&gt;&#123;&#123; list &#125;&#125;&lt;/h2&gt;
+                &lt;/template&gt;
 
-&lt;script setup lang="ts"&gt;
-    import {} from 'vue';
+                &lt;script setup lang="ts"&gt;
+                    import {} from 'vue';
 
-    defineProps(["list"]);
-&lt;/script&gt;            </code>
+                    defineProps(["list"]);
+                &lt;/script&gt;
+            </code>
         </pre>
         <p>如此應該就能在頁面上看到傳遞進來的資料了：</p>
         <figure>
@@ -410,13 +451,15 @@ console.log(demo);    // Uncaught (in promise) ReferenceError: demo is not defin
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;ul&gt;
-        &lt;li v-for="item in list" :key="item.id"&gt;
-            &lt;p&gt;{{ item.name }} - {{ item.age }}&lt;/p&gt;
-        &lt;/li&gt;
-    &lt;/ul&gt;
-&lt;/template&gt;            </code>
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;ul&gt;
+                        &lt;li v-for="item in list" :key="item.id"&gt;
+                            &lt;p&gt;&#123;&#123; item.name &#125;&#125; - &#123;&#123; item.age &#125;&#125;&lt;/p&gt;
+                        &lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/template&gt;
+            </code>
         </pre>
         <p>雖然發展到這裡，子組件確實已經能接收來自父組件傳遞的陣列資料，但光只是這樣寫仍無法避免一些風險，比如今天父組件傳給 <em>list</em> 的東西不是陣列資料，而是單純的值呢？例如數字 3，那麼子組件接收到的資料就只是單純的數字，原本的 <em>v-for="item in list"</em> 的 <em>list</em> 值變成了 <em>3</em>，導致 <em>v-for</em> 以為程式的指令是要將 <em>li</em> 重複寫三次。而元素裡面抓取的 <em>name</em> 和 <em>age</em> 也因為找不到這些對應的屬性，最終只能顯示空白。</p>
         <p>對於謹慎的開發者來說要避免這樣的疏失並非多困難的事情，但無法保證團隊裡的其他人也是如此，且再仔細的人也總有百密一疏的時候，如果不小心一個手滑把選起來的資料改掉了，終究還是會造成程式問題。既然如此，一開始便設定好限制，就能最大幅度降低意外狀況的發生。</p>
@@ -429,7 +472,9 @@ console.log(demo);    // Uncaught (in promise) ReferenceError: demo is not defin
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>defineProps&lt;{list:Users}&gt;;            </code>
+            <code class="language-javascript" v-prism>
+                defineProps&lt;{list:Users}&gt;;
+            </code>
         </pre>
         <p>當父組件要傳遞了不符合 TS 自定義規範的資料給子組件，瀏覽器就會發出警告：</p>
         <blockquote class="is-danger">
@@ -444,7 +489,9 @@ console.log(demo);    // Uncaught (in promise) ReferenceError: demo is not defin
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>defineProps&lt;{list?:Users}&gt;;            </code>
+            <code class="language-javascript" v-prism>
+                defineProps&lt;{list?:Users}&gt;;
+            </code>
         </pre>
         <p><em>?</em> 表示非必要性，加入此符號，那麼當父組件從頭到尾都沒傳遞 <em>list</em> 資料給子組件，子組件沒接收到資料，就不會去處理 <em>v-for="item in list"</em> 的內容，DOM 也不會去渲染它。</p>
         <p>如果沒有設定非必要性的狀況下，子組件引用了父組件沒有傳遞的資料，則瀏覽器會發出警告：</p>
@@ -461,7 +508,9 @@ console.log(demo);    // Uncaught (in promise) ReferenceError: demo is not defin
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>import { withDefaults } from 'vue';            </code>
+            <code class="language-javascript" v-prism>
+                import { withDefaults } from 'vue';
+            </code>
         </pre>
         <p>然後把前面寫的 <em>defineProps</em> 放進去 <em>withDefaults</em> 函式裡面，並於後方 <em>{ }</em> 添加 <em>list</em> 的預設資料：</p>
         <pre
@@ -472,13 +521,15 @@ console.log(demo);    // Uncaught (in promise) ReferenceError: demo is not defin
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>withDefaults(defineProps<{list?:Users}>(), {
-    list:()=> [{
-        id: 0,
-        name: "阿比",
-        age: 18
-    }]
-});            </code>
+            <code class="language-javascript" v-prism>
+                withDefaults(defineProps<{list?:Users}>(), {
+                    list:()=> [{
+                        id: 0,
+                        name: "阿比",
+                        age: 18
+                    }]
+                });
+            </code>
         </pre>
         <p>如此便大功告成，假如子組件接收到了父組件不存在的資料參數，那麼子組件原本要呈現資料的位置內容就會是它預設的內容了。</p>
     </div>

@@ -142,7 +142,9 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-bash" v-prism>npm install pinia            </code>
+            <code class="language-bash" v-prism>
+                npm install pinia
+            </code>
         </pre>
         <p><br></p>
         <h6>2. 設定文件引入 Pinia：</h6>
@@ -155,9 +157,11 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>import { createPinia } from 'pinia';    // 引入 pinia
-const pinia = createPinia();    // 建立 pinia
-app.use(pinia);    // 安裝 pinia            </code>
+            <code class="language-javascript" v-prism>
+                import { createPinia } from 'pinia';    // 引入 pinia
+                const pinia = createPinia();    // 建立 pinia
+                app.use(pinia);    // 安裝 pinia
+            </code>
         </pre>
         <p><br></p>
         <h6>3. 建立資料夾與文件：</h6>
@@ -169,11 +173,13 @@ app.use(pinia);    // 安裝 pinia            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-bash" v-prism>src
-└── store
-     ├── a.ts
-     ├── b.ts
-     └── n.ts            </code>
+            <code class="language-bash" v-prism>
+                src
+                └── store
+                    ├── a.ts
+                    ├── b.ts
+                    └── n.ts
+            </code>
         </pre>
         <p>在專案 <b>src/</b> 資料夾內建立 <b>store/</b> 資料夾，這個資料夾就象徵 Pinia 的實體，而裡頭文件的名稱一般情況會與要撈出共享資料的組件同名，比如有一個 <b>Count.vue</b> 組件有資料要提取出來給狀態中心，那麼 <b>store/</b> 裡頭就會建立一個 <b>count.ts</b> 或者 <b>Count.ts</b>，這樣我們才能明確知道它以及其他組件引用的源頭是誰。或者也有些人會將同樣類型的資料分類進行管理，像是和使用者有關的資料統一集中存放在 <b>user.ts</b>。</p>
         <p><br></p>
@@ -186,10 +192,12 @@ app.use(pinia);    // 安裝 pinia            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-bash" v-prism>src
-├── components
-│    ├── Count.vue
-└── App.vue            </code>
+            <code class="language-bash" v-prism>
+                src
+                ├── components
+                │    ├── Count.vue
+                └── App.vue
+            </code>
         </pre>
         <p>各組件功能說明：</p>
         <p><b>Count.vue</b>：</p>
@@ -201,33 +209,35 @@ app.use(pinia);    // 安裝 pinia            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;section class="count"&gt;
-        &lt;p&gt;當前總和：{{ sum }}&lt;/p&gt;
-        &lt;select v-model.number="selectVal"&gt;
-            &lt;option value="1"&gt;1&lt;/option&gt;
-            &lt;option value="2"&gt;2&lt;/option&gt;
-            &lt;option value="3"&gt;3&lt;/option&gt;
-        &lt;/select&gt;
-        &lt;button @click="add()"&gt;加&lt;/button&gt;
-        &lt;button @click="minus()"&gt;減&lt;/button&gt;
-    &lt;/section&gt;
-&lt;/template&gt;
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;section class="count"&gt;
+                        &lt;p&gt;當前總和：&#123;&#123; sum &#125;&#125;&lt;/p&gt;
+                        &lt;select v-model.number="selectVal"&gt;
+                            &lt;option value="1"&gt;1&lt;/option&gt;
+                            &lt;option value="2"&gt;2&lt;/option&gt;
+                            &lt;option value="3"&gt;3&lt;/option&gt;
+                        &lt;/select&gt;
+                        &lt;button @click="add()"&gt;加&lt;/button&gt;
+                        &lt;button @click="minus()"&gt;減&lt;/button&gt;
+                    &lt;/section&gt;
+                &lt;/template&gt;
 
-&lt;script setup lang="ts" name="Count"&gt;
-    import { ref } from 'vue';
+                &lt;script setup lang="ts" name="Count"&gt;
+                    import { ref } from 'vue';
 
-    const sum = ref(1);
-    const selectVal = ref(1);
+                    const sum = ref(1);
+                    const selectVal = ref(1);
 
-    function add(){
-        sum.value += selectVal.value;
-    }
+                    function add(){
+                        sum.value += selectVal.value;
+                    }
 
-    function minus(){
-        sum.value -= selectVal.value;
-    }
-&lt;/script&gt;            </code>
+                    function minus(){
+                        sum.value -= selectVal.value;
+                    }
+                &lt;/script&gt;
+            </code>
         </pre>
         <p>這支組件的功能是一個基本的總合計算，使用者通過下拉選單選擇要加減的數字，然後透過按鈕對目前的總合進行所選之數字進行累加或減少。譬如下拉選單選擇了「3」，則點擊「加」的按鈕，<em>sum</em> 初始值將從 1 累計為 4，再按一次「加」按鈕則從 4 變更為 7......依此類推。若在目前總合 7 的時候將選項變更為 2 並按下「減」的按鈕，則當前總合 7 就會變為 5。</p>
         <p><br></p>
@@ -240,13 +250,15 @@ app.use(pinia);    // 安裝 pinia            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;Count/&gt;
-&lt;/template&gt;
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;Count/&gt;
+                &lt;/template&gt;
 
-&lt;script setup lang="ts"&gt;
-    import Count from "./components/Count.vue";
-&lt;/script&gt;            </code>
+                &lt;script setup lang="ts"&gt;
+                    import Count from "./components/Count.vue";
+                &lt;/script&gt;
+            </code>
         </pre>
         <p>根組件沒有什麼特別的地方，主要就是調用前面寫好的組件，使其渲染並運作。</p>
     </div>
@@ -261,7 +273,9 @@ app.use(pinia);    // 安裝 pinia            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>import { defineStore } from "pinia";            </code>
+            <code class="language-javascript" v-prism>
+                import { defineStore } from "pinia";
+            </code>
         </pre>
         <p>官方建議採用 hooks 命名法來給要存取的資料變數做命名，例如：</p>
         <pre
@@ -272,13 +286,15 @@ app.use(pinia);    // 安裝 pinia            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>export const useCountStore = defineStore("count", {
-    state(){
-        return {
-            sum: 3
-        }
-    }
-});            </code>
+            <code class="language-javascript" v-prism>
+                export const useCountStore = defineStore("count", {
+                    state(){
+                        return {
+                            sum: 3
+                        }
+                    }
+                });
+            </code>
         </pre>
         <p><em>defineStore</em> 裡面依據功能需求會傳入多個參數，現階段我們會用到兩個，第一個參數表示「ID」值以作為 store 的唯一識別字符，命名建議與文件名稱保持一致。</p>
         <p>第二個參數則要定義配置對象，也就是一個物件型別的格式內容，這個物件裡面引用了一個名為 <em>state</em> 的函式，state 表示「狀態」的意思，裡頭必須返回一個結果，根據前面我們建立的範例，這裡我們要將求總合的變數 <em>sum</em> 存放進來，並給它一個初始值。回顧整個 <em>state</em> 的內容，它其實就是儲存資料數據的地方。</p>
@@ -292,9 +308,11 @@ app.use(pinia);    // 安裝 pinia            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>import { useCountStore } from "../store/count";
+            <code class="language-javascript" v-prism>
+                import { useCountStore } from "../store/count";
 
-const countStore = useCountStore();            </code>
+                const countStore = useCountStore();
+            </code>
         </pre>
         <p>不急著進下一步，我們可以先用 Console 來觀察看看 <em>useCountStore()</em> 真身是什麼玩意：</p>
         <pre
@@ -305,7 +323,9 @@ const countStore = useCountStore();            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>console.log("countStore:", countStore);            </code>
+            <code class="language-javascript" v-prism>
+                console.log("countStore:", countStore);
+            </code>
         </pre>
         <figure>
             <img src="/images/learn/js/vue3-learn-14-3.jpg">
@@ -325,8 +345,10 @@ const countStore = useCountStore();            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>console.log(countStore.sum);
-console.log(countStore.$state.sum);            </code>
+            <code class="language-javascript" v-prism>
+                console.log(countStore.sum);
+                console.log(countStore.$state.sum);
+            </code>
         </pre>
         <p>※ 由於 <em>sum</em> 是在 <em>reactive</em> 形成的 Proxy Object 底下去定義的，取值時就不需要再加上 <em>.value</em>，若是平常用 <em>ref</em> 定義的變數就要時常牢記操作值時必須加上 <em>.value</em>。</p>
         <p>確認組件可以接收到 store 管理的 <em>sum</em> 值後，我們就可以把原本組件裡的 <em>sum</em> 移除掉，改使用 store 儲存的 <em>sum</em>：</p>
@@ -338,7 +360,9 @@ console.log(countStore.$state.sum);            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;p&gt;當前總和：{{ countStore.sum }}&lt;/p&gt;            </code>
+            <code class="language-html" v-prism>
+                &lt;p&gt;當前總和：&#123;&#123; countStore.sum &#125;&#125;&lt;/p&gt;
+            </code>
         </pre>
         <p>原本底下方法中的 <em>sum.value</em> 也改成 <em>countStore.sum</em>：</p>
         <pre
@@ -349,13 +373,15 @@ console.log(countStore.$state.sum);            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>function add(){
-    countStore.sum += selectVal.value;
-}
+            <code class="language-javascript" v-prism>
+                function add(){
+                    countStore.sum += selectVal.value;
+                }
 
-function minus(){
-    countStore.sum -= selectVal.value;
-}            </code>
+                function minus(){
+                    countStore.sum -= selectVal.value;
+                }
+            </code>
         </pre>
         <p>完整程式碼：</p>
         <pre
@@ -366,34 +392,36 @@ function minus(){
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;section class="count"&gt;
-        &lt;p&gt;當前總和：{{ countStore.sum }}&lt;/p&gt;
-        &lt;select v-model.number="selectVal"&gt;
-            &lt;option value="1"&gt;1&lt;/option&gt;
-            &lt;option value="2"&gt;2&lt;/option&gt;
-            &lt;option value="3"&gt;3&lt;/option&gt;
-        &lt;/select&gt;
-        &lt;button @click="add()"&gt;加&lt;/button&gt;
-        &lt;button @click="minus()"&gt;減&lt;/button&gt;
-    &lt;/section&gt;
-&lt;/template&gt;
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;section class="count"&gt;
+                        &lt;p&gt;當前總和：&#123;&#123; countStore.sum &#125;&#125;&lt;/p&gt;
+                        &lt;select v-model.number="selectVal"&gt;
+                            &lt;option value="1"&gt;1&lt;/option&gt;
+                            &lt;option value="2"&gt;2&lt;/option&gt;
+                            &lt;option value="3"&gt;3&lt;/option&gt;
+                        &lt;/select&gt;
+                        &lt;button @click="add()"&gt;加&lt;/button&gt;
+                        &lt;button @click="minus()"&gt;減&lt;/button&gt;
+                    &lt;/section&gt;
+                &lt;/template&gt;
 
-&lt;script setup lang="ts" name="Count"&gt;
-    import { ref } from 'vue';
-    import { useCountStore } from '../store/count';
+                &lt;script setup lang="ts" name="Count"&gt;
+                    import { ref } from 'vue';
+                    import { useCountStore } from '../store/count';
 
-    const countStore = useCountStore();
-    const selectVal = ref(1);
+                    const countStore = useCountStore();
+                    const selectVal = ref(1);
 
-    function add(){
-        countStore.sum += selectVal.value;
-    }
+                    function add(){
+                        countStore.sum += selectVal.value;
+                    }
 
-    function minus(){
-        countStore.sum -= selectVal.value;
-    }
-&lt;/script&gt;            </code>
+                    function minus(){
+                        countStore.sum -= selectVal.value;
+                    }
+                &lt;/script&gt;
+            </code>
         </pre>
         <p>渲染畫面：</p>
         <figure>
@@ -415,13 +443,15 @@ function minus(){
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>function add(){
-    countStore.sum += selectVal.value;
-}
+            <code class="language-javascript" v-prism>
+                function add(){
+                    countStore.sum += selectVal.value;
+                }
 
-function minus(){
-    countStore.sum -= selectVal.value;
-}            </code>
+                function minus(){
+                    countStore.sum -= selectVal.value;
+                }
+            </code>
         </pre>
         <p>直接修改 store 的狀態是最簡單也是最直接的方式。然而，像這樣的作法在以往 Vuex 是不被推薦的，因為這樣做破壞了 Vuex 的核心原則：狀態的單一來源和可追蹤性。Vuex 通常建議使用 <em>mutations</em> 來修改狀態，而不是直接修改。不過對 Pinia 來說，會更傾向能讓開發者直覺地修改狀態。</p>
         <p><br></p>
@@ -435,16 +465,18 @@ function minus(){
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>export const useCountStore = defineStore("count", {
-    state(){
-        return {
-            sum: 3,
-            name: "阿比",
-            age: 18,
-            borned: "台灣"
-        }
-    }
-})            </code>
+            <code class="language-javascript" v-prism>
+                export const useCountStore = defineStore("count", {
+                    state(){
+                        return {
+                            sum: 3,
+                            name: "阿比",
+                            age: 18,
+                            borned: "台灣"
+                        }
+                    }
+                })
+            </code>
         </pre>
         <p>然後我們要在組件裡觸發事件去改變它們的值，如果用第一種方法，程式碼結構將會是：</p>
         <pre
@@ -455,12 +487,14 @@ function minus(){
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>function change(){
-    countStore.sum += selectVal.value;
-    countStore.name = "喵喵";
-    countStore.age = 32;
-    countStore.borned = "日本";
-}            </code>
+            <code class="language-javascript" v-prism>
+                function change(){
+                    countStore.sum += selectVal.value;
+                    countStore.name = "喵喵";
+                    countStore.age = 32;
+                    countStore.borned = "日本";
+                }
+            </code>
         </pre>
         <p>雖然這麼做一樣可以達到我們想要的目標，但顯然有更好的寫法，面對這種批量修改狀態資料的需求，我們可以使用 <em>$patch</em> 方法來搞定：</p>
         <pre
@@ -471,14 +505,16 @@ function minus(){
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>function change(){
-    countStore.$patch({
-        sum: countStore.sum += selectVal.value,
-        name: "喵喵",
-        age: 32,
-        borned: "日本"
-    });
-}            </code>
+            <code class="language-javascript" v-prism>
+                function change(){
+                    countStore.$patch({
+                        sum: countStore.sum += selectVal.value,
+                        name: "喵喵",
+                        age: 32,
+                        borned: "日本"
+                    });
+                }
+            </code>
         </pre>
         <p>除了寫法的差異外，使用 <em>$patch</em> 在效能執行上也比一行行修改狀態來得佳，因為每一次狀態修改 Timeline 都會產生一個 mutation（相當於 Vuex 的 mutations 修改之意），所以像這個範例修改四筆狀態內容，等同執行四次 mutation。如果使用 <em>$patch</em>，Timeline 記錄上就只會執行一次 $patch 的批量變更而已。</p>
         <p><br></p>
@@ -492,16 +528,18 @@ function minus(){
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>export const useCountStore = defineStore("count", {
-    state(){
-        return {
-            sum: 3
-        }
-    },
-    actions: {
-        // 定義函式方法
-    }
-})            </code>
+            <code class="language-javascript" v-prism>
+                export const useCountStore = defineStore("count", {
+                    state(){
+                        return {
+                            sum: 3
+                        }
+                    },
+                    actions: {
+                        // 定義函式方法
+                    }
+                })
+            </code>
         </pre>
         <p>按照 <b>Count.vue</b> 組件 <em>add()</em> 函式原先設定，<em>sum</em> 累計的值是依據使用者於下拉式清單所選擇的值：</p>
         <pre
@@ -512,9 +550,11 @@ function minus(){
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>function add(){
-    sum.value += selectVal.value;
-}            </code>
+            <code class="language-javascript" v-prism>
+                function add(){
+                    sum.value += selectVal.value;
+                }
+            </code>
         </pre>
         <p>我們要把 <em>selectVal.value</em> 這個值與 store 狀態中心同步對應，所以我們需要在 <em>actions</em> 定義一個函式：</p>
         <pre
@@ -525,11 +565,13 @@ function minus(){
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>actions: {
-    increment(value){
-        console.log("increment value:", value);
-    }
-}            </code>
+            <code class="language-javascript" v-prism>
+                actions: {
+                    increment(value){
+                        console.log("increment value:", value);
+                    }
+                }
+            </code>
         </pre>
         <p>函式中的 <em>value</em> 參數用來接收組件傳過來的值，組件 <b>Count.vue</b> 的函式內容便做出與之對應的調整：</p>
         <pre
@@ -540,9 +582,11 @@ function minus(){
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>function add(){
-    countStore.increment(selectVal.value);
-}            </code>
+            <code class="language-javascript" v-prism>
+                function add(){
+                    countStore.increment(selectVal.value);
+                }
+            </code>
         </pre>
         <p>假設當我們從下拉清單中選擇 2 並觸發 <em>add()</em> 事件，2 這個值就會同步傳送到 store 狀態中心裡的 <em>increment</em> 的 <em>value</em> 參數，得到 Console 回傳值為 2：</p>
         <figure>
@@ -557,11 +601,13 @@ function minus(){
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>actions: {
-    increment(value){
-        this.sum += value;
-    }
-}            </code>
+            <code class="language-javascript" v-prism>
+                actions: {
+                    increment(value){
+                        this.sum += value;
+                    }
+                }
+            </code>
         </pre>
         <p>可能會有人疑惑為什麼這裡是使用 <em>this</em> 而不是直接調用 <em>state.sum</em>，其實這是作用域的問題，我們可以在 <em>actions</em> 打印 <em>state.sum</em> 看看會有什麼結果：</p>
         <pre
@@ -572,11 +618,13 @@ function minus(){
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>actions: {
-    increment(value){
-        console.log(state.sum);    // Uncaught ReferenceError: state is not defined
-    }
-}            </code>
+            <code class="language-javascript" v-prism>
+                actions: {
+                    increment(value){
+                        console.log(state.sum);    // Uncaught ReferenceError: state is not defined
+                    }
+                }
+            </code>
         </pre>
         <p>表示 <em>state</em> 並未被定義。但如果我們打印的是 <em>this</em>：</p>
         <pre
@@ -587,11 +635,13 @@ function minus(){
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>actions: {
-    increment(value){
-        console.log(this);    // Proxy(Object) {$id: 'count', $onAction: ƒ, $patch: ƒ, $reset: ƒ, $subscribe: ƒ, …}
-    }
-}            </code>
+            <code class="language-javascript" v-prism>
+                actions: {
+                    increment(value){
+                        console.log(this);    // Proxy(Object) {$id: 'count', $onAction: ƒ, $patch: ƒ, $reset: ƒ, $subscribe: ƒ, …}
+                    }
+                }
+            </code>
         </pre>
         <p>就會得到目前的 store──也就是 <em>useCountStore</em> 完整的代理物件內容，裡面自然包含著我們設定的 <em>sum</em> 狀態資料。所以如果要令 <em>increment</em> 動作修改 <em>sum</em> 目前的值，只要直接指定 <em>this.sum</em> 便可。</p>
         <p>至於另一個事件 <em>minus()</em> 也是相同的定義邏輯，這裡就不再一步步拆解記述，直接上完成後的程式碼樣貌：</p>
@@ -604,23 +654,25 @@ function minus(){
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>import { defineStore } from "pinia";
+            <code class="language-javascript" v-prism>
+                import { defineStore } from "pinia";
 
-export const useCountStore = defineStore("count", {
-    state(){
-        return {
-            sum: 3
-        }
-    },
-    actions: {
-        increment(value){
-            this.sum += value;
-        },
-        reduce(value){
-            this.sum -= value;
-        }
-    }
-})            </code>
+                export const useCountStore = defineStore("count", {
+                    state(){
+                        return {
+                            sum: 3
+                        }
+                    },
+                    actions: {
+                        increment(value){
+                            this.sum += value;
+                        },
+                        reduce(value){
+                            this.sum -= value;
+                        }
+                    }
+                })
+            </code>
         </pre>
         <p><b>Count.vue</b>：</p>
         <pre
@@ -631,34 +683,36 @@ export const useCountStore = defineStore("count", {
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;section class="count"&gt;
-        &lt;p&gt;當前總和：{{ countStore.sum }}&lt;/p&gt;
-        &lt;select v-model.number="selectVal"&gt;
-            &lt;option value="1"&gt;1&lt;/option&gt;
-            &lt;option value="2"&gt;2&lt;/option&gt;
-            &lt;option value="3"&gt;3&lt;/option&gt;
-        &lt;/select&gt;
-        &lt;button @click="add()"&gt;加&lt;/button&gt;
-        &lt;button @click="minus()"&gt;減&lt;/button&gt;
-    &lt;/section&gt;
-&lt;/template&gt;
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;section class="count"&gt;
+                        &lt;p&gt;當前總和：&#123;&#123; countStore.sum &#125;&#125;&lt;/p&gt;
+                        &lt;select v-model.number="selectVal"&gt;
+                            &lt;option value="1"&gt;1&lt;/option&gt;
+                            &lt;option value="2"&gt;2&lt;/option&gt;
+                            &lt;option value="3"&gt;3&lt;/option&gt;
+                        &lt;/select&gt;
+                        &lt;button @click="add()"&gt;加&lt;/button&gt;
+                        &lt;button @click="minus()"&gt;減&lt;/button&gt;
+                    &lt;/section&gt;
+                &lt;/template&gt;
 
-&lt;script setup lang="ts" name="Count"&gt;
-    import { ref } from 'vue';
-    import { useCountStore } from '../store/count';
+                &lt;script setup lang="ts" name="Count"&gt;
+                    import { ref } from 'vue';
+                    import { useCountStore } from '../store/count';
 
-    const countStore = useCountStore();
-    const selectVal = ref(1);
+                    const countStore = useCountStore();
+                    const selectVal = ref(1);
 
-    function add(){
-        countStore.increment(selectVal.value);
-    }
+                    function add(){
+                        countStore.increment(selectVal.value);
+                    }
 
-    function minus(){
-        countStore.reduce(selectVal.value);
-    }
-&lt;/script&gt;            </code>
+                    function minus(){
+                        countStore.reduce(selectVal.value);
+                    }
+                &lt;/script&gt;
+            </code>
         </pre>
         <p><br></p>
         <p>三種方法看下來，第一種最為簡單暴力又直接，而第二種方式在面對需要一次性修改大量資料時有其優勢與必要性，但第三種方式具體有什麼好處呢？拿範例來說，主要好處是我們不僅僅可以把單純的資料提交給狀態中心管理，就連多個組件會重複用到的動作也可以由狀態中心共享。舉例來說，假設今天當 <em>sum</em> 的值大於 10 就不再繼續增加，我們可以在 <em>actions</em> 追加條件判斷：</p>
@@ -670,13 +724,15 @@ export const useCountStore = defineStore("count", {
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>actions: {
-    increment(value){
-        if( this.sum &lt; 10 ){
-            this.sum += value;
-        }
-    }
-}            </code>
+            <code class="language-javascript" v-prism>
+                actions: {
+                    increment(value){
+                        if( this.sum &lt; 10 ){
+                            this.sum += value;
+                        }
+                    }
+                }
+            </code>
         </pre>
         <p>雖然同樣的邏輯，我們也可以直接在組件裡下判斷：</p>
         <pre
@@ -687,11 +743,13 @@ export const useCountStore = defineStore("count", {
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>function add(){
-    if(countStore.sum &lt; 10){
-        countStore.sum += selectVal.value;
-    }
-}            </code>
+            <code class="language-javascript" v-prism>
+                function add(){
+                    if(countStore.sum &lt; 10){
+                        countStore.sum += selectVal.value;
+                    }
+                }
+            </code>
         </pre>
         <p>縱使效果是一樣的，但如果有多個組件都使用到相同判斷邏輯的時候，每個組件都要各自寫一次判斷邏輯，在需要維護修改時就會相對比較不方便。</p>
     </div>
@@ -706,23 +764,25 @@ export const useCountStore = defineStore("count", {
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>export const useCountStore = defineStore("count", {
-    state(){
-        return {
-            sum: 3
-        }
-    },
-    actions: {
-        increment(value){
-            if( this.sum &lt; 10 ){
-                this.sum += value;
-            }
-        },
-        reduce(value){
-            this.sum -= value;
-        }
-    }
-});            </code>
+            <code class="language-javascript" v-prism>
+                export const useCountStore = defineStore("count", {
+                    state(){
+                        return {
+                            sum: 3
+                        }
+                    },
+                    actions: {
+                        increment(value){
+                            if( this.sum &lt; 10 ){
+                                this.sum += value;
+                            }
+                        },
+                        reduce(value){
+                            this.sum -= value;
+                        }
+                    }
+                });
+            </code>
         </pre>
         <p>除了這種參數傳入的方式外，還有一種用物件表示的形式：</p>
         <pre
@@ -733,22 +793,24 @@ export const useCountStore = defineStore("count", {
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>export const useCountStore = defineStore({
-    id: "count", 
-    state: ()=>({
-        sum: 3
-    }),
-    actions: {
-        increment(value){
-            if( this.sum &lt; 10 ){
-                this.sum += value;
-            }
-        },
-        reduce(value){
-            this.sum -= value;
-        }
-    }
-});            </code>
+            <code class="language-javascript" v-prism>
+                export const useCountStore = defineStore({
+                    id: "count", 
+                    state: ()=>({
+                        sum: 3
+                    }),
+                    actions: {
+                        increment(value){
+                            if( this.sum &lt; 10 ){
+                                this.sum += value;
+                            }
+                        },
+                        reduce(value){
+                            this.sum -= value;
+                        }
+                    }
+                });
+            </code>
         </pre>
     </div>
     <div class="text-block" :id="'act' + catalog[8].id">

@@ -72,7 +72,9 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-bash" v-prism>npm create vite@latest            </code>
+            <code class="language-bash" v-prism>
+                npm create vite@latest
+            </code>
         </pre>
         <p>接著終端機會詢問一些事項，按個人需求選擇即可：</p>
         <figure>
@@ -89,7 +91,9 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-bash" v-prism>npm install            </code>
+            <code class="language-bash" v-prism>
+                npm install
+            </code>
         </pre>
         <p>或</p>
         <pre
@@ -100,7 +104,9 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-bash" v-prism>npm i            </code>
+            <code class="language-bash" v-prism>
+                npm i
+            </code>
         </pre>
         <p><br></p>
         <h6>3. 運行開發模式：</h6>
@@ -112,7 +118,9 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-bash" v-prism>npm run dev            </code>
+            <code class="language-bash" v-prism>
+                npm run dev
+            </code>
         </pre>
         <p>沒什麼意外的話，開發模式這樣就能順利啟動了，若啟動成功，終端機會回傳一個本地端網址，預設通常是 <b>http://localhost:5173/</b>。</p>
         <figure>
@@ -133,18 +141,20 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-bash" v-prism>public
-src
-  ├── assets                # 靜態資源
-  ├── components
-  │   └── HelloWorld.vue    # 子組件
-  ├── App.vue               # 根元件
-  ├── main.ts               # 引用 src 相關資源的關鍵文件
-  ├── style.css             # CSS 文件
-  └── vite-env.d.ts         # 讓 TS 辨識不同檔案格式
-index.html                  # 入口文件
-tsconfig.json               # TS 相關配置文件
-vite.config.ts              # Vite 設定文件            </code>
+            <code class="language-bash" v-prism>
+                public
+                src
+                ├── assets                # 靜態資源
+                ├── components
+                │   └── HelloWorld.vue    # 子組件
+                ├── App.vue               # 根元件
+                ├── main.ts               # 引用 src 相關資源的關鍵文件
+                ├── style.css             # CSS 文件
+                └── vite-env.d.ts         # 讓 TS 辨識不同檔案格式
+                index.html                  # 入口文件
+                tsconfig.json               # TS 相關配置文件
+                vite.config.ts              # Vite 設定文件
+            </code>
         </pre>
         <h5><b>index.html</b>：</h5>
         <p>雖然有很多示範內容，但真正需要注意的是 <em>body</em> 元素中的這兩個標籤：</p>
@@ -157,8 +167,9 @@ vite.config.ts              # Vite 設定文件            </code>
             data-toolbar-order="copy-to-clipboard" 
         >
             <code class="language-html" v-prism>
-&lt;div id="app"&gt;&lt;/div&gt;
-&lt;script type="module" src="/src/main.ts"&gt;&lt;/script&gt;            </code>
+                &lt;div id="app"&gt;&lt;/div&gt;
+                &lt;script type="module" src="/src/main.ts"&gt;&lt;/script&gt;
+            </code>
         </pre>
         <p><em>#app</em> 提供給 Vue 一個實例掛載的對象，稍後會再提及。而 <em>script</em> 引用的檔案 <b>main.ts</b> 則是整個專案主體 <b>src/</b> 裡所有資源導入的核心文件。</p>
         <h5><b>main.ts</b>：</h5>
@@ -170,11 +181,13 @@ vite.config.ts              # Vite 設定文件            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>import './style.css'
-import { createApp } from 'vue'
-import App from './App.vue'
+            <code class="language-javascript" v-prism>
+                import './style.css'
+                import { createApp } from 'vue'
+                import App from './App.vue'
 
-createApp(App).mount('#app')            </code>
+                createApp(App).mount('#app')
+            </code>
         </pre>
         <p><em>import</em> 表示引用某個指定資源，例如第一行將 CSS 文件 <b>style.css</b> 給引用到這個文件，讓入口文件 <b>index.html</b> 可以讀到它。</p>
         <p>第二行 <em>{ createApp }</em> 表示要創建一個新的 Vue 的應用；第三行則是在說引用了一個 <b>App.vue</b> 的組件，並將其取名為 <em>App</em>。</p>
@@ -198,13 +211,15 @@ createApp(App).mount('#app')            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;User/&gt;
-&lt;/template&gt;
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;User/&gt;
+                &lt;/template&gt;
 
-&lt;script setup lang="ts"&gt;
-    import User from "./components/User.vue"
-&lt;/script&gt;            </code>
+                &lt;script setup lang="ts"&gt;
+                    import User from "./components/User.vue"
+                &lt;/script&gt;
+            </code>
         </pre>
         <p>根元件我們只用來置入一個名稱為 User 的子組件，沒有其他內容。</p>
         <p><b>User.vue</b>：</p>
@@ -216,27 +231,29 @@ createApp(App).mount('#app')            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;h1&gt;姓名：{{ name }}&lt;/h1&gt;
-    &lt;h2&gt;年齡：{{ age }}&lt;/h2&gt;
-    &lt;button @click = "addAge();"&gt;Add&lt;/button&gt;
-&lt;/template&gt;
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;h1&gt;姓名：&#123;&#123; name &#125;&#125;&lt;/h1&gt;
+                    &lt;h2&gt;年齡：&#123;&#123; age &#125;&#125;&lt;/h2&gt;
+                    &lt;button @click = "addAge();"&gt;Add&lt;/button&gt;
+                &lt;/template&gt;
 
-&lt;script lang="ts"&gt;
-    export default {
-        data(){
-            return {
-                name: "阿比",
-                age: 18
-            }
-        },
-        methods: {
-            addAge(){
-                this.age += 1;
-            }
-        }
-    }
-&lt;/script&gt;            </code>
+                &lt;script lang="ts"&gt;
+                    export default {
+                        data(){
+                            return {
+                                name: "阿比",
+                                age: 18
+                            }
+                        },
+                        methods: {
+                            addAge(){
+                                this.age += 1;
+                            }
+                        }
+                    }
+                &lt;/script&gt;
+            </code>
         </pre>
         <p><b>User.vue</b> 子組件中我們使用 Vue 2 Options API 的寫法建構了一組人員資料，除了直接在模板顯示該人員的姓名和年齡外，也定義了一個事件方法 <em>addAge()</em>，當使用者點擊按紐 <em>button</em> 時，該員年齡就會增加一歲。</p>
         <p><br></p>
@@ -249,7 +266,9 @@ createApp(App).mount('#app')            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>setup(){ ... }            </code>
+            <code class="language-javascript" v-prism>
+                setup(){ ... }
+            </code>
         </pre>
         <p>純資料數據的部份，我們可以直接用變數來定義，例如 <em>const</em> 或 <em>let</em>：</p>
         <pre
@@ -260,12 +279,14 @@ createApp(App).mount('#app')            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>export default {
-    setup(){
-        let name = "阿比";
-        let age = 18;
-    }
-}            </code>
+            <code class="language-javascript" v-prism>
+                export default {
+                    setup(){
+                        let name = "阿比";
+                        let age = 18;
+                    }
+                }
+            </code>
         </pre>
         <p>但光是這樣是沒辦法讓模板中抓取資料的 HTML 元素成功獲取資料的，必須還要加上 <em>return</em> 將值回傳出去才可以：</p>
         <pre
@@ -276,16 +297,18 @@ createApp(App).mount('#app')            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>export default {
-    setup(){
-        let name = "阿比";
-        let age = 18;
+            <code class="language-javascript" v-prism>
+                export default {
+                    setup(){
+                        let name = "阿比";
+                        let age = 18;
 
-        return {
-            name, age
-        }
-    }
-}            </code>
+                        return {
+                            name, age
+                        }
+                    }
+                }
+            </code>
         </pre>
         <p>純資料處理的部分就這樣完成配置了，再來是方法的部分，前幾章簡短介紹 Compsition API 的內容時有提到 Vue 3 將組件的功能各自透過函式進行管理，因此我們就回歸原始 JavaScript 的寫法，定義一個函式來實現 <em>addAge()</em> 功能：</p>
         <pre
@@ -296,20 +319,22 @@ createApp(App).mount('#app')            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>export default {
-    setup(){
-        let name = "阿比";
-        let age = 18;
+            <code class="language-javascript" v-prism>
+                export default {
+                    setup(){
+                        let name = "阿比";
+                        let age = 18;
 
-        function addAge (){
-            age += 1;
-        }
+                        function addAge (){
+                            age += 1;
+                        }
 
-        return {
-            name, age, addAge
-        }
-    }
-}            </code>
+                        return {
+                            name, age, addAge
+                        }
+                    }
+                }
+            </code>
         </pre>
         <p>必須要強調的是，在 <em>setup</em> 裡面，<em>this</em> 指向的值只會是 <em>undefined</em>，因此過往 Vue 2 習慣使用的 <em>this</em> 無法直接套寫在 Vue 3 上，至於具體要怎麼改寫其實也沒這麼複雜，老話一句，回歸以往 JavaScript 的寫法就好。最後寫完別忘記要把函式 <em>return</em> 回去。</p>
         <p>然而，看似完美，實際測試的時候會發現當我們點擊 <em>button</em> 按紐，年齡並沒有發生任何變化，打開 Console 工具也沒有回報任何錯誤，這是為什麼？</p>
@@ -323,20 +348,22 @@ createApp(App).mount('#app')            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>export default {
-    beforeCreate(){
-        console.log("beforeCreate");
-    },
-    setup(){
-        console.log("setup");
-    },
-    beforeMount(){
-        console.log("beforeMount");
-    },
-    mounted(){
-        console.log("mounted");
-    },
-}            </code>
+            <code class="language-javascript" v-prism>
+                export default {
+                    beforeCreate(){
+                        console.log("beforeCreate");
+                    },
+                    setup(){
+                        console.log("setup");
+                    },
+                    beforeMount(){
+                        console.log("beforeMount");
+                    },
+                    mounted(){
+                        console.log("mounted");
+                    },
+                }
+            </code>
         </pre>
         <p>會發現 Console 出來的結果依序為：</p>
         <pre
@@ -347,10 +374,12 @@ createApp(App).mount('#app')            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>setup
-beforeCreate
-beforeMount
-mounted            </code>
+            <code class="language-javascript" v-prism>
+                setup
+                beforeCreate
+                beforeMount
+                mounted
+            </code>
         </pre>
         <p>表示在實例創建之前，<em>setup</em> 就已經先執行了。</p>
         <p>要怎麼讓 <em>setup</em> 中的資料數據變成響應式數據，因為這會牽涉到不同定義方式和監聽方法，故稍作個保留，我們先繼續專心學習 <em>setup</em> 的知識。</p>
@@ -364,13 +393,15 @@ mounted            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>export default {
-    setup(){
-        return {
-            name, age, addAge
-        }
-    }
-}            </code>
+            <code class="language-javascript" v-prism>
+                export default {
+                    setup(){
+                        return {
+                            name, age, addAge
+                        }
+                    }
+                }
+            </code>
         </pre>
         <p>前面的範例裡 <em>setup</em> 返回的東西是一個物件，其中包含了 <em>name</em>、<em>age</em>、<em>addAge</em> 這三個屬性和方法。這個傳回的物件其實就是組件的配置選項，它會將這些屬性和方法傳送給組件的模板，從而可以在模板中直接使用它們。</p>
         <p><em>return</em> 也可以返回一個函式，且函式裡面再包含一個 <em>return</em>，例如：</p>
@@ -382,13 +413,15 @@ mounted            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>export default {
-    setup(){
-        return function (){
-            return "Hello World!"
-        }
-    }
-}            </code>
+            <code class="language-javascript" v-prism>
+                export default {
+                    setup(){
+                        return function (){
+                            return "Hello World!"
+                        }
+                    }
+                }
+            </code>
         </pre>
         <p>也可以用箭頭函式簡化成：</p>
         <pre
@@ -399,11 +432,13 @@ mounted            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>export default {
-    setup(){
-        return () => "Hello World!"
-    }
-}            </code>
+            <code class="language-javascript" v-prism>
+                export default {
+                    setup(){
+                        return () => "Hello World!"
+                    }
+                }
+            </code>
         </pre>
         <p>通常這種作法，<em>return</em> 函式裡面 <em>return</em> 的值會直接取代掉組件的模板，無視原先組件裡的其他配置。假如今天有部份需求是一旦滿足某個條件，一率返回一個簡單的值替換掉原本組件裡的模板內容，那就可以透過這種手法達成效果。（不過實務上會需要這麼作的機率不高）</p>
         <p><br></p>
@@ -418,18 +453,20 @@ mounted            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>export default {
-    data(){
-        return {
-            x: this.name    // 阿比
-        }
-    },
-    setup(){
-        let name = "阿比";
+            <code class="language-javascript" v-prism>
+                export default {
+                    data(){
+                        return {
+                            x: this.name    // 阿比
+                        }
+                    },
+                    setup(){
+                        let name = "阿比";
 
-        return { name }
-    }
-}            </code>
+                        return { name }
+                    }
+                }
+            </code>
         </pre>
         <p>上方範例中可以看到我們在 Options API 的 <em>data</em> 配置選項中回傳了 <em>x</em> 變數，然後指定給它的值是 Composition API <em>setup</em> 裡面定義的 <em>name</em> 變數，如果我們將 <em>x</em> 渲染到模板裡，會發現得到的資料是「阿比」，這就表示 Options API 的選項是可以獲取 Composition API 裡面的資料。但如果反過來：</p>
         <pre
@@ -440,18 +477,20 @@ mounted            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>export default {
-    data(){
-        return {
-            x: "阿比"
-        }
-    },
-    setup(){
-        let name = x;    // x is not defined
+            <code class="language-javascript" v-prism>
+                export default {
+                    data(){
+                        return {
+                            x: "阿比"
+                        }
+                    },
+                    setup(){
+                        let name = x;    // x is not defined
 
-        return { name }
-    }
-}            </code>
+                        return { name }
+                    }
+                }
+            </code>
         </pre>
         <p>會發現模板裡的 HTML 元素不但沒有顯示出資料，而且還會得到 <em>Uncaught (in promise) ReferenceError: x is not defined</em> 的錯誤訊息，其實原因很簡單，前面在測試 <em>setup</em> 和其他 Vue 2 生命週期鉤子渲染的順序已經明白展示過，<em>setup</em> 渲染的優先序會比生命週期鉤子還要前面，所以 Options API <em>data</em> 中的 <em>x: this.name</em> 在此時已經可以取得 <em>name</em> 這個屬性。</p>
         <p>反過來，當我們在 <em>setup</em> 裡宣告的變數 <em>name</em> 想去取得 Options API <em>data</em> 的 <em>x</em> 值，由於渲染階段 <em>setup</em> 先被執行的，此時壓根兒沒有 <em>x</em> 這個資料存在，<em>name</em> 抓不到指定的資料，瀏覽器自然也只能回報 <em>x</em> 並沒有被定義。</p>
@@ -465,15 +504,17 @@ mounted            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;script lang="ts"&gt;
-    export default {
-        setup(){
-            let name = "阿比";
+            <code class="language-html" v-prism>
+                &lt;script lang="ts"&gt;
+                    export default {
+                        setup(){
+                            let name = "阿比";
 
-            return { name }
-        }
-    }
-&lt;/script&gt;            </code>
+                            return { name }
+                        }
+                    }
+                &lt;/script&gt;
+            </code>
         </pre>
         <p>原本我們在寫 <em>setup</em> 配置選項的時候，無論是純資料還是方法，最後都必須透過 <em>return</em> 回傳出去，模板才能順利渲染出這些內容，但隨著程式碼增加，有時寫著寫著，可能一時間就會忘記添加，等畫面渲染的時候才發現忘了寫，或甚至不知道為什麼畫面表現不如預期。會有這種情況，其實就表示一般 <em>setup</em> 的寫法不夠人性化，所以才會有部分開發者偶爾遭遇到此困擾。</p>
         <p>事實上，<em>setup</em> 有一種比較簡便的寫法，也就是語法糖。寫法：</p>
@@ -485,9 +526,11 @@ mounted            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;script lang="ts" setup&gt;
-    let name = "阿比";
-&lt;/script&gt;            </code>
+            <code class="language-html" v-prism>
+                &lt;script lang="ts" setup&gt;
+                    let name = "阿比";
+                &lt;/script&gt;
+            </code>
         </pre>
         <p>如此一來我們就只要專注在組件要寫的內容就好，不需要每一次定義新的資料或方法，都還要惦記著去 <em>return</em> 它。然而，<em>setup</em> 語法糖好用歸好用，卻也不是萬靈丹。打個比方，開發者通常習慣為每一個組件命名，命名方式主要是經由 ES module exports 來進行，所以寫法會是：</p>
         <pre
@@ -498,11 +541,13 @@ mounted            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;script lang="ts"&gt;
-    export default {
-        name: "User",
-    }
-&lt;/script&gt;            </code>
+            <code class="language-html" v-prism>
+                &lt;script lang="ts"&gt;
+                    export default {
+                        name: "User",
+                    }
+                &lt;/script&gt;
+            </code>
         </pre>
         <p>但如果我們把這段直接也搬去 <em>setup</em> 語法糖結構裡，編譯器會立即發出錯誤：<b>&lt;script setup&gt; cannot contain ES module exports. If you are using a previous version of &lt;script setup&gt;, please consult the updated RFC at https://github.com/vuejs/rfcs/pull/227.</b></p>
         <p>大意是在說 <em>&lt;script setup&gt;</em> 不允許包含 ES 模組的導出，所以在不安裝其他輔助套件的前題下，有時會看到組件裡同時存在 <em>&lt;script lang="ts"&gt;</em> 和 <em>&lt;script lang="ts" setup&gt;</em> 是正常的。</p>
@@ -515,18 +560,20 @@ mounted            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;!-- 設定組件名稱 --&gt;
-&lt;script lang="ts"&gt;
-    export default {
-        name: "User",
-    }
-&lt;/script&gt;
+            <code class="language-html" v-prism>
+                &lt;!-- 設定組件名稱 --&gt;
+                &lt;script lang="ts"&gt;
+                    export default {
+                        name: "User",
+                    }
+                &lt;/script&gt;
 
-&lt;!-- 設定組件 Composition API 配置 --&gt;
-&lt;script lang="ts" setup&gt;
-    let name = "阿比";
-    let age = 18;
-&lt;/script&gt;            </code>
+                &lt;!-- 設定組件 Composition API 配置 --&gt;
+                &lt;script lang="ts" setup&gt;
+                    let name = "阿比";
+                    let age = 18;
+                &lt;/script&gt;
+            </code>
         </pre>
         <p>既然提到有第三方套件可以將組件名稱與 <em>setup</em> 語法糖寫在一起，以下就來簡單介紹一下該套件使用方式。</p>
         <h6>1. 輸入套件安裝指令：</h6>
@@ -538,7 +585,9 @@ mounted            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-bash" v-prism>npm i vite-plugin-vue-setup-extend -D            </code>
+            <code class="language-bash" v-prism>
+                npm i vite-plugin-vue-setup-extend -D
+            </code>
         </pre>
         <p><br></p>
         <h6>2. 於 vite.config.ts 添加配置：</h6>
@@ -550,13 +599,15 @@ mounted            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>import VueSetupExtend from 'vite-plugin-vue-setup-extend'
+            <code class="language-javascript" v-prism>
+                import VueSetupExtend from 'vite-plugin-vue-setup-extend'
 
-export default defineConfig({
-    plugins: [
-        VueSetupExtend()
-    ],
-})            </code>
+                export default defineConfig({
+                    plugins: [
+                        VueSetupExtend()
+                    ],
+                })
+            </code>
         </pre>
         <p>※ 注意，是添加不是覆蓋，不要覆蓋掉原有文件裡的其他設定。</p>
         <p><br></p>
@@ -569,9 +620,11 @@ export default defineConfig({
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;script lang="ts" setup name="User"&gt;
-    ...
-&lt;/script&gt;            </code>
+            <code class="language-html" v-prism>
+                &lt;script lang="ts" setup name="User"&gt;
+                    ...
+                &lt;/script&gt;
+            </code>
         </pre>
     </div>
     <div class="text-block" :id="'act' + catalog[4].id">
@@ -587,9 +640,11 @@ export default defineConfig({
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;script lang="ts" setup&gt;
-    import { ref } from "vue";
-&lt;/script&gt;            </code>
+            <code class="language-html" v-prism>
+                &lt;script lang="ts" setup&gt;
+                    import { ref } from "vue";
+                &lt;/script&gt;
+            </code>
         </pre>
         <p>因為先前的範例中，我們只有要改變人員的年齡，名字沒有要作更動，所以要將 <em>age</em> 變數成為響應式，那麼就修改為：</p>
         <pre
@@ -600,12 +655,14 @@ export default defineConfig({
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;script lang="ts" setup&gt;
-    import { ref } from "vue";
+            <code class="language-html" v-prism>
+                &lt;script lang="ts" setup&gt;
+                    import { ref } from "vue";
 
-    let name = "阿比";
-    let age = ref(18);
-&lt;/script&gt;            </code>
+                    let name = "阿比";
+                    let age = ref(18);
+                &lt;/script&gt;
+            </code>
         </pre>
         <p>如果想辨別 <em>age</em> 是否真的變成了響應式資料，最直接的方法就是透過 Console 來打印它：</p>
         <pre
@@ -616,16 +673,17 @@ export default defineConfig({
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>console.log(name);    // 阿比
-console.log(age);    // RefImpl {__v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: 18, _value: 18}
-                        </code>
+            <code class="language-javascript" v-prism>
+                console.log(name);    // 阿比
+                console.log(age);    // RefImpl {__v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: 18, _value: 18}
+            </code>
         </pre>
         <p>會發現 <em>name</em> 單純只是輸出指定給它的值，也就是「阿比」，但添加 <em>ref</em> 的 <em>age</em> 則打印出一個帶有許多屬性的 RefImpl 物件。</p>
         <p>展開其物件詳細內容，會看見許多有意思的東西：</p>
         <figure>
             <img src="/images/learn/js/vue3-learn-1-5.jpg">
         </figure>
-        <p>帶有下底線的屬性名稱和我們開發者沒有什麼關係，主要是底下有一個 <em>value</em> 屬性，既然經過 <em>ref</em> 定義的響應式資料成為了物件，那麼我們在模板調用它時，正確是否應該要是 <em v-pre>{{ age.value }}</em> 才對？經過實際測試會發現資料並沒有如預期渲染出來，這是因為 <em>ref</em> 會自動將我們原本 <em v-pre>{{ age }}</em> 帶入 <em>.value</em>，因此我們不需要再多此一舉在模板添加它</p>
+        <p>帶有下底線的屬性名稱和我們開發者沒有什麼關係，主要是底下有一個 <em>value</em> 屬性，既然經過 <em>ref</em> 定義的響應式資料成為了物件，那麼我們在模板調用它時，正確是否應該要是 <em >&#123;&#123; age.value &#125;&#125;</em> 才對？經過實際測試會發現資料並沒有如預期渲染出來，這是因為 <em>ref</em> 會自動將我們原本 <em >&#123;&#123; age &#125;&#125;</em> 帶入 <em>.value</em>，因此我們不需要再多此一舉在模板添加它</p>
         <p>──然而只僅限於模板，我們如果在 <em>setup</em> 裡面修改 <em>ref</em> 資料的值，就還是必須加上 <em>.value</em>。這個觀念非常重要，如果說 <em>this</em> 是 Vue 2 的常客，那麼 <em>.value</em> 就是 Vue 3 修改資料屬性的核心。</p>
         <p>所以當我們試圖利用 <em>addAge</em> 方法來改變模板上的 <em>age</em> 值，原本的程式碼要改成：</p>
         <pre
@@ -636,9 +694,11 @@ console.log(age);    // RefImpl {__v_isShallow: false, dep: undefined, __v_isRe
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>function addAge (){
-    age.value += 1;
-}            </code>
+            <code class="language-javascript" v-prism>
+                function addAge (){
+                    age.value += 1;
+                }
+            </code>
         </pre>
         <p>如此一來，我們於 HTML 點擊 <em>button</em> 按鈕觸發 <em>addAge</em> 方法時，<em>age</em> 就會從 18 變成 19 了，再點一次按鈕更新成 20，依此類推。</p>
         <p>比較一下前後差異，在還沒有導入 <em>ref</em> 之前的程式碼，這時點擊按鈕並無法更新畫面裡年齡的數字：</p>
@@ -650,20 +710,22 @@ console.log(age);    // RefImpl {__v_isShallow: false, dep: undefined, __v_isRe
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;h1&gt;姓名：{{ name }}&lt;/h1&gt;
-    &lt;h2&gt;年齡：{{ age }}&lt;/h2&gt;
-    &lt;button @click = "addAge();"&gt;Add&lt;/button&gt;
-&lt;/template&gt;
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;h1&gt;姓名：&#123;&#123; name &#125;&#125;&lt;/h1&gt;
+                    &lt;h2&gt;年齡：&#123;&#123; age &#125;&#125;&lt;/h2&gt;
+                    &lt;button @click = "addAge();"&gt;Add&lt;/button&gt;
+                &lt;/template&gt;
 
-&lt;script lang="ts" setup&gt;
-    let name = "阿比";
-    let age = 18;
+                &lt;script lang="ts" setup&gt;
+                    let name = "阿比";
+                    let age = 18;
 
-    function addAge (){
-        age += 1;
-    }
-&lt;/script&gt;            </code>
+                    function addAge (){
+                        age += 1;
+                    }
+                &lt;/script&gt;
+            </code>
         </pre>
         <p>使用 <em>ref</em> 讓指定資料成為響應式資料：</p>
         <pre
@@ -674,22 +736,24 @@ console.log(age);    // RefImpl {__v_isShallow: false, dep: undefined, __v_isRe
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;h1&gt;姓名：{{ name }}&lt;/h1&gt;
-    &lt;h2&gt;年齡：{{ age }}&lt;/h2&gt;
-    &lt;button @click = "addAge();"&gt;Add&lt;/button&gt;
-&lt;/template&gt;
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;h1&gt;姓名：&#123;&#123; name &#125;&#125;&lt;/h1&gt;
+                    &lt;h2&gt;年齡：&#123;&#123; age &#125;&#125;&lt;/h2&gt;
+                    &lt;button @click = "addAge();"&gt;Add&lt;/button&gt;
+                &lt;/template&gt;
 
-&lt;script lang="ts" setup&gt;
-    import { ref } from "vue";
+                &lt;script lang="ts" setup&gt;
+                    import { ref } from "vue";
 
-    let name = "阿比";
-    let age = ref(18);
+                    let name = "阿比";
+                    let age = ref(18);
 
-    function addAge (){
-        age.value += 1;
-    }
-&lt;/script&gt;            </code>
+                    function addAge (){
+                        age.value += 1;
+                    }
+                &lt;/script&gt;
+            </code>
         </pre>
         <p><br></p>
         <p>篇幅過長的緣故，另一種響應式資料定義方法 <em>reactive</em> 於下一篇文章再來筆記，但其實有關 <em>ref</em> 也只是先講完最基本的基本型別響應而已，還有一些更進階的概念，一併留到下篇繼續作探討。</p>

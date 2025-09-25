@@ -43,9 +43,11 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>var app = new Vue({
-  ...
-});            </code>
+            <code class="language-javascript" v-prism>
+                var app = new Vue({
+                    ...
+                });
+            </code>
         </pre>
         <p>儘管根據版本不同，上面宣告的建構方式也會不太一樣，但基本上只要建立這樣的一個程式碼結構，就代表創建了一個 Vue 的實例。一個 Vue 實例通常包含了 Vue 組件的數據、方法、計算屬性、生命週期鉤子......等等，其中，生命週期鉤子（Lifecycle Hooks）為 Vue 實例帶來各種不同階段或情境所應該執行的函式，像是創建、初始化、編譯、更新、銷毀等等，這些鉤子便形成它所屬 Vue 實例的生命週期。</p>
         <p>Vue 從西元 2015 年發展至今也已推出第三代版本，生命週期隨著版本更新亦推陳出新，本篇文章筆記之重點將著墨於學習 Vue 的生命週期內容，以及比較各版本之間的差異。</p>
@@ -71,12 +73,14 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>new Vue({
-    el: "#app",
-    data: {
-        message: "Hello, Vue!"
-    }
-})            </code>
+            <code class="language-javascript" v-prism>
+                new Vue({
+                    el: "#app",
+                    data: {
+                        message: "Hello, Vue!"
+                    }
+                })
+            </code>
         </pre>
         <p>範例中我們將 Vue 實例透過 <em>el</em> 屬性指定給 DOM 裡面帶有 <em>app</em> ID 名稱的元素，因此 Vue 實例將會渲染（掛載）到該元素裡面，<em>el</em> 指定的對象不侷限於 ID，它可以是任一選擇器的字符串，或實際存在的 DOM 元素。</p>
         <p>至於 <em>$el</em> 也是 Vue 實例裡的屬性之一，它代表的是 Vue 實例所渲染 DOM 元素的引用，例如：</p>
@@ -88,15 +92,16 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>var vm = new Vue({
-    el: "#app",
-    data: {
-        message: "Hello, Vue!"
-    }
-})
+            <code class="language-javascript" v-prism>
+                var vm = new Vue({
+                    el: "#app",
+                    data: {
+                        message: "Hello, Vue!"
+                    }
+                })
 
-// 訪問渲染的 DOM 元素
-var element = vm.$el;
+                // 訪問渲染的 DOM 元素
+                var element = vm.$el;
             </code>
         </pre>
         <p><em>vm.$el</em> 將會引用 <em>#app</em> 所在的 DOM 元素，簡單來說就是方便我們在進行 DOM 互動事件時可以更方便、簡潔地去引用 Vue 實例。</p>
@@ -157,12 +162,14 @@ var element = vm.$el;
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>var vm = new Vue({
-    el: "#app",
-    data: {
-        message: "Hello, Vue!"
-    }
-});            </code>
+            <code class="language-javascript" v-prism>
+                var vm = new Vue({
+                    el: "#app",
+                    data: {
+                        message: "Hello, Vue!"
+                    }
+                });
+            </code>
         </pre>
         <p>其中 <em>vm</em> 表示我們所建立 Vue 實例的代稱，<em>el</em> 則指定了未來 DOM 渲染時，要將實例掛載到哪一個元素或指定選擇器裡。</p>
         <p><br></p>
@@ -195,11 +202,13 @@ var element = vm.$el;
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>mounted: function () {
-    this.$nextTick(function () {
-        // 在 DOM 完全渲染後才會執行的程式碼
-    })
-}            </code>
+            <code class="language-javascript" v-prism>
+                mounted: function () {
+                    this.$nextTick(function () {
+                        // 在 DOM 完全渲染後才會執行的程式碼
+                    })
+                }
+            </code>
         </pre>
         <p><br></p>
         <figure>
@@ -226,11 +235,13 @@ var element = vm.$el;
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>updated: function () {
-    this.$nextTick(function () {
-        // 在 DOM 完全渲染後才會執行的程式碼
-    })
-}            </code>
+            <code class="language-javascript" v-prism>
+                updated: function () {
+                    this.$nextTick(function () {
+                        // 在 DOM 完全渲染後才會執行的程式碼
+                    })
+                }
+            </code>
         </pre>
         <p><br></p>
         <figure>
@@ -336,9 +347,11 @@ var element = vm.$el;
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;div id="app"&gt;
-    {{ message }}
-&lt;/div&gt;            </code>
+            <code class="language-html" v-prism>
+                &lt;div id="app"&gt;
+                    &#123;&#123; message &#125;&#125;
+                &lt;/div&gt;
+            </code>
         </pre>
         <p>然後是實例的部份，基礎為下：</p>
         <pre
@@ -349,12 +362,14 @@ var element = vm.$el;
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>var vm = new Vue({
-    el: "#app",
-    data: {
-        message: "Hello! Vue"
-    }
-});            </code>
+            <code class="language-javascript" v-prism>
+                var vm = new Vue({
+                    el: "#app",
+                    data: {
+                        message: "Hello! Vue"
+                    }
+                });
+            </code>
         </pre>
         <p>由於 Vue 會在內部自動處理整個生命週期過程，所以即便我們這時還沒有添加任何生命週期鉤子，Vue 也已自行編譯完成並將 <em>vm.$el</em> 渲染到 DOM 指定的 <em>el</em>（<em>#app</em>），因此光是這樣簡單一個範例，我們就已經能在畫面上看到 Hello! Vue 的字樣。</p>
         <p><br></p>
@@ -368,16 +383,18 @@ var element = vm.$el;
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>var vm = new Vue({
-    el: "#app",
-    data: {
-        message: "Hello! Vue"
-    },
-    beforeCreate() {
-        console.log(`this.message: ${this.message}`);
-        console.log(`this.$el: ${this.$el}`);
-    }
-});            </code>
+            <code class="language-javascript" v-prism>
+                var vm = new Vue({
+                    el: "#app",
+                    data: {
+                        message: "Hello! Vue"
+                    },
+                    beforeCreate() {
+                        console.log(`this.message: ${this.message}`);
+                        console.log(`this.$el: ${this.$el}`);
+                    }
+                });
+            </code>
         </pre>
         <p>所以這時若在 <em>beforeCreate()</em> 鉤子裡去 <em>console</em> data 數據和 <em>$el</em>，會雙雙得到 <em>undefined</em> 的結果，也就是還未定義的意思。</p>
         <p>Console 結果：</p>
@@ -389,8 +406,10 @@ var element = vm.$el;
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>// this.message: undefined
-// this.$el: undefined            </code>
+            <code class="language-javascript" v-prism>
+                // this.message: undefined
+                // this.$el: undefined
+            </code>
         </pre>
         <p><br></p>
         <h3>created：</h3>
@@ -403,16 +422,18 @@ var element = vm.$el;
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>var vm = new Vue({
-    el: "#app",
-    data: {
-        message: "Hello! Vue"
-    },
-    created() {
-        console.log(`this.message: ${this.message}`);
-        console.log(`this.$el: ${this.$el}`);
-    }
-});            </code>
+            <code class="language-javascript" v-prism>
+                var vm = new Vue({
+                    el: "#app",
+                    data: {
+                        message: "Hello! Vue"
+                    },
+                    created() {
+                        console.log(`this.message: ${this.message}`);
+                        console.log(`this.$el: ${this.$el}`);
+                    }
+                });
+            </code>
         </pre>
         <h3>created：</h3>
         <pre
@@ -423,8 +444,10 @@ var element = vm.$el;
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>// this.message: Hello! Vue
-// this.$el: undefined            </code>
+            <code class="language-javascript" v-prism>
+                // this.message: Hello! Vue
+                // this.$el: undefined
+            </code>
         </pre>
         <p><br></p>
         <h3>beforeMount：</h3>
@@ -437,17 +460,19 @@ var element = vm.$el;
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>var vm = new Vue({
-    el: "#app",
-    data: {
-        message: "Hello! Vue"
-    },
-    beforeMount() {
-        console.log(`this.message: ${this.message}`);
-        console.log(`this.$el: ${this.$el}`);
-        console.log(this.$el.outerHTML);
-    }
-});            </code>
+            <code class="language-javascript" v-prism>
+                var vm = new Vue({
+                    el: "#app",
+                    data: {
+                        message: "Hello! Vue"
+                    },
+                    beforeMount() {
+                        console.log(`this.message: ${this.message}`);
+                        console.log(`this.$el: ${this.$el}`);
+                        console.log(this.$el.outerHTML);
+                    }
+                });
+            </code>
         </pre>
         <p>這裡多增加一行指令來印出 <em>$el</em> 的 DOM HTML 呈現的結構，Console 結果：</p>
         <pre
@@ -458,9 +483,11 @@ var element = vm.$el;
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>// this.message: Hello! Vue
-// this.$el: [object HTMLDivElement]
-// &lt;div id="app"&gt;{{ message }}&lt;/div&gt;            </code>
+            <code class="language-javascript" v-prism>
+                // this.message: Hello! Vue
+                // this.$el: [object HTMLDivElement]
+                // &lt;div id="app"&gt;&#123;&#123; message &#125;&#125;&lt;/div&gt;
+            </code>
         </pre>
         <p><br></p>
         <h3>mounted：</h3>
@@ -473,17 +500,19 @@ var element = vm.$el;
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>var vm = new Vue({
-    el: "#app",
-    data: {
-        message: "Hello! Vue"
-    },
-    mounted() {
-        console.log(`this.message: ${this.message}`);
-        console.log(`this.$el: ${this.$el}`);
-        console.log(this.$el.outerHTML);
-    }
-});            </code>
+            <code class="language-javascript" v-prism>
+                var vm = new Vue({
+                    el: "#app",
+                    data: {
+                        message: "Hello! Vue"
+                    },
+                    mounted() {
+                        console.log(`this.message: ${this.message}`);
+                        console.log(`this.$el: ${this.$el}`);
+                        console.log(this.$el.outerHTML);
+                    }
+                });
+            </code>
         </pre>
         <p>Console 結果：</p>
         <pre
@@ -494,9 +523,11 @@ var element = vm.$el;
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>// this.message: Hello! Vue
-// this.$el: [object HTMLDivElement]
-// &lt;div id="app"&gt;Hello! Vue&lt;/div&gt;            </code>
+            <code class="language-javascript" v-prism>
+                // this.message: Hello! Vue
+                // this.$el: [object HTMLDivElement]
+                // &lt;div id="app"&gt;Hello! Vue&lt;/div&gt;
+            </code>
         </pre>
         <p><br></p>
         <h3>beforeUpdate：</h3>
@@ -509,10 +540,12 @@ var element = vm.$el;
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;div id="app"&gt;
-    {{ message }}
-    &lt;button @click="message='New world!'"&gt;更新&lt;/button&gt;
-&lt;/div&gt;            </code>
+            <code class="language-html" v-prism>
+                &lt;div id="app"&gt;
+                    &#123;&#123; message &#125;&#125;
+                    &lt;button @click="message='New world!'"&gt;更新&lt;/button&gt;
+                &lt;/div&gt;
+            </code>
         </pre>
         <p>Vue 實例的內容：</p>
         <pre
@@ -523,17 +556,19 @@ var element = vm.$el;
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>var vm = new Vue({
-    el: "#app",
-    data: {
-        message: "Hello! Vue"
-    },
-    beforeUpdate() {
-        console.log(`this.message: ${this.message}`);
-        console.log(`this.$el: ${this.$el}`);
-        console.log(this.$el.outerHTML);
-    }
-});            </code>
+            <code class="language-javascript" v-prism>
+                var vm = new Vue({
+                    el: "#app",
+                    data: {
+                        message: "Hello! Vue"
+                    },
+                    beforeUpdate() {
+                        console.log(`this.message: ${this.message}`);
+                        console.log(`this.$el: ${this.$el}`);
+                        console.log(this.$el.outerHTML);
+                    }
+                });
+            </code>
         </pre>
         <p>Console 結果：</p>
         <pre
@@ -544,9 +579,11 @@ var element = vm.$el;
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>// this.message: New world!
-// this.$el: [object HTMLDivElement]
-// &lt;div id="app"&gt;Hello! Vue&lt;button&gt;更新&lt;/button&gt;&lt;/div&gt;            </code>
+            <code class="language-javascript" v-prism>
+                // this.message: New world!
+                // this.$el: [object HTMLDivElement]
+                // &lt;div id="app"&gt;Hello! Vue&lt;button&gt;更新&lt;/button&gt;&lt;/div&gt;
+            </code>
         </pre>
         <p>因為鉤子名稱中帶有「before」，所以是在 <em>updated</em> 更新 DOM 階段之前被觸發，因此會看到 <em>message</em> 的值是被更新了，但還沒同步到 DOM 的畫面上。</p>
         <p><br></p>
@@ -560,17 +597,19 @@ var element = vm.$el;
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>var vm = new Vue({
-    el: "#app",
-    data: {
-        message: "Hello! Vue"
-    },
-    updated() {
-        console.log(`this.message: ${this.message}`);
-        console.log(`this.$el: ${this.$el}`);
-        console.log(this.$el.outerHTML);
-    }
-});            </code>
+            <code class="language-javascript" v-prism>
+                var vm = new Vue({
+                    el: "#app",
+                    data: {
+                        message: "Hello! Vue"
+                    },
+                    updated() {
+                        console.log(`this.message: ${this.message}`);
+                        console.log(`this.$el: ${this.$el}`);
+                        console.log(this.$el.outerHTML);
+                    }
+                });
+            </code>
         </pre>
         <p>Console 結果：</p>
         <pre
@@ -581,9 +620,11 @@ var element = vm.$el;
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>// this.message: New world!
-// this.$el: [object HTMLDivElement]
-// &lt;div id="app"&gt;New world!&lt;button&gt;更新&lt;/button&gt;&lt;/div&gt;            </code>
+            <code class="language-javascript" v-prism>
+                // this.message: New world!
+                // this.$el: [object HTMLDivElement]
+                // &lt;div id="app"&gt;New world!&lt;button&gt;更新&lt;/button&gt;&lt;/div&gt;
+            </code>
         </pre>
         <p>DOM 畫面上的 <em>message</em> 已經從原本的 Hello! Vue 更新成 New world! 值了。</p>
         <p><br></p>
@@ -597,10 +638,12 @@ var element = vm.$el;
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;div id="app"&gt;
-    {{ message }}
-    &lt;button @click="$destroy()'"&gt;銷毀&lt;/button&gt;
-&lt;/div&gt;            </code>
+            <code class="language-html" v-prism>
+                &lt;div id="app"&gt;
+                &#123;&#123; message &#125;&#125;
+                &lt;button @click="$destroy()'"&gt;銷毀&lt;/button&gt;
+                &lt;/div&gt;
+            </code>
         </pre>
         <p>我們在實例渲染的 DOM 元素裡面增加一顆用來執行實例銷毀事件的點擊按鈕，然後在最後 <em>destroyed</em> 鉤子去 Console 觀察銷毀後的實例和 DOM 會回傳什麼結果：</p>
         <pre
@@ -611,17 +654,19 @@ var element = vm.$el;
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>var vm = new Vue({
-    el: "#app",
-    data: {
-        message: "Hello! Vue"
-    },
-    destroyed() {
-        console.log(`this.message: ${this.message}`);
-        console.log(`this.$el: ${this.$el}`);
-        console.log(this.$el.outerHTML);
-    }
-});            </code>
+            <code class="language-javascript" v-prism>
+                var vm = new Vue({
+                    el: "#app",
+                    data: {
+                        message: "Hello! Vue"
+                    },
+                    destroyed() {
+                        console.log(`this.message: ${this.message}`);
+                        console.log(`this.$el: ${this.$el}`);
+                        console.log(this.$el.outerHTML);
+                    }
+                });
+            </code>
         </pre>
         <p>Console 結果：</p>
         <pre
@@ -632,9 +677,11 @@ var element = vm.$el;
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>// this.message: New world!
-// this.$el: [object HTMLDivElement]
-// &lt;div id="app"&gt;New world!&lt;button&gt;銷毀&lt;/button&gt;&lt;/div&gt;            </code>
+            <code class="language-javascript" v-prism>
+                // this.message: New world!
+                // this.$el: [object HTMLDivElement]
+                // &lt;div id="app"&gt;New world!&lt;button&gt;銷毀&lt;/button&gt;&lt;/div&gt;
+            </code>
         </pre>
         <p>你會發現，Console 仍然回傳了實例渲染到 DOM 裡面的資料，其實所謂的銷毀，可說是停止該實例繼續運行，但不會直接將其從 DOM 中移除，已經渲染在 DOM 上的畫面依然存在，但操作它的實例已不會再繼續追蹤、管理它。因此，當我們於 <em>destroyed</em> 鉤子中 Console <em>this.$el</em> 時，得到的是最後的 DOM 元素內容，方便我們可以在後續藉由單純的 JavaScript 操作 DOM 去處理一些清理、善後工作。</p>
         <p>例如我們希望點擊「銷毀」按鈕時，一併將實例的內容從 DOM 畫面移除：</p>
@@ -646,11 +693,13 @@ var element = vm.$el;
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>var vm = new Vue({
-    destroyed() {
-        this.$el.parentNode.removeChild(this.$el);
-    }
-});            </code>
+            <code class="language-javascript" v-prism>
+                var vm = new Vue({
+                    destroyed() {
+                        this.$el.parentNode.removeChild(this.$el);
+                    }
+                });
+            </code>
         </pre>
         <p>如此一來 Vue 銷毀時也會將 DOM 結構裡面的 <em>&lt;div id="app"&gt;</em> 元素也一併移除掉。</p>
     </div>
@@ -669,10 +718,12 @@ var element = vm.$el;
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>var vm = new Vue({
-    el: "#app",
-    ...
-});            </code>
+            <code class="language-javascript" v-prism>
+                var vm = new Vue({
+                    el: "#app",
+                    ...
+                });
+            </code>
         </pre>
         <p><em>$el</em> 也是 Vue 實例的屬性之一，它通常用於實例內部訪問 DOM 元素時使用，例如：</p>
         <pre
@@ -683,15 +734,17 @@ var element = vm.$el;
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>var vm = new Vue({
-    el: "#app",
-    data: {
-        message: "Hello! Vue"
-    },
-    mounted() {
-        console.log(this.$el);    // 訪問渲染的 DOM 元素
-    }
-});            </code>
+            <code class="language-javascript" v-prism>
+                var vm = new Vue({
+                    el: "#app",
+                    data: {
+                        message: "Hello! Vue"
+                    },
+                    mounted() {
+                        console.log(this.$el);    // 訪問渲染的 DOM 元素
+                    }
+                });
+            </code>
         </pre>
         <p>至於 <em>vm.$el</em> 和 <em>$el</em> 雷同，實際上它們在訪問 DOM 元素沒有什麼不同，細小的差別在於前者 <em>vm</em> 指的是該實例的變數名稱，我們可以在非 Vue 實例格式的純 JavaScript 去引用它。譬如：</p>
         <pre
@@ -702,10 +755,12 @@ var element = vm.$el;
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>var button = document.getElementById("app");
-button.addEventListener("click", function () {
-    console.log(vm.$el);
-});            </code>
+            <code class="language-javascript" v-prism>
+                var button = document.getElementById("app");
+                button.addEventListener("click", function () {
+                    console.log(vm.$el);
+                });
+            </code>
         </pre>
         <p>後者則在 Vue 實例中使用。</p>
 

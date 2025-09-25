@@ -55,30 +55,32 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;div&gt;
-        &lt;p&gt;{{ message }}&lt;/p&gt;
-        &lt;button @click="increaseCount"&gt;增加計數&lt;/button&gt;
-    &lt;/div&gt;
-&lt;/template&gt;
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;div&gt;
+                        &lt;p&gt;&#123;&#123; message &#125;&#125;&lt;/p&gt;
+                        &lt;button @click="increaseCount"&gt;增加計數&lt;/button&gt;
+                    &lt;/div&gt;
+                &lt;/template&gt;
 
-&lt;script&gt;
-import { ref } from 'vue';
+                &lt;script&gt;
+                import { ref } from 'vue';
 
-export default {
-    data() {
-        return {
-            message: 'Hello, Vue 3!',
-            count: 0,
-        };
-    },
-    methods: {
-        increaseCount() {
-            this.count++;
-        },
-    },
-};
-&lt;/script&gt;            </code>
+                export default {
+                    data() {
+                        return {
+                            message: 'Hello, Vue 3!',
+                            count: 0,
+                        };
+                    },
+                    methods: {
+                        increaseCount() {
+                            this.count++;
+                        },
+                    },
+                };
+                &lt;/script&gt;
+            </code>
         </pre>
         <p>如果用 Vue3.0 推廣的方式，則會變成這樣：</p>
         <pre
@@ -89,37 +91,39 @@ export default {
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;div&gt;
-        &lt;p&gt;{{ message }}&lt;/p&gt;
-        &lt;button @click="increaseCount"&gt;增加計數&lt;/button&gt;
-    &lt;/div&gt;
-&lt;/template&gt;
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;div&gt;
+                        &lt;p&gt;&#123;&#123; message &#125;&#125;&lt;/p&gt;
+                        &lt;button @click="increaseCount"&gt;增加計數&lt;/button&gt;
+                    &lt;/div&gt;
+                &lt;/template&gt;
 
-&lt;script&gt;
-import { ref } from 'vue';
+                &lt;script&gt;
+                import { ref } from 'vue';
 
-export default {
-    setup() {
-        // 使用 ref 創建可響應的數據
-        const message = ref('Hello, Vue 3!');
-        const count = ref(0);
+                export default {
+                    setup() {
+                        // 使用 ref 創建可響應的數據
+                        const message = ref('Hello, Vue 3!');
+                        const count = ref(0);
 
-        // 定義一個方法
-        function increaseCount() {
-            // 這裡不能使用 this.count，因為 this 不指向組件實例
-            count.value++;
-        }
+                        // 定義一個方法
+                        function increaseCount() {
+                            // 這裡不能使用 this.count，因為 this 不指向組件實例
+                            count.value++;
+                        }
 
-        // 返回要在模板中使用的數據和方法
-        return {
-            message,
-            count,
-            increaseCount,
-        };
-    },
-};
-&lt;/script&gt;            </code>
+                        // 返回要在模板中使用的數據和方法
+                        return {
+                            message,
+                            count,
+                            increaseCount,
+                        };
+                    },
+                };
+                &lt;/script&gt;
+            </code>
         </pre>
         <p>簡單來說，<em>setup</em> 有以下這些要點：</p>
         <ol>
@@ -138,29 +142,31 @@ export default {
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>import { ref, onMounted, onUpdated } from 'vue';
+            <code class="language-javascript" v-prism>
+                import { ref, onMounted, onUpdated } from 'vue';
 
-export default {
-    setup() {
-        // 創建一個可響應的數據
-        const count = ref(0);
+                export default {
+                    setup() {
+                        // 創建一個可響應的數據
+                        const count = ref(0);
 
-        // 在組件被安裝後（相當於 Vue 2 中的 mounted 鉤子）
-        onMounted(() => {
-            console.log('組件被安裝');
-        });
+                        // 在組件被安裝後（相當於 Vue 2 中的 mounted 鉤子）
+                        onMounted(() => {
+                            console.log('組件被安裝');
+                        });
 
-        // 在組件被更新後（相當於 Vue 2 中的 updated 鉤子）
-        onUpdated(() => {
-            console.log('組件被更新');
-        });
+                        // 在組件被更新後（相當於 Vue 2 中的 updated 鉤子）
+                        onUpdated(() => {
+                            console.log('組件被更新');
+                        });
 
-        // 返回要在模板中使用的數據
-        return {
-            count,
-        };
-    },
-};            </code>
+                        // 返回要在模板中使用的數據
+                        return {
+                            count,
+                        };
+                    },
+                };
+            </code>
         </pre>
         <p>在這個範例中，我們使用 <em>onMounted</em> 和 <em>onUpdated</em> 函式來模擬 <em>mounted</em> 和 <em>updated</em> 鉤子的行為。這使得我們能夠在 <em>setup</em> 函式中執行相應的代碼，就像在 Vue2.0 中的生命週期鉤子中一樣。撇除函式寫法的部份，原先 Option API 所使用的生命週期鉤子函式，到 Vue3.0 所使用 Composition API 裡的名稱基本上皆是在前方加上了 on 之字首，以下為比較表：</p>
         <div class="text-flex">

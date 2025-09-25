@@ -1024,10 +1024,18 @@ const catalog = reactive<CatalogItem[]>([
         <p><br></p>
         <p>看完 JavaScript 七大型別的介紹，回到最一開始提到的「弱型別」話題，既然有弱，就代表電腦程式語言中也存在著「強型別」的程式語言。用最簡單直觀的方式來講，強型別語言對於型別檢查上非常嚴格，說一不二，例如 JAVA 就是強型別語言的代表。而弱型別在判定上較為寬鬆，甚至可以允許錯誤，像本系列的主角 JavaScript，以及 PHP 都是弱型別程式語言之一。</p>
         <p>弱型別容錯率高，具體來說是怎樣個容錯法？首先以 PHP 為例：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-php">$a = 100 + "300";
-echo $a;    // 400            </code>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-php" v-prism>
+                $a = 100 + "300";
+                echo $a;    // 400
+            </code>
         </pre>
         <p>如果我們預期 <em>a</em> 的值是數字相加的結果，但是在計算過程中，我們卻給了它 <em>"300"</em> 的字串，而非數字，這在強型別語言例如 JAVA，印出 <em>a</em> 的結果將會是錯誤代碼。然而在 PHP 身上，卻會得出 <em>400</em> 的相加答案，這就是弱型別程式語言會容忍一定的錯誤，自動自發地協助轉值型態，「正確」地計算出結果。</p>
         <p>假設同樣的狀況發生在 JavaScript 身上...</p>

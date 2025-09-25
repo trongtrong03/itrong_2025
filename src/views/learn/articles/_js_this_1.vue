@@ -43,14 +43,30 @@ const catalog = reactive<CatalogItem[]>([
         <p>JavaScript 開發者 Brendan Eich 在一開始設計這個程式語言的時候，只是想要一個簡單的程式操作可以處理瀏覽器與網頁之間互動的需求，對一個簡易的程式語言來說，並不太需要「繼承」機制。所謂的「繼承」，指的是程式語言中，允許一個類別（或物件）繼承另一個類別（或物件）的特性，包括屬性和方法。這種繼承機制使得開發者可以重用現有的程式碼，並建立層次結構，以更有效地組織和管理程式碼。</p>
         <p>不過由於當時的時空背景 1994 年正處於物件導向編程（object-oriented programming，OOP）最興盛的時期，而繼承則是物件導向編程中很重要的一項概念，作為所有數據類型都是「物件」（object）的 Javascript 而言，這一點與 JAVA 十分相似，但 JAVA 是典型的物件導向編程語言，其所有程式都是在建立在「類別」（class）與「物件」（object）概念之上，Javascript 也必須有一套機制將所有物件聯繫起來，所以，Brendan Eich 最終還是選擇在 Javascript 設計繼承的概念。</p>
         <p>Brendan Eich 在設計階段時候，考慮到 C++ 與 JAVA 都是使用 <em>new</em> 的命令來生成實例，舉例來說，這是 C++ 實例的創建方法：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-cpp">ClassName *object = new ClassName(param);            </code>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-php" v-prism>
+                ClassName *object = new ClassName(param);
+            </code>
         </pre>
         <p>JAVA 則是：</p>
-        <prism-highlight>
-            <div class="text-code" v-pre>
-                <pre><code class="language-java">Foo foo = new Foo();            </code>
+        <pre
+            class="line-numbers"
+            data-prismjs-copy="Copy"
+            data-prismjs-copy-success="Copied"
+            data-prismjs-copy-error="Error!"
+            data-prismjs-copy-timeout="2000"
+            data-toolbar-order="copy-to-clipboard" 
+        >
+            <code class="language-php" v-prism>
+                Foo foo = new Foo();
+            </code>
         </pre>
         <blockquote>
             <p>在 Java 中，實例（instance）通常指的是類別（class）的一個具體對象（object）。當你創建一個類別的物件時，你實際上創建了這個類別的一個實例。</p>

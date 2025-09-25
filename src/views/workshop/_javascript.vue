@@ -35,19 +35,33 @@ const toggle = (val: number) => {
                 <div class="accordin-content">
                     <p>這個問題通常發生在我們使用 <em>let</em>、<em>const</em> 宣告變數，但在該變數（例如 <em>dog</em>）宣告前我們就嘗試透過程式引用它，因而發生錯誤。</p>
                     <p>錯誤範例：</p>
-                    <prism-highlight>
-                        <div class="text-code" v-pre>
-                            <pre><code class="language-javascript">console.log(dog);
-let dog = "阿比";</code></pre>
-                        </div>
-                    </prism-highlight>
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-javascript" v-prism>
+                            console.log(dog);
+                            let dog = "阿比";
+                        </code>
+                    </pre>
                     <p>正確範例：</p>
-                    <prism-highlight>
-                        <div class="text-code" v-pre>
-                            <pre><code class="language-javascript">let dog = "阿比";
-console.log(dog);</code></pre>
-                        </div>
-                    </prism-highlight>
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-javascript" v-prism>
+                            let dog = "阿比";
+                            console.log(dog);
+                        </code>
+                    </pre>
                 </div>
                 <button class="accordin-close" @click="toggle(0)"></button>
             </div>
@@ -58,15 +72,22 @@ console.log(dog);</code></pre>
                 <div class="accordin-content">
                     <p>意思是變數 <em>dog</em> 已經在相同作用域內被宣告過了，而現在又重複宣告了它。這項錯誤主要發生在我們用 <em>let</em>、<em>const</em> 關鍵字於同一個作用域範圍內宣告重複名稱的變數而產生。</p>
                     <p>錯誤範例：</p>
-                    <prism-highlight>
-                        <div class="text-code" v-pre>
-                            <pre><code class="language-javascript">function Animal() {
-    let dog = "阿比";
-    // ...其他程式
-    let dog = "咪咪";    // &lt;-- 重複宣告相同的變數名而發生錯誤
-}</code></pre>
-                        </div>
-                    </prism-highlight>
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-javascript" v-prism>
+                            function Animal() {
+                                let dog = "阿比";
+                                // ...其他程式
+                                let dog = "咪咪";    // &lt;-- 重複宣告相同的變數名而發生錯誤
+                            }
+                        </code>
+                    </pre>
                 </div>
                 <button class="accordin-close" @click="toggle(0)"></button>
             </div>
@@ -77,17 +98,31 @@ console.log(dog);</code></pre>
                 <div class="accordin-content">
                     <p>這個錯誤警示是在說宣告關鍵字 <em>const</em> 在宣告時缺少初始化程序，通常是當我們使用的 <em>const</em> 只有宣告變數名稱，而沒有賦值給它的情況產生的錯誤，因為 <em>const</em> 宣告的同時就必須指定它的值。</p>
                     <p>錯誤範例：</p>
-                    <prism-highlight>
-                        <div class="text-code" v-pre>
-                            <pre><code class="language-javascript">const dog;</code></pre>
-                        </div>
-                    </prism-highlight>
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-javascript" v-prism>
+                            const dog;
+                        </code>
+                    </pre>
                     <p>正確範例：</p>
-                    <prism-highlight>
-                        <div class="text-code" v-pre>
-                            <pre><code class="language-javascript">const dog = "阿比";</code></pre>
-                        </div>
-                    </prism-highlight>
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-javascript" v-prism>
+                            const dog = "阿比";
+                        </code>
+                    </pre>
                 </div>
                 <button class="accordin-close" @click="toggle(0)"></button>
             </div>
@@ -98,12 +133,19 @@ console.log(dog);</code></pre>
                 <div class="accordin-content">
                     <p>意思是我們嘗試對一個透過 <em>const</em> 宣告的變數（<em>dog</em>）重新賦值給它，經由 <em>const</em> 宣告的變數又稱為常數，常數不能被重新賦值。</p>
                     <p>錯誤範例：</p>
-                    <prism-highlight>
-                        <div class="text-code" v-pre>
-                            <pre><code class="language-javascript">const dog = "阿比";
-dog = "咪咪";    // &lt;-- 發生錯誤</code></pre>
-                        </div>
-                    </prism-highlight>
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-javascript" v-prism>
+                            const dog = "阿比";
+                            dog = "咪咪";    // &lt;-- 發生錯誤
+                        </code>
+                    </pre>
                 </div>
                 <button class="accordin-close" @click="toggle(0)"></button>
             </div>
@@ -114,11 +156,18 @@ dog = "咪咪";    // &lt;-- 發生錯誤</code></pre>
                 <div class="accordin-content">
                     <p>此錯誤訊息是在告知我們在不允許的位置使用了 <em>var</em> 這個關鍵字。不只是 <em>var</em>，任何 JavaScript 存在的關鍵字（例如 <em>if</em>、<em>for</em>、<em>function</em>...）如果在不合乎規則的地方被使用，就會產生這個錯誤。</p>
                     <p>錯誤範例：</p>
-                    <prism-highlight>
-                        <div class="text-code" v-pre>
-                            <pre><code class="language-javascript">var var = "阿比";</code></pre>
-                        </div>
-                    </prism-highlight>
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-javascript" v-prism>
+                            var var = "阿比";
+                        </code>
+                    </pre>
                 </div>
                 <button class="accordin-close" @click="toggle(0)"></button>
             </div>
@@ -129,11 +178,18 @@ dog = "咪咪";    // &lt;-- 發生錯誤</code></pre>
                 <div class="accordin-content">
                     <p>此錯誤訊息通常發生在我們使用數字當作變數宣告命名的開頭。</p>
                     <p>錯誤範例：</p>
-                    <prism-highlight>
-                        <div class="text-code" v-pre>
-                            <pre><code class="language-javascript">var 9547 = "阿比";</code></pre>
-                        </div>
-                    </prism-highlight>
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-javascript" v-prism>
+                            var 9547 = "阿比";
+                        </code>
+                    </pre>
                 </div>
                 <button class="accordin-close" @click="toggle(0)"></button>
             </div>
@@ -144,15 +200,22 @@ dog = "咪咪";    // &lt;-- 發生錯誤</code></pre>
                 <div class="accordin-content">
                     <p>這類錯誤訊息通常都是在說宣告的變數名稱中，包含不允許的字符或特殊符號。</p>
                     <p>錯誤範例：</p>
-                    <prism-highlight>
-                        <div class="text-code" v-pre>
-                            <pre><code class="language-javascript">var &dog = "阿比";    // Uncaught SyntaxError: Unexpected token '&'
-var do@g = "阿比";    // Uncaught SyntaxError: Unexpected token 'do'
-var dog# = "阿比";    // Uncaught SyntaxError: Invalid or unexpected token
-var do.g = "阿比";    // Uncaught SyntaxError: Unexpected token 'do'
-var d+o+g = "阿比";    // Uncaught SyntaxError: Unexpected token '+'</code></pre>
-                        </div>
-                    </prism-highlight>
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-javascript" v-prism>
+                            var &dog = "阿比";    // Uncaught SyntaxError: Unexpected token '&'
+                            var do@g = "阿比";    // Uncaught SyntaxError: Unexpected token 'do'
+                            var dog# = "阿比";    // Uncaught SyntaxError: Invalid or unexpected token
+                            var do.g = "阿比";    // Uncaught SyntaxError: Unexpected token 'do'
+                            var d+o+g = "阿比";    // Uncaught SyntaxError: Unexpected token '+'
+                        </code>
+                    </pre>
                 </div>
                 <button class="accordin-close" @click="toggle(0)"></button>
             </div>
@@ -254,22 +317,29 @@ var d+o+g = "阿比";    // Uncaught SyntaxError: Unexpected token '+'</code></p
                     <p>動態計算可視畫面高度使其在行動裝置瀏覽器中滿版（扣除工具列）</p>
                 </div>
                 <div class="accordin-content">
-                    <prism-highlight>
-                        <div class="text-code" v-pre>
-                            <pre><code class="language-javascript">function setFullHeight() {
-    const fullHeightElements = document.querySelectorAll('.full-height');
-    const vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
-    fullHeightElements.forEach(el => {
-        el.style.height = `calc(var(--vh, 1vh) * 100)`;
-    });
-}
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-javascript" v-prism>
+                            function setFullHeight() {
+                                const fullHeightElements = document.querySelectorAll('.full-height');
+                                const vh = window.innerHeight * 0.01;
+                                document.documentElement.style.setProperty('--vh', `${vh}px`);
+                                fullHeightElements.forEach(el => {
+                                    el.style.height = `calc(var(--vh, 1vh) * 100)`;
+                                });
+                            }
 
-window.addEventListener('resize', setFullHeight);
-window.addEventListener('orientationchange', setFullHeight);
-setFullHeight();</code></pre>
-                        </div>
-                    </prism-highlight>
+                            window.addEventListener('resize', setFullHeight);
+                            window.addEventListener('orientationchange', setFullHeight);
+                            setFullHeight();
+                        </code>
+                    </pre>
                 </div>
                 <button class="accordin-close" @click="toggle(0)"></button>
             </div>
@@ -280,12 +350,19 @@ setFullHeight();</code></pre>
                 <div class="accordin-content">
                     <p><em>Math.max</em> 是 JavaScript 中的函數，用於傳回零個或多個數值中的最大值。當你傳遞兩個或更多數值給 <em>Math.max</em> 時，它會計算並傳回其中最大的那個數值。</p>
                     <p>例如：</p>
-                    <prism-highlight>
-                        <div class="text-code" v-pre>
-                            <pre><code class="language-javascript">var result = Math.max(0, 5000 - 9000);
-console.log(result);    // 0</code></pre>
-                        </div>
-                    </prism-highlight>
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-javascript" v-prism>
+                            var result = Math.max(0, 5000 - 9000);
+                            console.log(result);    // 0
+                        </code>
+                    </pre>
                     <ul>
                         <li>5000 - 9000 首先被计算，结果是 -4000</li>
                         <li>Math.max(0, -4000) 接着被计算。由于 0 大于 -4000，所以 Math.max 返回 0</li>
@@ -293,24 +370,45 @@ console.log(result);    // 0</code></pre>
                     </ul>
                     <p>除此之外，還有以下幾種應用方式：</p>
                     <h4>1. 單一參數：</h4>
-                    <prism-highlight>
-                        <div class="text-code" v-pre>
-                            <pre><code class="language-javascript">console.log(Math.max(5));    // 5</code></pre>
-                        </div>
-                    </prism-highlight>
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-javascript" v-prism>
+                            console.log(Math.max(5));    // 5
+                        </code>
+                    </pre>
                     <h4>2. 多個參數：</h4>
-                    <prism-highlight>
-                        <div class="text-code" v-pre>
-                            <pre><code class="language-javascript">console.log(Math.max(1, 10, 100, 1000));    // 1000</code></pre>
-                        </div>
-                    </prism-highlight>
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-javascript" v-prism>
+                            console.log(Math.max(1, 10, 100, 1000));    // 1000
+                        </code>
+                    </pre>
                     <h4>3. 使用擴充運算子傳遞數組：</h4>
-                    <prism-highlight>
-                        <div class="text-code" v-pre>
-                            <pre><code class="language-javascript">const numbers = [1, 2, 3, 4, 5];
-console.log(Math.max(...numbers));    // 5</code></pre>
-                        </div>
-                    </prism-highlight>
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-javascript" v-prism>
+                            const numbers = [1, 2, 3, 4, 5];
+                            console.log(Math.max(...numbers));    // 5
+                        </code>
+                    </pre>
                 </div>
                 <button class="accordin-close" @click="toggle(0)"></button>
             </div>
@@ -323,45 +421,66 @@ console.log(Math.max(...numbers));    // 5</code></pre>
                     <h4>setTimeout：</h4>
                     <p>用於設置一個定時器，當定時器到達指定時間後，執行一次指定的回調函數。</p>
                     <p>例如：</p>
-                    <prism-highlight>
-                        <div class="text-code" v-pre>
-                            <pre><code class="language-javascript">setTimeout(() => {
-    console.log('Hello World!');
-}, 2000);</code></pre>
-                        </div>
-                    </prism-highlight>
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-javascript" v-prism>
+                            setTimeout(() => {
+                                console.log('Hello World!');
+                            }, 2000);
+                        </code>
+                    </pre>
                     <p>上面這個程式片段執行後會在兩秒後打印出「Hello World!」的 Console 訊息。</p>
                     <p><br></p>
                     <h4>setInterval：</h4>
                     <p>用於設置一個定時器，當定時器到達指定時間後，會反覆執行指定的回調函數，直到清除這個定時器或關閉頁面為止。</p>
                     <p>例如：</p>
-                    <prism-highlight>
-                        <div class="text-code" v-pre>
-                            <pre><code class="language-javascript">setInterval(() => {
-    console.log('Hello World!');
-}, 1000);</code></pre>
-                        </div>
-                    </prism-highlight>
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-javascript" v-prism>
+                            setInterval(() => {
+                                console.log('Hello World!');
+                            }, 1000);
+                        </code>
+                    </pre>
                     <p>上面這個程式片段執行後會每秒打印一次「Hello World!」的 Console 訊息，並且會一直持續下去，直到我們手動清除這個定時器或關閉頁面。</p>
                     <br>
                     <p>如果要清除定時器的狀態，可以分別使用 <em>clearTimeout</em> 以及 <em>clearInterval</em>。舉個例子：</p>
-                    <prism-highlight>
-                        <div class="text-code" v-pre>
-                            <pre><code class="language-javascript">const timeoutId = setTimeout(() => {
-    console.log('這條消息本來會顯示出來，但它不會因為定時器被清除');
-}, 5000);
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-javascript" v-prism>
+                            const timeoutId = setTimeout(() => {
+                                console.log('這條消息本來會顯示出來，但它不會因為定時器被清除');
+                            }, 5000);
 
-clearTimeout(timeoutId); // 這會取消上面的 setTimeout
+                            clearTimeout(timeoutId); // 這會取消上面的 setTimeout
 
-const intervalId = setInterval(() => {
-    console.log('這個消息每秒鐘會打印一次，但只會打印三次');
-}, 1000);
+                            const intervalId = setInterval(() => {
+                                console.log('這個消息每秒鐘會打印一次，但只會打印三次');
+                            }, 1000);
 
-setTimeout(() => {
-    clearInterval(intervalId); // 三秒後清除這個定時器
-}, 3000);</code></pre>
-                        </div>
-                    </prism-highlight>
+                            setTimeout(() => {
+                                clearInterval(intervalId); // 三秒後清除這個定時器
+                            }, 3000);
+                        </code>
+                    </pre>
                 </div>
                 <button class="accordin-close" @click="toggle(0)"></button>
             </div>

@@ -45,15 +45,17 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;header&gt;
-        &lt;nav&gt;
-            &lt;RouterLink to="/home"&gt;Home&lt;/RouterLink&gt;
-            &lt;RouterLink to="/about"&gt;About&lt;/RouterLink&gt;
-            &lt;RouterLink to="/news"&gt;News&lt;/RouterLink&gt;
-        &lt;/nav&gt;
-    &lt;/header&gt;
-&lt;/template&gt;            </code>
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;header&gt;
+                        &lt;nav&gt;
+                            &lt;RouterLink to="/home"&gt;Home&lt;/RouterLink&gt;
+                            &lt;RouterLink to="/about"&gt;About&lt;/RouterLink&gt;
+                            &lt;RouterLink to="/news"&gt;News&lt;/RouterLink&gt;
+                        &lt;/nav&gt;
+                    &lt;/header&gt;
+                &lt;/template&gt;
+            </code>
         </pre>
         <p>經過 DOM 渲染，<em>&lt;RouterLink&gt;</em> 會轉化為 <em>&lt;a&gt;</em> 標籤：</p>
         <pre
@@ -64,15 +66,17 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;header&gt;
-        &lt;nav&gt;
-            &lt;a href="/home"&gt;Home&lt;/a&gt;
-            &lt;a href="/about"&gt;About&lt;/a&gt;
-            &lt;a href="/news"&gt;News&lt;/a&gt;
-        &lt;/nav&gt;
-    &lt;/header&gt;
-&lt;/template&gt;            </code>
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;header&gt;
+                        &lt;nav&gt;
+                            &lt;a href="/home"&gt;Home&lt;/a&gt;
+                            &lt;a href="/about"&gt;About&lt;/a&gt;
+                            &lt;a href="/news"&gt;News&lt;/a&gt;
+                        &lt;/nav&gt;
+                    &lt;/header&gt;
+                &lt;/template&gt;
+            </code>
         </pre>
         <p>無論我們在哪裡、用什麼方式，反正只要切換路由標籤使用的是 <em>&lt;RouterLink&gt;</em>，它最終都會被編譯成 <em>&lt;a&gt;</em>。此時問題來了，即便在傳統 HTML 網頁開發，所有導向不同頁面的功能也並非完全通過 <em>&lt;a&gt;</em> 進行頁面跳轉，有時會使用 <em>&lt;button&gt;</em>，甚至是普通的 <em>&lt;div&gt;</em>，主要是用來搭載 JavaScript 所定義的導航事件，標籤本身是什麼元素類型並沒有那麼絕對......當然也是要看該元素本身的類型啦，但不會嚴格規定非要用 <em>&lt;a&gt;</em> 不可。</p>
         <p>舉個例子，如果我們希望使用者在點擊導航項目時，等待三秒鐘後才執行切換，程式邏輯會這樣定義：</p>
@@ -84,12 +88,14 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>import { onMounted } from 'vue';
-onMounted (()=>{
-    setTimeout(()=>{
-        // ...
-    }, 3000)
-});            </code>
+            <code class="language-javascript" v-prism>
+                import { onMounted } from 'vue';
+                onMounted (()=>{
+                    setTimeout(()=>{
+                        // ...
+                    }, 3000)
+                });
+            </code>
         </pre>
         <p>使用 <em>onMounted</em> 生命鉤子，表示組件渲染後執行其鉤子裡的程式邏輯。</p>
         <p>這時可能就會卡關了，<em>setTimeout</em> 函式裡面該怎麼寫？難道直接把 <em>&lt;RouterLink&gt;</em> 塞進去嗎？這顯然不是正確的方法，因為 <em>&lt;RouterLink&gt;</em> 標籤屬於HTML 結構，並不是 JavaScript 腳本。所以正確的方式是在函式裡面寫一段 JavaScript 邏輯，再讓「編程式」路由導航實現切換的功能。</p>
@@ -105,7 +111,9 @@ onMounted (()=>{
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>import { useRouter } from 'vue-router';            </code>
+            <code class="language-javascript" v-prism>
+                import { useRouter } from 'vue-router';
+            </code>
         </pre>
         <p>注意，這裡引用的物件是 <em>useRouter</em>，指的是路由器，和過去路由練習常引用的 <em>useRoute</em> 不同，差了一個字元就差了十萬八千里。</p>
         <p>所以連帶宣告調用的變數也取名為 <em>router</em>，整段程式碼的結構如下：</p>
@@ -117,16 +125,18 @@ onMounted (()=>{
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>import { onMounted } from 'vue';
-import { useRouter } from 'vue-router';
+            <code class="language-javascript" v-prism>
+                import { onMounted } from 'vue';
+                import { useRouter } from 'vue-router';
 
-let router = useRouter();
+                let router = useRouter();
 
-onMounted (()=>{
-    setTimeout(()=>{
-        router.push('/news');
-    }, 3000)
-});            </code>
+                onMounted (()=>{
+                    setTimeout(()=>{
+                        router.push('/news');
+                    }, 3000)
+                });
+            </code>
         </pre>
         <p>在組件渲染到畫面的三秒鐘後，路由器會將 <b>News.vue</b> 組件推到瀏覽器記憶體內存裡，換言之就是讓畫面顯示該組件的內容。</p>
         <p>所以雖然聲明式路由導航是 Vue.js 理想的路由導航模式，但實務應用上，編程式路由導航的運用頻率往往反而高於前者，前者通常只會用於簡單基本的路由導航，例如網頁 Header 項目的切換。而其他任何需要進行條件判斷的導航皆仰賴編程式路由導航實現。</p>
@@ -141,52 +151,54 @@ onMounted (()=>{
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;article&gt;
-        &lt;aside&gt;
-            &lt;ul&gt;
-                &lt;li v-for="item in newsList" :key="item.id"&gt;
-                    &lt;RouterLink :to="{
-                            name: 'view',
-                            params: {
-                                id: item.id,
-                                title: item.title,
-                                content: item.content
-                            }
-                        }"
-                    &gt;
-                        {{ item.title }}
-                    &lt;/RouterLink&gt;
-                &lt;/li&gt;
-            &lt;/ul&gt;
-        &lt;/aside&gt;
-        &lt;section&gt;
-            &lt;RouterView/&gt;
-        &lt;/section&gt;
-    &lt;/article&gt;
-&lt;/template&gt;
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;article&gt;
+                        &lt;aside&gt;
+                            &lt;ul&gt;
+                                &lt;li v-for="item in newsList" :key="item.id"&gt;
+                                    &lt;RouterLink :to="{
+                                            name: 'view',
+                                            params: {
+                                                id: item.id,
+                                                title: item.title,
+                                                content: item.content
+                                            }
+                                        }"
+                                    &gt;
+                                        &#123;&#123; item.title &#125;&#125;
+                                    &lt;/RouterLink&gt;
+                                &lt;/li&gt;
+                            &lt;/ul&gt;
+                        &lt;/aside&gt;
+                        &lt;section&gt;
+                            &lt;RouterView/&gt;
+                        &lt;/section&gt;
+                    &lt;/article&gt;
+                &lt;/template&gt;
 
-&lt;script setup lang="ts"&gt;
-    import { reactive } from 'vue';
-    import { RouterLink, RouterView } from 'vue-router';
+                &lt;script setup lang="ts"&gt;
+                    import { reactive } from 'vue';
+                    import { RouterLink, RouterView } from 'vue-router';
 
-    const newsList = reactive([
-        {
-            id: 1,
-            title: "新聞標題01",
-            content: "新聞內容01"
-        },
-        {
-            id: 2,
-            title: "新聞標題02",
-            content: "新聞內容02"
-        },
-        {
-            id: 3,
-            title: "新聞標題03",
-        }
-    ])
-&lt;/script&gt;            </code>
+                    const newsList = reactive([
+                        {
+                            id: 1,
+                            title: "新聞標題01",
+                            content: "新聞內容01"
+                        },
+                        {
+                            id: 2,
+                            title: "新聞標題02",
+                            content: "新聞內容02"
+                        },
+                        {
+                            id: 3,
+                            title: "新聞標題03",
+                        }
+                    ])
+                &lt;/script&gt;
+            </code>
         </pre>
         <p>接下來兩個文件和 News 有關，但本次修改不會動到它們的內容，為了方便結構裡的程式碼和操作邏輯對照，所以一併附帶：</p>
         <p><b>NewsView</b>：</p>
@@ -198,15 +210,17 @@ onMounted (()=>{
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;div&gt;新聞編號 {{ id }}&lt;/div&gt;
-    &lt;div&gt;新聞標題 {{ title }}&lt;/div&gt;
-    &lt;div&gt;新聞內容 {{ content }}&lt;/div&gt;
-&lt;/template&gt;
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;div&gt;新聞編號 &#123;&#123; id &#125;&#125;&lt;/div&gt;
+                    &lt;div&gt;新聞標題 &#123;&#123; title &#125;&#125;&lt;/div&gt;
+                    &lt;div&gt;新聞內容 &#123;&#123; content &#125;&#125;&lt;/div&gt;
+                &lt;/template&gt;
 
-&lt;script setup lang="ts"&gt;
-    defineProps(['id', 'title', 'content']);
-&lt;/script&gt;            </code>
+                &lt;script setup lang="ts"&gt;
+                    defineProps(['id', 'title', 'content']);
+                &lt;/script&gt;
+            </code>
         </pre>
         <p>路由設定文件 <b>router/index.ts</b>（只顯示與 News 有關的片段）：</p>
         <pre
@@ -217,30 +231,32 @@ onMounted (()=>{
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>import { createRouter, createWebHistory } from "vue-router";
-import News from "../pages/News.vue";
-import NewsView from "../pages/NewsView.vue";
+            <code class="language-javascript" v-prism>
+                import { createRouter, createWebHistory } from "vue-router";
+                import News from "../pages/News.vue";
+                import NewsView from "../pages/NewsView.vue";
 
-const router = createRouter({
-    history: createWebHistory(),
-    routes: [
-        {
-            name: "最新消息",
-            path: "/news",
-            component: News,
-            children:[
-                {
-                    name: "view",
-                    path: "newsView/:id/:title/:content?",
-                    component: NewsView,
-                    props: true
-                }
-            ]
-        }
-    ]
-});
+                const router = createRouter({
+                    history: createWebHistory(),
+                    routes: [
+                        {
+                            name: "最新消息",
+                            path: "/news",
+                            component: News,
+                            children:[
+                                {
+                                    name: "view",
+                                    path: "newsView/:id/:title/:content?",
+                                    component: NewsView,
+                                    props: true
+                                }
+                            ]
+                        }
+                    ]
+                });
 
-export default router;            </code>
+                export default router;
+            </code>
         </pre>
         <p>回到 <b>News.vue</b> 路由組件，第一件事情是添加 <em>button</em> 按鈕，並且假設該事件名稱為 <em>showNewsView</em>，當使用者 click 按鈕時觸發該事件內容：</p>
         <pre
@@ -251,20 +267,22 @@ export default router;            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;li v-for="item in newsList" :key="item.id"&gt;
-    &lt;RouterLink :to="{
-            name: 'view',
-            params: {
-                id: item.id,
-                title: item.title,
-                content: item.content
-            }
-        }"
-    &gt;
-        {{ item.title }}
-    &lt;/RouterLink&gt;
-    &lt;button @click="showNewsView()"&gt;查看&lt;/button&gt;
-&lt;/li&gt;            </code>
+            <code class="language-html" v-prism>
+                &lt;li v-for="item in newsList" :key="item.id"&gt;
+                    &lt;RouterLink :to="{
+                            name: 'view',
+                            params: {
+                                id: item.id,
+                                title: item.title,
+                                content: item.content
+                            }
+                        }"
+                    &gt;
+                        &#123;&#123; item.title &#125;&#125;
+                    &lt;/RouterLink&gt;
+                    &lt;button @click="showNewsView()"&gt;查看&lt;/button&gt;
+                &lt;/li&gt;
+            </code>
         </pre>
         <p>於下方 <em>&lt;script&gt;</em> 標籤中引用路由器並定義它：</p>
         <pre
@@ -275,8 +293,10 @@ export default router;            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>import { RouterLink, RouterView, useRouter } from 'vue-router';
-let router = useRouter();            </code>
+            <code class="language-javascript" v-prism>
+                import { RouterLink, RouterView, useRouter } from 'vue-router';
+                let router = useRouter();
+            </code>
         </pre>
         <p>然後撰寫 <em>showNewsView</em> 事件的邏輯：</p>
         <pre
@@ -287,16 +307,18 @@ let router = useRouter();            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>function showNewsView(item){
-    router.push({
-        name: 'view',
-        params: {
-            id: item.id,
-            title: item.title,
-            content: item.content
-        }
-    })
-}            </code>
+            <code class="language-javascript" v-prism>
+                function showNewsView(item){
+                    router.push({
+                        name: 'view',
+                        params: {
+                            id: item.id,
+                            title: item.title,
+                            content: item.content
+                        }
+                    })
+                }
+            </code>
         </pre>
         <p>部分人會疑問 <em>router.push</em> 應該要寫什麼，其實這裡的 <em>router.push</em> 功能就跟模板裡 <em>&lt;RouterLink :to&gt;</em> 思維是一樣的，對 RouterLink 來說，<em>to</em> 的用途是跳轉路由，而 router 路由器的 <em>push</em> 實質功能也是跳轉路由，所以 <em>to</em> 裡面怎麼寫，<em>push</em> 就同樣怎麼寫，可以是純字串，也可以是物件寫法。</p>
         <p>但是直接搬進來是會噴錯的，因為函式不知道 <em>params</em> 中的 <em>item</em> 是從哪裡來的，所以必須要給函式添加傳入參數，同時模板的 <em>button</em> 方法也要傳入 <em>item</em> 參數，這樣 <em>v-for</em> 定義的 <em>item</em> 才能順利傳進去。</p>
@@ -312,7 +334,9 @@ let router = useRouter();            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;button @click="showNewsView(item)"&gt;查看&lt;/button&gt;            </code>
+            <code class="language-html" v-prism>
+                &lt;button @click="showNewsView(item)"&gt;查看&lt;/button&gt;
+            </code>
         </pre>
         <p>這樣就完成了使用編程式路由來切換動態響應式資料的效果：</p>
         <figure>
@@ -337,11 +361,13 @@ let router = useRouter();            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>interface NewsInter {
-    id: number,
-    title: string,
-    content: string
-}            </code>
+            <code class="language-javascript" v-prism>
+                interface NewsInter {
+                    id: number,
+                    title: string,
+                    content: string
+                }
+            </code>
         </pre>
         <p>然後給 <em>showNewsView</em> 函式的 <em>item</em> 參數套上接口就行：</p>
         <pre
@@ -352,9 +378,11 @@ let router = useRouter();            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>function showNewsView(item:NewsInter){
-    // 略
-}            </code>
+            <code class="language-javascript" v-prism>
+                function showNewsView(item:NewsInter){
+                    // 略
+                }
+            </code>
         </pre>
         <p>如果 <em>item</em> 引用的屬性有錯，編輯器會立即警示：</p>
         <figure>
@@ -370,9 +398,11 @@ let router = useRouter();            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>function showNewsView(item:any){
-    // 略
-}            </code>
+            <code class="language-javascript" v-prism>
+                function showNewsView(item:any){
+                    // 略
+                }
+            </code>
         </pre>
         <p>只是如果引用屬性 key 錯的話，編輯器也不會檢查：</p>
         <figure>
@@ -390,16 +420,18 @@ let router = useRouter();            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>function showNewsView(item){
-    router.push({
-        name: 'view',
-        params: {
-            id: item.id,
-            title: item.title,
-            content: item.content
-        }
-    })
-}            </code>
+            <code class="language-javascript" v-prism>
+                function showNewsView(item){
+                    router.push({
+                        name: 'view',
+                        params: {
+                            id: item.id,
+                            title: item.title,
+                            content: item.content
+                        }
+                    })
+                }
+            </code>
         </pre>
         <p>我們也可以改用 <em>replace</em>：</p>
         <pre
@@ -410,16 +442,18 @@ let router = useRouter();            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>function showNewsView(item){
-    router.replace({
-        name: 'view',
-        params: {
-            id: item.id,
-            title: item.title,
-            content: item.content
-        }
-    })
-}            </code>
+            <code class="language-javascript" v-prism>
+                function showNewsView(item){
+                    router.replace({
+                        name: 'view',
+                        params: {
+                            id: item.id,
+                            title: item.title,
+                            content: item.content
+                        }
+                    })
+                }
+            </code>
         </pre>
         <p>兩者差別就和上一篇文章說明一樣，<em>push</em> 每一次資料都會產生歷史記錄，使用者可以透過上、下一頁往返這些歷史記錄的內容；但 <em>replace</em> 不會有歷史記錄，所有的參數傳遞資料都會覆蓋當前的組件畫面，使用者無法藉由按鈕快速閱讀之前的點擊記錄。</p>
         <p><br></p>

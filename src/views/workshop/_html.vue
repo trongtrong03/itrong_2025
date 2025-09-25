@@ -37,22 +37,36 @@ const toggle = (val: number) => {
                     <h4>5. 前端設置：</h4>
                     <p>在前端程式碼中，確保設置 cookie 時使用適當的 <em>SameSite</em> 屬性，例如 <em>SameSite=Lax</em> 或 <em>SameSite=Strict</em>。</p>
                     <p>假設你在前端設置 cookie，可以使用如下程式碼來設置 <em>SameSite</em> 屬性：：</p>
-                    <prism-highlight>
-                        <div class="text-code" v-pre>
-                            <pre><code class="language-javascript">document.cookie = "name=value; SameSite=Lax";</code></pre>
-                        </div>
-                    </prism-highlight>
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-javascript" v-prism>
+                            document.cookie = "name=value; SameSite=Lax";
+                        </code>
+                    </pre>
                     <p>或者，如果你使用的是某個第三方服務，請確保這些服務配置了適當的 <em>SameSite</em> 屬性：</p>
-                    <prism-highlight>
-                        <div class="text-code" v-pre>
-                            <pre><code class="language-python"># 假設你使用 Flask 框架在後端設置 cookie
-from flask import make_response
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-python" v-prism>
+                            # 假設你使用 Flask 框架在後端設置 cookie
+                            from flask import make_response
 
-response = make_response("Setting a cookie")
-response.set_cookie('name', 'value', samesite='Lax')
-return response</code></pre>
-                        </div>
-                    </prism-highlight>
+                            response = make_response("Setting a cookie")
+                            response.set_cookie('name', 'value', samesite='Lax')
+                            return response
+                        </code>
+                    </pre>
                 </div>
                 <button class="accordin-close" @click="toggle(0)"></button>
             </div>
@@ -71,11 +85,18 @@ return response</code></pre>
                     <p>設定 img 元素的預設圖</p>
                 </div>
                 <div class="accordin-content">
-                    <prism-highlight>
-                        <div class="text-code" v-pre>
-                            <pre><code class="language-html">&lt;img src="影像路徑" onerror="this.src='images/default.jpg'"&gt;</code></pre>
-                        </div>
-                    </prism-highlight>
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-html" v-prism>
+                            &lt;img src="影像路徑" onerror="this.src='images/default.jpg'"&gt;
+                        </code>
+                    </pre>
                 </div>
                 <button class="accordin-close" @click="toggle(0)"></button>
             </div>
@@ -84,16 +105,23 @@ return response</code></pre>
                     <p>設定 input 元素的預設選項</p>
                 </div>
                 <div class="accordin-content">
-                    <prism-highlight>
-                        <div class="text-code" v-pre>
-                            <pre><code class="language-html">&lt;input list="listName" /&gt;
-&lt;datalist id="listName"&gt;
-    &lt;option value="項目1"&gt;
-    &lt;option value="項目2"&gt;
-    &lt;option value="項目3"&gt;
-&lt;/datalist&gt;</code></pre>
-                        </div>
-                    </prism-highlight>
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-html" v-prism>
+                            &lt;input list="listName" /&gt;
+                            &lt;datalist id="listName"&gt;
+                                &lt;option value="項目1"&gt;
+                                &lt;option value="項目2"&gt;
+                                &lt;option value="項目3"&gt;
+                            &lt;/datalist&gt;
+                        </code>
+                    </pre>
                 </div>
                 <button class="accordin-close" @click="toggle(0)"></button>
             </div>
@@ -102,11 +130,18 @@ return response</code></pre>
                     <p>將連結文字轉為下載型態，並將檔名更改為自行命名的檔案名稱</p>
                 </div>
                 <div class="accordin-content">
-                    <prism-highlight>
-                        <div class="text-code" v-pre>
-                            <pre><code class="language-html">&lt;a href="/filePath" download="fileName"&gt;超連結訊息&lt;/a&gt;</code></pre>
-                        </div>
-                    </prism-highlight>
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-html" v-prism>
+                            &lt;a href="/filePath" download="fileName"&gt;超連結訊息&lt;/a&gt;
+                        </code>
+                    </pre>
                 </div>
                 <button class="accordin-close" @click="toggle(0)"></button>
             </div>
@@ -115,11 +150,18 @@ return response</code></pre>
                     <p>元素點擊開啟指定路徑連結的方法</p>
                 </div>
                 <div class="accordin-content">
-                    <prism-highlight>
-                        <div class="text-code" v-pre>
-                            <pre><code class="language-html">&lt;button onClick="window.location.href='https://www.google.com.tw/'"&gt;Click&lt;/button&gt;</code></pre>
-                        </div>
-                    </prism-highlight>
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-html" v-prism>
+                            &lt;button onClick="window.location.href='https://www.google.com.tw/'"&gt;Click&lt;/button&gt;
+                        </code>
+                    </pre>
                 </div>
                 <button class="accordin-close" @click="toggle(0)"></button>
             </div>

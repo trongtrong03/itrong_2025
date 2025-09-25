@@ -49,12 +49,14 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-bash" v-prism>index.html
-src
-├── components
-│    └── HelloWorld.vue
-├── App.vue
-└── main.js            </code>
+            <code class="language-bash" v-prism>
+                index.html
+                src
+                ├── components
+                │    └── HelloWorld.vue
+                ├── App.vue
+                └── main.js
+            </code>
         </pre>
         <p>我們各自打開檔案檢視一下程式碼內容是如何撰寫的──</p>
         <h5>index.html：</h5>
@@ -66,10 +68,12 @@ src
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;body&gt;
-    &lt;div id="app"&gt;&lt;/div&gt;
-    &lt;script type="module" src="/src/main.js"&gt;&lt;/script&gt;
-&lt;/body&gt;            </code>
+            <code class="language-html" v-prism>
+                &lt;body&gt;
+                    &lt;div id="app"&gt;&lt;/div&gt;
+                    &lt;script type="module" src="/src/main.js"&gt;&lt;/script&gt;
+                &lt;/body&gt;
+            </code>
         </pre>
         <p>會看到 <em>body</em> 裡面的程式碼只有簡短兩行，<em>#app</em> 元素是 Vue 組件 <b>App.vue</b> 掛載的對象。而 <em>script</em> 則是整個網頁應用的入口文件，其 <em>type="module"</em> 屬性是在告訴瀏覽器這支 JS 是一個 ECMAScript 模組化的檔案。</p>
         <p>通常我們如果決定要以 Vue 作為整個網頁應用的結構框架，那麼 <b>index.html</b> 就不太會去作更動，而是應該專注於 Vue 組件的開發與應用。Vite 生成的 <b>index.html</b> 主要用來提供 Vue 掛載的對象，並將入口文件注入到其內，因此，開發者頂多只會修改入口文件的名稱或檔案位置。</p>
@@ -83,16 +87,18 @@ src
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;script setup&gt;
-    import HelloWorld from './components/HelloWorld.vue'
-&lt;/script&gt;
+            <code class="language-html" v-prism>
+                &lt;script setup&gt;
+                    import HelloWorld from './components/HelloWorld.vue'
+                &lt;/script&gt;
 
-&lt;template&gt;
-    &lt;HelloWorld msg="Vite + Vue" /&gt;
-&lt;/template&gt;
+                &lt;template&gt;
+                    &lt;HelloWorld msg="Vite + Vue" /&gt;
+                &lt;/template&gt;
 
-&lt;style scoped&gt;
-&lt;/style&gt;            </code>
+                &lt;style scoped&gt;
+                &lt;/style&gt;
+            </code>
         </pre>
         <p>Vite 提供的範例程式碼中我只保留關鍵結構，其他不是很重要的內容都已先移除。你可以看到整個檔案內容主要分成三個部分，分別是 <em>script</em>、<em>template</em>、<em>style</em>，這種結構是 Vue 3 Composition API 的一種格式寫法，對比傳統 Vue 2 結構，Vue 3 使 Vue 結構更加簡潔且容易閱讀，而且每一支組件的 JavaScript 與 CSS 樣式只會在該組件作用域範圍內有作用，不會干擾到其他組件。</p>
         <p>此外，和過往 Vue2 <em>template</em> 的下一層至少還需要一個包裹多個平行階層的 <em>div</em> 作為網頁應用的「進入點」（entry point）不同，Vue 3 的 <em>template</em> 允許開發者直接將同階層的程式碼或組件放在 <em>template</em> 下一層。</p>
@@ -105,13 +111,15 @@ src
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;div&gt;
-        &lt;Header /&gt;
-        &lt;main&gt;&lt;/main&gt;
-        &lt;Footer /&gt;
-    &lt;/div&gt;
-&lt;/template&gt;            </code>
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;div&gt;
+                        &lt;Header /&gt;
+                        &lt;main&gt;&lt;/main&gt;
+                        &lt;Footer /&gt;
+                    &lt;/div&gt;
+                &lt;/template&gt;
+            </code>
         </pre>
         <p>轉換成 Vue 3：</p>
         <pre
@@ -122,11 +130,13 @@ src
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;Header /&gt;
-    &lt;main&gt;&lt;/main&gt;
-    &lt;Footer /&gt;
-&lt;/template&gt;            </code>
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;Header /&gt;
+                    &lt;main&gt;&lt;/main&gt;
+                    &lt;Footer /&gt;
+                &lt;/template&gt;
+            </code>
         </pre>
         <p><br></p>
         <p>如果我們要在某個組件裡引用其他的組件，必須要在 <em>script setup</em> 作一個註冊的動作，譬如 <b>App.vue</b> 範例程式碼中引用了另一個組件 <b>HelloWorld.vue</b>：</p>
@@ -138,9 +148,11 @@ src
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;script setup&gt;
-    import HelloWorld from './components/HelloWorld.vue'
-&lt;/script&gt;            </code>
+            <code class="language-html" v-prism>
+                &lt;script setup&gt;
+                    import HelloWorld from './components/HelloWorld.vue'
+                &lt;/script&gt;
+            </code>
         </pre>
         <p>通常 <b>components/</b> 用來存放 Vue 組件中比較常被其他組件使用的共用模板，也就是子組件。</p>
         <p>引用進來後，我們就可以對子組件進行所需的操作，在 Vite 初始範例裡 <b>HelloWorld.vue</b> 賦予了 <em>props</em> 聲明，用來接收外部傳入的 <em>props</em> 值：</p>
@@ -152,22 +164,24 @@ src
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;script setup&gt;
-    import { ref } from 'vue'
+            <code class="language-html" v-prism>
+                &lt;script setup&gt;
+                    import { ref } from 'vue'
 
-    defineProps({
-        msg: String,
-    })
+                    defineProps({
+                        msg: String,
+                    })
 
-    const count = ref(0)
-&lt;/script&gt;
+                    const count = ref(0)
+                &lt;/script&gt;
 
-&lt;template&gt;
-    &lt;h1&gt;{{ msg }}&lt;/h1&gt;
-&lt;/template&gt;            </code>
+                &lt;template&gt;
+                    &lt;h1&gt;&#123;&#123; msg &#125;&#125;&lt;/h1&gt;
+                &lt;/template&gt;
+            </code>
         </pre>
         <p>上方程式碼結構同樣已簡化只保留 <em>props</em> 賦值的相關內容，可以看到 Vue 3 的 <em>props</em> 定義方式和 Vue2 有所不同（但本質是一樣的），Vue 3 的 <em>props</em> 被當作普通的變數而不再是物件方法。</p>
-        <p>當 Vite 原始範例於 <b>App.vue</b> 引用此組件時，傳入了 <em>msg="Vite + Vue"</em> 值給 <b>HelloWorld.vue</b> <em v-pre>&lt;h1&gt;{{ msg }}&lt;/h1&gt;</em> 標籤去接收。如果我們在其他組件也引用了 <b>HelloWorld.vue</b>，我們可以賦予其他值給 <em>msg</em>，讓不同組件的 <em v-pre>&lt;h1&gt;{{ msg }}&lt;/h1&gt;</em> 都能呈現各自設定的內容，非常方便。</p>
+        <p>當 Vite 原始範例於 <b>App.vue</b> 引用此組件時，傳入了 <em>msg="Vite + Vue"</em> 值給 <b>HelloWorld.vue</b> <em >&lt;h1&gt;&#123;&#123; msg &#125;&#125;&lt;/h1&gt;</em> 標籤去接收。如果我們在其他組件也引用了 <b>HelloWorld.vue</b>，我們可以賦予其他值給 <em>msg</em>，讓不同組件的 <em >&lt;h1&gt;&#123;&#123; msg &#125;&#125;&lt;/h1&gt;</em> 都能呈現各自設定的內容，非常方便。</p>
         <p><br></p>
         <p>以下將 Vite 預設建立的結構整理成一張圖表，幫助我們能更直觀地瞭解各文件之間的關係導向：</p>
         <figure>
@@ -198,7 +212,9 @@ src
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-bash" v-prism>npm create vue@3            </code>
+            <code class="language-bash" v-prism>
+                npm create vue@3
+            </code>
         </pre>
         <p>接著會開始詢問一些選項，根據需求安裝即可：</p>
         <figure>
@@ -224,20 +240,22 @@ src
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-bash" v-prism>index.html
-src
-├── assets                      # 靜態資源
-│    ├── base.css
-│    ├── main.css
-│    └── ...
-├── components                  # 共用元件
-├── router                      # 路由設定
-│    └── index.js
-├── views                       # RouterView 的組件
-│    ├── HomeView.vue
-│    └── AboutView.vue
-├── App.vue
-└── main.js            </code>
+            <code class="language-bash" v-prism>
+                index.html
+                src
+                ├── assets                      # 靜態資源
+                │    ├── base.css
+                │    ├── main.css
+                │    └── ...
+                ├── components                  # 共用元件
+                ├── router                      # 路由設定
+                │    └── index.js
+                ├── views                       # RouterView 的組件
+                │    ├── HomeView.vue
+                │    └── AboutView.vue
+                ├── App.vue
+                └── main.js
+            </code>
         </pre>
         <p>當然我會建議存放靜態資源的 <b>assets/</b> 資料夾裡面在依據檔案類型另外建立分類資料夾，例如 <b>css/</b>、<b>images/</b> 等，不過這對整個網頁應用的影響不大，所以姑且先維持初始配置不動，本篇文章亦不會對此資料夾有太多著墨。</p>
         <p><b>index.html</b> 檔案內容沒有任何變動，維持單一 <em>#app</em> 元素提供給 Vue 掛載的對象，以及引用入口文件 <b>main.js</b>。</p>
@@ -250,19 +268,21 @@ src
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;script setup&gt;
-    import { RouterLink, RouterView } from 'vue-router'
-&lt;/script&gt;
+            <code class="language-html" v-prism>
+                &lt;script setup&gt;
+                    import { RouterLink, RouterView } from 'vue-router'
+                &lt;/script&gt;
 
-&lt;template&gt;
-    &lt;header&gt;
-        &lt;nav&gt;
-            &lt;RouterLink to="/"&gt;Home&lt;/RouterLink&gt;
-            &lt;RouterLink to="/about"&gt;About&lt;/RouterLink&gt;
-        &lt;/nav&gt;
-    &lt;/header&gt;
-    &lt;RouterView /&gt;
-&lt;/template&gt;            </code>
+                &lt;template&gt;
+                    &lt;header&gt;
+                        &lt;nav&gt;
+                            &lt;RouterLink to="/"&gt;Home&lt;/RouterLink&gt;
+                            &lt;RouterLink to="/about"&gt;About&lt;/RouterLink&gt;
+                        &lt;/nav&gt;
+                    &lt;/header&gt;
+                    &lt;RouterView /&gt;
+                &lt;/template&gt;
+            </code>
         </pre>
         <p>和先前 <em>create vite</em> 所安裝建立的版本不同的是，這個 <b>App.vue</b> 新加入了兩個和路由有關的標籤：<em>RouterLink</em> 與 <em>RouterView</em>，從前面的 <em>import</em> 很明確可以知道這兩個標籤是引用自 Vue Router 的功能，接下來的兩個章節將分別對它們作介紹。</p>
     </div>
@@ -281,26 +301,28 @@ src
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+            <code class="language-javascript" v-prism>
+                import { createRouter, createWebHistory } from 'vue-router'
+                import HomeView from '../views/HomeView.vue'
 
-const router = createRouter({
-    history: createWebHistory(import.meta.env.BASE_URL),
-    routes: [
-        {
-            path: '/',
-            name: 'home',
-            component: HomeView
-        },
-        {
-            path: '/about',
-            name: 'about',
-            component: () => import('../views/AboutView.vue')
-        }
-    ]
-})
+                const router = createRouter({
+                    history: createWebHistory(import.meta.env.BASE_URL),
+                    routes: [
+                        {
+                            path: '/',
+                            name: 'home',
+                            component: HomeView
+                        },
+                        {
+                            path: '/about',
+                            name: 'about',
+                            component: () => import('../views/AboutView.vue')
+                        }
+                    ]
+                })
 
-export default router            </code>
+                export default router
+            </code>
         </pre>
         <p><em>history</em> 這行暫時忽略不看（日後再提），主要重點在 <em>routes</em> 陣列這部份。一組 <em>{ }</em> 物件代表一個功能頁面，目前我們有兩個頁面，也就是 Home 以及 About，因此有兩組物件，物件裡面目前記錄了三個屬性，分別是：</p>
         <h5><em>path</em>：</h5>
@@ -322,7 +344,9 @@ export default router            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>import HomeView from '../views/HomeView.vue'            </code>
+            <code class="language-javascript" v-prism>
+                import HomeView from '../views/HomeView.vue'
+            </code>
         </pre>
         <p>和 About 的 <em>component</em> 有一點點像對吧？當然我們也可以把 Home 的 <em>component</em> 採用相同格式，可是差別在哪呢？</p>
         <p>差別在於定義在全域中的組件，會在網頁應用渲染時就一起載入進來，我們可以透過瀏覽器開發者工具中的 Network 查看：</p>
@@ -343,27 +367,29 @@ export default router            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import AboutView from '../views/AboutView.vue'
+            <code class="language-javascript" v-prism>
+                import { createRouter, createWebHistory } from 'vue-router'
+                import HomeView from '../views/HomeView.vue'
+                import AboutView from '../views/AboutView.vue'
 
-const router = createRouter({
-    history: createWebHistory(import.meta.env.BASE_URL),
-    routes: [
-        {
-            path: '/',
-            name: 'home',
-            component: HomeView
-        },
-        {
-            path: '/about',
-            name: 'about',
-            component: AboutView
-        }
-    ]
-})
+                const router = createRouter({
+                    history: createWebHistory(import.meta.env.BASE_URL),
+                    routes: [
+                        {
+                            path: '/',
+                            name: 'home',
+                            component: HomeView
+                        },
+                        {
+                            path: '/about',
+                            name: 'about',
+                            component: AboutView
+                        }
+                    ]
+                })
 
-export default router            </code>
+                export default router
+            </code>
         </pre>
         <p>修改好後儲存並重整網頁，觀看 Network 會發現......</p>
         <figure>
@@ -384,10 +410,12 @@ export default router            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;nav&gt;
-    &lt;RouterLink to="/"&gt;Home&lt;/RouterLink&gt;
-    &lt;RouterLink to="/about"&gt;About&lt;/RouterLink&gt;
-&lt;/nav&gt;            </code>
+            <code class="language-html" v-prism>
+                &lt;nav&gt;
+                    &lt;RouterLink to="/"&gt;Home&lt;/RouterLink&gt;
+                    &lt;RouterLink to="/about"&gt;About&lt;/RouterLink&gt;
+                &lt;/nav&gt;
+            </code>
         </pre>
         <p>瀏覽器渲染後的 DOM 結構：</p>
         <pre
@@ -398,10 +426,12 @@ export default router            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;nav>
-    &lt;a href="/" class="router-link-active router-link-exact-active" aria-current="page">Home&lt;/a&gt;
-    &lt;a href="/about" class=""&gt;About&lt;/a&gt;
-&lt;/nav&gt;            </code>
+            <code class="language-html" v-prism>
+                &lt;nav&gt;
+                    &lt;a href="/" class="router-link-active router-link-exact-active" aria-current="page">Home&lt;/a&gt;
+                    &lt;a href="/about" class=""&gt;About&lt;/a&gt;
+                &lt;/nav&gt;
+            </code>
         </pre>
         <p>會發現 Vite 編譯時會將 <em>&lt;RouterLink&gt;</em> 轉換成 HTML 標準的 <em>&lt;a&gt;</em> 標籤，既然如此，為什麼開發的時候不直接使用 <em>&lt;a&gt;</em> 就好？事實上，如果一開始就直接用 <em>&lt;a&gt;</em> 去作路由切換，經過編譯後網頁應用還是能正常地導航到我們設定的路由頁面，只是這麼做有兩個缺點：</p>
         <h5>1. 跳頁問題：</h5>
@@ -430,19 +460,21 @@ export default router            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;script setup&gt;
-    import { RouterLink, RouterView } from 'vue-router'
-&lt;/script&gt;
+            <code class="language-html" v-prism>
+                &lt;script setup&gt;
+                    import { RouterLink, RouterView } from 'vue-router'
+                &lt;/script&gt;
 
-&lt;template&gt;
-    &lt;header&gt;
-        &lt;nav&gt;
-            &lt;RouterLink to="/"&gt;Home&lt;/RouterLink&gt;
-            &lt;RouterLink to="/about"&gt;About&lt;/RouterLink&gt;
-        &lt;/nav&gt;
-    &lt;/header&gt;
-    &lt;RouterView /&gt;
-&lt;/template&gt;            </code>
+                &lt;template&gt;
+                    &lt;header&gt;
+                        &lt;nav&gt;
+                            &lt;RouterLink to="/"&gt;Home&lt;/RouterLink&gt;
+                            &lt;RouterLink to="/about"&gt;About&lt;/RouterLink&gt;
+                        &lt;/nav&gt;
+                    &lt;/header&gt;
+                    &lt;RouterView /&gt;
+                &lt;/template&gt;
+            </code>
         </pre>
         <p>相較 <em>RouterLink</em>，<em>RouterView</em> 的用途更直白且容易理解，它被用於在 Vue.js 網頁應用中顯示動態路由的內容。當使用者進行路由導航時，<em>RouterView</em> 將動態地渲染對應路由的內容組件。在首頁根路由 <em>/</em> 會載入 <b>HomeView.vue</b> 組件的內容，設定是來自於 <b>router/index.js</b> 裡面 <em>routes:</em> 的設定（節錄相關片段）：</p>
         <pre
@@ -453,17 +485,19 @@ export default router            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>import HomeView from '../views/HomeView.vue'
+            <code class="language-javascript" v-prism>
+                import HomeView from '../views/HomeView.vue'
 
-const router = createRouter({
-    routes: [
-        {
-            path: '/',
-            name: 'home',
-            component: HomeView
-        }
-    ]
-})            </code>
+                const router = createRouter({
+                    routes: [
+                        {
+                            path: '/',
+                            name: 'home',
+                            component: HomeView
+                        }
+                    ]
+                })
+            </code>
         </pre>
         <p>如果有必要，也可以把 <em>HomeView</em> import 給其他指定的組件，例如 <b>AboutView.vue</b>，那麼路由切換到根路由時，<em>&lt;RouterView /&gt;</em> 載入的就會是 <b>AboutView.vue</b> 的內容。</p>
         <p>具體而言，它有以下這三個用途：</p>
@@ -507,7 +541,9 @@ const router = createRouter({
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-bash" v-prism>[Vue Router warn]: No match found for location with path "/news"            </code>
+            <code class="language-bash" v-prism>
+                [Vue Router warn]: No match found for location with path "/news"
+            </code>
         </pre>
         <p>意思是說 Vue Router 無法匹配到符合 /news 的路徑內容，由於我們沒有建置任何與 news 有關的路由及組件，所以沒有東西可以渲染，但是，當使用者進入到錯誤或不存在的頁面，畫面卻沒有任何反應，這可能會讓使用者不瞭解目前情況，進而產生負面的使用者體驗觀感。</p>
         <p>在 Vue Router 官方文件 <a href="https://router.vuejs.org/zh/guide/essentials/dynamic-matching.html" target="_blank">捕获所有路由或 404 Not found 路由</a> 章節有教我們該如何製作 404 Not found 組件來捕捉錯誤或不存在的路由，以下是其語法：</p>
@@ -519,9 +555,11 @@ const router = createRouter({
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>const routes = [
-    { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound },
-]            </code>
+            <code class="language-javascript" v-prism>
+                const routes = [
+                    { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound },
+                ]
+            </code>
         </pre>
         <p>這段語法對應的位置在 <b>router/index.js</b> <em>routes</em> 陣列變數裡，將其複製過去，並且新增 <b>NotFound.vue</b> 組件及自訂內容，然後讓 <em>component</em> 去引用它。以下是修改後的 <b>router/index.js</b>：</p>
         <pre
@@ -532,23 +570,25 @@ const router = createRouter({
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>routes: [
-    {
-        path: '/',
-        name: 'home',
-        component: HomeView
-    },
-    {
-        path: '/about',
-        name: 'about',
-        component: () => import('../views/AboutView.vue')
-    },
-    { 
-        path: '/:pathMatch(.*)*',
-        name: 'NotFound',
-        component: () => import('../views/NotFound.vue')
-    },
-]            </code>
+            <code class="language-javascript" v-prism>
+                routes: [
+                    {
+                        path: '/',
+                        name: 'home',
+                        component: HomeView
+                    },
+                    {
+                        path: '/about',
+                        name: 'about',
+                        component: () => import('../views/AboutView.vue')
+                    },
+                    { 
+                        path: '/:pathMatch(.*)*',
+                        name: 'NotFound',
+                        component: () => import('../views/NotFound.vue')
+                    },
+                ]
+            </code>
         </pre>
         <p>新增的 <b>NotFound.vue</b> 組件內容：</p>
         <pre
@@ -559,9 +599,11 @@ const router = createRouter({
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;h1&gt;404 Not found!&lt;/h1>
-&lt;/template&gt;            </code>
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;h1&gt;404 Not found!&lt;/h1>
+                &lt;/template&gt;
+            </code>
         </pre>
         <p>完成設定後再將路由改成 http://localhost:5173/news，測試是否有按照我們預想的顯示 NotFound 的頁面：</p>
         <figure>
@@ -580,11 +622,13 @@ const router = createRouter({
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-bash" v-prism>Home
-About
-├── AAA
-├── BBB
-└── CCC            </code>
+            <code class="language-bash" v-prism>
+                Home
+                About
+                ├── AAA
+                ├── BBB
+                └── CCC
+            </code>
         </pre>
         <p>或許當下直覺會想建立 AAA、BBB、CCC 三個 <b>.vue</b> 組件，然後循之前所學的模式，透過 <em>routes</em> 各自建立 <em>path</em>，再讓 RouterLink 指向它們。這個思路嚴格來講也不算全然錯誤，畢竟某種程度上它也是能達到類似子分頁嵌套的效果，只不過它會有兩個問題：</p>
         <ol>
@@ -603,9 +647,11 @@ About
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;h1&gt;AAA&lt;/h1&gt;
-&lt;/template&gt;            </code>
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;h1&gt;AAA&lt;/h1&gt;
+                &lt;/template&gt;
+            </code>
         </pre>
         <p>（<b>b.vue</b> 的內容為 BBB，<b>c.vue</b> 內容則是 CCC。）</p>
         <p>建置完後的網頁應用結構：</p>
@@ -617,19 +663,21 @@ About
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-bash" v-prism>index.html
-src
-├── components
-├── router
-│    └── index.js
-├── views
-│    ├── HomeView.vue
-│    ├── AboutView.vue
-│    └── about
-│         ├── a.vue
-│         ├── b.vue
-│         └── c.vue
-└── App.vue            </code>
+            <code class="language-bash" v-prism>
+                index.html
+                src
+                ├── components
+                ├── router
+                │    └── index.js
+                ├── views
+                │    ├── HomeView.vue
+                │    ├── AboutView.vue
+                │    └── about
+                │         ├── a.vue
+                │         ├── b.vue
+                │         └── c.vue
+                └── App.vue
+            </code>
         </pre>
         <p><br></p>
         <h3>1. 功能組件裡的嵌套路由：</h3>
@@ -646,15 +694,17 @@ src
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;header&gt;
-        &lt;nav&gt;
-            &lt;RouterLink to="/"&gt;Home&lt;/RouterLink&gt;
-            &lt;RouterLink to="/about"&gt;About&lt;/RouterLink&gt;
-        &lt;/nav&gt;
-    &lt;/header&gt;
-    &lt;RouterView /&gt;
-&lt;/template&gt;            </code>
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;header&gt;
+                        &lt;nav&gt;
+                            &lt;RouterLink to="/"&gt;Home&lt;/RouterLink&gt;
+                            &lt;RouterLink to="/about"&gt;About&lt;/RouterLink&gt;
+                        &lt;/nav&gt;
+                    &lt;/header&gt;
+                    &lt;RouterView /&gt;
+                &lt;/template&gt;
+            </code>
         </pre>
         <p>再來是 <b>AboutView.vue</b>：</p>
         <pre
@@ -665,12 +715,14 @@ src
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;RouterLink to="/about/aaa">AAA&lt;/RouterLink&gt;
-    &lt;RouterLink to="/about/bbb"&gt;BBB&lt;/RouterLink&gt;
-    &lt;RouterLink to="/about/ccc"&gt;CCC&lt;/RouterLink&gt;
-    &lt;RouterView /&gt;
-&lt;/template&gt;            </code>
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;RouterLink to="/about/aaa">AAA&lt;/RouterLink&gt;
+                    &lt;RouterLink to="/about/bbb"&gt;BBB&lt;/RouterLink&gt;
+                    &lt;RouterLink to="/about/ccc"&gt;CCC&lt;/RouterLink&gt;
+                    &lt;RouterView /&gt;
+                &lt;/template&gt;
+            </code>
         </pre>
         <p>這個組件對應的路由是 <b>/about</b>，所以我們可以稱它是整個 About 功能的父組件，本範例要不要添加其他內容自己決定，但通常父組件除了嵌套路由之外也會同時函蓋一些資訊。而放在這個組件內的嵌套路由就是 About 的子組件，白話來說就是子頁面或細頁。</p>
         <p>你會發現除了 <b>App.vue</b>，我們也在 <b>AboutView.vue</b> 加入了 <em>&lt;RouterView /&gt;</em>，這是要用來顯示嵌套路由組件的內容。</p>
@@ -683,35 +735,37 @@ src
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>routes: [
-    {
-        path: '/',
-        name: 'home',
-        component: HomeView
-    },
-    {
-        path: '/about',
-        name: 'about',
-        component: () => import('../views/AboutView.vue'),
-        children: [
-            {
-                path: 'aaa',
-                name: 'AAA',
-                component: () => import('../views/about/a.vue'),
-            },
-            {
-                path: 'bbb',
-                name: 'BBB',
-                component: () => import('../views/about/b.vue'),
-            },
-            {
-                path: 'ccc',
-                name: 'CCC',
-                component: () => import('../views/about/c.vue'),
-            }
-        ]
-    }
-]            </code>
+            <code class="language-javascript" v-prism>
+                routes: [
+                    {
+                        path: '/',
+                        name: 'home',
+                        component: HomeView
+                    },
+                    {
+                        path: '/about',
+                        name: 'about',
+                        component: () => import('../views/AboutView.vue'),
+                        children: [
+                            {
+                                path: 'aaa',
+                                name: 'AAA',
+                                component: () => import('../views/about/a.vue'),
+                            },
+                            {
+                                path: 'bbb',
+                                name: 'BBB',
+                                component: () => import('../views/about/b.vue'),
+                            },
+                            {
+                                path: 'ccc',
+                                name: 'CCC',
+                                component: () => import('../views/about/c.vue'),
+                            }
+                        ]
+                    }
+                ]
+            </code>
         </pre>
         <p>建立嵌套路由的關鍵是 <em>children</em> 屬性，我們在 About 路由對應的物件裡加入該屬性，表示在該屬性裡面的子物件路由，都從屬於 About 路由底下。</p>
 
@@ -731,20 +785,22 @@ src
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;header&gt;
-        &lt;nav&gt;
-            &lt;RouterLink to="/"&gt;Home&lt;/RouterLink&gt;
-            &lt;RouterLink to="/about"&gt;About&lt;/RouterLink&gt;
-            &lt;div&gt;
-                &lt;RouterLink to="/about/aaa"&gt;AAA&lt;/RouterLink&gt;
-                &lt;RouterLink to="/about/bbb"&gt;BBB&lt;/RouterLink&gt;
-                &lt;RouterLink to="/about/ccc"&gt;CCC&lt;/RouterLink&gt;
-            &lt;/div&gt;
-        &lt;/nav&gt;
-    &lt;/header&gt;
-    &lt;RouterView /&gt;
-&lt;/template&gt;            </code>
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;header&gt;
+                        &lt;nav&gt;
+                            &lt;RouterLink to="/"&gt;Home&lt;/RouterLink&gt;
+                            &lt;RouterLink to="/about"&gt;About&lt;/RouterLink&gt;
+                            &lt;div&gt;
+                                &lt;RouterLink to="/about/aaa"&gt;AAA&lt;/RouterLink&gt;
+                                &lt;RouterLink to="/about/bbb"&gt;BBB&lt;/RouterLink&gt;
+                                &lt;RouterLink to="/about/ccc"&gt;CCC&lt;/RouterLink&gt;
+                            &lt;/div&gt;
+                        &lt;/nav&gt;
+                    &lt;/header&gt;
+                    &lt;RouterView /&gt;
+                &lt;/template&gt;
+            </code>
         </pre>
         <p>把 About 嵌套路由的導覽項目添加到父組件裡面，也有些人會把父組件共用功能例如 Header 或 Footer 另外寫在 <b>components</b> 子組件作引用，使 <b>App.vue</b> 的程式結構看起來更加簡潔。</p>
         <p>再來是 <b>AboutView.vue</b>：</p>
@@ -756,9 +812,11 @@ src
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;RouterView /&gt;
-&lt;/template&gt;            </code>
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;RouterView /&gt;
+                &lt;/template&gt;
+            </code>
         </pre>
         <p>只留下 <em>&lt;RouterView /&gt;</em>，用來渲染子組件的內容。</p>
         <p>修改 <b>router/index.js</b> 的設定（只列出 <em>routes</em> 的部份）：</p>
@@ -770,36 +828,38 @@ src
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>routes: [
-    {
-        path: '/',
-        name: 'home',
-        component: HomeView
-    },
-    {
-        path: '/about',
-        name: 'about',
-        redirect: '/about/aaa',
-        component: () => import('../views/AboutView.vue'),
-        children: [
-            {
-                path: 'aaa',
-                name: 'AAA',
-                component: () => import('../views/about/a.vue'),
-            },
-            {
-                path: 'bbb',
-                name: 'BBB',
-                component: () => import('../views/about/b.vue'),
-            },
-            {
-                path: 'ccc',
-                name: 'CCC',
-                component: () => import('../views/about/c.vue'),
-            }
-        ]
-    }
-]            </code>
+            <code class="language-javascript" v-prism>
+                routes: [
+                    {
+                        path: '/',
+                        name: 'home',
+                        component: HomeView
+                    },
+                    {
+                        path: '/about',
+                        name: 'about',
+                        redirect: '/about/aaa',
+                        component: () => import('../views/AboutView.vue'),
+                        children: [
+                            {
+                                path: 'aaa',
+                                name: 'AAA',
+                                component: () => import('../views/about/a.vue'),
+                            },
+                            {
+                                path: 'bbb',
+                                name: 'BBB',
+                                component: () => import('../views/about/b.vue'),
+                            },
+                            {
+                                path: 'ccc',
+                                name: 'CCC',
+                                component: () => import('../views/about/c.vue'),
+                            }
+                        ]
+                    }
+                ]
+            </code>
         </pre>
         <p>基本上和前一個作法的設定差不多，最大的差異在於 <em>about</em> 物件中新增了一條屬性：<em>redirect: '/about/aaa'</em>。這個屬性是用來設定該路由的重新導向，為什麼要設置它？因為我們如果直接點擊導覽列中的 <em>&lt;RouterLink to="/about"&gt;About&lt;/RouterLink&gt;</em>，路由會切換至 <b>AboutView.vue</b> 組件，可是該組件內容只剩下提供給嵌套路由渲染組件用的 <em>&lt;RouterView /&gt;</em>，所以當路由進入到 <b>/about</b>，畫面將是一片空白（因為沒有載入到其他嵌套路由，自然也就沒有內容可以顯示）。</p>
         <p>因此，我們需要給 <b>/about</b> 一個重新導向的路由目標，讓使用者從任何管道進入該路由時能自動導向到指定的其他路由。在這個範例中，我們設置 <b>/about</b> 的 <em>redirect</em> 是 <b>/about/aaa</b>，當使用者觸發 <b>/about</b> 路由，網址會直接轉向到 <b>/about/aaa</b>。</p>

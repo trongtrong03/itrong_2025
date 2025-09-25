@@ -44,19 +44,33 @@ const toggle = (val: number) => {
                     <p><br></p>
                     <h6>3. 安裝需要的 Node.js 版本</h6>
                     <p>我們可以透過 NVM 去安裝想要的 Node.js 版本，例如想要安裝 16.x 的版本，則輸入以下指令：</p>
-                    <prism-highlight>
-                        <div class="text-code" v-pre>
-                            <pre><code class="language-bash">nvm install 16</code></pre>
-                        </div>
-                    </prism-highlight>
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-bash" v-prism>
+                            nvm install 16
+                        </code>
+                    </pre>
                     <p><br></p>
                     <h6>4. 切換指定的 Node.js 版本</h6>
                     <p>承襲上一步驟，安裝完 16.x 的 Node.js 版本後，我們可以透過下方指令進行版本上的切換：</p>
-                    <prism-highlight>
-                        <div class="text-code" v-pre>
-                            <pre><code class="language-bash">nvm use 16</code></pre>
-                        </div>
-                    </prism-highlight>
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-bash" v-prism>
+                            nvm use 16
+                        </code>
+                    </pre>
                     <p>如此便會將目前作業系統裡的 Node.js 運行版本指定為 16.x 的版本，而我們也可以透過 <em>nvm list</em> 來查看目前電腦總共安裝了多少版本。</p>
                     <figure>
                         <img src="/images/learn/js/nodejs-faq-1.jpg">

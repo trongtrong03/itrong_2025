@@ -18,6 +18,11 @@ import 'prismjs/components/prism-yaml'
 import 'prismjs/components/prism-git'
 import 'prismjs/components/prism-diff'
 import 'prismjs/components/prism-ruby'
+import 'prismjs/components/prism-python'
+import 'prismjs/components/prism-powershell'
+import 'prismjs/components/prism-clike'
+import 'prismjs/components/prism-markup-templating'
+import 'prismjs/components/prism-php'
 
 // 行號
 import 'prismjs/plugins/line-numbers/prism-line-numbers.css'

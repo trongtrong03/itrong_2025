@@ -55,10 +55,10 @@ const catalog = reactive<CatalogItem[]>([
         >
             <code class="language-html" v-prism>
                 &lt;template&gt;
-                    &lt;p&gt;{{ sum }}&lt;/p&gt;
+                    &lt;p&gt;&#123;&#123; sum &#125;&#125;&lt;/p&gt;
                     &lt;button @click="changeSum"&gt;Count&lt;/button&gt;
                     &lt;hr&gt;
-                    &lt;p&gt;{{ user.name }} -- {{ user.age }}&lt;/p&gt;
+                    &lt;p&gt;&#123;&#123; user.name &#125;&#125; -- &#123;&#123; user.age &#125;&#125;&lt;/p&gt;
                     &lt;button @click="changeUser"&gt;Edit&lt;/button&gt;
                 &lt;/template&gt;
 
@@ -213,10 +213,10 @@ const catalog = reactive<CatalogItem[]>([
         >
             <code class="language-html" v-prism>
                 &lt;template&gt;
-                    &lt;p&gt;{{ sum }}&lt;/p&gt;
+                    &lt;p&gt;&#123;&#123; sum &#125;&#125;&lt;/p&gt;
                     &lt;button @click="changeSum"&gt;Count&lt;/button&gt;
                     &lt;hr&gt;
-                    &lt;p&gt;{{ user.name }} -- {{ user.age }}&lt;/p&gt;
+                    &lt;p&gt;&#123;&#123; user.name &#125;&#125; -- &#123;&#123; user.age &#125;&#125;&lt;/p&gt;
                     &lt;button @click="changeUser"&gt;Edit&lt;/button&gt;
                 &lt;/template&gt;
 
@@ -296,7 +296,7 @@ const catalog = reactive<CatalogItem[]>([
         >
             <code class="language-html" v-prism>
                 &lt;template&gt;
-                    &lt;p&gt;{{ sum }} -- {{ newSum }}&lt;/p&gt;
+                    &lt;p&gt;&#123;&#123; sum &#125;&#125; -- &#123;&#123; newSum &#125;&#125;&lt;/p&gt;
                     &lt;button @click="changeSum"&gt;Count&lt;/button&gt;
                 &lt;/template&gt;
 

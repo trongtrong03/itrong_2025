@@ -44,39 +44,41 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>// scripts/gen-commits.js
-import { execSync } from 'child_process'
-import { writeFileSync } from 'fs'
-import { fileURLToPath } from 'url'
-import { dirname, resolve } from 'path'
+            <code class="language-javascript" v-prism>
+                // scripts/gen-commits.js
+                import { execSync } from 'child_process'
+                import { writeFileSync } from 'fs'
+                import { fileURLToPath } from 'url'
+                import { dirname, resolve } from 'path'
 
-// 取得目前檔案所在目錄
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
+                // 取得目前檔案所在目錄
+                const __filename = fileURLToPath(import.meta.url)
+                const __dirname = dirname(__filename)
 
-try {
-    // 執行 git log 並解析每一筆 commit
-    const raw = execSync('git log --pretty=format:"%h | %an | %ad | %s" --date=short')
-        .toString()
-        .split('\n')
-        .map((line) => {
-            const [hash, author, date, ...messageParts] = line.split(' | ')
-            return {
-                hash,
-                author,
-                date,
-                message: messageParts.join(' | ')
-            }
-        })
+                try {
+                    // 執行 git log 並解析每一筆 commit
+                    const raw = execSync('git log --pretty=format:"%h | %an | %ad | %s" --date=short')
+                        .toString()
+                        .split('\n')
+                        .map((line) => {
+                            const [hash, author, date, ...messageParts] = line.split(' | ')
+                            return {
+                                hash,
+                                author,
+                                date,
+                                message: messageParts.join(' | ')
+                            }
+                        })
 
-    // 輸出為 JSON 檔案
-    const outputPath = resolve(__dirname, '../src/data/commits.json')
-    writeFileSync(outputPath, JSON.stringify(raw, null, 2))
+                    // 輸出為 JSON 檔案
+                    const outputPath = resolve(__dirname, '../src/data/commits.json')
+                    writeFileSync(outputPath, JSON.stringify(raw, null, 2))
 
-    console.log('✔ Commit list generated successfully!')
-} catch (err) {
-    console.error('✖ Failed to generate commit list:', err)
-}            </code>
+                    console.log('✔ Commit list generated successfully!')
+                } catch (err) {
+                    console.error('✖ Failed to generate commit list:', err)
+                }
+            </code>
         </pre>
         <p>其中 <em>'../src/data/commits.json'</em> 可自行替換腳本執行後所輸出 JSON 檔案的存放路徑位置。</p>
         <p><br></p>
@@ -90,9 +92,11 @@ try {
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>"scripts": {
-    "generate:commits": "node scripts/gen-commits.js"
-}            </code>
+            <code class="language-javascript" v-prism>
+                "scripts": {
+                    "generate:commits": "node scripts/gen-commits.js"
+                }
+            </code>
         </pre>
         <p>這個目的是讓每一次執行編譯指令時都會自動產生 <b>commits</b> 檔案。</p>
         <p><br></p>
@@ -106,9 +110,11 @@ try {
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;script setup&gt;
-    import commits from '@/assets/commits.json'
-&lt;/script&gt;            </code>
+            <code class="language-html" v-prism>
+                &lt;script setup&gt;
+                    import commits from '@/assets/commits.json'
+                &lt;/script&gt;
+            </code>
         </pre>
         <p>接著透過 HTML 把資料渲染出來，例如：</p>
         <pre
@@ -119,14 +125,16 @@ try {
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;ul&gt;
-    &lt;li v-for="(commit, index) in commits" :key="index"&gt;
-        &lt;p&gt;HASH：{{ commit.hash }}&lt;/p&gt;
-        &lt;p&gt;作者：{{ commit.author }}&lt;/p&gt;
-        &lt;p&gt;日期：{{ commit.date }}&lt;/p&gt;
-        &lt;p&gt;提交名稱：{{ commit.message }}&lt;/p&gt;
-    &lt;/li&gt;
-&lt;/ul&gt;            </code>
+            <code class="language-html" v-prism>
+                &lt;ul&gt;
+                    &lt;li v-for="(commit, index) in commits" :key="index"&gt;
+                        &lt;p&gt;HASH：&#123;&#123; commit.hash &#125;&#125;&lt;/p&gt;
+                        &lt;p&gt;作者：&#123;&#123; commit.author &#125;&#125;&lt;/p&gt;
+                        &lt;p&gt;日期：&#123;&#123; commit.date &#125;&#125;&lt;/p&gt;
+                        &lt;p&gt;提交名稱：&#123;&#123; commit.message &#125;&#125;&lt;/p&gt;
+                    &lt;/li&gt;
+                &lt;/ul&gt;
+            </code>
         </pre>
         <p></p>
         <p><br></p>
@@ -141,7 +149,9 @@ try {
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-bash" v-prism>npm run generate:commits            </code>
+            <code class="language-bash" v-prism>
+                npm run generate:commits
+            </code>
         </pre>
         <p>以下是執行成功的回傳結果：</p>
         <pre
@@ -152,12 +162,14 @@ try {
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-bash" v-prism>npm run generate:commits
+            <code class="language-bash" v-prism>
+                npm run generate:commits
 
-> project@0.0.0 generate:commits
-> node scripts/gen-commits.js   
+                > project@0.0.0 generate:commits
+                > node scripts/gen-commits.js   
 
-✔ Commit list generated successfully!            </code>
+                ✔ Commit list generated successfully!
+            </code>
         </pre>
         <p><br></p>
         <p>重新整理網頁，就可以看到 Git commit 記錄顯示在網頁前端畫面上了。</p>
@@ -170,20 +182,22 @@ try {
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>HASH：92d8891
-作者：iTrong
-日期：2024-05-27
-提交名稱：0527需求修改
+            <code class="language-html" v-prism>
+                HASH：92d8891
+                作者：iTrong
+                日期：2024-05-27
+                提交名稱：0527需求修改
 
-HASH：93f88cd
-作者：iTrong
-日期：2024-05-25
-提交名稱：0525需求修改
+                HASH：93f88cd
+                作者：iTrong
+                日期：2024-05-25
+                提交名稱：0525需求修改
 
-HASH：6640790
-作者：iTrong
-日期：2024-05-23
-提交名稱：first commit            </code>
+                HASH：6640790
+                作者：iTrong
+                日期：2024-05-23
+                提交名稱：first commit
+            </code>
         </pre>
     </div>
     <div class="text-block" :id="'act' + catalog[2].id">
@@ -203,21 +217,23 @@ This file is being treated as an ES module because it has a '.js' file extension
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>// scripts/gen-commits.js
-const { execSync } = require('child_process');
-const fs = require('fs');
-const path = require('path');
+            <code class="language-javascript" v-prism>
+                // scripts/gen-commits.js
+                const { execSync } = require('child_process');
+                const fs = require('fs');
+                const path = require('path');
 
-// 取得 commit 訊息
-const commits = execSync('git log --pretty=format:"%h - %s"')
-    .toString()
-    .split('\n');
+                // 取得 commit 訊息
+                const commits = execSync('git log --pretty=format:"%h - %s"')
+                    .toString()
+                    .split('\n');
 
-// 儲存為 JSON 檔案
-const outputPath = path.resolve(__dirname, '../src/data/commits.json');
-fs.writeFileSync(outputPath, JSON.stringify(commits, null, 2));
+                // 儲存為 JSON 檔案
+                const outputPath = path.resolve(__dirname, '../src/data/commits.json');
+                fs.writeFileSync(outputPath, JSON.stringify(commits, null, 2));
 
-console.log(`✔ Commit list generated to ${outputPath}`);            </code>
+                console.log(`✔ Commit list generated to ${outputPath}`);
+            </code>
         </pre>
         <p>當執行打包或開發指令時，系統就會噴出錯誤導致無法順利運行。</p>
         <p>要解決這個問題，主要方法有兩種：</p>
@@ -232,9 +248,11 @@ console.log(`✔ Commit list generated to ${outputPath}`);            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>"scripts": {
-  "generate:commits": "node scripts/gen-commits.cjs"
-}            </code>
+            <code class="language-javascript" v-prism>
+                "scripts": {
+                    "generate:commits": "node scripts/gen-commits.cjs"
+                }
+            </code>
         </pre>
         <p>這樣就不需要改寫 <em>require</em>，簡單又穩定。</p>
         <p><br></p>

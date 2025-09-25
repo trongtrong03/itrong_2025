@@ -63,19 +63,21 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;!-- 導航區塊 --&gt;
-    &lt;header&gt;
-        &lt;nav&gt;
-            &lt;a href=""&gt;Home&lt;/a&gt;
-            &lt;a href=""&gt;About&lt;/a&gt;
-            &lt;a href=""&gt;News&lt;/a&gt;
-        &lt;/nav&gt;
-    &lt;/header&gt;
-    &lt;!-- 展示區塊 --&gt;
-    &lt;main&gt;
-    &lt;/main&gt;
-&lt;/template&gt;            </code>
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;!-- 導航區塊 --&gt;
+                    &lt;header&gt;
+                        &lt;nav&gt;
+                            &lt;a href=""&gt;Home&lt;/a&gt;
+                            &lt;a href=""&gt;About&lt;/a&gt;
+                            &lt;a href=""&gt;News&lt;/a&gt;
+                        &lt;/nav&gt;
+                    &lt;/header&gt;
+                    &lt;!-- 展示區塊 --&gt;
+                    &lt;main&gt;
+                    &lt;/main&gt;
+                &lt;/template&gt;
+            </code>
         </pre>
         <p>導航區塊的部分，我先設置了三個導航項目，分別是「Home」、「About」、「News」，它們分別對應網頁的首頁、關於我們、最新消息這三個資訊頁面。而 <em>&lt;main&gt;</em> 則是預計要用來放置上述資訊內容的展示區塊，目前則還沒有任何內容。</p>
         <p>再來要安裝路由器，Vue.js 本身有提供一款名叫 Vue Router 用來處理路由相關設定的第三方套件，如果是使用 Vite 來開發 Vue 3，那麼在最一開始創建專案的時候系統就會詢問是否要安裝 Vue Router，假如當時沒有選擇安裝的話，也可以透過 NPM 指令安裝到專案裡：</p>
@@ -87,7 +89,9 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-bash" v-prism>npm i vue-router            </code>
+            <code class="language-bash" v-prism>
+                npm i vue-router
+            </code>
         </pre>
         <p>安裝完成後，手動在 <b>src/</b> 資料夾建立 <b>router/</b> 資料夾，並且新增一個 <b>index.ts</b> 文件。</p>
         <pre
@@ -98,9 +102,11 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-bash" v-prism>src
-└── router
-    └── index.ts            </code>
+            <code class="language-bash" v-prism>
+                src
+                └── router
+                    └── index.ts
+            </code>
         </pre>
         <p>這個文件就是用來管理整個網頁應用的路由設定，進入該文件執行以下兩件事情：創建一個路由器，並且將其導出。</p>
         <p>但在創建之前，必不可少的就是要先把 Vue Router 引用進來：</p>
@@ -112,7 +118,9 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>import { createRouter } from "vue-router";            </code>
+            <code class="language-javascript" v-prism>
+                import { createRouter } from "vue-router";
+            </code>
         </pre>
         <p>創建路由器，語法格式為：</p>
         <pre
@@ -123,9 +131,11 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>const router = createRouter({
-    routes: []
-});            </code>
+            <code class="language-javascript" v-prism>
+                const router = createRouter({
+                    routes: []
+                });
+            </code>
         </pre>
         <p>可以將這個函式理解為創建路由器（<em>router</em>），以用來管理眾多路由（<em>routes</em>），因此需要透過陣列來存放各個路由的資料。前面有提過，路由是一個 key 值與 value 值的對應關係，因此每一組路由都是獨立的物件，且至少會有兩個屬性，分別是 <em>path</em> 與 <em>component</em>，<em>path</em> 表示路徑，<em>component</em> 則表示來源組件。例如：</p>
         <pre
@@ -136,16 +146,18 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>import Home from "../components/Home.vue";
+            <code class="language-javascript" v-prism>
+                import Home from "../components/Home.vue";
 
-const router = createRouter({
-    routes: [
-        {
-            path: "/home",
-            component: Home
-        }
-    ]
-});            </code>
+                const router = createRouter({
+                    routes: [
+                        {
+                            path: "/home",
+                            component: Home
+                        }
+                    ]
+                });
+            </code>
         </pre>
         <p>倘如工作環境是使用 VS Code 開發 Vue，且也有安裝相關擴充套件輔助，不用等到網頁渲染，這時編輯器應該已經為上述程式碼劃上了象徵警告的紅色波浪線，原因是我們並沒有設定路由的工作模式（關於工作模式的詳細介紹後面章節會再說明），所以必須再加上這段：</p>
         <pre
@@ -156,18 +168,20 @@ const router = createRouter({
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>import { createRouter, createWebHistory } from "vue-router";
-import Home from "../components/Home.vue";
+            <code class="language-javascript" v-prism>
+                import { createRouter, createWebHistory } from "vue-router";
+                import Home from "../components/Home.vue";
 
-const router = createRouter({
-    history: createWebHistory(),
-    routes: [
-        {
-            path: "/home",
-            component: Home
-        }
-    ]
-});            </code>
+                const router = createRouter({
+                    history: createWebHistory(),
+                    routes: [
+                        {
+                            path: "/home",
+                            component: Home
+                        }
+                    ]
+                });
+            </code>
         </pre>
         <p>路由設定完後，別忘記最後要將程式碼導出，否則其他檔案無法取得這支文件裡面的函式內容：</p>
         <pre
@@ -178,7 +192,9 @@ const router = createRouter({
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>export default router;            </code>
+            <code class="language-javascript" v-prism>
+                export default router;
+            </code>
         </pre>
         <p>連同另外兩個功能的路由，以下展示完整的路由設定檔的程式碼結構：</p>
         <pre
@@ -189,30 +205,32 @@ const router = createRouter({
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>import { createRouter, createWebHistory } from "vue-router";
-import Home from "../components/Home.vue";
-import About from "../components/About.vue";
-import News from "../components/News.vue";
+            <code class="language-javascript" v-prism>
+                import { createRouter, createWebHistory } from "vue-router";
+                import Home from "../components/Home.vue";
+                import About from "../components/About.vue";
+                import News from "../components/News.vue";
 
-const router = createRouter({
-    history: createWebHistory(),
-    routes: [
-        {
-            path: "/home",
-            component: Home
-        },
-        {
-            path: "/about",
-            component: About
-        },
-        {
-            path: "/news",
-            component: News
-        }
-    ]
-});
+                const router = createRouter({
+                    history: createWebHistory(),
+                    routes: [
+                        {
+                            path: "/home",
+                            component: Home
+                        },
+                        {
+                            path: "/about",
+                            component: About
+                        },
+                        {
+                            path: "/news",
+                            component: News
+                        }
+                    ]
+                });
 
-export default router;            </code>
+                export default router;
+            </code>
         </pre>
         <p>再來是要讓這個路由文件運作，打開 <b>main.ts</b>，把路由器引入進去：</p>
         <pre
@@ -223,7 +241,9 @@ export default router;            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>import router from './router'            </code>
+            <code class="language-javascript" v-prism>
+                import router from './router'
+            </code>
         </pre>
         <p>原本下方 <em>createApp(App).mount('#app')</em> 這行意思是創建一個應用並將整個應用掛載到 <em>#app</em> 容器中，因為需要多調用 <em>router</em> 功能，所以得重新改寫架構：</p>
         <pre
@@ -234,9 +254,11 @@ export default router;            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>const app = createApp(App);
-app.use(router);
-app.mount('#app');            </code>
+            <code class="language-javascript" v-prism>
+                const app = createApp(App);
+                app.use(router);
+                app.mount('#app');
+            </code>
         </pre>
         <p>最後一步是把各組件內容呈現在展示區，以及修改導航路由標籤。回到 <b>App.vue</b>，分別引用「RouterLink」、「RouterView」功能：</p>
         <pre
@@ -247,7 +269,9 @@ app.mount('#app');            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>import { RouterLink, RouterView } from 'vue-router'            </code>
+            <code class="language-javascript" v-prism>
+                import { RouterLink, RouterView } from 'vue-router'
+            </code>
         </pre>
         <h5>修改導航區塊的標籤內容：</h5>
         <p>最一開始我們於導航區塊的連結是採用傳統 HTML 所使用的 <em>&lt;a&gt;</em> 標籤，在 Vue Router 我們則要改使用它提供的 <em>&lt;RouterLink&gt;</em>，並且把 <em>href</em> 改成 <em>to</em> 屬性：</p>
@@ -259,13 +283,15 @@ app.mount('#app');            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;header&gt;
-    &lt;nav&gt;
-        &lt;RouterLink to="/home"&gt;Home&lt;/RouterLink&gt;
-        &lt;RouterLink to="/about"&gt;About&lt;/RouterLink&gt;
-        &lt;RouterLink to="/news"&gt;News&lt;/RouterLink&gt;
-    &lt;/nav&gt;
-&lt;/header&gt;            </code>
+            <code class="language-html" v-prism>
+                &lt;header&gt;
+                    &lt;nav&gt;
+                        &lt;RouterLink to="/home"&gt;Home&lt;/RouterLink&gt;
+                        &lt;RouterLink to="/about"&gt;About&lt;/RouterLink&gt;
+                        &lt;RouterLink to="/news"&gt;News&lt;/RouterLink&gt;
+                    &lt;/nav&gt;
+                &lt;/header&gt;
+            </code>
         </pre>
         <p>當然要堅持使用原生 HTML 的 <em>&lt;a&gt;</em> 也不是不行，只是這樣會失去使用 Vue Router 的好處。</p>
         <p><br></p>
@@ -279,9 +305,11 @@ app.mount('#app');            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;main&gt;
-    &lt;RouterView /&gt;
-&lt;/main&gt;            </code>
+            <code class="language-html" v-prism>
+                &lt;main&gt;
+                    &lt;RouterView /&gt;
+                &lt;/main&gt;
+            </code>
         </pre>
         <p>加入此標籤，當 <em>RouterLink</em> 導向指定的路由時，就會將路徑對應的組件內容渲染到這個標籤所在位置。</p>
         <p>至此路由的基本切換功能就搞定了，我們可以從瀏覽器測試切換的效果如何：</p>
@@ -303,13 +331,15 @@ app.mount('#app');            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;header&gt;
-    &lt;nav&gt;
-        &lt;RouterLink to="/home" active-class="is-active"&gt;Home&lt;/RouterLink&gt;
-        &lt;RouterLink to="/about" active-class="is-active"&gt;About&lt;/RouterLink&gt;
-        &lt;RouterLink to="/news" active-class="is-active"&gt;News&lt;/RouterLink&gt;
-    &lt;/nav&gt;
-&lt;/header&gt;            </code>
+            <code class="language-html" v-prism>
+                &lt;header&gt;
+                    &lt;nav&gt;
+                        &lt;RouterLink to="/home" active-class="is-active"&gt;Home&lt;/RouterLink&gt;
+                        &lt;RouterLink to="/about" active-class="is-active"&gt;About&lt;/RouterLink&gt;
+                        &lt;RouterLink to="/news" active-class="is-active"&gt;News&lt;/RouterLink&gt;
+                    &lt;/nav&gt;
+                &lt;/header&gt;
+            </code>
         </pre>
         <p>隨意為自定義的 <em>is-active</em> 類別選擇器加上一些樣式效果，例如背景變成紅色，而文字顏色改為白色，來看看實際效果：</p>
         <figure>
@@ -328,15 +358,17 @@ app.mount('#app');            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>import Products from "../components/Products.vue";
-const router = createRouter({
-    routes: [
-        {
-            path: "/products",
-            component: Products
-        },
-    ]
-});            </code>
+            <code class="language-javascript" v-prism>
+                import Products from "../components/Products.vue";
+                const router = createRouter({
+                    routes: [
+                        {
+                            path: "/products",
+                            component: Products
+                        },
+                    ]
+                });
+            </code>
         </pre>
         <p>那麼這個 <b>Products.vue</b> 則稱為路由組件。</p>
         <p>但是實務開發專案的時候會盡量把路由組件和一般組件分開管理以避免混淆，路由組件通常會存放在 <b>pages/</b> 或 <b>view/</b> 資料夾，而一般組件則通常指的是放置在 <b>components</b> 裡的組件。雖說這樣的資料夾命名和分類不是絕對，不過我們所使用的框架及工具，以及像 GitHub 這類可以看到其他開發者或團隊公開的開源程式碼，大多數也都是按照這樣的標準來管理組件。</p>
@@ -349,13 +381,15 @@ const router = createRouter({
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-bash" v-prism>src
-├── components
-│    ├── About.vue
-│    ├── Header.vue
-│    ├── Home.vue
-│    └── News.vue
-└── App.vue            </code>
+            <code class="language-bash" v-prism>
+                src
+                ├── components
+                │    ├── About.vue
+                │    ├── Header.vue
+                │    ├── Home.vue
+                │    └── News.vue
+                └── App.vue
+            </code>
         </pre>
         <p>（<b>Header.vue</b> 是後來把 <em>&lt;header&gt;</em> 結構獨立拉出來建立的一個子組件）</p>
         <p>按照上述的常見的架構規劃，將路由與一般組件歸納為：</p>
@@ -367,14 +401,16 @@ const router = createRouter({
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-bash" v-prism>src
-├── components
-│    └── Header.vue
-├── pages
-│    ├── About.vue
-│    ├── Home.vue
-│    └── News.vue
-└── App.vue            </code>
+            <code class="language-bash" v-prism>
+                src
+                ├── components
+                │    └── Header.vue
+                ├── pages
+                │    ├── About.vue
+                │    ├── Home.vue
+                │    └── News.vue
+                └── App.vue
+            </code>
         </pre>
         <p>歸類好後記得回頭更改路由設定文件裡的路徑位置。</p>
     </div>
@@ -389,7 +425,9 @@ const router = createRouter({
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>history: createWebHistory(),            </code>
+            <code class="language-javascript" v-prism>
+                history: createWebHistory(),
+            </code>
         </pre>
         <p>假如沒有設定工作模式，瀏覽器就無法順利渲染畫面，同時會回報錯誤警告：</p>
         <blockquote class="is-error">
@@ -407,7 +445,9 @@ const router = createRouter({
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>history: createWebHistory(),            </code>
+            <code class="language-javascript" v-prism>
+                history: createWebHistory(),
+            </code>
         </pre>
         <h5>優點：</h5>
         <p>URL 較美觀，不會有 <em>#</em> 字符，較貼近傳統網站的 URL，例如：itrong.com/about，對 SEO 相對友善。</p>
@@ -423,7 +463,9 @@ const router = createRouter({
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>history: createWebHashHistory(),            </code>
+            <code class="language-javascript" v-prism>
+                history: createWebHashHistory(),
+            </code>
         </pre>
         <h5>優點：</h5>
         <p>相容性較佳，即使是舊瀏覽器也能正常運作，同時亦不太需要伺服器端處理路徑問題。</p>
@@ -444,7 +486,9 @@ const router = createRouter({
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;RouterLink to="/about"&gt;About&lt;/RouterLink&gt;            </code>
+            <code class="language-html" v-prism>
+                &lt;RouterLink to="/about"&gt;About&lt;/RouterLink&gt;
+            </code>
         </pre>
         <p>而除了直接給予路徑這種字串型別寫法外，還有另外一種物件型別式的寫法，搭配 v-bind 使用：</p>
         <pre
@@ -455,7 +499,9 @@ const router = createRouter({
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;RouterLink :to="{ path:'/about' }"&gt;About&lt;/RouterLink&gt;            </code>
+            <code class="language-html" v-prism>
+                &lt;RouterLink :to="{ path:'/about' }"&gt;About&lt;/RouterLink&gt;
+            </code>
         </pre>
         <p>這種寫法又可以衍生出為路由定義名稱後直接引用名稱的方式：</p>
         <p><b>router/index.ts</b>：</p>
@@ -467,15 +513,17 @@ const router = createRouter({
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>const router = createRouter({
-    routes: [
-        {
-            name: "關於我們",
-            path: "/about",
-            component: About
-        },
-    ]
-});            </code>
+            <code class="language-javascript" v-prism>
+                const router = createRouter({
+                    routes: [
+                        {
+                            name: "關於我們",
+                            path: "/about",
+                            component: About
+                        },
+                    ]
+                });
+            </code>
         </pre>
         <p>組件 RouterLink 引用：</p>
         <pre
@@ -486,7 +534,9 @@ const router = createRouter({
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;RouterLink :to="{ name: '關於我們' }"&gt;About&lt;/RouterLink&gt;            </code>
+            <code class="language-html" v-prism>
+                &lt;RouterLink :to="{ name: '關於我們' }"&gt;About&lt;/RouterLink&gt;
+            </code>
         </pre>
         <p>在網頁只需要一層路由的情況下，使用純字串定義路由導航通常沒什麼問題，不過如果網站的路由有多個嵌套，就會比較需要物件型別式的寫法了。</p>
     </div>
@@ -510,14 +560,16 @@ const router = createRouter({
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>const router = createRouter({
-    routes: [
-        {
-            path: "/",
-            component: Home
-        },
-    ]
-});            </code>
+            <code class="language-javascript" v-prism>
+                const router = createRouter({
+                    routes: [
+                        {
+                            path: "/",
+                            component: Home
+                        },
+                    ]
+                });
+            </code>
         </pre>
         <p>實測結果：</p>
         <figure>
@@ -534,14 +586,16 @@ const router = createRouter({
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>const router = createRouter({
-    routes: [
-        {
-            path: "/",
-            redirect: "/home"
-        },
-    ]
-});            </code>
+            <code class="language-javascript" v-prism>
+                const router = createRouter({
+                    routes: [
+                        {
+                            path: "/",
+                            redirect: "/home"
+                        },
+                    ]
+                });
+            </code>
         </pre>
         <p>實測結果：</p>
         <figure>

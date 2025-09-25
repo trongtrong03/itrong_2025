@@ -45,26 +45,28 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;p&gt;時速: {{ speed }} km/h&lt;/p&gt;
-    &lt;p&gt;載重: {{ weight }} kg&lt;/p&gt;
-    &lt;button @click="changeSpeed"&gt;加速&lt;/button&gt;
-    &lt;button @click="changeWeight"&gt;加重&lt;/button&gt;
-&lt;/template&gt;
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;p&gt;時速: &#123;&#123; speed &#125;&#125; km/h&lt;/p&gt;
+                    &lt;p&gt;載重: &#123;&#123; weight &#125;&#125; kg&lt;/p&gt;
+                    &lt;button @click="changeSpeed"&gt;加速&lt;/button&gt;
+                    &lt;button @click="changeWeight"&gt;加重&lt;/button&gt;
+                &lt;/template&gt;
 
-&lt;script lang="ts" setup&gt;
-    import { ref } from "vue";
-    let speed = ref(60);
-    let weight = ref(400);
+                &lt;script lang="ts" setup&gt;
+                    import { ref } from "vue";
+                    let speed = ref(60);
+                    let weight = ref(400);
 
-    function changeSpeed (){
-        speed.value += 10;
-    }
+                    function changeSpeed (){
+                        speed.value += 10;
+                    }
 
-    function changeWeight (){
-        weight.value += 100;
-    }
-&lt;/script&gt;            </code>
+                    function changeWeight (){
+                        weight.value += 100;
+                    }
+                &lt;/script&gt;
+            </code>
         </pre>
         <p>接著假設情境條件：當卡車時速大於 120 km/h 以上，或者載重大於 1000 KG 時，就 Console 回傳「已違規！」的字樣。這時就需要使用 <em>watch</em> 函式來監視卡車數據的變化。我們一步一步來，第一步先加入監視函式並輸出新、舊值觀察資料響應的變化：</p>
         <pre
@@ -75,9 +77,11 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>watch([speed, weight],(newValue, oldValue)=>{
-    console.log(newValue, oldValue);
-})            </code>
+            <code class="language-javascript" v-prism>
+                watch([speed, weight],(newValue, oldValue)=>{
+                    console.log(newValue, oldValue);
+                })
+            </code>
         </pre>
         <p>（※ 記得 <em>import</em> 要導入 <em>watch</em>。）</p>
         <p>測試監視結果：</p>
@@ -93,9 +97,11 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>watch([speed, weight],(val)=>{
-    console.log(val);
-})            </code>
+            <code class="language-javascript" v-prism>
+                watch([speed, weight],(val)=>{
+                    console.log(val);
+                })
+            </code>
         </pre>
         <figure>
             <img src="/images/learn/js/vue3-learn-5-2.jpg">
@@ -109,11 +115,13 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>watch([speed, weight],(val)=>{
-    if( speed.value >= 120 || weight.value > 1000){
-        console.log("已違規！");
-    }
-})            </code>
+            <code class="language-javascript" v-prism>
+                watch([speed, weight],(val)=>{
+                    if( speed.value >= 120 || weight.value > 1000){
+                        console.log("已違規！");
+                    }
+                })
+            </code>
         </pre>
         <p>當然可以只這樣寫，但是用解構賦值會更合適，比較能明顯辨別出解構賦值的變數是指向新的值：</p>
         <pre
@@ -124,12 +132,14 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>watch([speed, weight],(val)=>{
-    let [newSpeed, newWeight] = val;
-    if( newSpeed >= 120 || newWeight > 1000){
-        console.log("已違規！");
-    }
-})            </code>
+            <code class="language-javascript" v-prism>
+                watch([speed, weight],(val)=>{
+                    let [newSpeed, newWeight] = val;
+                    if( newSpeed >= 120 || newWeight > 1000){
+                        console.log("已違規！");
+                    }
+                })
+            </code>
         </pre>
         <p>測試當時速大於等於 120 km/h 的時候：</p>
         <figure>
@@ -151,13 +161,15 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>import { ref, watchEffect } from "vue";
+            <code class="language-javascript" v-prism>
+                import { ref, watchEffect } from "vue";
 
-watchEffect(()=>{
-    if( speed.value >= 120 || weight.value > 1000){
-        console.log("已違規！");
-    }
-})            </code>
+                watchEffect(()=>{
+                    if( speed.value >= 120 || weight.value > 1000){
+                        console.log("已違規！");
+                    }
+                })
+            </code>
         </pre>
         <p>可以看到我們沒有傳入任何的參數，要 <em>watchEffect</em> 去監視它，單純只設定好條件，<em>watchEffect</em> 便會主動進行監視所有資料的狀態變化：</p>
         <figure>
@@ -172,9 +184,11 @@ watchEffect(()=>{
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>watchEffect(()=>{
-    console.log("Hello! world!");    // Hello! world!
-})            </code>
+            <code class="language-javascript" v-prism>
+                watchEffect(()=>{
+                    console.log("Hello! world!");    // Hello! world!
+                })
+            </code>
         </pre>
         <p>當組件被載入，就能看到 Console 視窗輸出了「Hello! world!」，表示 <em>watchEffect</em> 會隨著該組件被載入到 DOM 裡頭後立刻開始作用。</p>
         <p>但如果使用 <em>watch</em>：</p>
@@ -186,9 +200,11 @@ watchEffect(()=>{
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>watch(val, ()=>{
-    console.log("Hello! world!");    // Uncaught ReferenceError: val is not defined
-})            </code>
+            <code class="language-javascript" v-prism>
+                watch(val, ()=>{
+                    console.log("Hello! world!");    // Uncaught ReferenceError: val is not defined
+                })
+            </code>
         </pre>
         <p>則會出現 <b>Uncaught ReferenceError: val is not defined</b> 錯誤，它告訴你傳進去的參數 <em>val</em> 並沒有被定義，第一是因為我們前面沒有宣告一個名為 <em>val</em> 的變數；再者即使被定義，但因為 <em>val</em> 的資料沒有任何變化，<em>watch</em> 就不會有任何反應，和 <em>watchEffect</em> 一載入無論數據變化了沒都會先作用，兩相對比誰比較被動答案呼之欲出。</p>
         <p><br></p>

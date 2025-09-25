@@ -45,17 +45,19 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;div&gt;
-        &lt;h1&gt;甲方&lt;/h1&gt;
-        &lt;p&gt;狗：{{ dog }}&lt;/p&gt;
-    &lt;/div&gt;
-&lt;/template&gt;
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;div&gt;
+                        &lt;h1&gt;甲方&lt;/h1&gt;
+                        &lt;p&gt;狗：&#123;&#123; dog &#125;&#125;&lt;/p&gt;
+                    &lt;/div&gt;
+                &lt;/template&gt;
 
-&lt;script setup lang="ts" name="Child1"&gt;
-    import { ref } from "vue";
-    const dog = ref("阿比");
-&lt;/script&gt;            </code>
+                &lt;script setup lang="ts" name="Child1"&gt;
+                    import { ref } from "vue";
+                    const dog = ref("阿比");
+                &lt;/script&gt;
+            </code>
         </pre>
         <p>組件 <b>Child2.vue</b>：</p>
         <pre
@@ -66,11 +68,13 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;div&gt;
-        &lt;h1&gt;乙方&lt;/h1&gt;
-    &lt;/div&gt;
-&lt;/template&gt;            </code>
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;div&gt;
+                        &lt;h1&gt;乙方&lt;/h1&gt;
+                    &lt;/div&gt;
+                &lt;/template&gt;
+            </code>
         </pre>
         <p>於根組件 <b>App.vue</b> 載入：</p>
         <pre
@@ -81,19 +85,21 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;article&gt;
-        &lt;section&gt;
-            &lt;Child1 /&gt;
-            &lt;Child2 /&gt;
-        &lt;/section&gt;
-    &lt;/article&gt;
-&lt;/template&gt;
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;article&gt;
+                        &lt;section&gt;
+                            &lt;Child1 /&gt;
+                            &lt;Child2 /&gt;
+                        &lt;/section&gt;
+                    &lt;/article&gt;
+                &lt;/template&gt;
 
-&lt;script setup lang="ts"&gt;
-    import Child1 from "./components/Child1.vue";
-    import Child2 from "./components/Child2.vue";
-&lt;/script&gt;            </code>
+                &lt;script setup lang="ts"&gt;
+                    import Child1 from "./components/Child1.vue";
+                    import Child2 from "./components/Child2.vue";
+                &lt;/script&gt;
+            </code>
         </pre>
         <p>本次練習全程只會在甲方與乙方兩個組件進行操作，根組件僅用於展示，不會做任何設定或變更。</p>
         <p>初始畫面：</p>
@@ -110,7 +116,9 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-bash" v-prism>npm i mitt            </code>
+            <code class="language-bash" v-prism>
+                npm i mitt
+            </code>
         </pre>
         <p>於 <b>src/</b> 底下建立「utils」資料夾（常見也有人會命名為「tools」），並在該資料夾內再建立 TS 檔案，其名稱自訂，本次練習用官方文件範例所使用的「emitter」來做命名。</p>
         <pre
@@ -121,9 +129,11 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-bash" v-prism>src
-└── utils
-     └── emitter.ts            </code>
+            <code class="language-bash" v-prism>
+                src
+                └── utils
+                    └── emitter.ts
+            </code>
         </pre>
         <p><b>emitter.ts</b> 裡面只需要做三件事：</p>
         <pre
@@ -134,14 +144,16 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>// 引入 mitt
-import mitt from "mitt";
+            <code class="language-javascript" v-prism>
+                // 引入 mitt
+                import mitt from "mitt";
 
-// 調用 mitt
-const emitter = mitt();
+                // 調用 mitt
+                const emitter = mitt();
 
-// 輸出 emitter
-export default emitter;            </code>
+                // 輸出 emitter
+                export default emitter;
+            </code>
         </pre>
         <p><em>emitter</em> 可以用來綁定與觸發事件。具體要在裡面寫什麼稍後再談，建置好基礎的 <b>emitter.ts</b> 文件內容後，我們得去 <b>main.ts</b> 引用它，否則任憑我們在這支檔案寫再多程式邏輯，它也無法參與到組件，徒寫個寂寞而已。</p>
         <p><b>main.ts</b>：</p>
@@ -153,8 +165,10 @@ export default emitter;            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>import emitter from "./utils/emitter";
-app.use(emitter);            </code>
+            <code class="language-javascript" v-prism>
+                import emitter from "./utils/emitter";
+                app.use(emitter);
+            </code>
         </pre>
         <p>這樣 mitt 的安裝和引用就完成了，回到練習範例，首要之務是在預定接收資料的乙方組件，將 <b>emitter.ts</b> import 進來，並且定義好相關程式邏輯：</p>
         <pre
@@ -165,28 +179,30 @@ app.use(emitter);            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;div&gt;
-        &lt;h1&gt;乙方&lt;/h1&gt;
-        &lt;p"&gt;{{ getDog }}&lt;/p&gt;
-    &lt;/div&gt;
-&lt;/template&gt;
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;div&gt;
+                        &lt;h1&gt;乙方&lt;/h1&gt;
+                        &lt;p"&gt;&#123;&#123; getDog &#125;&#125;&lt;/p&gt;
+                    &lt;/div&gt;
+                &lt;/template&gt;
 
-&lt;script setup lang="ts" name="Child2"&gt;
-    import { ref } from "vue";
+                &lt;script setup lang="ts" name="Child2"&gt;
+                    import { ref } from "vue";
 
-    // 引用 emitter.ts
-    import emitter from "../utils/emitter";
+                    // 引用 emitter.ts
+                    import emitter from "../utils/emitter";
 
-    // 定義接收的資料變數
-    const getDog = ref("");
+                    // 定義接收的資料變數
+                    const getDog = ref("");
 
-    // 綁定 send-dog 事件
-    emitter.on("send-dog", (value:string)=>{
-        // 將 send-dog 傳遞進來的 value 值指定給 getDog
-        getDog.value = value;
-    })
-&lt;/script&gt;            </code>
+                    // 綁定 send-dog 事件
+                    emitter.on("send-dog", (value:string)=>{
+                        // 將 send-dog 傳遞進來的 value 值指定給 getDog
+                        getDog.value = value;
+                    })
+                &lt;/script&gt;
+            </code>
         </pre>
         <p><em>emitter</em> 中的 <em>.on()</em> 函式用來綁定事件，除了 <em>.on</em> 之外還有另外三個函式 API，會在本章節最後進行說明。</p>
         <p>再來是甲方組件的部分，同樣也得引入 <b>emitter.ts</b>，我們可以想像是甲乙雙方交流資訊需要第三個人來做見證，所以兩邊都必須要知道第三方的相關資料。</p>
@@ -199,23 +215,25 @@ app.use(emitter);            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;div&gt;
-        &lt;h1&gt;甲方&lt;/h1&gt;
-        &lt;p&gt;狗：{{ dog }}&lt;/p&gt;
-        &lt;button @click="emitter.emit('send-dog', dog)"&gt;Send&lt;/button&gt;
-    &lt;/div&gt;
-&lt;/template&gt;
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;div&gt;
+                        &lt;h1&gt;甲方&lt;/h1&gt;
+                        &lt;p&gt;狗：&#123;&#123; dog &#125;&#125;&lt;/p&gt;
+                        &lt;button @click="emitter.emit('send-dog', dog)"&gt;Send&lt;/button&gt;
+                    &lt;/div&gt;
+                &lt;/template&gt;
 
-&lt;script setup lang="ts" name="Child1"&gt;
-    import { ref } from "vue";
-    
-    // 引用 emitter.ts
-    import emitter from "../utils/emitter";
+                &lt;script setup lang="ts" name="Child1"&gt;
+                    import { ref } from "vue";
+                    
+                    // 引用 emitter.ts
+                    import emitter from "../utils/emitter";
 
-    // 資料
-    const dog = ref("阿比");
-&lt;/script&gt;            </code>
+                    // 資料
+                    const dog = ref("阿比");
+                &lt;/script&gt;
+            </code>
         </pre>
         <p>傳遞資料的一方比較簡單，只需要將 <b>emitter.js</b> 引入，然後定義資料傳遞的方式即可（例如使用 <em>@click</em> 觸發 <em>send-dog</em> 事件，並把值一起帶過去）。</p>
         <p>實際測試：</p>
@@ -232,27 +250,29 @@ app.use(emitter);            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;div&gt;
-        &lt;h1&gt;甲方&lt;/h1&gt;
-        &lt;p&gt;狗：{{ dog }}&lt;/p&gt;
-    &lt;/div&gt;
-&lt;/template&gt;
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;div&gt;
+                        &lt;h1&gt;甲方&lt;/h1&gt;
+                        &lt;p&gt;狗：&#123;&#123; dog &#125;&#125;&lt;/p&gt;
+                    &lt;/div&gt;
+                &lt;/template&gt;
 
-&lt;script setup lang="ts" name="Child1"&gt;
-    import { ref, onMounted } from "vue";
+                &lt;script setup lang="ts" name="Child1"&gt;
+                    import { ref, onMounted } from "vue";
 
-    // 引用 emitter.ts
-    import emitter from "../utils/emitter";
+                    // 引用 emitter.ts
+                    import emitter from "../utils/emitter";
 
-    // 資料
-    const dog = ref("阿比");
+                    // 資料
+                    const dog = ref("阿比");
 
-    // 模板載入完就執行 emitter
-    onMounted(() => {
-        emitter.emit('send-dog', dog.value);
-    });
-&lt;/script&gt;            </code>
+                    // 模板載入完就執行 emitter
+                    onMounted(() => {
+                        emitter.emit('send-dog', dog.value);
+                    });
+                &lt;/script&gt;
+            </code>
         </pre>
         <p>實際測試：</p>
         <figure>
@@ -267,22 +287,24 @@ app.use(emitter);            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>import emitter from "../utils/emitter";
-import { ref, onUnmounted } from "vue";
+            <code class="language-javascript" v-prism>
+                import emitter from "../utils/emitter";
+                import { ref, onUnmounted } from "vue";
 
-// 定義接收的資料變數
-const getDog = ref("");
+                // 定義接收的資料變數
+                const getDog = ref("");
 
-// 綁定 send-dog 事件
-emitter.on("send-dog", (value:string)=>{
-    // 將 send-dog 傳遞進來的 value 值指定給 getDog
-    getDog.value = value;
-});
+                // 綁定 send-dog 事件
+                emitter.on("send-dog", (value:string)=>{
+                    // 將 send-dog 傳遞進來的 value 值指定給 getDog
+                    getDog.value = value;
+                });
 
-// 卸載取消 send-dog 事件
-onUnmounted(() => {
-    emitter.off("send-dog");
-});            </code>
+                // 卸載取消 send-dog 事件
+                onUnmounted(() => {
+                    emitter.off("send-dog");
+                });
+            </code>
         </pre>
         <p>雖然不解除綁定可能也不怎麼直接影響網頁應用的操作，但至於為什麼要卸載的緣由，這就好比今天甲方約了乙方某一日要在某間餐廳吃飯，但甲方突然發生變卦無法赴約，假如甲方沒有通知乙方取消約定（解除綁定），那麼乙方就會一直持續惦記著這件事，導致資訊出現落差。</p>
         <p><br></p>
@@ -311,23 +333,25 @@ onUnmounted(() => {
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;article&gt;
-        &lt;h1&gt;父組件&lt;/h1&gt;
-        &lt;section&gt;
-            &lt;Child :dog="dog" :cat="cat" :bear="bear" /&gt;
-        &lt;/section&gt;
-    &lt;/article&gt;
-&lt;/template&gt;
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;article&gt;
+                        &lt;h1&gt;父組件&lt;/h1&gt;
+                        &lt;section&gt;
+                            &lt;Child :dog="dog" :cat="cat" :bear="bear" /&gt;
+                        &lt;/section&gt;
+                    &lt;/article&gt;
+                &lt;/template&gt;
 
-&lt;script setup lang="ts" name="Parents"&gt;
-    import Child from "./Child.vue";
-    import { ref } from "vue";
+                &lt;script setup lang="ts" name="Parents"&gt;
+                    import Child from "./Child.vue";
+                    import { ref } from "vue";
 
-    const dog = ref("阿比");
-    const cat = ref("喵喵");
-    const bear = ref("歐罵罵");
-&lt;/script&gt;            </code>
+                    const dog = ref("阿比");
+                    const cat = ref("喵喵");
+                    const bear = ref("歐罵罵");
+                &lt;/script&gt;
+            </code>
         </pre>
         <p>父組件結構中定義了三筆 Ref 資料，並且將它們全部傳遞給子組件。</p>
         <p>子組件 <b>Child.vue</b>：</p>
@@ -339,16 +363,18 @@ onUnmounted(() => {
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;div&gt;
-        &lt;h1&gt;子組件&lt;/h1&gt;
-        &lt;p&gt;狗：{{ dog }}&lt;/p&gt;
-    &lt;/div&gt;
-&lt;/template&gt;
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;div&gt;
+                        &lt;h1&gt;子組件&lt;/h1&gt;
+                        &lt;p&gt;狗：&#123;&#123; dog &#125;&#125;&lt;/p&gt;
+                    &lt;/div&gt;
+                &lt;/template&gt;
 
-&lt;script setup lang="ts" name="Child"&gt;
-    defineProps(["dog"]);
-&lt;/script&gt;            </code>
+                &lt;script setup lang="ts" name="Child"&gt;
+                    defineProps(["dog"]);
+                &lt;/script&gt;
+            </code>
         </pre>
         <p>雖然父組件將三隻動物的資料通通過給了子組件，但目前的子組件卻只接收「dog」一筆資料，即便不全盤接收父組件所有傳遞的資料，也不會影響子組件的運作。</p>
         <p>實際畫面：</p>
@@ -369,17 +395,19 @@ onUnmounted(() => {
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;div&gt;
-        &lt;h1&gt;子組件&lt;/h1&gt;
-        &lt;p&gt;狗：{{ dog }}&lt;/p&gt;
-        &lt;p&gt;{{ $attrs }}&lt;/p&gt;
-    &lt;/div&gt;
-&lt;/template&gt;
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;div&gt;
+                        &lt;h1&gt;子組件&lt;/h1&gt;
+                        &lt;p&gt;狗：&#123;&#123; dog &#125;&#125;&lt;/p&gt;
+                        &lt;p&gt;&#123;&#123; $attrs &#125;&#125;&lt;/p&gt;
+                    &lt;/div&gt;
+                &lt;/template&gt;
 
-&lt;script setup lang="ts" name="Child"&gt;
-    defineProps(["dog"]);
-&lt;/script&gt;            </code>
+                &lt;script setup lang="ts" name="Child"&gt;
+                    defineProps(["dog"]);
+                &lt;/script&gt;
+            </code>
         </pre>
         <p>透過瀏覽器畫面檢視結果：</p>
         <figure>
@@ -395,16 +423,18 @@ onUnmounted(() => {
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;div&gt;
-        &lt;h1&gt;子組件&lt;/h1&gt;
-        &lt;GrandChild /&gt;
-    &lt;/div&gt;
-&lt;/template&gt;
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;div&gt;
+                        &lt;h1&gt;子組件&lt;/h1&gt;
+                        &lt;GrandChild /&gt;
+                    &lt;/div&gt;
+                &lt;/template&gt;
 
-&lt;script setup lang="ts" name="Child"&gt;
-    import GrandChild from './GrandChild.vue';
-&lt;/script&gt;            </code>
+                &lt;script setup lang="ts" name="Child"&gt;
+                    import GrandChild from './GrandChild.vue';
+                &lt;/script&gt;
+            </code>
         </pre>
         <p>我們直覺可能會拿前面子組件模板直接載入實例屬性 <em>$attrs</em> 的方式依樣畫葫蘆給孫組件 <b>GrandChild.vue</b>：</p>
         <pre
@@ -415,12 +445,14 @@ onUnmounted(() => {
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;div&gt;
-        &lt;h1&gt;孫組件&lt;/h1&gt;
-        &lt;p&gt;{{ $attrs }}&lt;/p&gt;
-    &lt;/div&gt;
-&lt;/template&gt;            </code>
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;div&gt;
+                        &lt;h1&gt;孫組件&lt;/h1&gt;
+                        &lt;p&gt;{{ $attrs }}&lt;/p&gt;
+                    &lt;/div&gt;
+                &lt;/template&gt;
+            </code>
         </pre>
         <p>但很快就會發現這麼做並無法成功顯示「祖」組件傳遞的資料：</p>
         <figure>
@@ -435,23 +467,25 @@ onUnmounted(() => {
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;div&gt;
-        &lt;h1&gt;子組件&lt;/h1&gt;
-        &lt;GrandChild v-bind="$attrs" /&gt;
-    &lt;/div&gt;
-&lt;/template&gt;
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;div&gt;
+                        &lt;h1&gt;子組件&lt;/h1&gt;
+                        &lt;GrandChild v-bind="$attrs" /&gt;
+                    &lt;/div&gt;
+                &lt;/template&gt;
 
-&lt;script setup lang="ts" name="Child"&gt;
-    import GrandChild from './GrandChild.vue';
-&lt;/script&gt;            </code>
+                &lt;script setup lang="ts" name="Child"&gt;
+                    import GrandChild from './GrandChild.vue';
+                &lt;/script&gt;
+            </code>
         </pre>
         <p>題外話，雖然之前都沒有提及，但一直以來我們利用 <em>:</em> 加上指定名稱將資料 props 給子組件的方式，例如 <em>:dog="dog"</em>，這個 <em>:</em> 其實就是 v-bind 的簡寫方式。</p>
         <p>添加 <em>v-bind="$attrs"</em> 後再次確認畫面：</p>
         <figure>
             <img src="/images/learn/js/vue3-learn-17-8.jpg">
         </figure>
-        <p>可以看到孫組件模板裡的 <em v-pre>{{ $attrs }}</em> 已經可以拿到其祖組件的資料了。至於後續將資料取出來使用的方式就和父子組件的方式相同，用 <em>defineProps</em> 即可。例如：</p>
+        <p>可以看到孫組件模板裡的 <em >{{ $attrs }}</em> 已經可以拿到其祖組件的資料了。至於後續將資料取出來使用的方式就和父子組件的方式相同，用 <em>defineProps</em> 即可。例如：</p>
         <pre
             class="line-numbers"
             data-prismjs-copy="Copy"
@@ -460,18 +494,20 @@ onUnmounted(() => {
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;div&gt;
-        &lt;h1&gt;孫組件&lt;/h1&gt;
-        &lt;p&gt;狗： {{ dog }}&lt;/p&gt;
-        &lt;p&gt;貓： {{ cat }}&lt;/p&gt;
-        &lt;p&gt;熊： {{ bear }}&lt;/p&gt;
-    &lt;/div&gt;
-&lt;/template&gt;
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;div&gt;
+                        &lt;h1&gt;孫組件&lt;/h1&gt;
+                        &lt;p&gt;狗： &#123;&#123; dog &#125;&#125;&lt;/p&gt;
+                        &lt;p&gt;貓： &#123;&#123; cat &#125;&#125;&lt;/p&gt;
+                        &lt;p&gt;熊： &#123;&#123; bear &#125;&#125;&lt;/p&gt;
+                    &lt;/div&gt;
+                &lt;/template&gt;
 
-&lt;script setup lang="ts" name="GrandChild"&gt;
-    defineProps(["dog", "cat", "bear"])
-&lt;/script&gt;            </code>
+                &lt;script setup lang="ts" name="GrandChild"&gt;
+                    defineProps(["dog", "cat", "bear"])
+                &lt;/script&gt;
+            </code>
         </pre>
         <p>實際結果：</p>
         <figure>
@@ -488,26 +524,28 @@ onUnmounted(() => {
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;article&gt;
-        &lt;h1&gt;父組件&lt;/h1&gt;
-        &lt;p&gt;目前數字：{{ num }}&lt;/p&gt;
-        &lt;section&gt;
-            &lt;Child :num="num" :number="updated" /&gt;
-        &lt;/section&gt;
-    &lt;/article&gt;
-&lt;/template&gt;
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;article&gt;
+                        &lt;h1&gt;父組件&lt;/h1&gt;
+                        &lt;p&gt;目前數字：&#123;&#123; num &#125;&#125;&lt;/p&gt;
+                        &lt;section&gt;
+                            &lt;Child :num="num" :number="updated" /&gt;
+                        &lt;/section&gt;
+                    &lt;/article&gt;
+                &lt;/template&gt;
 
-&lt;script setup lang="ts" name="Parents"&gt;
-    import Child from "./Child.vue";
-    import { ref } from "vue";
+                &lt;script setup lang="ts" name="Parents"&gt;
+                    import Child from "./Child.vue";
+                    import { ref } from "vue";
 
-    const num = ref(3);
-    
-    function updated(n){
-        num.value += n;
-    }
-&lt;/script&gt;            </code>
+                    const num = ref(3);
+                    
+                    function updated(n){
+                        num.value += n;
+                    }
+                &lt;/script&gt;
+            </code>
         </pre>
         <pre
             class="line-numbers"
@@ -517,16 +555,18 @@ onUnmounted(() => {
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;div&gt;
-        &lt;h1&gt;子組件&lt;/h1&gt;
-        &lt;GrandChild v-bind="$attrs" /&gt;
-    &lt;/div&gt;
-&lt;/template&gt;
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;div&gt;
+                        &lt;h1&gt;子組件&lt;/h1&gt;
+                        &lt;GrandChild v-bind="$attrs" /&gt;
+                    &lt;/div&gt;
+                &lt;/template&gt;
 
-&lt;script setup lang="ts" name="Child"&gt;
-    import GrandChild from './GrandChild.vue';
-&lt;/script&gt;            </code>
+                &lt;script setup lang="ts" name="Child"&gt;
+                    import GrandChild from './GrandChild.vue';
+                &lt;/script&gt;
+            </code>
         </pre>
         <pre
             class="line-numbers"
@@ -536,17 +576,19 @@ onUnmounted(() => {
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;div&gt;
-        &lt;h1&gt;孫組件&lt;/h1&gt;
-        &lt;p&gt;目前數字：{{ num }}&lt;/p&gt;
-        &lt;button @click="number(10)"&gt;更新數字&lt;/button&gt;
-    &lt;/div&gt;
-&lt;/template&gt;
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;div&gt;
+                        &lt;h1&gt;孫組件&lt;/h1&gt;
+                        &lt;p&gt;目前數字：&#123;&#123; num &#125;&#125;&lt;/p&gt;
+                        &lt;button @click="number(10)"&gt;更新數字&lt;/button&gt;
+                    &lt;/div&gt;
+                &lt;/template&gt;
 
-&lt;script setup lang="ts" name="GrandChild"&gt;
-    defineProps(["num", "number"]);
-&lt;/script&gt;            </code>
+                &lt;script setup lang="ts" name="GrandChild"&gt;
+                    defineProps(["num", "number"]);
+                &lt;/script&gt;
+            </code>
         </pre>
         <p>實際結果：</p>
         <figure>
@@ -555,7 +597,6 @@ onUnmounted(() => {
     </div>
     <div class="text-block" :id="'act' + catalog[3].id">
         <h2 v-text="catalog[3].title"></h2>
-        <h2>三、祖孫組件之間的通信（provide＆inject）</h2>
         <p>本章節一樣要敘述的是祖孫之間的資料通信，上一章節我們揭露透過 <em>$attrs</em> 可以將祖組件的資料存放在 attrs 此一特殊屬性內，讓孫組件自由去存取祖組件特定的資料，不過如果要使用 <em>$attrs</em>，非但祖孫組件都要進行相關設定，中間層的子組件同樣也需要 <em>v-bind="attrs"</em>，扮演祖孫之間資料通信的橋樑。然而事實上，Vue 還有另一種方式，讓祖孫組件之間可以直接溝通，而不需要子組件居中進行協調。</p>
         <p>按照慣例，先準備練習範例的前置程式碼，首先是父組件（祖先）<b>Parents.vue</b> 的部分：</p>
         <pre
@@ -566,27 +607,29 @@ onUnmounted(() => {
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;article&gt;
-        &lt;h1&gt;父組件&lt;/h1&gt;
-        &lt;p&gt;Num  || {{ num }}&lt;/p&gt;
-        &lt;p&gt;User || Name：{{ user.name }} / Age：{{ user.age }}&lt;/p&gt;
-        &lt;section&gt;
-            &lt;Child /&gt;
-        &lt;/section&gt;
-    &lt;/article&gt;
-&lt;/template&gt;
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;article&gt;
+                        &lt;h1&gt;父組件&lt;/h1&gt;
+                        &lt;p&gt;Num  || &#123;&#123; num &#125;&#125;&lt;/p&gt;
+                        &lt;p&gt;User || Name：&#123;&#123; user.name &#125;&#125; / Age：&#123;&#123; user.age &#125;&#125;&lt;/p&gt;
+                        &lt;section&gt;
+                            &lt;Child /&gt;
+                        &lt;/section&gt;
+                    &lt;/article&gt;
+                &lt;/template&gt;
 
-&lt;script setup lang="ts" name="Parents"&gt;
-    import Child from "./Child.vue";
-    import { ref, reactive } from "vue";
+                &lt;script setup lang="ts" name="Parents"&gt;
+                    import Child from "./Child.vue";
+                    import { ref, reactive } from "vue";
 
-    const num = ref(3);
-    const user = reactive({
-        name: "阿比",
-        age: 18
-    });
-&lt;/script&gt;            </code>
+                    const num = ref(3);
+                    const user = reactive({
+                        name: "阿比",
+                        age: 18
+                    });
+                &lt;/script&gt;
+            </code>
         </pre>
         <p>在父組件中定義了兩筆資料，分別是一筆純數字 <em>num</em> 的 Ref，以及一份 <em>user</em> 的 Reactive 響應式物件資料。</p>
         <p>子組件 <b>Child.vue</b>：</p>
@@ -598,16 +641,18 @@ onUnmounted(() => {
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;div&gt;
-        &lt;h1&gt;子組件&lt;/h1&gt;
-        &lt;GrandChild /&gt;
-    &lt;/div&gt;
-&lt;/template&gt;
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;div&gt;
+                        &lt;h1&gt;子組件&lt;/h1&gt;
+                        &lt;GrandChild /&gt;
+                    &lt;/div&gt;
+                &lt;/template&gt;
 
-&lt;script setup lang="ts" name="Child"&gt;
-    import GrandChild from './GrandChild.vue';
-&lt;/script&gt;            </code>
+                &lt;script setup lang="ts" name="Child"&gt;
+                    import GrandChild from './GrandChild.vue';
+                &lt;/script&gt;
+            </code>
         </pre>
         <p>由於本章節重點是祖孫組件之間的直接通信，所以子組件的程式結構只有單純引入孫組件 <b>GrandChild.vue</b> 的功能，基本上不會參與本次練習內容。</p>
         <p>孫組件 <b>GrandChild.vue</b>：</p>
@@ -619,13 +664,15 @@ onUnmounted(() => {
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;div&gt;
-        &lt;h1&gt;孫組件&lt;/h1&gt;
-    &lt;/div&gt;
-&lt;/template&gt;
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;div&gt;
+                        &lt;h1&gt;孫組件&lt;/h1&gt;
+                    &lt;/div&gt;
+                &lt;/template&gt;
 
-&lt;script setup lang="ts" name="GrandChild"&gt;&lt;/script&gt;            </code>
+                &lt;script setup lang="ts" name="GrandChild"&gt;&lt;/script&gt;
+            </code>
         </pre>
         <p>孫組件目前只有基礎模板結構，在後續練習會逐步增加通信所需的程式方法。</p>
         <p>現在開始進行祖孫組件之間的資料通信，從父組件（祖組件）一方直接傳遞資料給孫組件，使用的方法為 <em>provide</em> 函式，首先於父組件引用 <em>provide</em>：</p>
@@ -637,18 +684,20 @@ onUnmounted(() => {
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>import Child from "./Child.vue";
-import { ref, reactive, provide } from "vue";
+            <code class="language-javascript" v-prism>
+                import Child from "./Child.vue";
+                import { ref, reactive, provide } from "vue";
 
-const num = ref(3);
-const user = reactive({
-    name: "阿比",
-    age: 18
-});
+                const num = ref(3);
+                const user = reactive({
+                    name: "阿比",
+                    age: 18
+                });
 
-// 向後代提供資料數據
-provide("myNum", num);
-provide("myInfo", user);            </code>
+                // 向後代提供資料數據
+                provide("myNum", num);
+                provide("myInfo", user);
+            </code>
         </pre>
         <p><em>provide</em> 函式中一共填入兩個參數，第一個是提供給後代的資料要叫什麼名字，第二個則是該資料的名稱，雖然字面上這兩個意思看起來相近，但其實第一個值的意思是為該資料定義一個自定義的名稱，第二個值則是該資料本身的命名。</p>
         <p>註解中的「後代」自然也包含子組件，不過本次練習的目的是不經由子組件也能直接向孫組件提供資料，所以我們跳過子組件，直接在孫組件進行下一步操作。</p>
@@ -662,19 +711,21 @@ provide("myInfo", user);            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;div&gt;
-        &lt;h1&gt;孫組件&lt;/h1&gt;
-        &lt;p&gt;Num  || {{ x }}&lt;/p&gt;
-    &lt;/div&gt;
-&lt;/template&gt;
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;div&gt;
+                        &lt;h1&gt;孫組件&lt;/h1&gt;
+                        &lt;p&gt;Num  || &#123;&#123; x &#125;&#125;&lt;/p&gt;
+                    &lt;/div&gt;
+                &lt;/template&gt;
 
-&lt;script setup lang="ts" name="GrandChild"&gt;
-    import { inject } from "vue";
+                &lt;script setup lang="ts" name="GrandChild"&gt;
+                    import { inject } from "vue";
 
-    // 接收前代的資料
-    const x = inject("myNum");
-&lt;/script&gt;            </code>
+                    // 接收前代的資料
+                    const x = inject("myNum");
+                &lt;/script&gt;
+            </code>
         </pre>
         <p>範例中定義 <em>x</em> 變數來調用 <em>inject</em> 函式，雖說 x 這個變數命名有些隨便，但主要目的是讓我們能更清楚了解個組件資料定義與引用的變數名稱之間的關聯性。</p>
         <p>實際畫面呈現：</p>
@@ -695,21 +746,23 @@ provide("myInfo", user);            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;div&gt;
-        &lt;h1&gt;孫組件&lt;/h1&gt;
-        &lt;p&gt;Num  || {{ x }}&lt;/p&gt;
-        &lt;p&gt;User || Name：{{ user.name }} / Age：{{ user.age }}&lt;/p&gt;
-    &lt;/div&gt;
-&lt;/template&gt;
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;div&gt;
+                        &lt;h1&gt;孫組件&lt;/h1&gt;
+                        &lt;p&gt;Num  || &#123;&#123; x &#125;&#125;&lt;/p&gt;
+                        &lt;p&gt;User || Name：&#123;&#123; user.name &#125;&#125; / Age：&#123;&#123; user.age &#125;&#125;&lt;/p&gt;
+                    &lt;/div&gt;
+                &lt;/template&gt;
 
-&lt;script setup lang="ts" name="GrandChild"&gt;
-    import { inject } from "vue";
+                &lt;script setup lang="ts" name="GrandChild"&gt;
+                    import { inject } from "vue";
 
-    // 接收前代的資料
-    const x = inject("myNum");
-    const user = inject("myInfo");
-&lt;/script&gt;            </code>
+                    // 接收前代的資料
+                    const x = inject("myNum");
+                    const user = inject("myInfo");
+                &lt;/script&gt;
+            </code>
         </pre>
         <p>實際畫面呈現：</p>
         <figure>
@@ -728,7 +781,9 @@ provide("myInfo", user);            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>const user = inject("myInfo", { name: "不具名", age: 0 });            </code>
+            <code class="language-javascript" v-prism>
+                const user = inject("myInfo", { name: "不具名", age: 0 });
+            </code>
         </pre>
         <figure>
             <img src="/images/learn/js/vue3-learn-17-15.jpg">
@@ -745,9 +800,11 @@ provide("myInfo", user);            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>function changeNumber(value){
-    num.value += value;
-}            </code>
+            <code class="language-javascript" v-prism>
+                function changeNumber(value){
+                    num.value += value;
+                }
+            </code>
         </pre>
         <p><em>provide</em> 原本只有傳遞 <em>num</em> 資料，現在多了 <em>changeNumber</em> 方法要一起傳給後代，這時我們可以透過物件形式將這兩筆囊括起來：</p>
         <pre
@@ -758,7 +815,9 @@ provide("myInfo", user);            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>provide("myNum", {num, changeNumber});            </code>
+            <code class="language-javascript" v-prism>
+                provide("myNum", {num, changeNumber});
+            </code>
         </pre>
         <p>來到孫組件 <b>GrandChild.vue</b>，我們透過解構賦值的方式，將 <em>myNum</em> 提供的物件分離解析出來：</p>
         <pre
@@ -769,7 +828,9 @@ provide("myInfo", user);            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>const {num, changeNumber} = inject("myNum", "替代值");            </code>
+            <code class="language-javascript" v-prism>
+                const {num, changeNumber} = inject("myNum", "替代值");
+            </code>
         </pre>
         <p>在模板添加事件觸發按鈕：</p>
         <pre
@@ -780,13 +841,15 @@ provide("myInfo", user);            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;div&gt;
-        &lt;h1&gt;孫組件&lt;/h1&gt;
-        &lt;p&gt;Num  || {{ num }}&lt;/p&gt;
-        &lt;button @click="changeNumber(10)"&gt;改變數字&lt;/button&gt;
-    &lt;/div&gt;
-&lt;/template&gt;            </code>
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;div&gt;
+                        &lt;h1&gt;孫組件&lt;/h1&gt;
+                        &lt;p&gt;Num  || &#123;&#123; num &#125;&#125;&lt;/p&gt;
+                        &lt;button @click="changeNumber(10)"&gt;改變數字&lt;/button&gt;
+                    &lt;/div&gt;
+                &lt;/template&gt;
+            </code>
         </pre>
         <p>在按鈕觸發的事件中，只要點擊一下按鈕，就會傳送 10 給 <em>changeNumber</em> 裡的 <em>value</em>，並與 <em>num.value</em> 進行加總：</p>
         <figure>
@@ -801,7 +864,9 @@ provide("myInfo", user);            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>const {num, changeNumber} = inject("myNum", {num:0, changeNumber:(params:number)=>{}});            </code>
+            <code class="language-javascript" v-prism>
+                const {num, changeNumber} = inject("myNum", {num:0, changeNumber:(params:number)=>{}});
+            </code>
         </pre>
     </div>
     <div class="text-block" :id="'act' + catalog[4].id">

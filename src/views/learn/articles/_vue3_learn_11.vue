@@ -42,9 +42,9 @@ const catalog = reactive<CatalogItem[]>([
         >
             <code class="language-html" v-prism>
                 &lt;template&gt;
-                    &lt;div&gt;新聞編號 {{ route.query.id }}&lt;/div&gt;
-                    &lt;div&gt;新聞標題 {{ route.query.title }}&lt;/div&gt;
-                    &lt;div&gt;新聞內容 {{ route.query.content }}&lt;/div&gt;
+                    &lt;div&gt;新聞編號 &#123;&#123; route.query.id &#125;&#125;&lt;/div&gt;
+                    &lt;div&gt;新聞標題 &#123;&#123; route.query.title &#125;&#125;&lt;/div&gt;
+                    &lt;div&gt;新聞內容 &#123;&#123; route.query.content &#125;&#125;&lt;/div&gt;
                 &lt;/template&gt;
             </code>
         </pre>
@@ -59,9 +59,9 @@ const catalog = reactive<CatalogItem[]>([
         >
             <code class="language-html" v-prism>
                 &lt;template&gt;
-                    &lt;div&gt;新聞編號 {{ route.params.id }}&lt;/div&gt;
-                    &lt;div&gt;新聞標題 {{ route.params.title }}&lt;/div&gt;
-                    &lt;div&gt;新聞內容 {{ route.params.content }}&lt;/div&gt;
+                    &lt;div&gt;新聞編號 &#123;&#123; route.params.id &#125;&#125;&lt;/div&gt;
+                    &lt;div&gt;新聞標題 &#123;&#123; route.params.title &#125;&#125;&lt;/div&gt;
+                    &lt;div&gt;新聞內容 &#123;&#123; route.params.content &#125;&#125;&lt;/div&gt;
                 &lt;/template&gt;
             </code>
         </pre>
@@ -134,9 +134,9 @@ const catalog = reactive<CatalogItem[]>([
         >
             <code class="language-html" v-prism>
                 &lt;template&gt;
-                    &lt;div&gt;新聞編號 {{ id }}&lt;/div&gt;
-                    &lt;div&gt;新聞標題 {{ title }}&lt;/div&gt;
-                    &lt;div&gt;新聞內容 {{ content }}&lt;/div&gt;
+                    &lt;div&gt;新聞編號 &#123;&#123; id &#125;&#125;&lt;/div&gt;
+                    &lt;div&gt;新聞標題 &#123;&#123; title &#125;&#125;&lt;/div&gt;
+                    &lt;div&gt;新聞內容 &#123;&#123; content &#125;&#125;&lt;/div&gt;
                 &lt;/template&gt;
 
                 &lt;script setup lang="ts"&gt;
@@ -209,9 +209,9 @@ const catalog = reactive<CatalogItem[]>([
         >
             <code class="language-html" v-prism>
                 &lt;template&gt;
-                    &lt;div&gt;新聞編號 {{ id }}&lt;/div&gt;
-                    &lt;div&gt;新聞標題 {{ title }}&lt;/div&gt;
-                    &lt;div&gt;新聞內容 {{ content }}&lt;/div&gt;
+                    &lt;div&gt;新聞編號 &#123;&#123; id &#125;&#125;&lt;/div&gt;
+                    &lt;div&gt;新聞標題 &#123;&#123; title &#125;&#125;&lt;/div&gt;
+                    &lt;div&gt;新聞內容 &#123;&#123; content &#125;&#125;&lt;/div&gt;
                 &lt;/template&gt;
 
                 &lt;script setup lang="ts"&gt;
@@ -264,9 +264,9 @@ const catalog = reactive<CatalogItem[]>([
         >
             <code class="language-html" v-prism>
                 &lt;template&gt;
-                    &lt;div&gt;新聞編號 {{ id }}&lt;/div&gt;
-                    &lt;div&gt;新聞標題 {{ title }}&lt;/div&gt;
-                    &lt;div&gt;新聞內容 {{ content }}&lt;/div&gt;
+                    &lt;div&gt;新聞編號 &#123;&#123; id &#125;&#125;&lt;/div&gt;
+                    &lt;div&gt;新聞標題 &#123;&#123; title &#125;&#125;&lt;/div&gt;
+                    &lt;div&gt;新聞內容 &#123;&#123; content &#125;&#125;&lt;/div&gt;
                 &lt;/template&gt;
 
                 &lt;script setup lang="ts"&gt;

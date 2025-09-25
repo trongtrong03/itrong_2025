@@ -29,28 +29,42 @@ const toggle = (val: number) => {
                         <img src="/images/learn/js/vite-faq-1.jpg">
                     </figure>
                     <p>其實許多警告項目也不完全是會影響網頁運行的錯誤，但動輒幾十甚至上百的警告，要一條條處理其實也要花不少時間，如果想要跳過 TypeScript 嚴格規則並快速進行打包，可以找到專案內的 <b>package.json</b> 檔案，找到這一段程式碼：</p>
-                    <prism-highlight>
-                        <div class="text-code" v-pre>
-                            <pre><code class="language-javascript">"scripts": {
-    "dev": "vite",
-    "build": "run-p type-check \"build-only {@}\" --",
-    "preview": "vite preview",
-    "build-only": "vite build",
-    "type-check": "vue-tsc --build --force"
-},</code></pre>
-                        </div>
-                    </prism-highlight>
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-javascript" v-prism>
+                            "scripts": {
+                                "dev": "vite",
+                                "build": "run-p type-check \"build-only {@}\" --",
+                                "preview": "vite preview",
+                                "build-only": "vite build",
+                                "type-check": "vue-tsc --build --force"
+                            },
+                        </code>
+                    </pre>
                     <p>將 <em>type-check</em> 相關的項目移除即可：</p>
-                    <prism-highlight>
-                        <div class="text-code" v-pre>
-                            <pre><code class="language-javascript">"scripts": {
-    "dev": "vite",
-    "build": "run-p \"build-only {@}\" --",
-    "preview": "vite preview",
-    "build-only": "vite build"
-},</code></pre>
-                        </div>
-                    </prism-highlight>
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-javascript" v-prism>
+                            "scripts": {
+                                "dev": "vite",
+                                "build": "run-p \"build-only {@}\" --",
+                                "preview": "vite preview",
+                                "build-only": "vite build"
+                            },
+                        </code>
+                    </pre>
                 </div>
                 <button class="accordin-close" @click="toggle(0)"></button>
             </div>
@@ -70,17 +84,24 @@ const toggle = (val: number) => {
                 </div>
                 <div class="accordin-content">
                     <p>執行 Vite 的 <em>npm run dev</em> 指令時，預設的本機端伺服器網址為 <b>http://localhost:5173/</b>，若因為一些因素想修改它初始 port 值，可從 <b>vite.config</b> 文件著手進行變更：</p>
-                    <prism-highlight>
-                        <div class="text-code" v-pre>
-                            <pre><code class="language-javascript">export default defineConfig({
-    server: {
-        port: 3006,
-    },
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-javascript" v-prism>
+                            export default defineConfig({
+                                server: {
+                                    port: 3006,
+                                },
 
-    // 其他設定
-})</code></pre>
-                        </div>
-                    </prism-highlight>
+                                // 其他設定
+                            })
+                        </code>
+                    </pre>
                     <p>範例中我們將 port 設定為 3006，那麼下次執行 <em>npm run dev</em> 後，網址就將會是 <b>http://localhost:3006/</b> 了。</p>
                 </div>
                 <button class="accordin-close" @click="toggle(0)"></button>
@@ -95,41 +116,54 @@ const toggle = (val: number) => {
                     <h4>如果伺服器是 Nginx：</h4>
                     <h6>1. 建立一個檔案並命名為 <b>your_domain.conf</b></h6>
                     <h6>2. 於文件中添加以下程式碼：</h6>
-                    <prism-highlight>
-                        <div class="text-code" v-pre>
-                            <pre><code class="language-bash">server {
-    listen 80;
-    server_name your_domain.com;
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-bash" v-prism>
+                            server {
+                                listen 80;
+                                server_name your_domain.com;
 
-    root /path/to/your/dist;
-    index index.html;
+                                root /path/to/your/dist;
+                                index index.html;
 
-    location / {
-        try_files $uri $uri/ /index.html;
-    }
+                                location / {
+                                    try_files $uri $uri/ /index.html;
+                                }
 
-    # 其他配置...
-}</code></pre>
-                        </div>
-                    </prism-highlight>
+                                # 其他配置...
+                            }
+                        </code>
+                    </pre>
                     <h6>3. 上傳該檔案或通知伺服器管理員，將檔案提供給他們協助進行配置。</h6>
                     <p><br></p>
                     <h4>如果伺服器是 Apache：</h4>
                     <h6>1. 建立一個檔案並命名為 <b>.htaccess</b></h6>
                     <h6>2. 於文件中添加以下程式碼：</h6>
-                    <prism-highlight>
-                        <div class="text-code" v-pre>
-                            <pre><code class="language-bash">&lt;IfModule mod_rewrite.c&gt;
-  RewriteEngine On
-  RewriteBase /
-  RewriteRule ^index\.html$ - [L]
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule . /index.html [L]
-&lt;/IfModule&gt;
-</code></pre>
-                        </div>
-                    </prism-highlight>
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-bash" v-prism>
+                            &lt;IfModule mod_rewrite.c&gt;
+                                RewriteEngine On
+                                RewriteBase /
+                                RewriteRule ^index\.html$ - [L]
+                                RewriteCond %{REQUEST_FILENAME} !-f
+                                RewriteCond %{REQUEST_FILENAME} !-d
+                                RewriteRule . /index.html [L]
+                            &lt;/IfModule&gt;
+                        </code>
+                    </pre>
                     <h6>3. 將該檔案上傳至伺服器端，於入口文件（例如 index.html）放在同一個階層。</h6>
                 </div>
                 <button class="accordin-close" @click="toggle(0)"></button>
@@ -140,15 +174,22 @@ const toggle = (val: number) => {
                 </div>
                 <div class="accordin-content">
                     <p>在路由設定檔（例如 <b>router/index.ts</b>）中添加：</p>
-                    <prism-highlight>
-                        <div class="text-code" v-pre>
-                            <pre><code class="language-javascript">const router = createRouter({
-    scrollBehavior(to, from, savedPosition){
-        return { top: 0 }
-    },
-});</code></pre>
-                        </div>
-                    </prism-highlight>
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-javascript" v-prism>
+                            const router = createRouter({
+                                scrollBehavior(to, from, savedPosition){
+                                    return { top: 0 }
+                                },
+                            });
+                        </code>
+                    </pre>
                 </div>
                 <button class="accordin-close" @click="toggle(0)"></button>
             </div>

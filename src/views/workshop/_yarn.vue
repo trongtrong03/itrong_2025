@@ -41,19 +41,33 @@ const toggle = (val: number) => {
                     </figure>
                     <p><br></p>
                     <h6>2. 在開啟的「PowerShell」應用程式視窗裡輸入以下指令：</h6>
-                    <prism-highlight>
-                        <div class="text-code" v-pre>
-                            <pre><code class="language-powershell">Get-ExecutionPolicy</code></pre>
-                        </div>
-                    </prism-highlight>
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-powershell" v-prism>
+                            Get-ExecutionPolicy
+                        </code>
+                    </pre>
                     <p>這個指令會顯示目前 PowerShell 的執行原則設定，假如你執行 <em>yarn</em> 遭遇到這則錯誤訊息，通常執行這個指令後回傳的結果會是 <em>Restricted</em>，也就是受限制的狀態。</p>
                     <p><br></p>
                     <h6>3. 輸入以下指令將執行原則修改為 <em>RemoteSigned</em>：</h6>
-                    <prism-highlight>
-                        <div class="text-code" v-pre>
-                            <pre><code class="language-powershell">Set-ExecutionPolicy RemoteSigned</code></pre>
-                        </div>
-                    </prism-highlight>
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-powershell" v-prism>
+                            Set-ExecutionPolicy RemoteSigned
+                        </code>
+                    </pre>
                     <p>指令送出後系統會詢問是否確認要變更執行原則，輸入「Y」進行變更，之後再次執行 <em>yarn</em> 指令，應該就能順利執行動作了。</p>
                     <figure>
                         <img src="/images/learn/js/yarn-2.jpg">

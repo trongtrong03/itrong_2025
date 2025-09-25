@@ -34,19 +34,26 @@ const toggle = (val: number) => {
                     <p>水平延伸式的滾軸選單</p>
                 </div>
                 <div class="accordin-content">
-                    <prism-highlight>
-                        <div class="text-code" v-pre>
-                            <pre><code class="language-css">ul {
-    white-space: nowrap;
-    overflow-x: auto;
-}
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-css" v-prism>
+                            ul {
+                                white-space: nowrap;
+                                overflow-x: auto;
+                            }
 
-ul li {
-    display: inline-block;
-    vertical-align: top;
-}</code></pre>
-                        </div>
-                    </prism-highlight>
+                            ul li {
+                                display: inline-block;
+                                vertical-align: top;
+                            }
+                        </code>
+                    </pre>
                 </div>
                 <button class="accordin-close" @click="toggle(0)"></button>
             </div>
@@ -55,13 +62,20 @@ ul li {
                     <p>把英文文字轉換為小型大寫字母</p>
                 </div>
                 <div class="accordin-content">
-                    <prism-highlight>
-                        <div class="text-code" v-pre>
-                            <pre><code class="language-css">p {
-    font-variant: small-caps;
-}</code></pre>
-                        </div>
-                    </prism-highlight>
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-css" v-prism>
+                            p {
+                                font-variant: small-caps;
+                            }
+                        </code>
+                    </pre>
                 </div>
                 <button class="accordin-close" @click="toggle(0)"></button>
             </div>
@@ -70,19 +84,26 @@ ul li {
                     <p>iOS 行動裝置 iframe 無法向下滾動的解決方法</p>
                 </div>
                 <div class="accordin-content">
-                    <prism-highlight>
-                        <div class="text-code" v-pre>
-                            <pre><code class="language-css">div {
-    overflow: auto;
-    -webkit-overflow-scrolling: touch;
-}
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-css" v-prism>
+                            div {
+                                overflow: auto;
+                                -webkit-overflow-scrolling: touch;
+                            }
 
-div iframe {
-    width: 100%;
-    height: 100%;
-}</code></pre>
-                        </div>
-                    </prism-highlight>
+                            div iframe {
+                                width: 100%;
+                                height: 100%;
+                            }
+                        </code>
+                    </pre>
                     <p>此外，HTML 中的 <em>iframe</em> 元素也要添加 <em>scrolling="yes"</em> 屬性。</p>
                 </div>
                 <button class="accordin-close" @click="toggle(0)"></button>
@@ -92,13 +113,20 @@ div iframe {
                     <p>讓 iPad 或 iPhone 的捲軸更順暢</p>
                 </div>
                 <div class="accordin-content">
-                    <prism-highlight>
-                        <div class="text-code" v-pre>
-                            <pre><code class="language-css">body {
-    -webkit-overflow-scrolling: touch;
-}</code></pre>
-                        </div>
-                    </prism-highlight>
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-css" v-prism>
+                            body {
+                                -webkit-overflow-scrolling: touch;
+                            }
+                        </code>
+                    </pre>
                     <p>手指移開觸碰螢幕，滾動仍會持續一小段回彈效果。</p>
                 </div>
                 <button class="accordin-close" @click="toggle(0)"></button>
@@ -108,16 +136,23 @@ div iframe {
                     <p>文字色彩漸層</p>
                 </div>
                 <div class="accordin-content">
-                    <prism-highlight>
-                        <div class="text-code" v-pre>
-                            <pre><code class="language-css">h1 {
-    background-image: gradient(參數);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}</code></pre>
-                        </div>
-                    </prism-highlight>
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-css" v-prism>
+                            h1 {
+                                background-image: gradient(參數);
+                                -webkit-background-clip: text;
+                                background-clip: text;
+                                color: transparent;
+                            }
+                        </code>
+                    </pre>
                 </div>
                 <button class="accordin-close" @click="toggle(0)"></button>
             </div>
@@ -127,23 +162,37 @@ div iframe {
                 </div>
                 <div class="accordin-content">
                     <h4>由左至右：</h4>
-                    <prism-highlight>
-                        <div class="text-code" v-pre>
-                            <pre><code class="language-css">p {
-    -webkit-writing-mode: vertical-lr;
-    writing-mode: vertical-lr;
-}</code></pre>
-                        </div>
-                    </prism-highlight>
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-css" v-prism>
+                            p {
+                                -webkit-writing-mode: vertical-lr;
+                                writing-mode: vertical-lr;
+                            }
+                        </code>
+                    </pre>
                     <h4>由右至左：</h4>
-                    <prism-highlight>
-                        <div class="text-code" v-pre>
-                            <pre><code class="language-css">p {
-    -webkit-writing-mode: vertical-rl;
-    writing-mode: vertical-rl;
-}</code></pre>
-                        </div>
-                    </prism-highlight>
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-css" v-prism>
+                            p {
+                                -webkit-writing-mode: vertical-rl;
+                                writing-mode: vertical-rl;
+                            }
+                        </code>
+                    </pre>
                 </div>
                 <button class="accordin-close" @click="toggle(0)"></button>
             </div>
@@ -152,13 +201,20 @@ div iframe {
                     <p>控制網頁內容是否可以被選取</p>
                 </div>
                 <div class="accordin-content">
-                    <prism-highlight>
-                        <div class="text-code" v-pre>
-                            <pre><code class="language-css">body {
-    user-select: none;
-}</code></pre>
-                        </div>
-                    </prism-highlight>
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-css" v-prism>
+                            body {
+                                user-select: none;
+                            }
+                        </code>
+                    </pre>
                     <p>此外還有 <em>text</em> 屬性值表示僅能選擇元素內的文字，以及 <em>element</em> 屬性值表示僅能選擇元素範圍內的內容。</p>
                 </div>
                 <button class="accordin-close" @click="toggle(0)"></button>
@@ -168,22 +224,29 @@ div iframe {
                     <p>input 的提示訊息（placeholder）</p>
                 </div>
                 <div class="accordin-content">
-                    <prism-highlight>
-                        <div class="text-code" v-pre>
-                            <pre><code class="language-css">input::-webkit-input-placeholder {
-    /* css */
-}
-input::-moz-placeholder {
-    /* css */
-}
-input:-ms-input-placeholder {
-    /* css */
-}
-input:-moz-placeholder {
-    /* css */
-}</code></pre>
-                        </div>
-                    </prism-highlight>
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-css" v-prism>
+                            input::-webkit-input-placeholder {
+                                /* css */
+                            }
+                            input::-moz-placeholder {
+                                /* css */
+                            }
+                            input:-ms-input-placeholder {
+                                /* css */
+                            }
+                            input:-moz-placeholder {
+                                /* css */
+                            }
+                        </code>
+                    </pre>
                 </div>
                 <button class="accordin-close" @click="toggle(0)"></button>
             </div>
@@ -192,15 +255,22 @@ input:-moz-placeholder {
                     <p>設定反白的樣式（selection）</p>
                 </div>
                 <div class="accordin-content">
-                    <prism-highlight>
-                        <div class="text-code" v-pre>
-                            <pre><code class="language-css">body::selection { 
-    background: 顏色;
-    color: 顏色;
-    text-shadow: 格式;
-}</code></pre>
-                        </div>
-                    </prism-highlight>
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-css" v-prism>
+                            body::selection { 
+                                background: 顏色;
+                                color: 顏色;
+                                text-shadow: 格式;
+                            }
+                        </code>
+                    </pre>
                 </div>
                 <button class="accordin-close" @click="toggle(0)"></button>
             </div>
@@ -209,14 +279,21 @@ input:-moz-placeholder {
                     <p>行內單字滿行時強制斷句並換行</p>
                 </div>
                 <div class="accordin-content">
-                    <prism-highlight>
-                        <div class="text-code" v-pre>
-                            <pre><code class="language-css">p {
-    word-wrap: break-word;
-    word-break: break-all;
-}</code></pre>
-                        </div>
-                    </prism-highlight>
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-css" v-prism>
+                            p {
+                                word-wrap: break-word;
+                                word-break: break-all;
+                            }
+                        </code>
+                    </pre>
                 </div>
                 <button class="accordin-close" @click="toggle(0)"></button>
             </div>
@@ -225,13 +302,20 @@ input:-moz-placeholder {
                     <p>段落字首的樣式</p>
                 </div>
                 <div class="accordin-content">
-                    <prism-highlight>
-                        <div class="text-code" v-pre>
-                            <pre><code class="language-css">p::first-letter {
-    /* CSS */
-}</code></pre>
-                        </div>
-                    </prism-highlight>
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-css" v-prism>
+                            p::first-letter {
+                                /* CSS */
+                            }
+                        </code>
+                    </pre>
                 </div>
                 <button class="accordin-close" @click="toggle(0)"></button>
             </div>
@@ -241,29 +325,50 @@ input:-moz-placeholder {
                 </div>
                 <div class="accordin-content">
                     <h4>均為大寫：</h4>
-                    <prism-highlight>
-                        <div class="text-code" v-pre>
-                            <pre><code class="language-css">p {
-    text-transform: uppercase;
-}</code></pre>
-                        </div>
-                    </prism-highlight>
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-css" v-prism>
+                            p {
+                                text-transform: uppercase;
+                            }
+                        </code>
+                    </pre>
                     <h4>均為小寫：</h4>
-                    <prism-highlight>
-                        <div class="text-code" v-pre>
-                            <pre><code class="language-css">p {
-    text-transform: lowercase;
-}</code></pre>
-                        </div>
-                    </prism-highlight>
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-css" v-prism>
+                            p {
+                                text-transform: lowercase;
+                            }
+                        </code>
+                    </pre>
                     <h4>首字大寫：</h4>
-                    <prism-highlight>
-                        <div class="text-code" v-pre>
-                            <pre><code class="language-css">p {
-    text-transform: capitalize;
-}</code></pre>
-                        </div>
-                    </prism-highlight>
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-css" v-prism>
+                            p {
+                                text-transform: capitalize;
+                            }
+                        </code>
+                    </pre>
                 </div>
                 <button class="accordin-close" @click="toggle(0)"></button>
             </div>
@@ -274,31 +379,45 @@ input:-moz-placeholder {
                 <div class="accordin-content">
                     <h4>inherit：</h4>
                     <p><em>inherit</em> 指的是繼承父元素的相同屬性的值。換句話說，當我們將某個 CSS 屬性設為 <em>inherit</em> 時，該屬性將會繼承父元素的對應屬性值。</p>
-                    <prism-highlight>
-                        <div class="text-code" v-pre>
-                            <pre><code class="language-css">div {
-    color: red;
-}
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-css" v-prism>
+                            div {
+                                color: red;
+                            }
 
-p {
-    color: inherit;    /* red */
-}</code></pre>
-                        </div>
-                    </prism-highlight>
+                            p {
+                                color: inherit;    /* red */
+                            }
+                        </code>
+                    </pre>
                     <p><br></p>
                     <h4>initial：</h4>
                     <p><em>initial</em> 指的是將 CSS 屬性重設為該屬性的初始值（即瀏覽器預設值）。它不依賴父元素的樣式，而是將屬性設定為標準的初始狀態。</p>
-                    <prism-highlight>
-                        <div class="text-code" v-pre>
-                            <pre><code class="language-css">div {
-    color: red;
-}
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-css" v-prism>
+                            div {
+                                color: red;
+                            }
 
-p {
-    color: initial;    /* 瀏覽器預設的顏色 */
-}</code></pre>
-                        </div>
-                    </prism-highlight>
+                            p {
+                                color: initial;    /* 瀏覽器預設的顏色 */
+                            }
+                        </code>
+                    </pre>
                 </div>
                 <button class="accordin-close" @click="toggle(0)"></button>
             </div>
@@ -308,24 +427,38 @@ p {
                 </div>
                 <div class="accordin-content">
                     <p><em>aspect-ratio</em> 屬性用於設定元素的寬高比（寬度與高度的比例），不需要明確指定 <em>width</em> 或 <em>height</em>，讓元素根據該比例自動調整尺寸。例如：</p>
-                    <prism-highlight>
-                        <div class="text-code" v-pre>
-                            <pre><code class="language-css">div {
-    aspect-ratio: 16 / 9; /* 設定為 16:9 比例 */
-}</code></pre>
-                    </div>
-                    </prism-highlight>
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-css" v-prism>
+                            div {
+                                aspect-ratio: 16 / 9; /* 設定為 16:9 比例 */
+                            }
+                        </code>
+                    </pre>
                     <p>若將比例設定為 <em>1 / 1</em> 即可製作出正方形比例的元素。</p>
                     <p>也可以將此屬性設定於 <em>img</em> 元素以避免圖片載入前的畫面跳動，例如：</p>
-                    <prism-highlight>
-                        <div class="text-code" v-pre>
-                            <pre><code class="language-css">img {
-    width: 100%;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
-}</code></pre>
-                        </div>
-                    </prism-highlight>
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-css" v-prism>
+                            img {
+                                width: 100%;
+                                aspect-ratio: 4 / 3;
+                                object-fit: cover;
+                            }
+                        </code>
+                    </pre>
                 </div>
                 <button class="accordin-close" @click="toggle(0)"></button>
             </div>
@@ -335,24 +468,38 @@ p {
                 </div>
                 <div class="accordin-content">
                     <p>需要同時使用兩個屬性，分別是 <em>object-fit</em> 和 <em>object-position</em>。假設我們要讓 <em>img</em> 引用的影像能保持填滿且內容居中，語法可以這樣寫：</p>
-                    <prism-highlight>
-                        <div class="text-code" v-pre>
-                            <pre><code class="language-css">img {
-    object-fit: cover; /* 保持比例填滿容器，可能會裁切 */
-    object-position: center; /* 圖片內容對齊中間 */
-}</code></pre>
-                        </div>
-                    </prism-highlight>
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-css" v-prism>
+                            img {
+                                object-fit: cover; /* 保持比例填滿容器，可能會裁切 */
+                                object-position: center; /* 圖片內容對齊中間 */
+                            }
+                        </code>
+                    </pre>
                     <p>上面的寫法雖然可以確保圖片裡的內容完全填滿，卻也有可能為了填滿不足的寬度或高度，造成圖片過度拉申導致失真。若不希望圖片被拉申，我們可以修改 <em>object-fit</em> 的值。例如：</p>
                     <p>也可以將此屬性設定於 <em>img</em> 元素以避免圖片載入前的畫面跳動，例如：</p>
-                    <prism-highlight>
-                        <div class="text-code" v-pre>
-                            <pre><code class="language-css">img {
-    object-fit: contain; /* 保持原始比例不拉申 */
-    object-position: center;
-}</code></pre>
-                        </div>
-                    </prism-highlight>
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-css" v-prism>
+                            img {
+                                object-fit: contain; /* 保持原始比例不拉申 */
+                                object-position: center;
+                            }
+                        </code>
+                    </pre>
                 </div>
                 <button class="accordin-close" @click="toggle(0)"></button>
             </div>
@@ -362,70 +509,97 @@ p {
                 </div>
                 <div class="accordin-content">
                     <h4>1. 外層 overflow: hidden + 內層 overflow-y: auto：</h4>
-                    <prism-highlight>
-                        <div class="text-code" v-pre>
-                            <pre><code class="language-html">&lt;div class="outer-container"&gt;
-  &lt;div class="inner-container"&gt;
-    &lt;div class="scroll-content"&gt;
-      &lt;!-- 垂直超出內容 --&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre>
-                        </div>
-                    </prism-highlight>
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-html" v-prism>
+                            &lt;div class="outer-container"&gt;
+                                &lt;div class="inner-container"&gt;
+                                    &lt;div class="scroll-content"&gt;
+                                        &lt;!-- 垂直超出內容 --&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        </code>
+                    </pre>
                     <p>CSS：</p>
-                    <prism-highlight>
-                        <div class="text-code" v-pre>
-                            <pre><code class="language-css">.outer-container {
-    height: 300px;
-    overflow: hidden; /* 隱藏滾動條 */
-    position: relative;
-}
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-css" v-prism>
+                            .outer-container {
+                                height: 300px;
+                                overflow: hidden; /* 隱藏滾動條 */
+                                position: relative;
+                            }
 
-.inner-container {
-    height: 100%;
-    overflow-y: auto; /* 保留垂直滾動 */
-}
+                            .inner-container {
+                                height: 100%;
+                                overflow-y: auto; /* 保留垂直滾動 */
+                            }
 
-.scroll-content {
-    height: 600px; /* 內容超出高度以產生滾動 */
-}
-</code></pre>
-                        </div>
-                    </prism-highlight>
+                            .scroll-content {
+                                height: 600px; /* 內容超出高度以產生滾動 */
+                            }
+                        </code>
+                    </pre>
                     <p><br></p>
                     <h4>2. 負 margin/padding 蓋住捲軸：</h4>
-                    <prism-highlight>
-                        <div class="text-code" v-pre>
-                            <pre><code class="language-css">.scroll-container {
-    height: 300px;
-    overflow-y: auto;
-    margin-right: -17px;  /* 通常捲軸寬為 17px，可根據實際情況調整 */
-    padding-right: 17px;
-}</code></pre>
-                        </div>
-                    </prism-highlight>
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-css" v-prism>
+                            .scroll-container {
+                                height: 300px;
+                                overflow-y: auto;
+                                margin-right: -17px;  /* 通常捲軸寬為 17px，可根據實際情況調整 */
+                                padding-right: 17px;
+                            }
+                        </code>
+                    </pre>
                     <p><br></p>
                     <h4>3. Webkit 滾動條隱藏法（只對 Chrome/Safari 有效）：</h4>
-                    <prism-highlight>
-                        <div class="text-code" v-pre>
-                            <pre><code class="language-css">.scroll-container {
-    overflow-y: auto;
-    height: 300px;
-}
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-css" v-prism>
+                            .scroll-container {
+                                overflow-y: auto;
+                                height: 300px;
+                            }
 
-/* 隱藏捲軸（Webkit 專用） */
-.scroll-container::-webkit-scrollbar {
-    display: none;
-}
+                            /* 隱藏捲軸（Webkit 專用） */
+                            .scroll-container::-webkit-scrollbar {
+                                display: none;
+                            }
 
-/* Firefox 支援 */
-.scroll-container {
-    scrollbar-width: none;        /* Firefox */
-    -ms-overflow-style: none;     /* IE 10+ */
-}</code></pre>
-                        </div>
-                    </prism-highlight>
+                            /* Firefox 支援 */
+                            .scroll-container {
+                                scrollbar-width: none;        /* Firefox */
+                                -ms-overflow-style: none;     /* IE 10+ */
+                            }
+                        </code>
+                    </pre>
                     <p><br></p>
                     <p>水平軸（<em>overflow-x</em>）基本上也是一樣的寫法。</p>
                 </div>

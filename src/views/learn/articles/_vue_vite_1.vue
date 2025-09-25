@@ -74,7 +74,9 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-bash" v-prism>node -v            </code>
+            <code class="language-bash" v-prism>
+                node -v
+            </code>
         </pre>
         <p>如果有安裝，則終端機會回傳目前工作環境使用的版本，例如：</p>
         <pre
@@ -85,7 +87,9 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-bash" v-prism>v18.12.1            </code>
+            <code class="language-bash" v-prism>
+                v18.12.1
+            </code>
         </pre>
         <p><br></p>
         <h3>建立專案：</h3>
@@ -99,7 +103,9 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-bash" v-prism>npm create vite@latest            </code>
+            <code class="language-bash" v-prism>
+                npm create vite@latest
+            </code>
         </pre>
         <p>於是 Vite 會開始詢問一些安裝 packages 需要的選項設定，一共有這些問題項目：</p>
         <h5>1. Project name？</h5>
@@ -120,7 +126,9 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-bash" v-prism>npm create vite@latest project-name -- --template vue            </code>
+            <code class="language-bash" v-prism>
+                npm create vite@latest project-name -- --template vue
+            </code>
         </pre>
         <p><b>project-name</b> 請自行替換要命名的專案資料夾名稱，後面的 <b>--template vue</b> 則可以直接指定要安裝哪一種框架語言的模板。</p>
         <p>不管你選擇哪一種安裝指令，產出的內容都是一樣的，進入專案資料夾內，會看到以下檔案結構：</p>
@@ -141,7 +149,9 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-bash" v-prism>npm install            </code>
+            <code class="language-bash" v-prism>
+                npm install
+            </code>
         </pre>
         <p>安裝完成後就可以執行運行指令了：</p>
         <pre
@@ -152,7 +162,9 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-bash" v-prism>npm run dev            </code>
+            <code class="language-bash" v-prism>
+                npm run dev
+            </code>
         </pre>
         <figure>
             <img src="/images/learn/js/vite-1-5.jpg">
@@ -170,7 +182,9 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;HelloWorld msg="Vite + Vue" /&gt;            </code>
+            <code class="language-html" v-prism>
+                &lt;HelloWorld msg="Vite + Vue" /&gt;
+            </code>
         </pre>
         <p>現階段先不討論它的程式意義，我們只要知道該組件標籤裡面的 <em>msg</em> 屬性的值，就是對應首頁畫面斗大的「Vite + Vue」標題字樣，現在將其改成「Hello World!」後儲存檔案，然後回頭查看瀏覽器畫面：</p>
         <figure>
@@ -206,19 +220,20 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;!doctype html&gt;
-&lt;html lang="en"&gt;
-    &lt;head&gt;
-        &lt;meta charset="UTF-8" /&gt;
-        &lt;link rel="icon" type="image/svg+xml" href="/vite.svg" /&gt;
-        &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
-        &lt;title&gt;Vite + Vue&lt;/title&gt;
-    &lt;/head&gt;
-    &lt;body&gt;
-        &lt;div id="app"&gt;&lt;/div&gt;
-        &lt;script type="module" src="/src/main.js"&gt;&lt;/script&gt;
-    &lt;/body&gt;
-&lt;/html&gt;
+            <code class="language-html" v-prism>
+                &lt;!doctype html&gt;
+                &lt;html lang="en"&gt;
+                    &lt;head&gt;
+                        &lt;meta charset="UTF-8" /&gt;
+                        &lt;link rel="icon" type="image/svg+xml" href="/vite.svg" /&gt;
+                        &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+                        &lt;title&gt;Vite + Vue&lt;/title&gt;
+                    &lt;/head&gt;
+                    &lt;body&gt;
+                        &lt;div id="app"&gt;&lt;/div&gt;
+                        &lt;script type="module" src="/src/main.js"&gt;&lt;/script&gt;
+                    &lt;/body&gt;
+                &lt;/html&gt;
             </code>
         </pre>
         <p>當然，這只是 Vite 提供的示範頁面而已，開發者可以根據個人或團隊需求調整整個結構。不過從 Vite 建立的文件來看，預設應該是採用 SPA 形式的網頁應用架構，判斷根據是它整個專案資料夾只有一個 HTML 檔案，且內容也只有一個 <em>&lt;div id="app"&gt;&lt;/div&gt;</em> 元素標籤，表示整個網頁的內容都透過 Vue 組件管理與控制。</p>
@@ -234,7 +249,9 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;img src="/vite.svg"&gt;            </code>
+            <code class="language-html" v-prism>
+                &lt;img src="/vite.svg"&gt;
+            </code>
         </pre>
         <p>Vite 初始建立的 <b>public/</b> 資料夾裡面沒有特別規劃，只有一張用來示範用的 <b>vite.svg</b> 向量圖形。所以一般我們會再依據靜態資源的檔案類型分類管理，例如自行新增 <b>images/</b> 與 <b>js/</b> 資料夾，分別存放影像資源與 JavaScript 外部腳本。</p>
         <p><br></p>
@@ -250,7 +267,9 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;img src="./assets/vue.svg"&gt;            </code>
+            <code class="language-html" v-prism>
+                &lt;img src="./assets/vue.svg"&gt;
+            </code>
         </pre>
         <p>和 <b>public/</b> 資料夾一樣，初始化沒有對資源進行預想配置，所以通常我們需要額外規劃這些資源的檔案分類。</p>
         <p>與 <b>public/</b> 一樣都是用來放置靜態資源，但是放在 <b>assets/</b> 的檔案在打包建構時可以決定是否要進行一些「加工處理」，例如壓縮或合併等動作。</p>
@@ -270,11 +289,13 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>import { createApp } from 'vue'
-import './style.css'
-import App from './App.vue'
+            <code class="language-javascript" v-prism>
+                import { createApp } from 'vue'
+                import './style.css'
+                import App from './App.vue'
 
-createApp(App).mount('#app')            </code>
+                createApp(App).mount('#app')
+            </code>
         </pre>
         <p>● <b>style.css</b></p>
         <p>預設的 CSS 樣式表檔案，即 <b>main.js</b> <em>import</em> 的 CSS 來源。如果依照原始設定，這個樣式表將會是全域套用的，如不想更動原來的結構配置，那麼這支樣式表通常會用來設定一些整個網頁應用共用的樣式屬性。</p>
@@ -291,35 +312,37 @@ createApp(App).mount('#app')            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-bash" v-prism>src
-└── pages
-    ├── Home
-    │   ├── Home.vue             # 首頁組件
-    │   ├── components           # 首頁特定組件
-    │   │   ├── Banner.vue       # 首頁輪播圖組件
-    │   │   ├── Marquee.vue      # 首頁跑馬燈組件
-    │   │   └── ...
-    │   ├── assets               # 首頁特定靜態資源
-    │   │   ├── banner.jpg       # 首頁輪播圖片
-    │   │   ├── styles.css       # 首頁樣式表
-    │   │   └── ...
-    │   └── utils                # 首頁特定工具函式
-    │       ├── api.js           # 首頁 API 請求函式
-    │       └── ...
-    ├── About
-    │   ├── About.vue            # 關於我們組件
-    │   ├── components           # 關於我們特定組件
-    │   │   ├── TeamList.vue     # 團隊成員列表组件
-    │   │   ├── Intro.vue        # 資訊介紹组件
-    │   │   └── ...
-    │   ├── assets               # 關於我們特定靜態資源
-    │   │   ├── team.jpg         # 團隊圖片
-    │   │   ├── styles.css       # 關於我們樣式表
-    │   │   └── ...
-    │   └── utils                # 關於我們特定工具函式
-    │       ├── fetchTeam.js     # 獲取團隊資料的函式
-    │       └── ...
-    └── ...            </code>
+            <code class="language-bash" v-prism>
+                src
+                └── pages
+                    ├── Home
+                    │   ├── Home.vue             # 首頁組件
+                    │   ├── components           # 首頁特定組件
+                    │   │   ├── Banner.vue       # 首頁輪播圖組件
+                    │   │   ├── Marquee.vue      # 首頁跑馬燈組件
+                    │   │   └── ...
+                    │   ├── assets               # 首頁特定靜態資源
+                    │   │   ├── banner.jpg       # 首頁輪播圖片
+                    │   │   ├── styles.css       # 首頁樣式表
+                    │   │   └── ...
+                    │   └── utils                # 首頁特定工具函式
+                    │       ├── api.js           # 首頁 API 請求函式
+                    │       └── ...
+                    ├── About
+                    │   ├── About.vue            # 關於我們組件
+                    │   ├── components           # 關於我們特定組件
+                    │   │   ├── TeamList.vue     # 團隊成員列表组件
+                    │   │   ├── Intro.vue        # 資訊介紹组件
+                    │   │   └── ...
+                    │   ├── assets               # 關於我們特定靜態資源
+                    │   │   ├── team.jpg         # 團隊圖片
+                    │   │   ├── styles.css       # 關於我們樣式表
+                    │   │   └── ...
+                    │   └── utils                # 關於我們特定工具函式
+                    │       ├── fetchTeam.js     # 獲取團隊資料的函式
+                    │       └── ...
+                    └── ...
+            </code>
         </pre>
         <p>以上只是舉例而已，不見得是公認的結構寫法，一切端看公司或合作團隊的習慣規劃。</p>
         <p>● <b>utils/</b></p>
@@ -337,13 +360,15 @@ createApp(App).mount('#app')            </code>
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
+            <code class="language-javascript" v-prism>
+                import { defineConfig } from 'vite'
+                import vue from '@vitejs/plugin-vue'
 
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [vue()],
-})            </code>
+                // https://vitejs.dev/config/
+                export default defineConfig({
+                plugins: [vue()],
+                })
+            </code>
         </pre>
         <p>可以看到它的程式碼結構採用 ESM 的語法，透過 <em>import</em> 和 <em>export</em> 來定義與配置外部套件。每個第三方套件的安裝與引用方式不見得都一樣，不過通常它們的文件都會提供相關引用設定流程，倒也不用太擔心不知道該怎麼使用。</p>
         <p>以下是比較多人使用或推薦的第三方套件：</p>
@@ -435,7 +460,9 @@ export default defineConfig({
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-bash" v-prism>npm add -D @vitejs/plugin-legacy            </code>
+            <code class="language-bash" v-prism>
+                npm add -D @vitejs/plugin-legacy
+            </code>
         </pre>
         <figure>
             <img src="/images/learn/js/vite-1-9.jpg">
@@ -449,16 +476,18 @@ export default defineConfig({
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>import legacy from '@vitejs/plugin-legacy'
-import { defineConfig } from 'vite'
+            <code class="language-javascript" v-prism>
+                import legacy from '@vitejs/plugin-legacy'
+                import { defineConfig } from 'vite'
 
-export default defineConfig({
-    plugins: [
-        legacy({
-            targets: ['defaults', 'not IE 11'],
-        }),
-    ],
-})            </code>
+                export default defineConfig({
+                    plugins: [
+                        legacy({
+                            targets: ['defaults', 'not IE 11'],
+                        }),
+                    ],
+                })
+            </code>
         </pre>
         <p>然而不是所有的第三方套件都是在 <b>vite.config.js</b> 作設定，有的會告訴我們說要在 <b>main.js</b> 之類的入口文件作引用的動作，在閱讀套件相關說明文件時需多加留意。</p>
     </div>

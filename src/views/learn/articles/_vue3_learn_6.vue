@@ -46,13 +46,15 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;ul&gt;
-        &lt;li&gt;科目一&lt;/li&gt;
-        &lt;li&gt;科目二&lt;/li&gt;
-        &lt;li&gt;科目三&lt;/li&gt;
-    &lt;/ul&gt;
-&lt;/template&gt;            </code>
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;ul&gt;
+                        &lt;li&gt;科目一&lt;/li&gt;
+                        &lt;li&gt;科目二&lt;/li&gt;
+                        &lt;li&gt;科目三&lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/template&gt;
+            </code>
         </pre>
         <p>此時有個需求傳來，表示希望使用者點擊某個按鈕後，便回傳「科目三」所在的元素。要實現這個需求很簡單，只需要賦予科目三所在的 <em>li</em> 一個唯一識別的 ID 值，並且新增一個按鈕用來觸發 JavaScript 事件，該事件的指令是取得指定 ID 的元素。</p>
         <p>於是，我們將程式碼改寫成：</p>
@@ -64,20 +66,22 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;ul&gt;
-        &lt;li&gt;科目一&lt;/li&gt;
-        &lt;li&gt;科目二&lt;/li&gt;
-        &lt;li id="third"&gt;科目三&lt;/li&gt;
-    &lt;/ul&gt;
-    &lt;button @click="getElement"&gt;Get&lt;/button&gt;
-&lt;/template&gt;
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;ul&gt;
+                        &lt;li&gt;科目一&lt;/li&gt;
+                        &lt;li&gt;科目二&lt;/li&gt;
+                        &lt;li id="third"&gt;科目三&lt;/li&gt;
+                    &lt;/ul&gt;
+                    &lt;button @click="getElement"&gt;Get&lt;/button&gt;
+                &lt;/template&gt;
 
-&lt;script lang="ts" setup&gt;
-    function getElement (){
-        console.log(document.getElementById("third").textContent);
-    }
-&lt;/script&gt;            </code>
+                &lt;script lang="ts" setup&gt;
+                    function getElement (){
+                        console.log(document.getElementById("third").textContent);
+                    }
+                &lt;/script&gt;
+            </code>
         </pre>
         <p>實際測試：</p>
         <figure>
@@ -95,10 +99,12 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;h2 id="third"&gt;阿比&lt;/h2&gt;
-    &lt;User/&gt;
-&lt;/template&gt;            </code>
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;h2 id="third"&gt;阿比&lt;/h2&gt;
+                    &lt;User/&gt;
+                &lt;/template&gt;
+            </code>
         </pre>
         <p>※ <em>&lt;User/&gt;</em> 是前面展示列表的模板組件。</p>
         <p>點擊按鈕，會發現 Console 輸出結果是：</p>
@@ -120,12 +126,14 @@ const catalog = reactive<CatalogItem[]>([
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>import { ref } from "vue";
-let third = ref();
+            <code class="language-javascript" v-prism>
+                import { ref } from "vue";
+                let third = ref();
 
-function getElement (){
-    console.log(third.value.textContent);
-}            </code>
+                function getElement (){
+                    console.log(third.value.textContent);
+                }
+            </code>
         </pre>
         <p>然後把原本模板裡的 <em>id</em> 改成 <em>ref</em>：</p>
         <pre
@@ -136,13 +144,15 @@ function getElement (){
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;ul&gt;
-        &lt;li&gt;科目一&lt;/li&gt;
-        &lt;li&gt;科目二&lt;/li&gt;
-        &lt;li ref="third"&gt;科目三&lt;/li&gt;
-    &lt;/ul&gt;
-&lt;/template&gt;            </code>
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;ul&gt;
+                        &lt;li&gt;科目一&lt;/li&gt;
+                        &lt;li&gt;科目二&lt;/li&gt;
+                        &lt;li ref="third"&gt;科目三&lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/template&gt;
+            </code>
         </pre>
         <p>為了更明顯地感受到 <em>ref</em> 和 <em>id</em> 的差異，我們連 <b>App.vue</b> 的相同 ID 也改成 <em>ref</em>：</p>
         <pre
@@ -153,17 +163,19 @@ function getElement (){
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;h2 ref="third"&gt;阿比&lt;/h2&gt;
-    &lt;User/&gt;
-&lt;/template&gt;
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;h2 ref="third"&gt;阿比&lt;/h2&gt;
+                    &lt;User/&gt;
+                &lt;/template&gt;
 
-&lt;script setup lang="ts"&gt;
-    import User from "./components/User.vue";
-    import { ref } from "vue";
-    
-    let third = ref();
-&lt;/script&gt;            </code>
+                &lt;script setup lang="ts"&gt;
+                    import User from "./components/User.vue";
+                    import { ref } from "vue";
+                    
+                    let third = ref();
+                &lt;/script&gt;
+            </code>
         </pre>
         <p>測試結果：</p>
         <figure>
@@ -186,21 +198,23 @@ function getElement (){
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;User ref="temp"/&gt;
-    &lt;button @click="consoleTemp"&gt;測試&lt;/button&gt;
-&lt;/template&gt;
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;User ref="temp"/&gt;
+                    &lt;button @click="consoleTemp"&gt;測試&lt;/button&gt;
+                &lt;/template&gt;
 
-&lt;script setup lang="ts"&gt;
-    import User from "./components/User.vue";
-    import { ref } from "vue";
+                &lt;script setup lang="ts"&gt;
+                    import User from "./components/User.vue";
+                    import { ref } from "vue";
 
-    let temp = ref();
+                    let temp = ref();
 
-    function consoleTemp() {
-        console.log(temp.value);
-    }
-&lt;/script&gt;            </code>
+                    function consoleTemp() {
+                        console.log(temp.value);
+                    }
+                &lt;/script&gt;
+            </code>
         </pre>
         <p>同時我們也調整一下 <b>User.vue</b> 的內容，在該組件裡建立三個 <em>ref</em> 變數，我們有沒有使用它不重要，單純知道這個組件裡面有三個 <em>ref</em> 變數資料即可：</p>
         <pre
@@ -211,21 +225,23 @@ function getElement (){
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-html" v-prism>&lt;template&gt;
-    &lt;ul&gt;
-        &lt;li&gt;科目一&lt;/li&gt;
-        &lt;li&gt;科目二&lt;/li&gt;
-        &lt;li&gt;科目三&lt;/li&gt;
-    &lt;/ul>
-&lt;/template&gt;
+            <code class="language-html" v-prism>
+                &lt;template&gt;
+                    &lt;ul&gt;
+                        &lt;li&gt;科目一&lt;/li&gt;
+                        &lt;li&gt;科目二&lt;/li&gt;
+                        &lt;li&gt;科目三&lt;/li&gt;
+                    &lt;/ul>
+                &lt;/template&gt;
 
-&lt;script setup lang="ts"&gt;
-    import { ref } from "vue";
+                &lt;script setup lang="ts"&gt;
+                    import { ref } from "vue";
 
-    let a = ref(0);
-    let b = ref(3);
-    let c = ref(5);
-&lt;/script&gt;            </code>
+                    let a = ref(0);
+                    let b = ref(3);
+                    let c = ref(5);
+                &lt;/script&gt;
+            </code>
         </pre>
         <p>在 <b>App.vue</b> 根組件哩，我們建立了一個按鈕，這個按鈕觸發的 <em>consoleTemp</em> 事件，會輸出 <em>ref</em> 為 <em>temp</em> 的元素內容，而現在持有這個識別符的正是 <em>&lt;User/&gt;</em> 組件，直接打印這個組件回傳的內容是：</p>
         <figure>
@@ -242,7 +258,9 @@ function getElement (){
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>import { ref, defineExpose } from "vue";            </code>
+            <code class="language-javascript" v-prism>
+                import { ref, defineExpose } from "vue";
+            </code>
         </pre>
         <p>這個函式可以導出指定的變數：</p>
         <pre
@@ -253,7 +271,9 @@ function getElement (){
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>defineExpose({ a, b, c });            </code>
+            <code class="language-javascript" v-prism>
+                defineExpose({ a, b, c });
+            </code>
         </pre>
         <p>完整程式碼：</p>
         <pre
@@ -264,12 +284,14 @@ function getElement (){
             data-prismjs-copy-timeout="2000"
             data-toolbar-order="copy-to-clipboard" 
         >
-            <code class="language-javascript" v-prism>import { ref, defineExpose } from "vue";
-let a = ref(0);
-let b = ref(3);
-let c = ref(5);
+            <code class="language-javascript" v-prism>
+                import { ref, defineExpose } from "vue";
+                let a = ref(0);
+                let b = ref(3);
+                let c = ref(5);
 
-defineExpose({ a, b, c });            </code>
+                defineExpose({ a, b, c });
+            </code>
         </pre>
         <p>回到瀏覽器測試結果：</p>
         <figure>
