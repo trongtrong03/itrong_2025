@@ -526,6 +526,11 @@
                 background-image: url('/images/routes_house_icon.svg');
             }
         }
+        &.is-trail {
+            &::before {
+                background-image: url('/images/routes_trail_icon.svg');
+            }
+        }
         &.is-camp {
             &::before {
                 background-image: url('/images/routes_camp_icon.svg');

@@ -36,7 +36,18 @@ onMounted(async () => {
                     <div class="routes-list">
                         <div class="routes-item" v-for="(item, index) in 31" :key="index">
                             <div class="routes-box" v-if="rtData['p'+index+'_state']">
-                                <b :class="rtData['p'+index+'_type'] == 'start' ? 'is-start' : rtData['p'+index+'_type'] == 'house' ? 'is-house' : rtData['p'+index+'_type'] == 'mountain' ? 'is-mountain' : rtData['p'+index+'_type'] == 'lake' ? 'is-lake' : rtData['p'+index+'_type'] == 'camp' ? 'is-camp' : rtData['p'+index+'_type'] == 'mark' ? 'is-mark' : rtData['p'+index+'_type'] == 'nature' ? 'is-nature' : rtData['p'+index+'_type'] == 'goal' ? 'is-goal' : ''"></b>
+                                <b :class="
+                                    rtData['p'+index+'_type'] == 'start' ? 'is-start' : 
+                                    rtData['p'+index+'_type'] == 'house' ? 'is-house' : 
+                                    rtData['p'+index+'_type'] == 'mountain' ? 'is-mountain' : 
+                                    rtData['p'+index+'_type'] == 'trail' ? 'is-trail' : 
+                                    rtData['p'+index+'_type'] == 'lake' ? 'is-lake' : 
+                                    rtData['p'+index+'_type'] == 'camp' ? 'is-camp' : 
+                                    rtData['p'+index+'_type'] == 'mark' ? 'is-mark' : 
+                                    rtData['p'+index+'_type'] == 'nature' ? 'is-nature' : 
+                                    rtData['p'+index+'_type'] == 'goal' ? 'is-goal' : ''"
+                                >
+                                </b>
                                 <p v-text="rtData['p'+index+'_name']"></p>
                                 <span v-text="rtData['p'+index+'_tag']"></span>
                             </div>
