@@ -1,25 +1,25 @@
 <script setup lang="ts">
-import { reactive } from "vue";
-import type { CatalogItem } from '@/stores/catalog';
+    import { reactive } from "vue";
+    import type { CatalogItem } from '@/stores/catalog';
 
-// 引用組件
-import BaseTextContent from '@/components/Common/BaseTextContent.vue';
-import Title from "@/components/Common/BaseTextTitle.vue";
-import PrismHighlight from '@/components/Common/PrismHighlight.vue';
+    // 引用組件
+    import BaseTextContent from '@/components/Common/BaseTextContent.vue';
+    import Title from "@/components/Common/BaseTextTitle.vue";
+    import PrismHighlight from '@/components/Common/PrismHighlight.vue';
 
-// 目錄
-const catalog = reactive<CatalogItem[]>([
-    { id: 0, title: '序、前言' },
-    { id: 1, title: '一、Alpha 透明度（alpha）' },
-    { id: 2, title: '二、亮度（lightness）' },
-    { id: 3, title: '三、加深（darken）/減輕（lighten）' },
-    { id: 4, title: '四、顏色反轉（invert）' },
-    { id: 5, title: '五、加總（sum）' },
-    { id: 6, title: '六、平均值（avg）' },
-    { id: 7, title: '七、取得影像尺寸（image-size）' },
-    { id: 8, title: '八、嵌入連結（embedurl）' },
-    { id: 9, title: '四、參考資料' },
-]);
+    // 目錄
+    const catalog = reactive<CatalogItem[]>([
+        { id: 0, title: '序、前言' },
+        { id: 1, title: '一、Alpha 透明度（alpha）' },
+        { id: 2, title: '二、亮度（lightness）' },
+        { id: 3, title: '三、加深（darken）/減輕（lighten）' },
+        { id: 4, title: '四、顏色反轉（invert）' },
+        { id: 5, title: '五、加總（sum）' },
+        { id: 6, title: '六、平均值（avg）' },
+        { id: 7, title: '七、取得影像尺寸（image-size）' },
+        { id: 8, title: '八、嵌入連結（embedurl）' },
+        { id: 9, title: '四、參考資料' },
+    ]);
 </script>
 
 <template>

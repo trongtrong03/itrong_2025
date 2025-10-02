@@ -1,90 +1,90 @@
 <script setup lang="ts">
-import { ref, computed, onBeforeMount, onMounted, onUnmounted } from "vue";
+    import { ref, computed, onBeforeMount, onMounted, onUnmounted } from "vue";
 
-// 引用組件
-import SvgIcons from "@/components/SvgIcons.vue";
-import Loading from "@/components/Loading.vue";
-import NoResult from "@/components/NoResult.vue";
+    // 引用組件
+    import SvgIcons from "@/components/SvgIcons.vue";
+    import Loading from "@/components/Loading.vue";
+    import NoResult from "@/components/NoResult.vue";
 
-// 引用功能
-import fetchData from "@/hooks/fetchData";
+    // 引用功能
+    import fetchData from "@/hooks/fetchData";
 
-// 定義資料
-const jsonData = ref<Array<any>>([]);
-const jsonDataLength = computed(() => jsonData.value.length);
-const jsonDataFinish = computed(() =>
-    jsonData.value.filter(item => item.finish).length
-);
-const filterOpen = ref(false);
-const Filters = ref({
-    name: "",
-    county: "",
-    tags: "",
-});
-const isDataLoaded = ref(false);
-const showOnlyFinished = ref(false);
-
-
-// 取得 JSON 資料
-const loadData = async () => {
-    await fetchData(jsonData, 'mountainsList', false, false);
-};
-
-onBeforeMount(loadData);
+    // 定義資料
+    const jsonData = ref<Array<any>>([]);
+    const jsonDataLength = computed(() => jsonData.value.length);
+    const jsonDataFinish = computed(() =>
+        jsonData.value.filter(item => item.finish).length
+    );
+    const filterOpen = ref(false);
+    const Filters = ref({
+        name: "",
+        county: "",
+        tags: "",
+    });
+    const isDataLoaded = ref(false);
+    const showOnlyFinished = ref(false);
 
 
-// 篩選
-const setCounty = (e) => {
-    Filters.value.county = e.target.value;
-};
+    // 取得 JSON 資料
+    const loadData = async () => {
+        await fetchData(jsonData, 'mountainsList', false, false);
+    };
 
-const setTags = (e) => {
-    Filters.value.tags = e.target.value;
-};
+    onBeforeMount(loadData);
 
-// 預設載入的資料筆數
-const defaultItemCount = 30;
 
-// 追蹤目前已經載入的資料數量
-const loadedItemCount = ref(defaultItemCount);
+    // 篩選
+    const setCounty = (e) => {
+        Filters.value.county = e.target.value;
+    };
 
-// 計算顯示在頁面上的資料
-const displayedItems = computed(() => {
-    const filteredData = jsonData.value.filter((b) => {
-        const nameMatch = b.name.toLowerCase().includes(Filters.value.name.toLowerCase());
-        const countyMatch = b.county.includes(Filters.value.county);
-        const tagMatch = Filters.value.tags === "" || b.tags.some(tag => tag === Filters.value.tags);
-        const finishMatch = !showOnlyFinished.value || b.finish;
+    const setTags = (e) => {
+        Filters.value.tags = e.target.value;
+    };
 
-        return nameMatch && countyMatch && tagMatch && finishMatch;
+    // 預設載入的資料筆數
+    const defaultItemCount = 30;
+
+    // 追蹤目前已經載入的資料數量
+    const loadedItemCount = ref(defaultItemCount);
+
+    // 計算顯示在頁面上的資料
+    const displayedItems = computed(() => {
+        const filteredData = jsonData.value.filter((b) => {
+            const nameMatch = b.name.toLowerCase().includes(Filters.value.name.toLowerCase());
+            const countyMatch = b.county.includes(Filters.value.county);
+            const tagMatch = Filters.value.tags === "" || b.tags.some(tag => tag === Filters.value.tags);
+            const finishMatch = !showOnlyFinished.value || b.finish;
+
+            return nameMatch && countyMatch && tagMatch && finishMatch;
+        });
+
+        return filteredData.slice(0, loadedItemCount.value);
     });
 
-    return filteredData.slice(0, loadedItemCount.value);
-});
+    // 滾動加載更多資料的處理函式
+    const handleScroll = () => {
+        // 如果目前載入的資料數量小於 JSON 資料的總數，並且滾動到了頁面底部
+        if (loadedItemCount.value < jsonData.value.length && (window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+            // 加載下一批資料
+            loadedItemCount.value += defaultItemCount;
+        }
+    };
 
-// 滾動加載更多資料的處理函式
-const handleScroll = () => {
-    // 如果目前載入的資料數量小於 JSON 資料的總數，並且滾動到了頁面底部
-    if (loadedItemCount.value < jsonData.value.length && (window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-        // 加載下一批資料
-        loadedItemCount.value += defaultItemCount;
-    }
-};
+    // 監聽滾動事件
+    onMounted(() => {
+        window.addEventListener('scroll', handleScroll);
+    });
 
-// 監聽滾動事件
-onMounted(() => {
-    window.addEventListener('scroll', handleScroll);
-});
+    // 組件被卸載時移除滾動事件的監聽
+    onUnmounted(() => {
+        window.removeEventListener('scroll', handleScroll);
+    });
 
-// 組件被卸載時移除滾動事件的監聽
-onUnmounted(() => {
-    window.removeEventListener('scroll', handleScroll);
-});
-
-// mounted
-onMounted(async () => {
-    isDataLoaded.value = true;
-});
+    // mounted
+    onMounted(async () => {
+        isDataLoaded.value = true;
+    });
 </script>
 
 <template>

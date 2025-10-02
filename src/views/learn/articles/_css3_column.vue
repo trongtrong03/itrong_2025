@@ -1,22 +1,22 @@
 <script setup lang="ts">
-import { reactive } from "vue";
-import type { CatalogItem } from '@/stores/catalog';
+    import { reactive } from "vue";
+    import type { CatalogItem } from '@/stores/catalog';
 
-// 引用組件
-import BaseTextContent from '@/components/Common/BaseTextContent.vue';
-import Title from "@/components/Common/BaseTextTitle.vue";
-import PrismHighlight from '@/components/Common/PrismHighlight.vue';
+    // 引用組件
+    import BaseTextContent from '@/components/Common/BaseTextContent.vue';
+    import Title from "@/components/Common/BaseTextTitle.vue";
+    import PrismHighlight from '@/components/Common/PrismHighlight.vue';
 
-// 目錄
-const catalog = reactive<CatalogItem[]>([
-    { id: 0, title: '序、前言' },
-    { id: 1, title: '一、Column 基本概念' },
-    { id: 2, title: '二、如何分割欄位？' },
-    { id: 3, title: '三、如何改變欄位的間距？' },
-    { id: 4, title: '四、欄位內的標題處理' },
-    { id: 5, title: '五、如何製作瀑布流佈局？' },
-    { id: 6, title: '六、參考資料' },
-]);
+    // 目錄
+    const catalog = reactive<CatalogItem[]>([
+        { id: 0, title: '序、前言' },
+        { id: 1, title: '一、Column 基本概念' },
+        { id: 2, title: '二、如何分割欄位？' },
+        { id: 3, title: '三、如何改變欄位的間距？' },
+        { id: 4, title: '四、欄位內的標題處理' },
+        { id: 5, title: '五、如何製作瀑布流佈局？' },
+        { id: 6, title: '六、參考資料' },
+    ]);
 </script>
 
 <template>
@@ -274,7 +274,7 @@ const catalog = reactive<CatalogItem[]>([
 </template>
 
 <style lang="scss" scoped>
-.ex-column {
-    border: 1px dashed #000;
-}
+    .ex-column {
+        border: 1px dashed #000;
+    }
 </style>

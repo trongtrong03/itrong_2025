@@ -21,14 +21,14 @@
 </template>
 
 <style lang="scss">
-.fade-enter-active,
-.fade-leave-active {
-    transition: opacity 1.5s ease, transform .75s ease;
-}
+    .fade-enter-active,
+    .fade-leave-active {
+        transition: opacity 1.5s ease, transform .75s ease;
+    }
 
-.fade-enter-from,
-.fade-leave-to {
-    transform: translateY(20px);
-    opacity: 0;
-}
+    .fade-enter-from,
+    .fade-leave-to {
+        transform: translateY(20px);
+        opacity: 0;
+    }
 </style>

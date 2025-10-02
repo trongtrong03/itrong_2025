@@ -1,21 +1,21 @@
 <script setup lang="ts">
-import { reactive } from "vue";
-import type { CatalogItem } from '@/stores/catalog';
+    import { reactive } from "vue";
+    import type { CatalogItem } from '@/stores/catalog';
 
-// 引用組件
-import BaseTextContent from '@/components/Common/BaseTextContent.vue';
-import Title from "@/components/Common/BaseTextTitle.vue";
-import PrismHighlight from '@/components/Common/PrismHighlight.vue';
+    // 引用組件
+    import BaseTextContent from '@/components/Common/BaseTextContent.vue';
+    import Title from "@/components/Common/BaseTextTitle.vue";
+    import PrismHighlight from '@/components/Common/PrismHighlight.vue';
 
-// 目錄
-const catalog = reactive<CatalogItem[]>([
-    { id: 0, title: '序、前言' },
-    { id: 1, title: '一、基本介紹' },
-    { id: 2, title: '二、環境安裝' },
-    { id: 3, title: '三、結構說明' },
-    { id: 4, title: '四、使用套件' },
-    { id: 5, title: '五、參考資料' },
-]);
+    // 目錄
+    const catalog = reactive<CatalogItem[]>([
+        { id: 0, title: '序、前言' },
+        { id: 1, title: '一、基本介紹' },
+        { id: 2, title: '二、環境安裝' },
+        { id: 3, title: '三、結構說明' },
+        { id: 4, title: '四、使用套件' },
+        { id: 5, title: '五、參考資料' },
+    ]);
 </script>
 
 <template>

@@ -1,19 +1,19 @@
 <script setup lang="ts">
-import { reactive } from "vue";
-import type { CatalogItem } from '@/stores/catalog';
+    import { reactive } from "vue";
+    import type { CatalogItem } from '@/stores/catalog';
 
-// 引用組件
-import BaseTextContent from '@/components/Common/BaseTextContent.vue';
-import Title from "@/components/Common/BaseTextTitle.vue";
+    // 引用組件
+    import BaseTextContent from '@/components/Common/BaseTextContent.vue';
+    import Title from "@/components/Common/BaseTextTitle.vue";
 
-// 目錄
-const catalog = reactive<CatalogItem[]>([
-    { id: 0, title: '0K：楔子' },
-    { id: 1, title: '1K：知高圳' },
-    { id: 2, title: '2K：雪蓮步道' },
-    { id: 3, title: '3K：學田山' },
-    { id: 4, title: '4K：後記' },
-]);
+    // 目錄
+    const catalog = reactive<CatalogItem[]>([
+        { id: 0, title: '0K：楔子' },
+        { id: 1, title: '1K：知高圳' },
+        { id: 2, title: '2K：雪蓮步道' },
+        { id: 3, title: '3K：學田山' },
+        { id: 4, title: '4K：後記' },
+    ]);
 </script>
 
 <template>

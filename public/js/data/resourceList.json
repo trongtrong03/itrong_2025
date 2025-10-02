@@ -2123,5 +2123,16 @@
         "cover": true,
         "img": "bgremover",
         "type": ["影音圖像", "ＡＩ生成"]
+    },
+    {
+        "id": 195,
+        "title": "Supabase",
+        "desc": "Supabase 是一個後端即服務（Backend-as-a-Service, BaaS）平台，主打以 PostgreSQL 資料庫為核心，並提供一整套後端功能（如認證、即時同步、檔案儲存、無伺服器函式等）。",
+        "href": "https://supabase.com/",
+        "article": false,
+        "path": "",
+        "cover": true,
+        "img": "supabase",
+        "type": ["後端工具", "資料庫"]
     }
 ]

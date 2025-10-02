@@ -1,24 +1,24 @@
 <script setup lang="ts">
-import { reactive } from "vue";
-import type { CatalogItem } from '@/stores/catalog';
+    import { reactive } from "vue";
+    import type { CatalogItem } from '@/stores/catalog';
 
-// 引用組件
-import BaseTextContent from '@/components/Common/BaseTextContent.vue';
-import Title from "@/components/Common/BaseTextTitle.vue";
-import PrismHighlight from '@/components/Common/PrismHighlight.vue';
+    // 引用組件
+    import BaseTextContent from '@/components/Common/BaseTextContent.vue';
+    import Title from "@/components/Common/BaseTextTitle.vue";
+    import PrismHighlight from '@/components/Common/PrismHighlight.vue';
 
-// 目錄
-const catalog = reactive<CatalogItem[]>([
-    { id: 0, title: '序、前言' },
-    { id: 1, title: '一、Transform 的基本語法' },
-    { id: 2, title: '二、有哪些變形效果？' },
-    { id: 3, title: '三、我能同時套用多個變形效果嗎？' },
-    { id: 4, title: '四、如何改變元素變形的中心點起始位置？' },
-    { id: 5, title: '五、3D 變形效果的透視概念（perspective）' },
-    { id: 6, title: '六、3D 變形效果的屬性運用' },
-    { id: 7, title: '七、進階：Transform 的 Matrix（矩陣）' },
-    { id: 8, title: '八、參考資料' },
-]);
+    // 目錄
+    const catalog = reactive<CatalogItem[]>([
+        { id: 0, title: '序、前言' },
+        { id: 1, title: '一、Transform 的基本語法' },
+        { id: 2, title: '二、有哪些變形效果？' },
+        { id: 3, title: '三、我能同時套用多個變形效果嗎？' },
+        { id: 4, title: '四、如何改變元素變形的中心點起始位置？' },
+        { id: 5, title: '五、3D 變形效果的透視概念（perspective）' },
+        { id: 6, title: '六、3D 變形效果的屬性運用' },
+        { id: 7, title: '七、進階：Transform 的 Matrix（矩陣）' },
+        { id: 8, title: '八、參考資料' },
+    ]);
 </script>
 
 <template>

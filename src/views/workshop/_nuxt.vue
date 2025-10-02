@@ -1,18 +1,18 @@
 <script setup lang="ts">
-import { inject } from 'vue';
-import type { CatalogItem } from '@/stores/catalog';
+    import { inject } from 'vue';
+    import type { CatalogItem } from '@/stores/catalog';
 
-defineProps<{
-    isActive: number,
-    catalog: CatalogItem[],
-}>();
+    defineProps<{
+        isActive: number,
+        catalog: CatalogItem[],
+    }>();
 
-const emit = defineEmits(['update:isActive']);
+    const emit = defineEmits(['update:isActive']);
 
-// 點擊時更新 active
-const toggle = (val: number) => {
-    emit('update:isActive', val)
-}
+    // 點擊時更新 active
+    const toggle = (val: number) => {
+        emit('update:isActive', val)
+    }
 </script>
 
 <template>

@@ -1,83 +1,83 @@
 <script setup lang="ts">
-import { ref, computed, onBeforeMount, onMounted, onUnmounted } from "vue";
-import { useRoute, useRouter } from 'vue-router';
+    import { ref, computed, onBeforeMount, onMounted, onUnmounted } from "vue";
+    import { useRoute, useRouter } from 'vue-router';
 
-// 引用組件
-import Banner from "@/components/Common/Banner.vue";
-import useBodyClass from "@/hooks/useBodyClass";
-import SvgIcons from "@/components/SvgIcons.vue";
-import Loading from "@/components/Loading.vue";
-import NoResult from "@/components/NoResult.vue";
+    // 引用組件
+    import Banner from "@/components/Common/Banner.vue";
+    import useBodyClass from "@/hooks/useBodyClass";
+    import SvgIcons from "@/components/SvgIcons.vue";
+    import Loading from "@/components/Loading.vue";
+    import NoResult from "@/components/NoResult.vue";
 
-// 引用功能
-import fetchData from "@/hooks/fetchData";
+    // 引用功能
+    import fetchData from "@/hooks/fetchData";
 
-// 傳 class name 給 body
-useBodyClass("is-resources");
+    // 傳 class name 給 body
+    useBodyClass("is-resources");
 
-/* resources */
-// 定義資料
-const jsonData = ref<Array<any>>([]);
-const isActive = ref<number>(1);
-const filterOpen = ref<boolean>(false);
-const Filters = ref({
-    title: "",
-    type: "",
-});
-const isDataLoaded = ref<boolean>(false);
+    /* resources */
+    // 定義資料
+    const jsonData = ref<Array<any>>([]);
+    const isActive = ref<number>(1);
+    const filterOpen = ref<boolean>(false);
+    const Filters = ref({
+        title: "",
+        type: "",
+    });
+    const isDataLoaded = ref<boolean>(false);
 
-// 取得 JSON 資料
-const loadData = async () => {
-    await fetchData(jsonData, 'resourcesList', false, false);
-    isDataLoaded.value = true;
-};
+    // 取得 JSON 資料
+    const loadData = async () => {
+        await fetchData(jsonData, 'resourcesList', false, false);
+        isDataLoaded.value = true;
+    };
 
-onBeforeMount(loadData);
+    onBeforeMount(loadData);
 
-// 篩選
-const setType = (e: Event) => {
-    const target = e.target as HTMLSelectElement;
-    Filters.value.type = target.value;
-};
+    // 篩選
+    const setType = (e: Event) => {
+        const target = e.target as HTMLSelectElement;
+        Filters.value.type = target.value;
+    };
 
-// 預設載入的資料筆數
-const defaultItemCount = 30;
+    // 預設載入的資料筆數
+    const defaultItemCount = 30;
 
-// 追蹤目前已經載入的資料數量
-const loadedItemCount = ref<number>(defaultItemCount);
+    // 追蹤目前已經載入的資料數量
+    const loadedItemCount = ref<number>(defaultItemCount);
 
-// 計算顯示在頁面上的資料
-const displayedItems = computed(() => {
-    // 先過濾資料
-    const filteredData = jsonData.value.filter((b) => {
-        return (
-            b.title.toLowerCase().includes(Filters.value.title.toLowerCase()) &&
-            (Filters.value.type === "" || b.type.some((typeVar: string) => typeVar.includes(Filters.value.type)))
-        );
+    // 計算顯示在頁面上的資料
+    const displayedItems = computed(() => {
+        // 先過濾資料
+        const filteredData = jsonData.value.filter((b) => {
+            return (
+                b.title.toLowerCase().includes(Filters.value.title.toLowerCase()) &&
+                (Filters.value.type === "" || b.type.some((typeVar: string) => typeVar.includes(Filters.value.type)))
+            );
+        });
+
+        // 再取出前 N 筆資料
+        return filteredData.slice(0, loadedItemCount.value);
     });
 
-    // 再取出前 N 筆資料
-    return filteredData.slice(0, loadedItemCount.value);
-});
+    // 滾動加載更多資料的處理函式
+    const handleScroll = () => {
+        // 如果目前載入的資料數量小於 JSON 資料的總數，並且滾動到了頁面底部
+        if (loadedItemCount.value < jsonData.value.length && (window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+            // 加載下一批資料
+            loadedItemCount.value += defaultItemCount;
+        }
+    };
 
-// 滾動加載更多資料的處理函式
-const handleScroll = () => {
-    // 如果目前載入的資料數量小於 JSON 資料的總數，並且滾動到了頁面底部
-    if (loadedItemCount.value < jsonData.value.length && (window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-        // 加載下一批資料
-        loadedItemCount.value += defaultItemCount;
-    }
-};
+    // 監聽滾動事件
+    onMounted(() => {
+        window.addEventListener('scroll', handleScroll);
+    });
 
-// 監聽滾動事件
-onMounted(() => {
-    window.addEventListener('scroll', handleScroll);
-});
-
-// 組件被卸載時移除滾動事件的監聽
-onUnmounted(() => {
-    window.removeEventListener('scroll', handleScroll);
-});
+    // 組件被卸載時移除滾動事件的監聽
+    onUnmounted(() => {
+        window.removeEventListener('scroll', handleScroll);
+    });
 </script>
 
 <template>
@@ -98,6 +98,7 @@ onUnmounted(() => {
                             <option value="" selected>全部</option>
                             <option value="前端工具">前端工具</option>
                             <option value="前端套件">前端套件</option>
+                            <option value="後端工具">後端工具</option>
                             <option value="影音圖像">影音圖像</option>
                             <option value="設計素材">設計素材</option>
                             <option value="架構規劃">架構規劃</option>

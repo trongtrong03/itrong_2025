@@ -1,25 +1,25 @@
 <script setup lang="ts">
-import { reactive } from "vue";
-import type { CatalogItem } from '@/stores/catalog';
+    import { reactive } from "vue";
+    import type { CatalogItem } from '@/stores/catalog';
 
-// 引用組件
-import BaseTextContent from '@/components/Common/BaseTextContent.vue';
-import Title from "@/components/Common/BaseTextTitle.vue";
-import PrismHighlight from '@/components/Common/PrismHighlight.vue';
+    // 引用組件
+    import BaseTextContent from '@/components/Common/BaseTextContent.vue';
+    import Title from "@/components/Common/BaseTextTitle.vue";
+    import PrismHighlight from '@/components/Common/PrismHighlight.vue';
 
-// 目錄
-const catalog = reactive<CatalogItem[]>([
-    { id: 0, title: '序、前言' },
-    { id: 1, title: '一、什麼是 Flexible Box？' },
-    { id: 2, title: '二、認識主軸與交錯軸' },
-    { id: 3, title: '三、如何讓子元件水平居中排列？' },
-    { id: 4, title: '四、如何讓子元件垂直居中排列？' },
-    { id: 5, title: '五、子元件之間的對齊方式能不一樣嗎？' },
-    { id: 6, title: '六、子元件是否能換行或多行排列？' },
-    { id: 7, title: '七、可以改變子元件的順序嗎？' },
-    { id: 8, title: '八、父容器 flex 與 inline-flex 的差異？' },
-    { id: 9, title: '九、參考資料' },
-]);
+    // 目錄
+    const catalog = reactive<CatalogItem[]>([
+        { id: 0, title: '序、前言' },
+        { id: 1, title: '一、什麼是 Flexible Box？' },
+        { id: 2, title: '二、認識主軸與交錯軸' },
+        { id: 3, title: '三、如何讓子元件水平居中排列？' },
+        { id: 4, title: '四、如何讓子元件垂直居中排列？' },
+        { id: 5, title: '五、子元件之間的對齊方式能不一樣嗎？' },
+        { id: 6, title: '六、子元件是否能換行或多行排列？' },
+        { id: 7, title: '七、可以改變子元件的順序嗎？' },
+        { id: 8, title: '八、父容器 flex 與 inline-flex 的差異？' },
+        { id: 9, title: '九、參考資料' },
+    ]);
 </script>
 
 <template>

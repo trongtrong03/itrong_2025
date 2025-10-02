@@ -1,22 +1,22 @@
 <script setup lang="ts">
-import { reactive } from "vue";
-import type { CatalogItem } from '@/stores/catalog';
+    import { reactive } from "vue";
+    import type { CatalogItem } from '@/stores/catalog';
 
-// 引用組件
-import BaseTextContent from '@/components/Common/BaseTextContent.vue';
-import Title from "@/components/Common/BaseTextTitle.vue";
-import PrismHighlight from '@/components/Common/PrismHighlight.vue';
+    // 引用組件
+    import BaseTextContent from '@/components/Common/BaseTextContent.vue';
+    import Title from "@/components/Common/BaseTextTitle.vue";
+    import PrismHighlight from '@/components/Common/PrismHighlight.vue';
 
-// 目錄
-const catalog = reactive<CatalogItem[]>([
-    { id: 0, title: '序、前言' },
-    { id: 1, title: '一、Compass 是什麼？' },
-    { id: 2, title: '二、我該如何進行環境安裝？' },
-    { id: 3, title: '三、要如何在專案裡使用 Compass？' },
-    { id: 4, title: '四、config.rb 的功用是什麼？' },
-    { id: 5, title: '五、快速懶人包' },
-    { id: 5, title: '六、參考資料' },
-]);
+    // 目錄
+    const catalog = reactive<CatalogItem[]>([
+        { id: 0, title: '序、前言' },
+        { id: 1, title: '一、Compass 是什麼？' },
+        { id: 2, title: '二、我該如何進行環境安裝？' },
+        { id: 3, title: '三、要如何在專案裡使用 Compass？' },
+        { id: 4, title: '四、config.rb 的功用是什麼？' },
+        { id: 5, title: '五、快速懶人包' },
+        { id: 5, title: '六、參考資料' },
+    ]);
 </script>
 
 <template>

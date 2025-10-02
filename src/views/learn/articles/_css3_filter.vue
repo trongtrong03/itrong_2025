@@ -1,21 +1,21 @@
 <script setup lang="ts">
-import { reactive } from "vue";
-import type { CatalogItem } from '@/stores/catalog';
+    import { reactive } from "vue";
+    import type { CatalogItem } from '@/stores/catalog';
 
-// 引用組件
-import BaseTextContent from '@/components/Common/BaseTextContent.vue';
-import Title from "@/components/Common/BaseTextTitle.vue";
-import PrismHighlight from '@/components/Common/PrismHighlight.vue';
+    // 引用組件
+    import BaseTextContent from '@/components/Common/BaseTextContent.vue';
+    import Title from "@/components/Common/BaseTextTitle.vue";
+    import PrismHighlight from '@/components/Common/PrismHighlight.vue';
 
-// 目錄
-const catalog = reactive<CatalogItem[]>([
-    { id: 0, title: '序、前言' },
-    { id: 1, title: '一、濾鏡規則與效果一覽' },
-    { id: 2, title: '二、濾鏡效果展示' },
-    { id: 3, title: '三、多重定義' },
-    { id: 4, title: '四、相容性支援' },
-    { id: 5, title: '五、參考資料' },
-]);
+    // 目錄
+    const catalog = reactive<CatalogItem[]>([
+        { id: 0, title: '序、前言' },
+        { id: 1, title: '一、濾鏡規則與效果一覽' },
+        { id: 2, title: '二、濾鏡效果展示' },
+        { id: 3, title: '三、多重定義' },
+        { id: 4, title: '四、相容性支援' },
+        { id: 5, title: '五、參考資料' },
+    ]);
 </script>
 
 <template>
@@ -462,43 +462,43 @@ const catalog = reactive<CatalogItem[]>([
 </template>
 
 <style lang="scss" scoped>
-.ex-filter {
-    display: flex;
-    > div {
-        position: relative;
-        flex: 1;
-        min-width: 0;
-        &::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 1;
-            display: block;
-            width: 5rem;
-            line-height: 2;
-            text-align: center;
-            color: #FFF;
-            background-color: #000;
-            padding: 0 0.5rem;
-        }
-        &::before {
-            content: 'Origin';
-        }
-        &:last-child {
+    .ex-filter {
+        display: flex;
+        > div {
+            position: relative;
+            flex: 1;
+            min-width: 0;
             &::before {
-                content: 'Filter';
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 1;
+                display: block;
+                width: 5rem;
+                line-height: 2;
+                text-align: center;
+                color: #FFF;
+                background-color: #000;
+                padding: 0 0.5rem;
+            }
+            &::before {
+                content: 'Origin';
+            }
+            &:last-child {
+                &::before {
+                    content: 'Filter';
+                }
+            }
+            span {
+                display: block;
+                width: 100%;
+                height: 240px;
+                background-image: url("../images/example01.jpg");
+                background-repeat: no-repeat;
+                background-position: 50% 50%;
+                background-size: cover;
             }
         }
-        span {
-            display: block;
-            width: 100%;
-            height: 240px;
-            background-image: url("../images/example01.jpg");
-            background-repeat: no-repeat;
-            background-position: 50% 50%;
-            background-size: cover;
-        }
     }
-}
 </style>

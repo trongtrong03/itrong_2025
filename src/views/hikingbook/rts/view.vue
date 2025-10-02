@@ -1,26 +1,26 @@
 <script setup lang="ts">
-import axios from 'axios';
-import { ref, onMounted, watch } from "vue";
-import { useRoute } from 'vue-router';
+    import axios from 'axios';
+    import { ref, onMounted, watch } from "vue";
+    import { useRoute } from 'vue-router';
 
-// 引用組件
-import SvgIcons from "@/components/SvgIcons.vue";
-import Loading from "@/components/Loading.vue";
+    // 引用組件
+    import SvgIcons from "@/components/SvgIcons.vue";
+    import Loading from "@/components/Loading.vue";
 
-// 引用功能
-import fetchData from "@/hooks/fetchData";
+    // 引用功能
+    import fetchData from "@/hooks/fetchData";
 
-// 定義資料
-const route = useRoute();
-const rtData = ref(null);
+    // 定義資料
+    const route = useRoute();
+    const rtData = ref(null);
 
-// 取得 JSON 資料
-onMounted(async () => {
-    const rtDataId = route.params.id;
-    const dataRef = ref([]);
-    await fetchData(dataRef, 'routesList', item => item.id == rtDataId);
-    rtData.value = dataRef.value[0] || null;
-});
+    // 取得 JSON 資料
+    onMounted(async () => {
+        const rtDataId = route.params.id;
+        const dataRef = ref([]);
+        await fetchData(dataRef, 'routesList', item => item.id == rtDataId);
+        rtData.value = dataRef.value[0] || null;
+    });
 </script>
 
 <template>

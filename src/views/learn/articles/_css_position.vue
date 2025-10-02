@@ -1,21 +1,21 @@
 <script setup lang="ts">
-import { reactive } from "vue";
-import type { CatalogItem } from '@/stores/catalog';
+    import { reactive } from "vue";
+    import type { CatalogItem } from '@/stores/catalog';
 
-// 引用組件
-import BaseTextContent from '@/components/Common/BaseTextContent.vue';
-import Title from "@/components/Common/BaseTextTitle.vue";
-import PrismHighlight from '@/components/Common/PrismHighlight.vue';
+    // 引用組件
+    import BaseTextContent from '@/components/Common/BaseTextContent.vue';
+    import Title from "@/components/Common/BaseTextTitle.vue";
+    import PrismHighlight from '@/components/Common/PrismHighlight.vue';
 
-// 目錄
-const catalog = reactive<CatalogItem[]>([
-    { id: 0, title: '序、前言' },
-    { id: 1, title: '一、Position 是什麼？' },
-    { id: 2, title: '二、Position 有哪些參數？' },
-    { id: 3, title: '三、座標偏移與 z-index' },
-    { id: 4, title: '四、transform 中的 translate 有影響嗎？' },
-    { id: 5, title: '五、參考資料' },
-]);
+    // 目錄
+    const catalog = reactive<CatalogItem[]>([
+        { id: 0, title: '序、前言' },
+        { id: 1, title: '一、Position 是什麼？' },
+        { id: 2, title: '二、Position 有哪些參數？' },
+        { id: 3, title: '三、座標偏移與 z-index' },
+        { id: 4, title: '四、transform 中的 translate 有影響嗎？' },
+        { id: 5, title: '五、參考資料' },
+    ]);
 </script>
 
 <template>

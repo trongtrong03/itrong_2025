@@ -1,23 +1,23 @@
 <script setup lang="ts">
-import { reactive } from "vue";
-import type { CatalogItem } from '@/stores/catalog';
+    import { reactive } from "vue";
+    import type { CatalogItem } from '@/stores/catalog';
 
-// 引用組件
-import BaseTextContent from '@/components/Common/BaseTextContent.vue';
-import Title from "@/components/Common/BaseTextTitle.vue";
-import PrismHighlight from '@/components/Common/PrismHighlight.vue';
+    // 引用組件
+    import BaseTextContent from '@/components/Common/BaseTextContent.vue';
+    import Title from "@/components/Common/BaseTextTitle.vue";
+    import PrismHighlight from '@/components/Common/PrismHighlight.vue';
 
-// 目錄
-const catalog = reactive<CatalogItem[]>([
-    { id: 0, title: '序、前言' },
-    { id: 1, title: '一、什麼是 MPA 與 SSR？' },
-    { id: 2, title: '二、什麼是 SPA 與 CSR？' },
-    { id: 3, title: '三、MPA 與 SPA 比一比' },
-    { id: 4, title: '四、什麼是 SSG？' },
-    { id: 5, title: '五、ISR......？' },
-    { id: 6, title: '六、總結' },
-    { id: 7, title: '七、參考資料' },
-]);
+    // 目錄
+    const catalog = reactive<CatalogItem[]>([
+        { id: 0, title: '序、前言' },
+        { id: 1, title: '一、什麼是 MPA 與 SSR？' },
+        { id: 2, title: '二、什麼是 SPA 與 CSR？' },
+        { id: 3, title: '三、MPA 與 SPA 比一比' },
+        { id: 4, title: '四、什麼是 SSG？' },
+        { id: 5, title: '五、ISR......？' },
+        { id: 6, title: '六、總結' },
+        { id: 7, title: '七、參考資料' },
+    ]);
 </script>
 
 <template>

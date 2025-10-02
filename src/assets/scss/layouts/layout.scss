@@ -235,13 +235,13 @@ input::-webkit-calendar-picker-indicator {
     }
     @media only screen and (max-width: 768px) {
         padding: 6rem 2rem 4rem;
-        &.page-about {
+        .is-about & {
             padding: 10rem 2rem 4rem;
         }
     }
     @media only screen and (max-width: 480px) {
         padding: 4rem 1rem;
-        &.page-about {
+        .is-about & {
             padding: 8rem 1rem 4rem;
         }
     }

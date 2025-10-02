@@ -1,22 +1,22 @@
 <script setup lang="ts">
-import { reactive } from "vue";
-import type { CatalogItem } from '@/stores/catalog';
+    import { reactive } from "vue";
+    import type { CatalogItem } from '@/stores/catalog';
 
-// 引用組件
-import BaseTextContent from '@/components/Common/BaseTextContent.vue';
-import Title from "@/components/Common/BaseTextTitle.vue";
+    // 引用組件
+    import BaseTextContent from '@/components/Common/BaseTextContent.vue';
+    import Title from "@/components/Common/BaseTextTitle.vue";
 
-// 目錄
-const catalog = reactive<CatalogItem[]>([
-    { id: 0, title: '0K：楔子' },
-    { id: 1, title: '1K：屯原登山口' },
-    { id: 2, title: '2K：雲海保線所' },
-    { id: 3, title: '3K：能高瀑布' },
-    { id: 4, title: '4K：天池山莊' },
-    { id: 5, title: '5K：天池' },
-    { id: 6, title: '6K：奇萊南峰' },
-    { id: 7, title: '7K：回程' },
-]);
+    // 目錄
+    const catalog = reactive<CatalogItem[]>([
+        { id: 0, title: '0K：楔子' },
+        { id: 1, title: '1K：屯原登山口' },
+        { id: 2, title: '2K：雲海保線所' },
+        { id: 3, title: '3K：能高瀑布' },
+        { id: 4, title: '4K：天池山莊' },
+        { id: 5, title: '5K：天池' },
+        { id: 6, title: '6K：奇萊南峰' },
+        { id: 7, title: '7K：回程' },
+    ]);
 </script>
 
 <template>

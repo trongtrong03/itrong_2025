@@ -1,26 +1,26 @@
 <script setup lang="ts">
-import { reactive } from "vue";
-import type { CatalogItem } from '@/stores/catalog';
+    import { reactive } from "vue";
+    import type { CatalogItem } from '@/stores/catalog';
 
-// 引用組件
-import BaseTextContent from '@/components/Common/BaseTextContent.vue';
-import Title from "@/components/Common/BaseTextTitle.vue";
-import PrismHighlight from '@/components/Common/PrismHighlight.vue';
+    // 引用組件
+    import BaseTextContent from '@/components/Common/BaseTextContent.vue';
+    import Title from "@/components/Common/BaseTextTitle.vue";
+    import PrismHighlight from '@/components/Common/PrismHighlight.vue';
 
-// 目錄
-const catalog = reactive<CatalogItem[]>([
-    { id: 0, title: '序、前言' },
-    { id: 1, title: '一、判斷陣列及轉換資料（isArray、of、from）' },
-    { id: 2, title: '二、新增陣列資料（unshift、push）' },
-    { id: 3, title: '三、刪除陣列資料（shift、pop）' },
-    { id: 4, title: '四、增刪改陣列資料（splice）' },
-    { id: 5, title: '五、合併陣列資料（concat）' },
-    { id: 6, title: '六、截取陣列資料（slice）' },
-    { id: 7, title: '七、複製陣列資料（copyWithin）' },
-    { id: 8, title: '八、填充陣列資料（fill）' },
-    { id: 9, title: '九、反轉陣列資料（reverse）' },
-    { id: 10, title: '十、參考資料' },
-]);
+    // 目錄
+    const catalog = reactive<CatalogItem[]>([
+        { id: 0, title: '序、前言' },
+        { id: 1, title: '一、判斷陣列及轉換資料（isArray、of、from）' },
+        { id: 2, title: '二、新增陣列資料（unshift、push）' },
+        { id: 3, title: '三、刪除陣列資料（shift、pop）' },
+        { id: 4, title: '四、增刪改陣列資料（splice）' },
+        { id: 5, title: '五、合併陣列資料（concat）' },
+        { id: 6, title: '六、截取陣列資料（slice）' },
+        { id: 7, title: '七、複製陣列資料（copyWithin）' },
+        { id: 8, title: '八、填充陣列資料（fill）' },
+        { id: 9, title: '九、反轉陣列資料（reverse）' },
+        { id: 10, title: '十、參考資料' },
+    ]);
 </script>
 
 <template>

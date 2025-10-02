@@ -1,22 +1,22 @@
 <script setup lang="ts">
-import { reactive } from "vue";
-import type { CatalogItem } from '@/stores/catalog';
+    import { reactive } from "vue";
+    import type { CatalogItem } from '@/stores/catalog';
 
-// 引用組件
-import BaseTextContent from '@/components/Common/BaseTextContent.vue';
-import Title from "@/components/Common/BaseTextTitle.vue";
-import PrismHighlight from '@/components/Common/PrismHighlight.vue';
+    // 引用組件
+    import BaseTextContent from '@/components/Common/BaseTextContent.vue';
+    import Title from "@/components/Common/BaseTextTitle.vue";
+    import PrismHighlight from '@/components/Common/PrismHighlight.vue';
 
-// 目錄
-const catalog = reactive<CatalogItem[]>([
-    { id: 0, title: '序、前言' },
-    { id: 1, title: '一、什麼是選擇器？' },
-    { id: 2, title: '二、選擇器有哪些類型？' },
-    { id: 3, title: '三、如何辨別選擇器的優先順序？' },
-    { id: 4, title: '四、如何正確書寫選擇器 Coding Style？' },
-    { id: 5, title: '五、進階：CSS3 新增的選擇器一覽' },
-    { id: 6, title: '六、裝置可視單位' },
-]);
+    // 目錄
+    const catalog = reactive<CatalogItem[]>([
+        { id: 0, title: '序、前言' },
+        { id: 1, title: '一、什麼是選擇器？' },
+        { id: 2, title: '二、選擇器有哪些類型？' },
+        { id: 3, title: '三、如何辨別選擇器的優先順序？' },
+        { id: 4, title: '四、如何正確書寫選擇器 Coding Style？' },
+        { id: 5, title: '五、進階：CSS3 新增的選擇器一覽' },
+        { id: 6, title: '六、裝置可視單位' },
+    ]);
 </script>
 
 <template>
@@ -1463,153 +1463,153 @@ const catalog = reactive<CatalogItem[]>([
 </template>
 
 <style lang="scss" scoped>
-.ex-selector1 {
-    border: 1px dashed #000;
-    p {
-        display: inline-block;
-        font-size: 1.5rem;
-        background-color: #eee;
-        padding: 1rem;
-    }
-    p::before {
-        content: "before";
-        font-size: 0.75em;
-        color: red;
-        margin-right: 0.5rem;
-    }
-    p::after {
-        content: "after";
-        font-size: 0.75em;
-        color: blue;
-        margin-left: 0.5rem;
-    }
-}
-
-.ex-selector2 {
-    border: 1px dashed #000;
-    ul {
-        margin: 0;
-        padding: 0;
-    }
-    li {
-        display: inline-block;
-        vertical-align: middle;
-        width: 100px;
-        height: 100px;
-        line-height: 100px;
-        text-align: center;
-        background-color: lightblue;
-        margin: 0 0.5rem;
-        &.old {
-            background-color: lightgreen;
-        }
-        &.old-i {
-            background-color: lightgreen !important;
-        }
-    }
-    .new {
-        background-color: lightyellow;
-    }
-}
-
-.ex-selector3 {
-    border: 1px dashed #000;
-    ul {
-        margin: 0;
-        padding: 0;
-    }
-    li {
-        background-color: #EEE;
-        border-bottom: 1px solid #ccc;
-        list-style-type: none;
-        padding-left: 1rem;
-        &:first-of-type {
-            background-color: lightblue;
-        }
-        &:nth-of-type(3) {
-            background-color: lightgreen;
-        }
-        &:last-of-type {
-            background-color: lightyellow;
-        }
-    }
-}
-
-.ex-selector4 {
-    border: 1px dashed #000;
-    ul {
-        margin: 0;
-        padding: 0;
-    }
-    li {
-        background-color: #EEE;
-        border-bottom: 1px solid #ccc;
-        list-style-type: none;
-        padding-left: 1rem;
-        &:first-child {
-            background-color: lightblue;
-        }
-        &:nth-child(3) {
-            background-color: lightgreen;
-        }
-        &:last-child {
-            background-color: lightyellow;
-        }
-    }
-}
-
-.ex-selector5 {
-    display: flex;
-    border: 1px dashed #000;
-    hgroup {
-        flex: 1;
-        border-left: 1px dashed #000;
-        h1,
-        h2,
-        h3,
-        h4,
+    .ex-selector1 {
+        border: 1px dashed #000;
         p {
-            line-height: 1.5;
-            font-size: 1rem;
-            font-weight: normal;
-            border-bottom: 1px solid #CCC;
+            display: inline-block;
+            font-size: 1.5rem;
+            background-color: #eee;
+            padding: 1rem;
+        }
+        p::before {
+            content: "before";
+            font-size: 0.75em;
+            color: red;
+            margin-right: 0.5rem;
+        }
+        p::after {
+            content: "after";
+            font-size: 0.75em;
+            color: blue;
+            margin-left: 0.5rem;
+        }
+    }
+
+    .ex-selector2 {
+        border: 1px dashed #000;
+        ul {
             margin: 0;
             padding: 0;
-            &::before {
-                display: none;
+        }
+        li {
+            display: inline-block;
+            vertical-align: middle;
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            background-color: lightblue;
+            margin: 0 0.5rem;
+            &.old {
+                background-color: lightgreen;
+            }
+            &.old-i {
+                background-color: lightgreen !important;
             }
         }
-        &:nth-child(1) {
-            border-left: 0;
-            p:nth-of-type(3) {
-                line-height: 2;
-                font-size: 1.5rem;
-                font-weight: bold;
-                color: #fff;
-                background-color: lightblue;
-            }
-        }
-        &:nth-child(2) {
-            p:nth-child(3) {
-                line-height: 2;
-                font-size: 1.5rem;
-                font-weight: bold;
-                color: #fff;
-                background-color: lightblue;
-            }
+        .new {
+            background-color: lightyellow;
         }
     }
-}
 
-.ex-selector6 {
-    border: 1px dashed #000;
-    padding: 1rem;
-    p {
-        margin-bottom: 0;
+    .ex-selector3 {
+        border: 1px dashed #000;
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+        li {
+            background-color: #EEE;
+            border-bottom: 1px solid #ccc;
+            list-style-type: none;
+            padding-left: 1rem;
+            &:first-of-type {
+                background-color: lightblue;
+            }
+            &:nth-of-type(3) {
+                background-color: lightgreen;
+            }
+            &:last-of-type {
+                background-color: lightyellow;
+            }
+        }
     }
-    p::selection {
-        color: #FFF;
-        background-color: lightblue;
+
+    .ex-selector4 {
+        border: 1px dashed #000;
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+        li {
+            background-color: #EEE;
+            border-bottom: 1px solid #ccc;
+            list-style-type: none;
+            padding-left: 1rem;
+            &:first-child {
+                background-color: lightblue;
+            }
+            &:nth-child(3) {
+                background-color: lightgreen;
+            }
+            &:last-child {
+                background-color: lightyellow;
+            }
+        }
     }
-}
+
+    .ex-selector5 {
+        display: flex;
+        border: 1px dashed #000;
+        hgroup {
+            flex: 1;
+            border-left: 1px dashed #000;
+            h1,
+            h2,
+            h3,
+            h4,
+            p {
+                line-height: 1.5;
+                font-size: 1rem;
+                font-weight: normal;
+                border-bottom: 1px solid #CCC;
+                margin: 0;
+                padding: 0;
+                &::before {
+                    display: none;
+                }
+            }
+            &:nth-child(1) {
+                border-left: 0;
+                p:nth-of-type(3) {
+                    line-height: 2;
+                    font-size: 1.5rem;
+                    font-weight: bold;
+                    color: #fff;
+                    background-color: lightblue;
+                }
+            }
+            &:nth-child(2) {
+                p:nth-child(3) {
+                    line-height: 2;
+                    font-size: 1.5rem;
+                    font-weight: bold;
+                    color: #fff;
+                    background-color: lightblue;
+                }
+            }
+        }
+    }
+
+    .ex-selector6 {
+        border: 1px dashed #000;
+        padding: 1rem;
+        p {
+            margin-bottom: 0;
+        }
+        p::selection {
+            color: #FFF;
+            background-color: lightblue;
+        }
+    }
 </style>

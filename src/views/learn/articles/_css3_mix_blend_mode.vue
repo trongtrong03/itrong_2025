@@ -1,22 +1,22 @@
 <script setup lang="ts">
-import { reactive } from "vue";
-import type { CatalogItem } from '@/stores/catalog';
+    import { reactive } from "vue";
+    import type { CatalogItem } from '@/stores/catalog';
 
-// 引用組件
-import BaseTextContent from '@/components/Common/BaseTextContent.vue';
-import Title from "@/components/Common/BaseTextTitle.vue";
-import PrismHighlight from '@/components/Common/PrismHighlight.vue';
+    // 引用組件
+    import BaseTextContent from '@/components/Common/BaseTextContent.vue';
+    import Title from "@/components/Common/BaseTextTitle.vue";
+    import PrismHighlight from '@/components/Common/PrismHighlight.vue';
 
-// 目錄
-const catalog = reactive<CatalogItem[]>([
-    { id: 0, title: '序、前言' },
-    { id: 1, title: '一、屬性介紹' },
-    { id: 2, title: '二、超級比一比' },
-    { id: 3, title: '三、mix-blend-mode V.S. background-blend-mode' },
-    { id: 4, title: '四、其它運用' },
-    { id: 5, title: '五、總結與相容性' },
-    { id: 6, title: '六、參考資料' },
-]);
+    // 目錄
+    const catalog = reactive<CatalogItem[]>([
+        { id: 0, title: '序、前言' },
+        { id: 1, title: '一、屬性介紹' },
+        { id: 2, title: '二、超級比一比' },
+        { id: 3, title: '三、mix-blend-mode V.S. background-blend-mode' },
+        { id: 4, title: '四、其它運用' },
+        { id: 5, title: '五、總結與相容性' },
+        { id: 6, title: '六、參考資料' },
+    ]);
 </script>
 
 <template>
@@ -805,19 +805,19 @@ const catalog = reactive<CatalogItem[]>([
 </template>
 
 <style lang="scss" scoped>
-.ex-mix-1 {
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom,  #ff0000 0%,#ff9000 20%,#fff000 40%,#00ff00 60%,#0000ff 80%,#cc00ff 100%);
-}
-
-.ex-mix-2 {
-    width: 100%;
-    height: auto;
-    background: linear-gradient(to bottom,  #ff0000 0%,#ff9000 20%,#fff000 40%,#00ff00 60%,#0000ff 80%,#cc00ff 100%);
-    img {
-        display: block;
+    .ex-mix-1 {
         width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom,  #ff0000 0%,#ff9000 20%,#fff000 40%,#00ff00 60%,#0000ff 80%,#cc00ff 100%);
     }
-}
+
+    .ex-mix-2 {
+        width: 100%;
+        height: auto;
+        background: linear-gradient(to bottom,  #ff0000 0%,#ff9000 20%,#fff000 40%,#00ff00 60%,#0000ff 80%,#cc00ff 100%);
+        img {
+            display: block;
+            width: 100%;
+        }
+    }
 </style>

@@ -1,21 +1,21 @@
 <script setup lang="ts">
-import { reactive } from "vue";
-import type { CatalogItem } from '@/stores/catalog';
+    import { reactive } from "vue";
+    import type { CatalogItem } from '@/stores/catalog';
 
-// 引用組件
-import BaseTextContent from '@/components/Common/BaseTextContent.vue';
-import Title from "@/components/Common/BaseTextTitle.vue";
-import PrismHighlight from '@/components/Common/PrismHighlight.vue';
+    // 引用組件
+    import BaseTextContent from '@/components/Common/BaseTextContent.vue';
+    import Title from "@/components/Common/BaseTextTitle.vue";
+    import PrismHighlight from '@/components/Common/PrismHighlight.vue';
 
-// 目錄
-const catalog = reactive<CatalogItem[]>([
-    { id: 0, title: '序、前言' },
-    { id: 1, title: '一、文字陰影' },
-    { id: 2, title: '二、文字漸層' },
-    { id: 3, title: '三、文字描邊與鏤空' },
-    { id: 4, title: '四、特效賞析' },
-    { id: 5, title: '五、參考資料' },
-]);
+    // 目錄
+    const catalog = reactive<CatalogItem[]>([
+        { id: 0, title: '序、前言' },
+        { id: 1, title: '一、文字陰影' },
+        { id: 2, title: '二、文字漸層' },
+        { id: 3, title: '三、文字描邊與鏤空' },
+        { id: 4, title: '四、特效賞析' },
+        { id: 5, title: '五、參考資料' },
+    ]);
 </script>
 
 <template>
@@ -373,26 +373,26 @@ const catalog = reactive<CatalogItem[]>([
 </template>
 
 <style lang="scss" scoped>
-.ex-shadow {
-    text-align: center;
-    border: 1px dashed #000;
-    padding: 2rem;
-    p {
-        background-color: #eee;
-        margin: 0;
-        strong {
-            font-weight: bold;
-            font-size: 20px;
-            color: transparent;
-            background: linear-gradient(to bottom, #F00 0%,#000 100%);
-            -webkit-background-clip: text;  
-            background-clip: text;
-        }
-        b {
-            -webkit-text-stroke: 1px #f00;
-            -webkit-text-fill-color: transparent;
-            font-size: 2rem;
+    .ex-shadow {
+        text-align: center;
+        border: 1px dashed #000;
+        padding: 2rem;
+        p {
+            background-color: #eee;
+            margin: 0;
+            strong {
+                font-weight: bold;
+                font-size: 20px;
+                color: transparent;
+                background: linear-gradient(to bottom, #F00 0%,#000 100%);
+                -webkit-background-clip: text;  
+                background-clip: text;
+            }
+            b {
+                -webkit-text-stroke: 1px #f00;
+                -webkit-text-fill-color: transparent;
+                font-size: 2rem;
+            }
         }
     }
-}
 </style>

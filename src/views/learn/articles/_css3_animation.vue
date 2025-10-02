@@ -1,27 +1,27 @@
 <script setup lang="ts">
-import { reactive } from "vue";
-import type { CatalogItem } from '@/stores/catalog';
+    import { reactive } from "vue";
+    import type { CatalogItem } from '@/stores/catalog';
 
-// 引用組件
-import BaseTextContent from '@/components/Common/BaseTextContent.vue';
-import Title from "@/components/Common/BaseTextTitle.vue";
-import PrismHighlight from '@/components/Common/PrismHighlight.vue';
+    // 引用組件
+    import BaseTextContent from '@/components/Common/BaseTextContent.vue';
+    import Title from "@/components/Common/BaseTextTitle.vue";
+    import PrismHighlight from '@/components/Common/PrismHighlight.vue';
 
-// 目錄
-const catalog = reactive<CatalogItem[]>([
-    { id: 0, title: '序、前言' },
-    { id: 1, title: '一、Animation 的基本語法' },
-    { id: 2, title: '二、要如何製作動畫影格並讓指定元素取得它？' },
-    { id: 3, title: '三、我可以讓動畫延遲播放嗎？' },
-    { id: 4, title: '四、我可以讓動畫重複執行嗎？' },
-    { id: 5, title: '五、動畫首尾呼應需要設定相同的關鍵影格嗎？' },
-    { id: 6, title: '六、如何調整動畫的速度曲線？' },
-    { id: 7, title: '七、如何讓元素在動畫執行完後保持最後結束的狀態？' },
-    { id: 8, title: '八、補充一：控制動畫運行的狀態' },
-    { id: 9, title: '九、補充二：關鍵影格的三兩事' },
-    { id: 10, title: '十、結語' },
-    { id: 11, title: '十一、參考資料' },
-]);
+    // 目錄
+    const catalog = reactive<CatalogItem[]>([
+        { id: 0, title: '序、前言' },
+        { id: 1, title: '一、Animation 的基本語法' },
+        { id: 2, title: '二、要如何製作動畫影格並讓指定元素取得它？' },
+        { id: 3, title: '三、我可以讓動畫延遲播放嗎？' },
+        { id: 4, title: '四、我可以讓動畫重複執行嗎？' },
+        { id: 5, title: '五、動畫首尾呼應需要設定相同的關鍵影格嗎？' },
+        { id: 6, title: '六、如何調整動畫的速度曲線？' },
+        { id: 7, title: '七、如何讓元素在動畫執行完後保持最後結束的狀態？' },
+        { id: 8, title: '八、補充一：控制動畫運行的狀態' },
+        { id: 9, title: '九、補充二：關鍵影格的三兩事' },
+        { id: 10, title: '十、結語' },
+        { id: 11, title: '十一、參考資料' },
+    ]);
 </script>
 
 <template>

@@ -1,24 +1,24 @@
 <script setup lang="ts">
-import { reactive } from "vue";
-import type { CatalogItem } from '@/stores/catalog';
+    import { reactive } from "vue";
+    import type { CatalogItem } from '@/stores/catalog';
 
-// 引用組件
-import BaseTextContent from '@/components/Common/BaseTextContent.vue';
-import Title from "@/components/Common/BaseTextTitle.vue";
-import PrismHighlight from '@/components/Common/PrismHighlight.vue';
+    // 引用組件
+    import BaseTextContent from '@/components/Common/BaseTextContent.vue';
+    import Title from "@/components/Common/BaseTextTitle.vue";
+    import PrismHighlight from '@/components/Common/PrismHighlight.vue';
 
-// 目錄
-const catalog = reactive<CatalogItem[]>([
-    { id: 0, title: '序、前言' },
-    { id: 1, title: '一、客製化 checkbox / radio' },
-    { id: 2, title: '二、取消那些煩人的表單預設樣式' },
-    { id: 3, title: '三、阻止使用者隨意拖曳 textarea 大小' },
-    { id: 4, title: '四、改變 input 的 placeholder 樣式' },
-    { id: 5, title: '五、input 的 autofill' },
-    { id: 6, title: '六、隨內容自動撐起高度' },
-    { id: 7, title: '七、select 也有 placeholder？' },
-    { id: 8, title: '八、參考資料' },
-]);
+    // 目錄
+    const catalog = reactive<CatalogItem[]>([
+        { id: 0, title: '序、前言' },
+        { id: 1, title: '一、客製化 checkbox / radio' },
+        { id: 2, title: '二、取消那些煩人的表單預設樣式' },
+        { id: 3, title: '三、阻止使用者隨意拖曳 textarea 大小' },
+        { id: 4, title: '四、改變 input 的 placeholder 樣式' },
+        { id: 5, title: '五、input 的 autofill' },
+        { id: 6, title: '六、隨內容自動撐起高度' },
+        { id: 7, title: '七、select 也有 placeholder？' },
+        { id: 8, title: '八、參考資料' },
+    ]);
 </script>
 
 <template>
@@ -561,93 +561,93 @@ const catalog = reactive<CatalogItem[]>([
 </template>
 
 <style lang="scss" scoped>
-.ex-textarea {
-    display: flex;
-    border: 1px dashed #000;
-    > div {
-        position: relative;
-        flex: 1;
-        min-width: 0;
-        padding: 1rem;
-        &::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            right: 0;
-            width: 1px;
-            height: calc(100% - 1rem);
-            border-right: 1px dashed #000;
-            transform: translateY(-50%);
-        }
-        textarea {
-            display: block;
-            width: 100%;
-            height: 4rem;
-            border: 1px solid #000;
-        }
-        &:last-child {
+    .ex-textarea {
+        display: flex;
+        border: 1px dashed #000;
+        > div {
+            position: relative;
+            flex: 1;
+            min-width: 0;
+            padding: 1rem;
             &::after {
-                display: none;
+                content: '';
+                position: absolute;
+                top: 50%;
+                right: 0;
+                width: 1px;
+                height: calc(100% - 1rem);
+                border-right: 1px dashed #000;
+                transform: translateY(-50%);
             }
             textarea {
-                resize: none;
+                display: block;
+                width: 100%;
+                height: 4rem;
+                border: 1px solid #000;
+            }
+            &:last-child {
+                &::after {
+                    display: none;
+                }
+                textarea {
+                    resize: none;
+                }
+            }
+            &.add-resize {
+                height: 200px;
+                resize: both;
+                overflow: auto;
             }
         }
-        &.add-resize {
-            height: 200px;
-            resize: both;
-            overflow: auto;
+    }
+
+    .ex-placeholder {
+        input {
+            display: block;
+            width: 100%;
+            max-width: 20rem;
+            height: 2rem;
+            border: 1px solid #000;
         }
-    }
-}
 
-.ex-placeholder {
-    input {
-        display: block;
-        width: 100%;
-        max-width: 20rem;
-        height: 2rem;
-        border: 1px solid #000;
-    }
-
-    input::-webkit-input-placeholder {
-        font-size: 16px;
-        font-style: italic;
-        color: red;
-    }
-      
-    input::-moz-placeholder {
-        font-size: 16px;
-        font-style: italic;
-        color: red;
-    }
-      
-    input:-ms-input-placeholder {
-        font-size: 16px;
-        font-style: italic;
-        color: red;
-    }
-      
-    input:-moz-placeholder {
-        font-size: 16px;
-        font-style: italic;
-        color: red;
-    }
-}
-
-.ex-select {
-    select {
-        display: block;
-        width: 100%;
-        max-width: 20rem;
-        height: 2rem;
-        border: 1px solid #000;
-        &:required:invalid {
+        input::-webkit-input-placeholder {
+            font-size: 16px;
+            font-style: italic;
+            color: red;
+        }
+        
+        input::-moz-placeholder {
+            font-size: 16px;
+            font-style: italic;
+            color: red;
+        }
+        
+        input:-ms-input-placeholder {
+            font-size: 16px;
+            font-style: italic;
+            color: red;
+        }
+        
+        input:-moz-placeholder {
+            font-size: 16px;
+            font-style: italic;
             color: red;
         }
     }
-    option {
-        color: #000;
+
+    .ex-select {
+        select {
+            display: block;
+            width: 100%;
+            max-width: 20rem;
+            height: 2rem;
+            border: 1px solid #000;
+            &:required:invalid {
+                color: red;
+            }
+        }
+        option {
+            color: #000;
+        }
     }
-}
 </style>

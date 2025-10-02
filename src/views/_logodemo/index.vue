@@ -1,87 +1,87 @@
 <script setup lang="ts">
-import { ref, computed, onMounted } from "vue";
+  import { ref, computed, onMounted } from "vue";
 
-// 資料型別
-type LogoItem = {
-  id: number;
-  viewport: string[];
-  style: string[];
-  layout: string[];
-  inspiration: string[];
-  typography: string[];
-};
+  // 資料型別
+  type LogoItem = {
+    id: number;
+    viewport: string[];
+    style: string[];
+    layout: string[];
+    inspiration: string[];
+    typography: string[];
+  };
 
-type FilterKey = "viewport" | "shape" | "layout" | "inspiration" | "typography";
+  type FilterKey = "viewport" | "shape" | "layout" | "inspiration" | "typography";
 
-// 狀態
-const data = ref<LogoItem[]>([]);
-const loading = ref(false);
-const error = ref<string | null>(null);
+  // 狀態
+  const data = ref<LogoItem[]>([]);
+  const loading = ref(false);
+  const error = ref<string | null>(null);
 
-// 目前選中的篩選（空字串代表該分類「未篩選」）
-const selected = ref<Record<FilterKey, string>>({
-  viewport: "",
-  shape: "",
-  layout: "",
-  inspiration: "",
-  typography: "",
-});
+  // 目前選中的篩選（空字串代表該分類「未篩選」）
+  const selected = ref<Record<FilterKey, string>>({
+    viewport: "",
+    shape: "",
+    layout: "",
+    inspiration: "",
+    typography: "",
+  });
 
-// 取得 JSON
-const fetchLogos = async () => {
-  loading.value = true;
-  try {
-    const res = await fetch("/js/data/_logo.json", { cache: "no-cache" });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const json = (await res.json()) as LogoItem[];
-    data.value = json.sort((a, b) => a.id - b.id);
-  } catch (e: any) {
-    error.value = e?.message ?? String(e);
-  } finally {
-    loading.value = false;
-  }
-};
-onMounted(fetchLogos);
+  // 取得 JSON
+  const fetchLogos = async () => {
+    loading.value = true;
+    try {
+      const res = await fetch("/js/data/_logo.json", { cache: "no-cache" });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const json = (await res.json()) as LogoItem[];
+      data.value = json.sort((a, b) => a.id - b.id);
+    } catch (e: any) {
+      error.value = e?.message ?? String(e);
+    } finally {
+      loading.value = false;
+    }
+  };
+  onMounted(fetchLogos);
 
-// 各分類的可選項（由資料動態彙整）
-const options = computed<Record<FilterKey, string[]>>(() => {
-  const keys: FilterKey[] = ["viewport", "shape", "layout", "inspiration", "typography"];
-  const result = {} as Record<FilterKey, string[]>;
-  for (const k of keys) {
-    const set = new Set<string>();
-    for (const item of data.value) for (const v of item[k]) set.add(v);
-    result[k] = Array.from(set);
-  }
-  return result;
-});
+  // 各分類的可選項（由資料動態彙整）
+  const options = computed<Record<FilterKey, string[]>>(() => {
+    const keys: FilterKey[] = ["viewport", "shape", "layout", "inspiration", "typography"];
+    const result = {} as Record<FilterKey, string[]>;
+    for (const k of keys) {
+      const set = new Set<string>();
+      for (const item of data.value) for (const v of item[k]) set.add(v);
+      result[k] = Array.from(set);
+    }
+    return result;
+  });
 
-// 過濾第一筆資料
-const listWithoutFirst = computed(() => data.value.slice(1))
+  // 過濾第一筆資料
+  const listWithoutFirst = computed(() => data.value.slice(1))
 
-// 篩選後的清單（AND 條件：各分類若有選值需同時成立）
-const filteredList = computed(() =>
-  listWithoutFirst.value.filter((item) =>
-    (!selected.value.viewport || item.viewport.includes(selected.value.viewport)) &&
-    (!selected.value.shape || item.shape.includes(selected.value.shape)) &&
-    (!selected.value.layout || item.layout.includes(selected.value.layout)) &&
-    (!selected.value.inspiration || item.inspiration.includes(selected.value.inspiration)) &&
-    (!selected.value.typography || item.typography.includes(selected.value.typography))
+  // 篩選後的清單（AND 條件：各分類若有選值需同時成立）
+  const filteredList = computed(() =>
+    listWithoutFirst.value.filter((item) =>
+      (!selected.value.viewport || item.viewport.includes(selected.value.viewport)) &&
+      (!selected.value.shape || item.shape.includes(selected.value.shape)) &&
+      (!selected.value.layout || item.layout.includes(selected.value.layout)) &&
+      (!selected.value.inspiration || item.inspiration.includes(selected.value.inspiration)) &&
+      (!selected.value.typography || item.typography.includes(selected.value.typography))
+    )
   )
-)
 
-// 操作
-const isActive = (k: FilterKey, val: string) => selected.value[k] === val;
-const toggle = (k: FilterKey, val: string) => {
-  selected.value[k] = selected.value[k] === val ? "" : val; // 再點一次取消
-};
+  // 操作
+  const isActive = (k: FilterKey, val: string) => selected.value[k] === val;
+  const toggle = (k: FilterKey, val: string) => {
+    selected.value[k] = selected.value[k] === val ? "" : val; // 再點一次取消
+  };
 
-// 是否有選中任一篩選
-const hasActive = computed(() => Object.values(selected.value).some(Boolean))
+  // 是否有選中任一篩選
+  const hasActive = computed(() => Object.values(selected.value).some(Boolean))
 
-// 重置所有篩選
-const resetFilters = () => {
-  (Object.keys(selected.value) as FilterKey[]).forEach(k => (selected.value[k] = ""))
-}
+  // 重置所有篩選
+  const resetFilters = () => {
+    (Object.keys(selected.value) as FilterKey[]).forEach(k => (selected.value[k] = ""))
+  }
 </script>
 
 <template>

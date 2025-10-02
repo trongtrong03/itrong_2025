@@ -1,22 +1,22 @@
 <script setup lang="ts">
-import { reactive } from "vue";
-import type { CatalogItem } from '@/stores/catalog';
+    import { reactive } from "vue";
+    import type { CatalogItem } from '@/stores/catalog';
 
-// 引用組件
-import BaseTextContent from '@/components/Common/BaseTextContent.vue';
-import Title from "@/components/Common/BaseTextTitle.vue";
-import PrismHighlight from '@/components/Common/PrismHighlight.vue';
+    // 引用組件
+    import BaseTextContent from '@/components/Common/BaseTextContent.vue';
+    import Title from "@/components/Common/BaseTextTitle.vue";
+    import PrismHighlight from '@/components/Common/PrismHighlight.vue';
 
-// 目錄
-const catalog = reactive<CatalogItem[]>([
-    { id: 0, title: '序、前言' },
-    { id: 1, title: '一、路由基本切換' },
-    { id: 2, title: '二、辨別路由組件與一般組件' },
-    { id: 3, title: '三、路由器的工作模式' },
-    { id: 4, title: '四、to 屬性寫法與路由命名' },
-    { id: 5, title: '五、路由的重新定向' },
-    { id: 6, title: '六、參考資料' },
-]);
+    // 目錄
+    const catalog = reactive<CatalogItem[]>([
+        { id: 0, title: '序、前言' },
+        { id: 1, title: '一、路由基本切換' },
+        { id: 2, title: '二、辨別路由組件與一般組件' },
+        { id: 3, title: '三、路由器的工作模式' },
+        { id: 4, title: '四、to 屬性寫法與路由命名' },
+        { id: 5, title: '五、路由的重新定向' },
+        { id: 6, title: '六、參考資料' },
+    ]);
 </script>
 
 <template>

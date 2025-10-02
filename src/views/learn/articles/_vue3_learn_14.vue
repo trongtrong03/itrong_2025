@@ -1,24 +1,24 @@
 <script setup lang="ts">
-import { reactive } from "vue";
-import type { CatalogItem } from '@/stores/catalog';
+    import { reactive } from "vue";
+    import type { CatalogItem } from '@/stores/catalog';
 
-// 引用組件
-import BaseTextContent from '@/components/Common/BaseTextContent.vue';
-import Title from "@/components/Common/BaseTextTitle.vue";
-import PrismHighlight from '@/components/Common/PrismHighlight.vue';
+    // 引用組件
+    import BaseTextContent from '@/components/Common/BaseTextContent.vue';
+    import Title from "@/components/Common/BaseTextTitle.vue";
+    import PrismHighlight from '@/components/Common/PrismHighlight.vue';
 
-// 目錄
-const catalog = reactive<CatalogItem[]>([
-    { id: 0, title: '序、前言' },
-    { id: 1, title: '一、狀態管理的本質' },
-    { id: 2, title: '二、集中式狀態管理' },
-    { id: 3, title: '三、Vuex 與 Pinia' },
-    { id: 4, title: '四、Pinia 安裝與設定' },
-    { id: 5, title: '五、儲存與讀取資料數據' },
-    { id: 6, title: '六、修改狀態資料的方式' },
-    { id: 7, title: '七、defineStore 另一種寫法' },
-    { id: 8, title: '八、參考資料' },
-]);
+    // 目錄
+    const catalog = reactive<CatalogItem[]>([
+        { id: 0, title: '序、前言' },
+        { id: 1, title: '一、狀態管理的本質' },
+        { id: 2, title: '二、集中式狀態管理' },
+        { id: 3, title: '三、Vuex 與 Pinia' },
+        { id: 4, title: '四、Pinia 安裝與設定' },
+        { id: 5, title: '五、儲存與讀取資料數據' },
+        { id: 6, title: '六、修改狀態資料的方式' },
+        { id: 7, title: '七、defineStore 另一種寫法' },
+        { id: 8, title: '八、參考資料' },
+    ]);
 </script>
 
 <template>

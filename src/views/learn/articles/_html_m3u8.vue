@@ -1,22 +1,22 @@
 <script setup lang="ts">
-import { reactive } from "vue";
-import type { CatalogItem } from '@/stores/catalog';
+    import { reactive } from "vue";
+    import type { CatalogItem } from '@/stores/catalog';
 
-// 引用組件
-import BaseTextContent from '@/components/Common/BaseTextContent.vue';
-import Title from "@/components/Common/BaseTextTitle.vue";
-import PrismHighlight from '@/components/Common/PrismHighlight.vue';
+    // 引用組件
+    import BaseTextContent from '@/components/Common/BaseTextContent.vue';
+    import Title from "@/components/Common/BaseTextTitle.vue";
+    import PrismHighlight from '@/components/Common/PrismHighlight.vue';
 
-// 目錄
-const catalog = reactive<CatalogItem[]>([
-    { id: 0, title: '序、前言' },
-    { id: 1, title: '一、認識 HTTP Live Streaming' },
-    { id: 2, title: '二、什麼是 M3U8？' },
-    { id: 3, title: '三、如何下載與轉換' },
-    { id: 4, title: '四、FFmpeg 工具介紹' },
-    { id: 5, title: '五、使用 JS 播放 M3U8' },
-    { id: 6, title: '六、其他名詞補充' },
-]);
+    // 目錄
+    const catalog = reactive<CatalogItem[]>([
+        { id: 0, title: '序、前言' },
+        { id: 1, title: '一、認識 HTTP Live Streaming' },
+        { id: 2, title: '二、什麼是 M3U8？' },
+        { id: 3, title: '三、如何下載與轉換' },
+        { id: 4, title: '四、FFmpeg 工具介紹' },
+        { id: 5, title: '五、使用 JS 播放 M3U8' },
+        { id: 6, title: '六、其他名詞補充' },
+    ]);
 </script>
 
 <template>

@@ -1,22 +1,22 @@
 <script setup lang="ts">
-import { reactive } from "vue";
-import type { CatalogItem } from '@/stores/catalog';
+    import { reactive } from "vue";
+    import type { CatalogItem } from '@/stores/catalog';
 
-// 引用組件
-import BaseTextContent from '@/components/Common/BaseTextContent.vue';
-import Title from "@/components/Common/BaseTextTitle.vue";
-import PrismHighlight from '@/components/Common/PrismHighlight.vue';
+    // 引用組件
+    import BaseTextContent from '@/components/Common/BaseTextContent.vue';
+    import Title from "@/components/Common/BaseTextTitle.vue";
+    import PrismHighlight from '@/components/Common/PrismHighlight.vue';
 
-// 目錄
-const catalog = reactive<CatalogItem[]>([
-    { id: 0, title: '序、前言' },
-    { id: 1, title: '一、如何宣告變數？' },
-    { id: 2, title: '二、宣告變數時要注意什麼？' },
-    { id: 3, title: '三、變數作用範圍的影響？' },
-    { id: 4, title: '四、RWD 能改變同一變數的值嗎？' },
-    { id: 5, title: '五、結合 calc 做加減乘除' },
-    { id: 6, title: '六、參考資料' },
-]);
+    // 目錄
+    const catalog = reactive<CatalogItem[]>([
+        { id: 0, title: '序、前言' },
+        { id: 1, title: '一、如何宣告變數？' },
+        { id: 2, title: '二、宣告變數時要注意什麼？' },
+        { id: 3, title: '三、變數作用範圍的影響？' },
+        { id: 4, title: '四、RWD 能改變同一變數的值嗎？' },
+        { id: 5, title: '五、結合 calc 做加減乘除' },
+        { id: 6, title: '六、參考資料' },
+    ]);
 </script>
 
 <template>
