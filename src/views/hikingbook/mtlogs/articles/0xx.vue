@@ -9,11 +9,10 @@
     // 目錄
     const catalog = reactive<CatalogItem[]>([
         { id: 0, title: '0K：楔子' },
-        { id: 1, title: '1K：南火炎山' },
-        { id: 2, title: '2K：大峽谷' },
-        { id: 3, title: '3K：火炎山' },
-        { id: 4, title: '4K：南鞍古道' },
-        { id: 5, title: '5K：後記' },
+        { id: 1, title: '1K：南興地磅站' },
+        { id: 2, title: '2K：巴塱衛山' },
+        { id: 3, title: '3K：利嘉林道' },
+        { id: 4, title: '4K：後記' },
     ]);
 </script>
 
@@ -30,14 +29,14 @@
         </ul>
     </div>
     <div class="text-info">
-        <p><span>登山日期：</span><strong>2019-04-28</strong></p>
-        <p><span>行走總長：</span><strong>約 4.5 KM</strong></p>
-        <p><span>累計耗時：</span><strong>約 2 HR</strong></p>
-        <p><span>路程總覽：</span><strong>火炎山登山口 → 南火炎山 → 大峽谷 → 火炎山 → 南鞍古道</strong></p>
+        <p><span>登山日期：</span><strong>2021-02-06</strong></p>
+        <p><span>行走總長：</span><strong>約 6.5 KM</strong></p>
+        <p><span>累計耗時：</span><strong>約 3.5 HR</strong></p>
+        <p><span>路程總覽：</span><strong>泰安溫泉風景特定區停車場 → 鳥嘴山</strong></p>
     </div>
     <div class="text-block" :id="'act' + catalog[0].id">
         <div class="mtlogs-title" v-text="catalog[0].title"></div>
-        <p>每每從台１３線北上經過大安溪時，瞥向左側總是可以看見一座宛若被熊熊烈火燎過的山頭，巍峨矗立在溪畔旁，不像台灣尋常山巒群峰綠蔭盎然的面貌，其朱紅色的岩層大片大片裸露在外，尤其在夕暉渲染下，這份熾烈的渴望更加昭然無遺，綠色植披宛若被扯爛的袈裟，稀疏破碎地掛在赤裸肌膚上。「火炎山」──世人給祂的名號，祂就像電玩遊戲裡魔王盤據的惡地，既綺麗、神秘，令人心生敬畏卻又充滿魅力。</p>
+        <p>xxxx</p>
     </div>
     <div class="text-block" :id="'act' + catalog[1].id">
         <div class="mtlogs-title" v-text="catalog[1].title"></div>
