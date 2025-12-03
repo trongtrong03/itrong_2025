@@ -3,8 +3,12 @@
     import Footer from "./components/Footer.vue";
     import Float from "./components/Btn/Float.vue";
     import { RouterView, useRoute } from "vue-router";
+    import { useSupabaseKeepAlive } from '@/composables/useSupabaseKeepAlive'
 
     const route = useRoute();
+
+    /** 每 2 天 ping 一次 **/
+    useSupabaseKeepAlive({ intervalMs: 2 * 24 * 60 * 60 * 1000 })
 </script>
 
 <template>

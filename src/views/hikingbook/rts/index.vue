@@ -139,7 +139,7 @@
                     <div class="mountains-overflow">
                         <div class="mountains-tb">
                             <p class="img"></p>
-                            <p class="name">名稱</p>
+                            <p class="name2">名稱</p>
                             <p class="area2">縣市</p>
                             <p class="lv2">等級</p>
                             <p class="ap">入園</p>
@@ -157,7 +157,7 @@
                                             <span :style="{ 'background-image': 'url(/images/routes/thumb/' + item.id + '.jpg)' }" v-if="item.img"></span>
                                             <img src="/images/routes/default.png" v-else>
                                         </figure>
-                                        <h2 v-text="item.name"></h2>
+                                        <h2 class="name2" v-text="item.name"></h2>
                                         <p class="area2">
                                             <span v-text="item.area"></span>
                                         </p>

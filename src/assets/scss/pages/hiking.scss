@@ -42,11 +42,14 @@
         &.name {
             flex: 0 0 10rem;
         }
+        &.name2 {
+            flex: 0 0 12rem;
+        }
         &.area {
             flex: 0 0 3.5rem;
         }
         &.area2 {
-            flex: 0 0 10rem;
+            flex: 0 0 8rem;
         }
         &.site,
         &.lv {
@@ -81,7 +84,8 @@
     @media only screen and (max-width: 768px) {
         min-width: 44rem;
         p {
-            &.name {
+            &.name,
+            &.name2 {
                 flex: 1;
             }
             &.area,
@@ -144,6 +148,9 @@
                 margin-bottom: 0;
                 padding: 0 0.5rem;
                 @include text-truncate;
+                &.name2 {
+                    flex: 0 0 12rem;
+                }
             }
             p {
                 flex: 1;
@@ -160,7 +167,7 @@
                     flex: 0 0 3.5rem;
                 }
                 &.area2 {
-                    flex: 0 0 10rem;
+                    flex: 0 0 8rem;
                 }
                 &.site {
                     flex: 0 0 4rem;
@@ -231,6 +238,9 @@
             hgroup {
                 h2 {
                     flex: 1;
+                    &.name2 {
+                        flex: 1;
+                    }
                 }
                 p {
                     &.area,
