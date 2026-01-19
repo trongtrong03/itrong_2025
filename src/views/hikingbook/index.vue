@@ -151,7 +151,7 @@
     const initCircles = () => {
         setTimeout(() => {
             const circles = [
-                { selector: '#circleArea1', value: 0.14 },
+                { selector: '#circleArea1', value: 0.15 },
                 { selector: '#circleArea2', value: 0.67 }
             ];
 
