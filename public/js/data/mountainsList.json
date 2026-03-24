@@ -24178,10 +24178,10 @@
         "application_m": false,
         "intro": "大胡山又稱大湖山，位於台中市北屯區與台中市潭子區交界處，山頂立有一顆土地調查局圖根點，腹地不大，僅能容下數人。",
         "notes": "",
-        "img": false,
+        "img": true,
         "gpx": "https://hiking.biji.co/index.php?q=trail&act=gpx_detail&id=4143770",
-        "finish": false,
-        "fDate": "",
+        "finish": true,
+        "fDate": "2026-02-18",
         "article": "",
         "aLink": ""
     },
