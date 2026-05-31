@@ -605,6 +605,99 @@
                 </div>
                 <button class="accordin-close" @click="toggle(0)"></button>
             </div>
+            <div class="accordin-item" :class="isActive==3017 ? 'is-active' : ''">
+                <div class="accordin-title" @click="toggle(3017)">
+                    <p>改變 CSS 色碼變數透明度的方法</p>
+                </div>
+                <div class="accordin-content">
+                    <p>現今主流瀏覽器基本已能辨別傳統六碼的網頁色碼再增加後兩碼後，將之視為透明度，例如 <em>#FF000060</em>，意思就是 60% 透明度的 <em>#FF0000</em>。但是如果今天我們把色碼宣告為 CSS Var 變數，然後在樣式表中使用並賦予透明度值，譬如 <em>background: var(--color-primary)60</em>，這種寫法會被瀏覽器解讀成 <em>background: #FF0000 60</em>，因而無效，這是因為 CSS 變數本質上只是單純的「字串替換」，並非合乎規則的 Color Token 拼接。</p>
+                    <p>如果想實現變數的透明度，有以下幾種方式：</p>
+                    <h4>1. 直接將透明度寫進變數</h4>
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-css" v-prism>
+                            :root {
+                                --color-primary: #FF000060;
+                            }
+                        </code>
+                    </pre>
+                    <p>但這個缺點是缺乏自由調整透明度的彈性。</p>
+                    <p><br></p>
+                    <h4>2. 改存 RGB 格式</h4>
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-css" v-prism>
+                            :root {
+                                --color-primary: 255, 0, 0;
+                            }
+                        </code>
+                    </pre>
+                    <p>然後樣式運用時透過 RGBA 格式將透明度添加進來，例如：</p>
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-css" v-prism>
+                            .box {
+                                background: rgb(var(--color-primary) / 60%);
+                                background: rgb(var(--color-primary), 0.6);
+                            }
+                        </code>
+                    </pre>
+                    <p>以上兩種書寫方式都可以，這是目前主流比較推薦的解決方式。然而，假如今天因為某些技術原因，必須採用傳統網頁六碼格式定義變數，則可以考慮下面第三種方法。</p>
+                    <p><br></p>
+                    <h4>3. 使用 color-mix</h4>
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-css" v-prism>
+                            :root {
+                                --color-primary: #FF000060;
+                            }
+                        </code>
+                    </pre>
+                    <p>於樣式中使用：</p>
+                    <pre
+                        class="line-numbers"
+                        data-prismjs-copy="Copy"
+                        data-prismjs-copy-success="Copied"
+                        data-prismjs-copy-error="Error!"
+                        data-prismjs-copy-timeout="2000"
+                        data-toolbar-order="copy-to-clipboard" 
+                    >
+                        <code class="language-css" v-prism>
+                            background: color-mix(
+                                in srgb,
+                                var(--color-primary) 60%,
+                                transparent
+                            );
+                        </code>
+                    </pre>
+                    <p>儘管在書寫上會比較沒那麼直覺且麻煩，但是能不侷限於 RGB 格式也能實現變數直接拼接透明度的效果。</p>
+                </div>
+                <button class="accordin-close" @click="toggle(0)"></button>
+            </div>
         </div>
     </div>
 </template>
