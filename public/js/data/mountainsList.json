@@ -24584,10 +24584,10 @@
         "application_m": false,
         "intro": "撼龍步道除了有輕鬆的緩坡、也有陡峭挑戰體力的陡坡。步道沿途規劃有陽光椰林、蝴蝶區、景觀橋、好漢坡、休息木棧橋等設施，最後一段的階梯則為平坦步道，部分易濕滑路面近幾年來也陸續改善舖面，方便年長者步行運動，提供民眾更安全舒適的健行環境。",
         "notes": "",
-        "img": false,
+        "img": true,
         "gpx": "https://hiking.biji.co/index.php?q=trail&act=gpx_detail&id=4286185",
-        "finish": false,
-        "fDate": "",
+        "finish": true,
+        "fDate": "2026-06-22",
         "article": "",
         "aLink": ""
     },
