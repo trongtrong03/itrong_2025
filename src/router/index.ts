@@ -34,6 +34,11 @@ const router = createRouter({
           component: () => import('../views/hikingbook/mts/view.vue'),
         },
         {
+          path: '/map',
+          name: 'map',
+          component: () => import('../views/hikingbook/map/index.vue'),
+        },
+        {
           path: '/routes',
           name: 'routes',
           component: () => import('../views/hikingbook/rts/index.vue'),

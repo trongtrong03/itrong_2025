@@ -60,10 +60,12 @@ export const useInfoStore = defineStore('infoStore', {
         },
         loadHKLinks() {
             this.HK_LINKS = [
-                { id: 1, link: 'mountains', title: '山岳資料' },
-                { id: 2, link: 'routes', title: '路線彙整' },
-                { id: 3, link: 'mtlogs', title: '登山心得' },
-                { id: 4, link: 'gallery', title: '影像故事' },
+                { id: 1, link: 'hikingbook', title: '首頁' },
+                { id: 2, link: 'map', title: '地圖' },
+                { id: 3, link: 'mountains', title: '資料' },
+                { id: 4, link: 'routes', title: '路線' },
+                { id: 5, link: 'mtlogs', title: '心得' },
+                { id: 6, link: 'gallery', title: '影事' },
             ];
         }
     }
