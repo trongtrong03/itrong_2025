@@ -2138,14 +2138,14 @@
     {
         "id": "179",
         "name": "女乃山",
-        "lat": "",
-        "lng": "",
-        "osmName": "",
-        "displayName": "",
-        "osmType": "",
-        "osmId": "",
+        "lat": 22.1953371,
+        "lng": 120.7848621,
+        "osmName": "女仍山",
+        "displayName": "女仍山, 牡丹鄉, 屏東縣, 945, 臺灣",
+        "osmType": "node",
+        "osmId": 5591528724,
         "match": true,
-        "checkedAt": "2026-06-27T12:49:33.891Z"
+        "checkedAt": "2026-06-28T05:57:43.847Z"
     },
     {
         "id": "180",
@@ -2400,42 +2400,6 @@
         "checkedAt": "2026-06-27T12:50:11.446Z"
     },
     {
-        "id": "201",
-        "name": "丹鳳山",
-        "lat": 25.1320401,
-        "lng": 121.508291,
-        "osmName": "丹鳳山",
-        "displayName": "丹鳳山, 臺北市, 11241, 臺灣",
-        "osmType": "node",
-        "osmId": 11830055993,
-        "match": true,
-        "checkedAt": "2026-06-27T12:50:13.343Z"
-    },
-    {
-        "id": "202",
-        "name": "瑪陵尖",
-        "lat": 25.1089108,
-        "lng": 121.6991931,
-        "osmName": "瑪陵尖",
-        "displayName": "瑪陵尖, 基隆市, 20653, 臺灣",
-        "osmType": "node",
-        "osmId": 2300982455,
-        "match": true,
-        "checkedAt": "2026-06-27T12:50:15.243Z"
-    },
-    {
-        "id": "203",
-        "name": "虎頭山",
-        "lat": "",
-        "lng": "",
-        "osmName": "虎頭山",
-        "displayName": "虎頭山, 高雄市, 842057, 臺灣",
-        "osmType": "node",
-        "osmId": 11596465126,
-        "match": true,
-        "checkedAt": "2026-06-27T12:50:17.131Z"
-    },
-    {
         "id": "204",
         "name": "八仙山",
         "lat": 24.1543353,
@@ -2458,66 +2422,6 @@
         "osmId": 4586404755,
         "match": true,
         "checkedAt": "2026-06-27T12:50:20.990Z"
-    },
-    {
-        "id": "206",
-        "name": "文峰山",
-        "lat": 23.495047,
-        "lng": 120.6343795,
-        "osmName": "文峰山",
-        "displayName": "文峰山, 竹崎鄉, 嘉義縣, 604, 臺灣",
-        "osmType": "node",
-        "osmId": 4175074118,
-        "match": true,
-        "checkedAt": "2026-06-27T12:50:22.472Z"
-    },
-    {
-        "id": "207",
-        "name": "三寶山",
-        "lat": "",
-        "lng": "",
-        "osmName": "",
-        "displayName": "",
-        "osmType": "",
-        "osmId": "",
-        "match": true,
-        "checkedAt": "2026-06-27T12:50:24.358Z"
-    },
-    {
-        "id": "208",
-        "name": "桶頭山",
-        "lat": 23.4052433,
-        "lng": 120.5798407,
-        "osmName": "桶頭山",
-        "displayName": "桶頭山, 中埔鄉, 嘉義縣, 606, 臺灣",
-        "osmType": "node",
-        "osmId": 2482565550,
-        "match": true,
-        "checkedAt": "2026-06-27T12:50:25.887Z"
-    },
-    {
-        "id": "209",
-        "name": "龜山島",
-        "lat": 24.8431265,
-        "lng": 121.9516057,
-        "osmName": "龜山島",
-        "displayName": "龜山島, 龜山里, 頭城鎮, 宜蘭縣, 26145, 臺灣",
-        "osmType": "relation",
-        "osmId": 11600072,
-        "match": true,
-        "checkedAt": "2026-06-27T12:50:27.867Z"
-    },
-    {
-        "id": "210",
-        "name": "新城山",
-        "lat": 24.1323653,
-        "lng": 121.6040039,
-        "osmName": "新城山",
-        "displayName": "新城山, 秀林鄉, 花蓮縣, 972, 臺灣",
-        "osmType": "node",
-        "osmId": 2482534547,
-        "match": true,
-        "checkedAt": "2026-06-27T12:50:29.864Z"
     },
     {
         "id": "211",
@@ -2544,18 +2448,6 @@
         "checkedAt": "2026-06-27T12:50:33.253Z"
     },
     {
-        "id": "213",
-        "name": "火燒山",
-        "lat": 22.6525757,
-        "lng": 121.4834579,
-        "osmName": "火燒山",
-        "displayName": "火燒山, 綠島鄉, 臺東縣, 951, 臺灣",
-        "osmType": "node",
-        "osmId": 2482642913,
-        "match": true,
-        "checkedAt": "2026-06-27T12:50:35.228Z"
-    },
-    {
         "id": "214",
         "name": "藤枝山",
         "lat": 23.0620574,
@@ -2566,30 +2458,6 @@
         "osmId": 5434716513,
         "match": true,
         "checkedAt": "2026-06-27T12:50:36.999Z"
-    },
-    {
-        "id": "215",
-        "name": "萬里得山",
-        "lat": 22.0682019,
-        "lng": 120.841757,
-        "osmName": "萬里得山",
-        "displayName": "萬里得山, 滿州鄉, 屏東縣, 947, 臺灣",
-        "osmType": "node",
-        "osmId": 2474870602,
-        "match": true,
-        "checkedAt": "2026-06-27T12:50:38.590Z"
-    },
-    {
-        "id": "216",
-        "name": "祖輪山",
-        "lat": 24.2209078,
-        "lng": 121.5081337,
-        "osmName": "祖輪山",
-        "displayName": "祖輪山, 秀林鄉, 花蓮縣, 972, 臺灣",
-        "osmType": "node",
-        "osmId": 2376751215,
-        "match": true,
-        "checkedAt": "2026-06-27T12:50:40.210Z"
     },
     {
         "id": "217",
@@ -2618,14 +2486,14 @@
     {
         "id": "219",
         "name": "阿玉山",
-        "lat": "",
-        "lng": "",
-        "osmName": "阿玉山",
-        "displayName": "阿玉山, 新北市, 臺灣",
+        "lat": 24.7875627,
+        "lng": 121.5921065,
+        "osmName": "西阿玉山",
+        "displayName": "西阿玉山, 員山鄉, 宜蘭縣, 264, 臺灣",
         "osmType": "node",
-        "osmId": 2268441057,
+        "osmId": 4216599549,
         "match": true,
-        "checkedAt": "2026-06-27T12:50:44.912Z"
+        "checkedAt": "2026-06-28T05:57:43.847Z"
     },
     {
         "id": "220",
@@ -2654,26 +2522,26 @@
     {
         "id": "222",
         "name": "巴博庫魯山",
-        "lat": "",
-        "lng": "",
-        "osmName": "巴博庫魯山",
-        "displayName": "巴博庫魯山, 大同鄉, 宜蘭縣, 267, 臺灣",
-        "osmType": "node",
-        "osmId": 2268441049,
+        "lat": 24.676666,
+        "lng": 121.4976287,
+        "osmName": "巴博庫魯山登山路徑",
+        "displayName": "巴博庫魯山登山路徑, 福山里, 烏來區, 英士村, 大同鄉, 宜蘭縣, 267, 臺灣",
+        "osmType": "way",
+        "osmId": 468008729,
         "match": true,
-        "checkedAt": "2026-06-27T12:50:50.588Z"
+        "checkedAt": "2026-06-28T05:57:43.847Z"
     },
     {
         "id": "223",
         "name": "雪白山",
-        "lat": "",
-        "lng": "",
+        "lat": 24.59352,
+        "lng": 121.371826,
         "osmName": "雪白山",
         "displayName": "雪白山, 司馬庫斯神木群新闢步道, 玉峰村, 尖石鄉, 新竹縣, 臺灣",
         "osmType": "node",
         "osmId": 11070416505,
         "match": true,
-        "checkedAt": "2026-06-27T12:50:52.589Z"
+        "checkedAt": "2026-06-28T05:57:43.847Z"
     },
     {
         "id": "224",
@@ -2702,14 +2570,14 @@
     {
         "id": "226",
         "name": "虎山",
-        "lat": "",
-        "lng": "",
+        "lat": 24.482963,
+        "lng": 120.994896,
         "osmName": "虎山",
-        "displayName": "虎山, 新北市, 24441, 臺灣",
+        "displayName": "虎山, 泰安鄉, 苗栗縣, 臺灣",
         "osmType": "node",
-        "osmId": 13526094514,
+        "osmId": 2482554539,
         "match": true,
-        "checkedAt": "2026-06-27T12:50:57.958Z"
+        "checkedAt": "2026-06-28T05:57:43.847Z"
     },
     {
         "id": "227",
@@ -2726,14 +2594,14 @@
     {
         "id": "228",
         "name": "穆特勒布山",
-        "lat": "",
-        "lng": "",
+        "lat": 24.4249595,
+        "lng": 121.2492707,
         "osmName": "穆特勒布山",
         "displayName": "穆特勒布山, 泰安鄉, 苗栗縣, 臺灣",
         "osmType": "node",
         "osmId": 2101226267,
         "match": true,
-        "checkedAt": "2026-06-27T12:51:01.848Z"
+        "checkedAt": "2026-06-28T05:57:43.847Z"
     },
     {
         "id": "229",
@@ -2762,14 +2630,14 @@
     {
         "id": "231",
         "name": "馬海濮富士山",
-        "lat": "",
-        "lng": "",
-        "osmName": "",
-        "displayName": "",
-        "osmType": "",
-        "osmId": "",
+        "lat": 23.983162,
+        "lng": 121.2008037,
+        "osmName": "馬海僕富士山",
+        "displayName": "馬海僕富士山, 仁愛鄉, 南投縣, 臺灣",
+        "osmType": "node",
+        "osmId": 2457800766,
         "match": true,
-        "checkedAt": "2026-06-27T12:51:07.078Z"
+        "checkedAt": "2026-06-28T05:57:43.847Z"
     },
     {
         "id": "232",
@@ -2918,14 +2786,14 @@
     {
         "id": "244",
         "name": "塔山",
-        "lat": "",
-        "lng": "",
+        "lat": 24.141821,
+        "lng": 121.5509929,
         "osmName": "塔山",
-        "displayName": "塔山, 阿里山鄉, 嘉義縣, 605, 臺灣",
+        "displayName": "塔山, 秀林鄉, 花蓮縣, 972, 臺灣",
         "osmType": "node",
-        "osmId": 2482534330,
+        "osmId": 2482524898,
         "match": true,
-        "checkedAt": "2026-06-27T12:51:30.023Z"
+        "checkedAt": "2026-06-28T05:57:43.847Z"
     },
     {
         "id": "245",
@@ -3002,26 +2870,26 @@
     {
         "id": "251",
         "name": "成廣澳山",
-        "lat": "",
-        "lng": "",
-        "osmName": "成廣澳山",
-        "displayName": "成廣澳山, 成功鎮, 臺東縣, 961, 臺灣",
-        "osmType": "node",
-        "osmId": 2482524904,
+        "lat": 23.1997141,
+        "lng": 121.3365989,
+        "osmName": "成廣澳山步道",
+        "displayName": "成廣澳山步道, 竹田村, 富里鄉, 花蓮縣, 983, 臺灣",
+        "osmType": "way",
+        "osmId": 408493521,
         "match": true,
-        "checkedAt": "2026-06-27T12:51:41.266Z"
+        "checkedAt": "2026-06-28T05:57:43.847Z"
     },
     {
         "id": "252",
         "name": "新港山",
-        "lat": "",
-        "lng": "",
-        "osmName": "新港山",
-        "displayName": "新港山, 成功鎮, 臺東縣, 961, 臺灣",
-        "osmType": "node",
-        "osmId": 2482524905,
+        "lat": 23.1493254,
+        "lng": 121.3017751,
+        "osmName": "新港山(麻荖漏山)登山步道",
+        "displayName": "新港山(麻荖漏山)登山步道, 石厝溝, 豐南村, 富里鄉, 花蓮縣, 983, 臺灣",
+        "osmType": "way",
+        "osmId": 406928885,
         "match": true,
-        "checkedAt": "2026-06-27T12:51:43.271Z"
+        "checkedAt": "2026-06-28T05:57:43.847Z"
     },
     {
         "id": "253",
@@ -3086,14 +2954,14 @@
     {
         "id": "258",
         "name": "礁溪跑馬古道",
-        "lat": "",
-        "lng": "",
-        "osmName": "",
-        "displayName": "",
-        "osmType": "",
-        "osmId": "",
+        "lat": 24.846629,
+        "lng": 121.7767126,
+        "osmName": "跑馬古道",
+        "displayName": "跑馬古道, 白雲村, 礁溪鄉, 宜蘭縣, 26241, 臺灣",
+        "osmType": "way",
+        "osmId": 336062294,
         "match": true,
-        "checkedAt": "2026-06-27T12:51:54.378Z"
+        "checkedAt": "2026-06-28T05:57:43.847Z"
     },
     {
         "id": "259",
@@ -3146,14 +3014,14 @@
     {
         "id": "263",
         "name": "三疊瀑布步道",
-        "lat": "",
-        "lng": "",
-        "osmName": "",
-        "displayName": "",
-        "osmType": "",
-        "osmId": "",
+        "lat": 24.4724427,
+        "lng": 121.5441062,
+        "osmName": "三疊瀑布",
+        "displayName": "三疊瀑布, 太平村, 大同鄉, 宜蘭縣, 267, 臺灣",
+        "osmType": "node",
+        "osmId": 2101219312,
         "match": true,
-        "checkedAt": "2026-06-27T12:52:04.118Z"
+        "checkedAt": "2026-06-28T05:57:43.847Z"
     },
     {
         "id": "264",
@@ -3217,27 +3085,27 @@
     },
     {
         "id": "269",
-        "name": "巴福越嶺步道",
-        "lat": "",
-        "lng": "",
-        "osmName": "",
-        "displayName": "",
-        "osmType": "",
-        "osmId": "",
+        "name": "福巴越嶺步道",
+        "lat": 24.7469682,
+        "lng": 121.4699376,
+        "osmName": "福巴越嶺國家步道",
+        "displayName": "福巴越嶺國家步道, 福山里, 烏來區, 德拉楠, 新北市, 臺灣",
+        "osmType": "way",
+        "osmId": 205943194,
         "match": true,
-        "checkedAt": "2026-06-27T12:52:14.689Z"
+        "checkedAt": "2026-06-28T05:57:43.847Z"
     },
     {
         "id": "270",
         "name": "桶後越嶺步道",
-        "lat": "",
-        "lng": "",
-        "osmName": "",
-        "displayName": "",
-        "osmType": "",
-        "osmId": "",
+        "lat": 24.8343904,
+        "lng": 121.6744901,
+        "osmName": "桶後越嶺道",
+        "displayName": "桶後越嶺道, 孝義里, 烏來區, 新北市, 臺灣",
+        "osmType": "way",
+        "osmId": 653845341,
         "match": true,
-        "checkedAt": "2026-06-27T12:52:16.189Z"
+        "checkedAt": "2026-06-28T05:57:43.847Z"
     },
     {
         "id": "271",
@@ -3278,14 +3146,14 @@
     {
         "id": "274",
         "name": "觀霧瀑布步道",
-        "lat": "",
-        "lng": "",
+        "lat": 24.5001015,
+        "lng": 121.1182706,
         "osmName": "觀霧瀑布步道",
         "displayName": "觀霧瀑布步道, 觀霧, 梅園村, 泰安鄉, 苗栗縣, 365012, 臺灣",
         "osmType": "way",
         "osmId": 437702290,
         "match": true,
-        "checkedAt": "2026-06-27T12:52:22.886Z"
+        "checkedAt": "2026-06-28T05:57:43.847Z"
     },
     {
         "id": "275",
@@ -3324,28 +3192,16 @@
         "checkedAt": "2026-06-27T12:52:28.524Z"
     },
     {
-        "id": "278",
-        "name": "船型山",
-        "lat": 24.2567472,
-        "lng": 120.985097,
-        "osmName": "船型山",
-        "displayName": "船型山, 臺中市, 臺灣",
-        "osmType": "node",
-        "osmId": 2575970213,
-        "match": true,
-        "checkedAt": "2026-06-27T12:52:30.429Z"
-    },
-    {
         "id": "279",
         "name": "八仙山國家森林遊樂區步道群",
-        "lat": "",
-        "lng": "",
-        "osmName": "",
-        "displayName": "",
-        "osmType": "",
-        "osmId": "",
+        "lat": 24.191617,
+        "lng": 121.014859,
+        "osmName": "八仙山莊",
+        "displayName": "八仙山莊, 200-8, 東關路一段, 博愛里, 和平區, 谷關, 臺中市, 424, 臺灣",
+        "osmType": "way",
+        "osmId": 316182799,
         "match": true,
-        "checkedAt": "2026-06-27T12:52:32.301Z"
+        "checkedAt": "2026-06-28T05:57:43.847Z"
     },
     {
         "id": "280",
@@ -3358,18 +3214,6 @@
         "osmId": 219497875,
         "match": true,
         "checkedAt": "2026-06-27T12:52:33.808Z"
-    },
-    {
-        "id": "281",
-        "name": "東卯山東南稜",
-        "lat": 24.1854833,
-        "lng": 120.9689627,
-        "osmName": "東卯山東南稜",
-        "displayName": "東卯山東南稜, 博愛里, 和平區, 臺中市, 424791, 臺灣",
-        "osmType": "way",
-        "osmId": 219504323,
-        "match": true,
-        "checkedAt": "2026-06-27T12:52:35.717Z"
     },
     {
         "id": "282",
@@ -3432,18 +3276,6 @@
         "checkedAt": "2026-06-27T12:52:44.523Z"
     },
     {
-        "id": "287",
-        "name": "阿冷山",
-        "lat": 24.1401921,
-        "lng": 120.94578,
-        "osmName": "阿冷山",
-        "displayName": "阿冷山, 臺中市, 臺灣",
-        "osmType": "node",
-        "osmId": 2482535085,
-        "match": true,
-        "checkedAt": "2026-06-27T12:52:46.400Z"
-    },
-    {
         "id": "288",
         "name": "合歡尖山",
         "lat": 24.1444076,
@@ -3470,14 +3302,14 @@
     {
         "id": "290",
         "name": "能高越嶺國家步道",
-        "lat": "",
-        "lng": "",
-        "osmName": "",
-        "displayName": "",
-        "osmType": "",
-        "osmId": "",
+        "lat": 24.0505582,
+        "lng": 121.2151885,
+        "osmName": "屯原登山口",
+        "displayName": "屯原登山口, 能高越嶺古道, 精英村, 仁愛鄉, 南投縣, 臺灣",
+        "osmType": "node",
+        "osmId": 6252812845,
         "match": true,
-        "checkedAt": "2026-06-27T12:52:52.419Z"
+        "checkedAt": "2026-06-28T05:57:43.847Z"
     },
     {
         "id": "291",
@@ -3494,14 +3326,14 @@
     {
         "id": "292",
         "name": "猴探井步道",
-        "lat": "",
-        "lng": "",
-        "osmName": "",
-        "displayName": "",
-        "osmType": "",
-        "osmId": "",
+        "lat": 23.9086611,
+        "lng": 120.6304893,
+        "osmName": "猴探井森林步道",
+        "displayName": "猴探井森林步道, 猴探井登山步道, 仁和村, 社頭鄉, 彰化縣, 54070, 臺灣",
+        "osmType": "node",
+        "osmId": 2206541821,
         "match": true,
-        "checkedAt": "2026-06-27T12:52:55.994Z"
+        "checkedAt": "2026-06-28T05:57:43.847Z"
     },
     {
         "id": "293",
@@ -3530,38 +3362,38 @@
     {
         "id": "295",
         "name": "坑內坑森林步道",
-        "lat": "",
-        "lng": "",
-        "osmName": "",
-        "displayName": "",
-        "osmType": "",
-        "osmId": "",
+        "lat": 23.8328357,
+        "lng": 120.6291904,
+        "osmName": "坑內坑步道階梯",
+        "displayName": "坑內坑步道階梯, 合和村, 二水鄉, 彰化縣, 55144, 臺灣",
+        "osmType": "way",
+        "osmId": 693500248,
         "match": true,
-        "checkedAt": "2026-06-27T12:53:02.063Z"
+        "checkedAt": "2026-06-28T05:57:43.847Z"
     },
     {
         "id": "296",
         "name": "廟前坑森林步道",
-        "lat": "",
-        "lng": "",
-        "osmName": "",
-        "displayName": "",
-        "osmType": "",
-        "osmId": "",
+        "lat": 23.8229712,
+        "lng": 120.6191649,
+        "osmName": "豐柏廣場",
+        "displayName": "豐柏廣場, 豐柏路, 海豐寮, 上豊村, 二水鄉, 彰化縣, 53042, 臺灣",
+        "osmType": "way",
+        "osmId": 286014440,
         "match": true,
-        "checkedAt": "2026-06-27T12:53:04.668Z"
+        "checkedAt": "2026-06-28T05:57:43.847Z"
     },
     {
         "id": "297",
         "name": "奧萬大國家森林遊樂區步道群",
-        "lat": "",
-        "lng": "",
-        "osmName": "",
-        "displayName": "",
-        "osmType": "",
-        "osmId": "",
+        "lat": 23.9489652,
+        "lng": 121.1875001,
+        "osmName": "奧萬大國家森林遊樂區",
+        "displayName": "奧萬大國家森林遊樂區, 仁愛鄉, 南投縣, 臺灣",
+        "osmType": "relation",
+        "osmId": 3532333,
         "match": true,
-        "checkedAt": "2026-06-27T12:53:06.435Z"
+        "checkedAt": "2026-06-28T05:57:43.847Z"
     },
     {
         "id": "298",
@@ -3578,14 +3410,14 @@
     {
         "id": "299",
         "name": "大林環嶺森林步道",
-        "lat": "",
-        "lng": "",
-        "osmName": "",
-        "displayName": "",
-        "osmType": "",
-        "osmId": "",
+        "lat": 23.8742636,
+        "lng": 120.9470155,
+        "osmName": "大林村",
+        "displayName": "大林村, 魚池鄉, 南投縣, 臺灣",
+        "osmType": "relation",
+        "osmId": 8381392,
         "match": true,
-        "checkedAt": "2026-06-27T12:53:10.025Z"
+        "checkedAt": "2026-06-28T05:57:43.847Z"
     },
     {
         "id": "300",
@@ -3662,26 +3494,14 @@
     {
         "id": "306",
         "name": "四天皇山",
-        "lat": "",
-        "lng": "",
-        "osmName": "",
-        "displayName": "",
-        "osmType": "",
-        "osmId": "",
+        "lat": 23.5043486,
+        "lng": 120.6595117,
+        "osmName": "水社寮",
+        "displayName": "水社寮, 四天王山步道, 風吹凹, 仁壽村, 竹崎鄉, 嘉義縣, 604, 臺灣",
+        "osmType": "node",
+        "osmId": 2381273050,
         "match": true,
-        "checkedAt": "2026-06-27T12:53:22.108Z"
-    },
-    {
-        "id": "307",
-        "name": "出水坑步道",
-        "lat": 23.5218405,
-        "lng": 120.6344658,
-        "osmName": "出水坑步道",
-        "displayName": "出水坑步道, 下頭凍子, 仁壽村, 竹崎鄉, 嘉義縣, 604, 臺灣",
-        "osmType": "way",
-        "osmId": 997933626,
-        "match": true,
-        "checkedAt": "2026-06-27T12:53:24.111Z"
+        "checkedAt": "2026-06-28T05:57:43.847Z"
     },
     {
         "id": "308",
@@ -3710,74 +3530,74 @@
     {
         "id": "310",
         "name": "六龜警備道藤枝段",
-        "lat": "",
-        "lng": "",
-        "osmName": "",
-        "displayName": "",
-        "osmType": "",
-        "osmId": "",
+        "lat": 23.0657536,
+        "lng": 120.7470591,
+        "osmName": "藤枝",
+        "displayName": "藤枝, 桃源區, 高雄市, 848, 臺灣",
+        "osmType": "node",
+        "osmId": 12484434645,
         "match": true,
-        "checkedAt": "2026-06-27T12:53:29.070Z"
+        "checkedAt": "2026-06-28T05:57:43.847Z"
     },
     {
         "id": "311",
         "name": "浸水營古道",
-        "lat": "",
-        "lng": "",
+        "lat": 22.4081728,
+        "lng": 120.6408654,
         "osmName": "浸水營古道",
-        "displayName": "浸水營古道, 加羅坂, 大武村, 大武鄉, 臺東縣, 965, 臺灣",
+        "displayName": "浸水營古道, 歸崇村, 春日鄉, 屏東縣, 942, 臺灣",
         "osmType": "way",
-        "osmId": 199643263,
+        "osmId": 409726481,
         "match": true,
-        "checkedAt": "2026-06-27T12:53:30.606Z"
+        "checkedAt": "2026-06-28T05:57:43.847Z"
     },
     {
         "id": "312",
         "name": "美濃雙溪樹木園步道",
-        "lat": "",
-        "lng": "",
-        "osmName": "",
-        "displayName": "",
-        "osmType": "",
-        "osmId": "",
+        "lat": 22.9331324,
+        "lng": 120.5915082,
+        "osmName": "雙溪熱帶樹木園停車場",
+        "displayName": "雙溪熱帶樹木園停車場, 雙溪熱帶樹木園步道, 廣林里, 美濃區, 高雄市, 843, 臺灣",
+        "osmType": "way",
+        "osmId": 551542330,
         "match": true,
-        "checkedAt": "2026-06-27T12:53:32.149Z"
+        "checkedAt": "2026-06-28T05:57:43.847Z"
     },
     {
         "id": "313",
         "name": "六義山",
-        "lat": "",
-        "lng": "",
-        "osmName": "吳酒桶頭山",
-        "displayName": "吳酒桶頭山, 臺南市, 847002, 臺灣",
-        "osmType": "node",
-        "osmId": 2482547041,
+        "lat": 23.0836553,
+        "lng": 120.5681069,
+        "osmName": "六義山步道",
+        "displayName": "六義山步道, 大田里, 甲仙區, 公館, 高雄市, 847, 臺灣",
+        "osmType": "way",
+        "osmId": 1109653054,
         "match": true,
-        "checkedAt": "2026-06-27T12:53:33.928Z"
+        "checkedAt": "2026-06-28T05:57:43.847Z"
     },
     {
         "id": "314",
         "name": "筏灣泰武步道",
-        "lat": "",
-        "lng": "",
-        "osmName": "",
-        "displayName": "",
-        "osmType": "",
-        "osmId": "",
+        "lat": 22.6680731,
+        "lng": 120.7140234,
+        "osmName": "舊筏灣",
+        "displayName": "舊筏灣, 舊好茶道路, 好茶村, 霧臺鄉, 屏東縣, 902, 臺灣",
+        "osmType": "node",
+        "osmId": 4605798391,
         "match": true,
-        "checkedAt": "2026-06-27T12:53:36.326Z"
+        "checkedAt": "2026-06-28T05:57:43.847Z"
     },
     {
         "id": "315",
         "name": "雙流國家森林遊樂區步道群",
-        "lat": "",
-        "lng": "",
-        "osmName": "",
-        "displayName": "",
-        "osmType": "",
-        "osmId": "",
+        "lat": 22.226901,
+        "lng": 120.8181411,
+        "osmName": "雙流國家森林遊樂區",
+        "displayName": "雙流國家森林遊樂區, 獅子鄉, 屏東縣, 943, 臺灣",
+        "osmType": "relation",
+        "osmId": 7011234,
         "match": true,
-        "checkedAt": "2026-06-27T12:53:37.851Z"
+        "checkedAt": "2026-06-28T05:57:43.847Z"
     },
     {
         "id": "316",
@@ -3792,76 +3612,52 @@
         "checkedAt": "2026-06-27T12:53:39.819Z"
     },
     {
-        "id": "317",
-        "name": "高士佛山",
-        "lat": 22.1330161,
-        "lng": 120.81424,
-        "osmName": "高士佛山",
-        "displayName": "高士佛山, 牡丹鄉, 屏東縣, 945, 臺灣",
-        "osmType": "node",
-        "osmId": 2482609413,
-        "match": true,
-        "checkedAt": "2026-06-27T12:53:41.800Z"
-    },
-    {
         "id": "318",
         "name": "社頂自然公園步道",
-        "lat": "",
-        "lng": "",
-        "osmName": "",
-        "displayName": "",
-        "osmType": "",
-        "osmId": "",
+        "lat": 21.9523992,
+        "lng": 120.8268995,
+        "osmName": "社頂自然公園",
+        "displayName": "社頂自然公園, 水蛙窟, 鵝鑾里, 恆春鎮, 屏東縣, 946, 臺灣",
+        "osmType": "way",
+        "osmId": 556891685,
         "match": true,
-        "checkedAt": "2026-06-27T12:53:43.885Z"
-    },
-    {
-        "id": "319",
-        "name": "最南點步道",
-        "lat": "",
-        "lng": "",
-        "osmName": "",
-        "displayName": "",
-        "osmType": "",
-        "osmId": "",
-        "match": true,
-        "checkedAt": "2026-06-27T12:53:45.870Z"
+        "checkedAt": "2026-06-28T05:57:43.847Z"
     },
     {
         "id": "320",
         "name": "嘉明湖步道",
-        "lat": "",
-        "lng": "",
-        "osmName": "",
-        "displayName": "",
-        "osmType": "",
-        "osmId": "",
+        "lat": 23.2477975,
+        "lng": 120.9857191,
+        "osmName": "嘉明湖國家步道登山服務站",
+        "displayName": "嘉明湖國家步道登山服務站, 南部橫貫公路, 向陽, 利稻村, 海端鄉, 臺東縣, 957, 臺灣",
+        "osmType": "way",
+        "osmId": 218954507,
         "match": true,
-        "checkedAt": "2026-06-27T12:53:47.863Z"
+        "checkedAt": "2026-06-28T05:57:43.847Z"
     },
     {
         "id": "321",
         "name": "知本國家森林遊樂區步道群",
-        "lat": "",
-        "lng": "",
-        "osmName": "",
-        "displayName": "",
-        "osmType": "",
-        "osmId": "",
+        "lat": 22.6972635,
+        "lng": 120.9848255,
+        "osmName": "知本國家森林遊樂區",
+        "displayName": "知本國家森林遊樂區, 溫泉村, 卑南鄉, 臺東縣, 954, 臺灣",
+        "osmType": "relation",
+        "osmId": 7011235,
         "match": true,
-        "checkedAt": "2026-06-27T12:53:49.384Z"
+        "checkedAt": "2026-06-28T05:57:43.847Z"
     },
     {
         "id": "322",
         "name": "台東鯉魚山",
-        "lat": "",
-        "lng": "",
-        "osmName": "",
-        "displayName": "",
-        "osmType": "",
-        "osmId": "",
+        "lat": 22.7534161,
+        "lng": 121.142041,
+        "osmName": "鯉魚山",
+        "displayName": "鯉魚山, 臺東市, 臺東縣, 950, 臺灣",
+        "osmType": "node",
+        "osmId": 11417341185,
         "match": true,
-        "checkedAt": "2026-06-27T12:53:51.354Z"
+        "checkedAt": "2026-06-28T05:57:43.847Z"
     },
     {
         "id": "323",
@@ -3890,26 +3686,26 @@
     {
         "id": "325",
         "name": "安通越嶺道（東段）",
-        "lat": "",
-        "lng": "",
-        "osmName": "",
-        "displayName": "",
-        "osmType": "",
-        "osmId": "",
+        "lat": 23.283795,
+        "lng": 121.427907,
+        "osmName": "竹湖",
+        "displayName": "竹湖, 竹湖村, 長濱鄉, 臺東縣, 962, 臺灣",
+        "osmType": "node",
+        "osmId": 3507003254,
         "match": true,
-        "checkedAt": "2026-06-27T12:53:56.767Z"
+        "checkedAt": "2026-06-28T05:57:43.847Z"
     },
     {
         "id": "326",
         "name": "八通關越道：鹿鳴吊橋段",
-        "lat": "",
-        "lng": "",
-        "osmName": "",
-        "displayName": "",
-        "osmType": "",
-        "osmId": "",
+        "lat": 23.3180832,
+        "lng": 121.2548145,
+        "osmName": "鹿鳴吊橋",
+        "displayName": "鹿鳴吊橋, 卓清村, 卓溪鄉, 花蓮縣, 982, 臺灣",
+        "osmType": "way",
+        "osmId": 407414202,
         "match": true,
-        "checkedAt": "2026-06-27T12:53:58.574Z"
+        "checkedAt": "2026-06-28T05:57:43.847Z"
     },
     {
         "id": "327",
@@ -3924,63 +3720,51 @@
         "checkedAt": "2026-06-27T12:54:00.057Z"
     },
     {
-        "id": "328",
-        "name": "撒固兒步道",
-        "lat": 24.0211366,
-        "lng": 121.578228,
-        "osmName": "撒固兒步道",
-        "displayName": "撒固兒步道, 佳民村, 秀林鄉, 花蓮縣, 972, 臺灣",
-        "osmType": "way",
-        "osmId": 531367739,
-        "match": true,
-        "checkedAt": "2026-06-27T12:54:02.043Z"
-    },
-    {
         "id": "329",
         "name": "富源國家森林遊樂區步道群",
-        "lat": "",
-        "lng": "",
-        "osmName": "",
-        "displayName": "",
-        "osmType": "",
-        "osmId": "",
+        "lat": 23.5880964,
+        "lng": 121.3429456,
+        "osmName": "富源國家森林遊樂區",
+        "displayName": "富源國家森林遊樂區, 馬遠村, 萬榮鄉, 花蓮縣, 979, 臺灣",
+        "osmType": "relation",
+        "osmId": 7012287,
         "match": true,
-        "checkedAt": "2026-06-27T12:54:04.011Z"
+        "checkedAt": "2026-06-28T05:57:43.847Z"
     },
     {
         "id": "330",
         "name": "富興步道",
-        "lat": "",
-        "lng": "",
-        "osmName": "",
-        "displayName": "",
-        "osmType": "",
-        "osmId": "",
+        "lat": 23.581849,
+        "lng": 121.386975,
+        "osmName": "富興",
+        "displayName": "富興, 富興村, 瑞穗鄉, 花蓮縣, 978, 臺灣",
+        "osmType": "node",
+        "osmId": 4150976810,
         "match": true,
-        "checkedAt": "2026-06-27T12:54:05.887Z"
+        "checkedAt": "2026-06-28T05:57:43.847Z"
     },
     {
         "id": "331",
         "name": "瑞穗虎頭山步道",
-        "lat": "",
-        "lng": "",
-        "osmName": "",
-        "displayName": "",
-        "osmType": "",
-        "osmId": "",
+        "lat": 23.4988344,
+        "lng": 121.3484371,
+        "osmName": "虎頭山步道",
+        "displayName": "虎頭山步道, 瑞西, 瑞祥村, 瑞穗鄉, 花蓮縣, 978, 臺灣",
+        "osmType": "way",
+        "osmId": 545608573,
         "match": true,
-        "checkedAt": "2026-06-27T12:54:07.389Z"
+        "checkedAt": "2026-06-28T05:57:43.847Z"
     },
     {
         "id": "561",
         "name": "林美石磐步道",
-        "lat": "",
-        "lng": "",
-        "osmName": "",
-        "displayName": "",
-        "osmType": "",
-        "osmId": "",
+        "lat": 24.8276289,
+        "lng": 121.7284654,
+        "osmName": "林美石磐步道",
+        "displayName": "林美石磐步道, 草湳, 林美村, 礁溪鄉, 宜蘭縣, 262308, 臺灣",
+        "osmType": "way",
+        "osmId": 797347413,
         "match": true,
-        "checkedAt": "2026-06-27T12:54:07.389Z"
+        "checkedAt": "2026-06-28T05:57:43.847Z"
     }
 ]

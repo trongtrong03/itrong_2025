@@ -311,8 +311,12 @@
                 font-size: 0.75rem;
                 color: #999;
                 span {
+                    display: flex;
+                    align-items: center;
+                    gap: .25rem;
                     &::before {
                         content: '▲';
+                        font-size: 0.625rem;
                         color: var(--red);
                     }
                 }
