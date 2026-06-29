@@ -27906,5 +27906,36 @@
         "fDate": "",
         "article": "",
         "aLink": ""
+    },
+    {
+        "id": "894",
+        "name": "焿寮坪山",
+        "anotherName": "",
+        "height": "680",
+        "area": "北部",
+        "county": "新竹縣",
+        "town": "北埔鄉",
+        "tags": [
+            ""
+        ],
+        "title": "",
+        "lv": "郊山",
+        "mts": "",
+        "trail": "千段崎古道",
+        "start": "北埔老家",
+        "route": "單線來回",
+        "distance": "4",
+        "day": "1",
+        "nPark": "",
+        "application_p": false,
+        "application_m": false,
+        "intro": "「千段崎」意思是指千階的石階，早期新竹縣北埔鄉大南坑一帶地勢陡峭且交通不便，為方便開墾等，故當地人請人就地取材打造共１４１３階的石階古道，在地人就稱為「大南坑千段崎」，但後來隨著姜家家族外遷以及產業道路的開發，多數石階已經毀損，有待未來重整。",
+        "notes": "偏冷門的山岳。",
+        "img": false,
+        "gpx": "https://hiking.biji.co/index.php?q=trail&act=gpx_detail&id=5689328",
+        "finish": false,
+        "fDate": "",
+        "article": "",
+        "aLink": ""
     }
 ]
